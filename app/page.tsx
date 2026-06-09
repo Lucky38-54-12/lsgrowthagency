@@ -502,7 +502,7 @@ export default function Home() {
           className="m-trusted-mask"
           style={{
             position: "relative",
-            maxWidth: "1140px",
+            maxWidth: "760px",
             margin: "0 auto",
             overflow: "hidden",
             WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%)",
