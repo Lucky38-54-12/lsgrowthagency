@@ -329,7 +329,7 @@ export default function Home() {
 
       {/* ── NAV ── */}
       <nav style={{ position: "fixed", top: "14px", left: 0, right: 0, zIndex: 50, padding: "0 32px" }}>
-        <div style={{ maxWidth: "1160px", margin: "0 auto", background: "#1a5c78", borderRadius: "14px", height: "64px", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center", padding: "0 10px 0 20px", boxShadow: "0 2px 20px rgba(0,0,0,0.18)", border: "1px solid rgba(255,255,255,0.12)" }}>
+        <div style={{ maxWidth: "860px", margin: "0 auto", background: "#1a5c78", borderRadius: "14px", height: "64px", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center", padding: "0 10px 0 20px", boxShadow: "0 2px 20px rgba(0,0,0,0.18)", border: "1px solid rgba(255,255,255,0.12)" }}>
           {/* Logo — left */}
           <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "flex-start" }}>
             <img src="/ls-growth-logo-long.png" alt="LS Growth" style={{ height: "64px", width: "auto", objectFit: "contain" }} />
