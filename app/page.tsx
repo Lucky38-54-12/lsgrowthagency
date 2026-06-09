@@ -381,57 +381,50 @@ export default function Home() {
         </div>
       )}
 
-      {/* ── CONTACT FORM DRAWER ── */}
+      {/* ── CONTACT FORM MODAL ── */}
       {formOpen && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 300 }}>
-          <div onClick={() => setFormOpen(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.45)", backdropFilter: "blur(4px)" }} />
-          <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: "420px", maxWidth: "100vw", background: "#fff", display: "flex", flexDirection: "column", boxShadow: "-8px 0 40px rgba(0,0,0,0.14)", overflowY: "auto" as const }}>
-            {/* Drawer header */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px", height: "64px", borderBottom: `1px solid ${line}`, flexShrink: 0 }}>
-              <div>
-                <p style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.1em", margin: 0 }}>Contact Us</p>
-                <p style={{ fontSize: "16px", fontWeight: 800, color: ink, margin: 0, letterSpacing: "-0.02em" }}>Send a Message</p>
+        <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+          <div onClick={() => setFormOpen(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.6)", backdropFilter: "blur(6px)" }} />
+          <div style={{ position: "relative", width: "100%", maxWidth: "460px", background: "#fff", borderRadius: "4px", boxShadow: "0 24px 80px rgba(0,0,0,0.25)", overflowY: "auto" as const, maxHeight: "92vh" }}>
+            {/* Header */}
+            <div style={{ padding: "32px 32px 0" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "8px" }}>
+                <h2 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "0.04em", textTransform: "uppercase" as const, margin: 0 }}>Get in Touch</h2>
+                <button onClick={() => setFormOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: muted, fontSize: "22px", lineHeight: 1, padding: "0 0 0 16px", flexShrink: 0 }}>×</button>
               </div>
-              <button onClick={() => setFormOpen(false)} style={{ background: "none", border: `1px solid ${line}`, borderRadius: "6px", cursor: "pointer", color: muted, width: "34px", height: "34px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", lineHeight: 1 }}>×</button>
+              <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 24px" }}>Fill in your details and we'll be in touch within 24 hours.</p>
+              <div style={{ width: "3px", height: "40px", background: accent, position: "absolute" as const, left: 0, top: "32px", borderRadius: "0 2px 2px 0" }} />
             </div>
-            {/* Drawer body */}
-            <div style={{ padding: "28px 24px", flex: 1 }}>
+
+            {/* Body */}
+            <div style={{ padding: "0 32px 32px" }}>
               {formState === "done" ? (
-                <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "16px", padding: "64px 0", textAlign: "center" as const }}>
+                <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", gap: "16px", padding: "40px 0", textAlign: "center" as const }}>
                   <CheckCircle style={{ width: "48px", height: "48px", color: accent }} />
-                  <h3 style={{ fontSize: "22px", fontWeight: 700, color: ink, letterSpacing: "-0.02em", margin: 0 }}>Message sent!</h3>
+                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: ink, margin: 0 }}>Message sent!</h3>
                   <p style={{ fontSize: "14px", color: muted, margin: 0 }}>We'll be in touch within 24 hours.</p>
-                  <button onClick={() => { setFormOpen(false); setFormState("idle"); setFormData({ name: "", phone: "", business: "", message: "" }); }} style={{ marginTop: "8px", fontSize: "13px", color: accent, background: "none", border: "none", cursor: "pointer", fontFamily: F, textDecoration: "underline" }}>Close</button>
+                  <button onClick={() => { setFormOpen(false); setFormState("idle"); setFormData({ name: "", phone: "", business: "", message: "" }); }} style={{ fontSize: "13px", color: accent, background: "none", border: "none", cursor: "pointer", fontFamily: F, textDecoration: "underline" }}>Close</button>
                 </div>
               ) : (
-                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column" as const, gap: "16px" }}>
-                  <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 4px" }}>Fill in your details and we'll get back to you within 24 hours.</p>
+                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column" as const, gap: "18px" }}>
+                  {[
+                    { label: "YOUR NAME", key: "name", type: "text", placeholder: "e.g. John Smith", required: true },
+                    { label: "PHONE NUMBER", key: "phone", type: "tel", placeholder: "e.g. 021 123 4567" },
+                    { label: "BUSINESS TYPE", key: "business", type: "text", placeholder: "e.g. Plumbing, Electrical, Landscaping" },
+                  ].map(({ label, key, type, placeholder, required }) => (
+                    <div key={key}>
+                      <label style={{ display: "block", fontSize: "11px", fontWeight: 700, color: ink, letterSpacing: "0.08em", marginBottom: "8px" }}>{label}</label>
+                      <input type={type} required={required} placeholder={placeholder} value={formData[key as keyof typeof formData]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))} style={{ width: "100%", padding: "12px 14px", border: `1px solid ${line}`, borderRadius: "4px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fff", boxSizing: "border-box" as const }} />
+                    </div>
+                  ))}
                   <div>
-                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Your Name</label>
-                    <input type="text" required placeholder="John Smith" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }} />
-                  </div>
-                  <div>
-                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Phone Number</label>
-                    <input type="tel" placeholder="021 000 0000" value={formData.phone} onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))} style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }} />
-                  </div>
-                  <div>
-                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Business Type</label>
-                    <input type="text" placeholder="e.g. Plumbing, Landscaping, Electrical" value={formData.business} onChange={e => setFormData(p => ({ ...p, business: e.target.value }))} style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }} />
-                  </div>
-                  <div>
-                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Message</label>
-                    <textarea rows={5} placeholder="Tell us about your business and what you're looking to achieve..." value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", resize: "none" as const, boxSizing: "border-box" as const }} />
+                    <label style={{ display: "block", fontSize: "11px", fontWeight: 700, color: ink, letterSpacing: "0.08em", marginBottom: "8px" }}>MESSAGE</label>
+                    <textarea rows={4} placeholder="Tell us about your business and what you're looking to achieve..." value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} style={{ width: "100%", padding: "12px 14px", border: `1px solid ${line}`, borderRadius: "4px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fff", resize: "none" as const, boxSizing: "border-box" as const }} />
                   </div>
                   {formState === "error" && <p style={{ fontSize: "13px", color: "#dc2626", margin: 0 }}>Something went wrong. Please try again.</p>}
-                  <button type="submit" disabled={formState === "sending"} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "14px 24px", background: formState === "sending" ? "#94a3b8" : ink, color: "#fff", border: "none", borderRadius: "6px", fontSize: "14px", fontWeight: 600, fontFamily: F, cursor: formState === "sending" ? "not-allowed" : "pointer" }}>
-                    {formState === "sending" ? "Sending..." : <>Send Message <ArrowRight style={{ width: "14px", height: "14px" }} /></>}
+                  <button type="submit" disabled={formState === "sending"} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "16px", background: formState === "sending" ? "#94a3b8" : accent, color: "#fff", border: "none", borderRadius: "4px", fontSize: "14px", fontWeight: 700, fontFamily: F, cursor: formState === "sending" ? "not-allowed" : "pointer", letterSpacing: "0.04em" }}>
+                    {formState === "sending" ? "Sending..." : "Send message →"}
                   </button>
-                  <div style={{ borderTop: `1px solid ${line}`, paddingTop: "16px", display: "flex", flexDirection: "column" as const, gap: "10px" }}>
-                    <p style={{ fontSize: "12px", color: dim, margin: 0 }}>Prefer to talk directly?</p>
-                    <a href="/book" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: accent, textDecoration: "none" }}>
-                      Book a free 30-min call <ArrowRight style={{ width: "12px", height: "12px" }} />
-                    </a>
-                  </div>
                 </form>
               )}
             </div>
