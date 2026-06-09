@@ -27,7 +27,7 @@ export default function BookPage() {
       {/* Nav */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 48px", height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-          <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "80px", width: "auto", objectFit: "contain" }} />
+          <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "110px", width: "auto", objectFit: "contain" }} />
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: "36px" }}>
           {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
