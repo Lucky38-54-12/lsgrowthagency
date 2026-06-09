@@ -271,7 +271,7 @@ export default function Home() {
           .m-build-grid { grid-template-columns: 1fr !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
-          .m-solution-split { grid-template-columns: 1fr !important; }
+          .m-solution-split { display: none !important; }
           .m-solution-split > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
           .m-solution-split > div:last-child { border-bottom: none !important; }
           .m-case-grid { grid-template-columns: 1fr !important; }
