@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useState, useEffect, useRef } from "react";
-import { ArrowRight, CheckCircle, Plus, Minus } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle, Plus, Minus } from "lucide-react";
 
 /* ── CountUp component ── */
 function CountUp({ to, suffix = "", prefix = "", duration = 1800, color, format }: { to: number; suffix?: string; prefix?: string; duration?: number; color: string; format?: boolean }) {
@@ -270,6 +270,7 @@ export default function Home() {
 
         @media (max-width: 640px) {
           .m-nav-text-link { display: none !important; }
+          .m-nav-links { display: none !important; }
           .m-nav-hamburger { display: flex !important; }
           .btn-nav { display: none !important; }
           nav { padding: 0 16px !important; }
@@ -309,20 +310,25 @@ export default function Home() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position: "fixed", top: "14px", left: 0, right: 0, zIndex: 50, padding: "0 80px" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto", background: "#1a5c78", borderRadius: "14px", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 12px 0 28px", boxShadow: "0 2px 16px rgba(0,0,0,0.15)", border: "1px solid rgba(255,255,255,0.12)" }}>
-          <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-            <img src="/ls-growth-logo-long.png" alt="LS Growth" style={{ height: "60px", width: "auto", objectFit: "contain" }} />
+      <nav style={{ position: "fixed", top: "14px", left: 0, right: 0, zIndex: 50, padding: "0 32px" }}>
+        <div style={{ maxWidth: "1160px", margin: "0 auto", background: "#1a5c78", borderRadius: "14px", height: "64px", display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "center", padding: "0 10px 0 20px", boxShadow: "0 2px 20px rgba(0,0,0,0.18)", border: "1px solid rgba(255,255,255,0.12)" }}>
+          {/* Logo — left */}
+          <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "flex-start" }}>
+            <img src="/ls-growth-logo-long.png" alt="LS Growth" style={{ height: "64px", width: "auto", objectFit: "contain" }} />
           </a>
-          <div style={{ display: "flex", alignItems: "center", gap: "28px" }}>
+          {/* Links — center */}
+          <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "32px" }}>
             {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
-              <a key={h} href={h} className="nav-link m-nav-text-link" style={{ fontSize: "14px", fontWeight: 400, color: "rgba(255,255,255,0.85)", textDecoration: "none" }}>{l}</a>
+              <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 400, color: "rgba(255,255,255,0.85)", textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
             ))}
-            <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const }}>
+          </div>
+          {/* CTAs — right */}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "flex-end" }}>
+            <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.8)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: "0 4px", whiteSpace: "nowrap" as const }}>
               Send a Message
             </button>
-            <a href="/book" style={{ fontSize: "13px", fontWeight: 700, color: "#1a5c78", background: "#fff", borderRadius: "6px", padding: "10px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const }}>
-              Book a Call <ArrowRight style={{ width: "13px", height: "13px" }} />
+            <a href="/book" style={{ fontSize: "13px", fontWeight: 700, color: "#1a5c78", background: "#fff", borderRadius: "8px", padding: "10px 20px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const, border: "2px solid #fff" }}>
+              Book a Call <ArrowUpRight style={{ width: "14px", height: "14px" }} />
             </a>
             <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "36px", height: "36px", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "8px", cursor: "pointer", padding: "8px", flexShrink: 0 }}>
               <span style={{ display: "block", width: "100%", height: "1.5px", background: "#fff" }} />
