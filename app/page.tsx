@@ -321,7 +321,7 @@ export default function Home() {
             <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const }}>
               Send a Message
             </button>
-            <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", fontWeight: 700, color: "#1a5c78", background: "#fff", borderRadius: "6px", padding: "10px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const }}>
+            <a href="/book" style={{ fontSize: "13px", fontWeight: 700, color: "#1a5c78", background: "#fff", borderRadius: "6px", padding: "10px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const }}>
               Book a Call <ArrowRight style={{ width: "13px", height: "13px" }} />
             </a>
             <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "36px", height: "36px", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "8px", cursor: "pointer", padding: "8px", flexShrink: 0 }}>
@@ -347,7 +347,7 @@ export default function Home() {
                 <a key={h} href={h} onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f8fafc", border: `1px solid ${line}`, fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>{l}</a>
               ))}
               <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: "#f1f5f9", border: `1px solid ${line}`, color: ink, fontSize: "14px", fontWeight: 600, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Send a Message</button>
-              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: accent, color: "#fff", fontSize: "14px", fontWeight: 700, textDecoration: "none", textAlign: "center" }}>Book a Call</a>
+              <a href="/book" onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: accent, color: "#fff", fontSize: "14px", fontWeight: 700, textDecoration: "none", textAlign: "center" }}>Book a Call</a>
             </div>
           </div>
         </div>
@@ -400,7 +400,7 @@ export default function Home() {
                   </button>
                   <div style={{ borderTop: `1px solid ${line}`, paddingTop: "16px", display: "flex", flexDirection: "column" as const, gap: "10px" }}>
                     <p style={{ fontSize: "12px", color: dim, margin: 0 }}>Prefer to talk directly?</p>
-                    <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: accent, textDecoration: "none" }}>
+                    <a href="/book" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: accent, textDecoration: "none" }}>
                       Book a free 30-min call <ArrowRight style={{ width: "12px", height: "12px" }} />
                     </a>
                   </div>
@@ -427,7 +427,7 @@ export default function Home() {
               We handle your entire lead generation: targeted ads, instant follow-up, and a managed pipeline, so you only talk to people ready to book.
             </p>
             <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
-              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "6px" }}>
+              <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "6px" }}>
                 Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
               </a>
               <button onClick={() => setFormOpen(true)} className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "6px", cursor: "pointer", fontFamily: F }}>
@@ -512,7 +512,7 @@ export default function Home() {
             <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "480px", marginBottom: "36px" }}>
               From first outreach to signed quote, we manage every step of getting you clients so you never have to chase leads again.
             </p>
-            <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 26px", marginBottom: "48px" }}>
+            <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 26px", marginBottom: "48px" }}>
               Book a Call <ArrowRight style={{ width: "13px", height: "13px" }} />
             </a>
             <div className="lp-rise d4 m-calendar-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", border: `1px solid ${line}`, maxWidth: "560px" }}>
@@ -546,7 +546,7 @@ export default function Home() {
             Unlock a ton of new leads, without having to pay a fortune.
           </p>
           <img src="/results-mockup.png" alt="Dashboard showing leads, cost per lead, and ad spend results for Queenstown Cleaning, SSP Electrical, and Perl Electrical campaigns" className="lp-rise d3" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto" }} />
-          <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "20px" }}>
+          <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "20px" }}>
             Get Results Like This <ArrowRight style={{ width: "13px", height: "13px" }} />
           </a>
         </div>
@@ -673,7 +673,7 @@ export default function Home() {
                 <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>The Solution</div>
                 <h3 style={{ fontSize: "clamp(18px,2vw,26px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "12px" }}>The Full Done-For-You Service</h3>
                 <p style={{ fontSize: "13px", color: muted, lineHeight: 1.7, marginBottom: "24px" }}>Winning local service businesses don't just run ads. They have someone managing the whole process. That's what LS Growth does, built specifically for trades and home services in NZ and AU.</p>
-                <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark" style={{ fontSize: "13px", padding: "10px 18px" }}>
+                <a href="/book" className="btn btn-dark" style={{ fontSize: "13px", padding: "10px 18px" }}>
                   Fill your pipeline <ArrowRight style={{ width: "12px", height: "12px" }} />
                 </a>
               </div>
@@ -799,7 +799,7 @@ export default function Home() {
 
           {/* CTA */}
           <div style={{ textAlign: "center" as const, marginTop: "48px" }}>
-            <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px" }}>
+            <a href="/book" className="btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px" }}>
               Get more booked jobs <ArrowRight style={{ width: "13px", height: "13px" }} />
             </a>
           </div>
@@ -864,9 +864,7 @@ export default function Home() {
               {/* Get in Touch card */}
               <div aria-hidden style={{ height: "40px" }} />
               <a
-                href="https://calendly.com/lsgrowthagency-co/30min"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/book"
                 className="lp-rise how-step-card"
                 style={{
                   position: "sticky" as const,
@@ -981,7 +979,7 @@ export default function Home() {
             <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7, marginBottom: "28px" }}>
               Get answers to common questions about our services.
             </p>
-            <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark" style={{ fontSize: "13px", padding: "10px 18px" }}>
+            <a href="/book" className="btn btn-dark" style={{ fontSize: "13px", padding: "10px 18px" }}>
               Contact Us <ArrowRight style={{ width: "12px", height: "12px" }} />
             </a>
           </div>
@@ -1022,7 +1020,7 @@ export default function Home() {
                 </ul>
               </div>
               <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px", minWidth: "260px" }}>
-                <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "6px" }}>
+                <a href="/book" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "6px" }}>
                   Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
                 </a>
                 <button onClick={() => setFormOpen(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: ink, background: "transparent", border: `1px solid ${line}`, borderRadius: "6px", padding: "14px 28px", cursor: "pointer", fontFamily: F }}>
