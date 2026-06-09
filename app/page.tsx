@@ -4,7 +4,7 @@ import { Fragment, useState, useEffect, useRef } from "react";
 import { ArrowRight, CheckCircle, Plus, Minus } from "lucide-react";
 
 /* ── CountUp component ── */
-function CountUp({ to, suffix = "", duration = 1800, color }: { to: number; suffix?: string; duration?: number; color: string }) {
+function CountUp({ to, suffix = "", prefix = "", duration = 1800, color, format }: { to: number; suffix?: string; prefix?: string; duration?: number; color: string; format?: boolean }) {
   const [val, setVal] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
@@ -28,7 +28,8 @@ function CountUp({ to, suffix = "", duration = 1800, color }: { to: number; suff
     obs.observe(el);
     return () => obs.disconnect();
   }, [to, duration]);
-  return <span ref={ref} style={{ fontSize: "inherit", fontWeight: "inherit", color, letterSpacing: "inherit", lineHeight: "inherit" }}>{val}{suffix}</span>;
+  const display = format ? val.toLocaleString() : val;
+  return <span ref={ref} style={{ fontSize: "inherit", fontWeight: "inherit", color, letterSpacing: "inherit", lineHeight: "inherit" }}>{prefix}{display}{suffix}</span>;
 }
 
 /* ── Design tokens ── */
@@ -357,15 +358,15 @@ export default function Home() {
             <p className="hero-note" style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>Free 30-min strategy call · No obligation</p>
           </div>
 
-          <div className="m-hero-stats" style={{ display: "flex", flexDirection: "column" as const, gap: "16px", alignSelf: "stretch" as const }}>
+          <div className="m-hero-stats" style={{ display: "flex", flexDirection: "column" as const, gap: "10px", alignSelf: "stretch" as const }}>
             {[
-              { value: "$350,000+", label: "In added projects for clients" },
-              { value: "300+", label: "Qualified consultations booked per month" },
-              { value: "700+", label: "Hours saved per client in admin & follow-up" },
-            ].map(({ value, label }) => (
-              <div key={value} style={{ flex: 1, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "14px", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)", padding: "18px 22px", display: "flex", flexDirection: "column" as const, justifyContent: "center" as const }}>
-                <div style={{ fontSize: "36px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "4px" }}>{value}</div>
-                <div style={{ fontSize: "16px", color: "rgba(255,255,255,0.65)", lineHeight: 1.4 }}>{label}</div>
+              { to: 350000, prefix: "$", suffix: "+", format: true, label: "In added projects for clients" },
+              { to: 300, prefix: "", suffix: "+", format: false, label: "Qualified consultations booked per month" },
+              { to: 700, prefix: "", suffix: "+", format: false, label: "Hours saved per client in admin & follow-up" },
+            ].map(({ to, prefix, suffix, format, label }) => (
+              <div key={label} style={{ flex: 1, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "14px", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)", padding: "14px 20px", display: "flex", flexDirection: "column" as const, justifyContent: "center" as const }}>
+                <div style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "2px" }}><CountUp to={to} prefix={prefix} suffix={suffix} format={format} color="#7cd4ff" /></div>
+                <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.4 }}>{label}</div>
               </div>
             ))}
           </div>
