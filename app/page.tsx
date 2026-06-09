@@ -783,7 +783,7 @@ export default function Home() {
 
               {/* Get in Touch card */}
               <div style={{ height: "40px" }} />
-              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", padding: "28px", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ position: "relative" as const, zIndex: 10, textDecoration: "none", display: "block", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", padding: "28px", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
                   <div style={{ width: "40px", height: "40px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
