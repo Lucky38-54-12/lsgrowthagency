@@ -270,6 +270,7 @@ export default function Home() {
           .m-calendar-stats > div:last-child { border-bottom: none !important; }
           .m-build-grid { grid-template-columns: 1fr !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
+          .m-bento-hide { display: none !important; }
           .m-solution-split { grid-template-columns: 1fr !important; }
           .m-solution-split > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
           .m-solution-split > div:last-child { border-bottom: none !important; }
@@ -563,10 +564,10 @@ export default function Home() {
 
             <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.3fr 0.85fr", gap: "16px" }}>
               {[
-                { value: "5–7", num: null, suffix: "", scheme: "accent", text: "Automated touchpoints before a lead is ever written off as cold.", label: "Follow-Ups Per Lead" },
-                { value: "100%", num: 100, suffix: "%", scheme: "light", text: "Every enquiry logged, tracked and assigned to a stage. Nothing slips through the cracks.", label: "Of Leads Tracked & Managed" },
-                { value: "24/7", num: null, suffix: "", scheme: "dark", text: "Your pipeline keeps working nights, weekends and public holidays.", label: "Coverage, Not Office Hours" },
-              ].map(({ value, num, suffix, scheme, text, label }) => {
+                { value: "5–7", num: null, suffix: "", scheme: "accent", text: "Automated touchpoints before a lead is ever written off as cold.", label: "Follow-Ups Per Lead", hide: true },
+                { value: "100%", num: 100, suffix: "%", scheme: "light", text: "Every enquiry logged, tracked and assigned to a stage. Nothing slips through the cracks.", label: "Of Leads Tracked & Managed", hide: false },
+                { value: "24/7", num: null, suffix: "", scheme: "dark", text: "Your pipeline keeps working nights, weekends and public holidays.", label: "Coverage, Not Office Hours", hide: true },
+              ].map(({ value, num, suffix, scheme, text, label, hide }) => {
                 const dark2 = scheme === "dark";
                 const acc = scheme === "accent";
                 const bg = acc ? accent : dark2 ? dark : "#f8fafc";
@@ -574,7 +575,7 @@ export default function Home() {
                 const sub = acc ? "rgba(255,255,255,0.82)" : dark2 ? "rgba(255,255,255,0.7)" : muted;
                 const lbl = acc ? "rgba(255,255,255,0.6)" : dark2 ? "rgba(255,255,255,0.4)" : dim;
                 return (
-                  <div key={value} style={{ background: bg, border: !acc && !dark2 ? `1px solid ${line}` : "none", padding: "36px 32px", minHeight: "260px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
+                  <div key={value} className={hide ? "m-bento-hide" : ""} style={{ background: bg, border: !acc && !dark2 ? `1px solid ${line}` : "none", padding: "36px 32px", minHeight: "260px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
                     <div style={{ fontSize: "clamp(40px,5vw,64px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1 }}>
                       {num !== null ? <CountUp to={num} suffix={suffix} color={fg} /> : <span style={{ color: fg }}>{value}</span>}
                     </div>
