@@ -242,6 +242,24 @@ export default function Home() {
         .nav-link:hover::after { width:100%; }
 
         @keyframes heroUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes nav-shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .nav-cta {
+          position: relative;
+          overflow: hidden;
+          background: #fff;
+          color: #1a5c78;
+        }
+        .nav-cta::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.7) 50%, transparent 60%);
+          background-size: 200% 100%;
+          animation: nav-shimmer 2.4s ease-in-out infinite;
+          border-radius: inherit;
+          pointer-events: none;
+        }
+        .nav-cta:hover { background: #f0f8ff; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); transition: all 0.15s; }
         .hero-badge { animation: heroUp 0.5s ease 0.05s both; }
         .hero-h1    { animation: heroUp 0.55s ease 0.15s both; }
         .hero-sub   { animation: heroUp 0.55s ease 0.25s both; }
@@ -327,7 +345,7 @@ export default function Home() {
             <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.8)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: "0 4px", whiteSpace: "nowrap" as const }}>
               Send a Message
             </button>
-            <a href="/book" style={{ fontSize: "13px", fontWeight: 700, color: "#1a5c78", background: "#fff", borderRadius: "8px", padding: "10px 20px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const, border: "2px solid #fff" }}>
+            <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, borderRadius: "8px", padding: "10px 20px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const, border: "2px solid rgba(255,255,255,0.9)" }}>
               Book a Call <ArrowUpRight style={{ width: "14px", height: "14px" }} />
             </a>
             <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "36px", height: "36px", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "8px", cursor: "pointer", padding: "8px", flexShrink: 0 }}>
