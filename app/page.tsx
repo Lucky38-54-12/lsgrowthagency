@@ -166,6 +166,7 @@ const faqs = [
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [navOpen, setNavOpen] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
   const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
 
@@ -317,6 +318,9 @@ export default function Home() {
             {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
               <a key={h} href={h} className="nav-link m-nav-text-link" style={{ fontSize: "14px", fontWeight: 400, color: "rgba(255,255,255,0.85)", textDecoration: "none" }}>{l}</a>
             ))}
+            <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const }}>
+              Send a Message
+            </button>
             <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", fontWeight: 700, color: "#1a5c78", background: "#fff", borderRadius: "6px", padding: "10px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const }}>
               Book a Call <ArrowRight style={{ width: "13px", height: "13px" }} />
             </a>
@@ -342,7 +346,66 @@ export default function Home() {
               {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
                 <a key={h} href={h} onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f8fafc", border: `1px solid ${line}`, fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>{l}</a>
               ))}
+              <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: "#f1f5f9", border: `1px solid ${line}`, color: ink, fontSize: "14px", fontWeight: 600, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Send a Message</button>
               <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: accent, color: "#fff", fontSize: "14px", fontWeight: 700, textDecoration: "none", textAlign: "center" }}>Book a Call</a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── CONTACT FORM DRAWER ── */}
+      {formOpen && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 300 }}>
+          <div onClick={() => setFormOpen(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.45)", backdropFilter: "blur(4px)" }} />
+          <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: "420px", maxWidth: "100vw", background: "#fff", display: "flex", flexDirection: "column", boxShadow: "-8px 0 40px rgba(0,0,0,0.14)", overflowY: "auto" as const }}>
+            {/* Drawer header */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px", height: "64px", borderBottom: `1px solid ${line}`, flexShrink: 0 }}>
+              <div>
+                <p style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.1em", margin: 0 }}>Contact Us</p>
+                <p style={{ fontSize: "16px", fontWeight: 800, color: ink, margin: 0, letterSpacing: "-0.02em" }}>Send a Message</p>
+              </div>
+              <button onClick={() => setFormOpen(false)} style={{ background: "none", border: `1px solid ${line}`, borderRadius: "6px", cursor: "pointer", color: muted, width: "34px", height: "34px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px", lineHeight: 1 }}>×</button>
+            </div>
+            {/* Drawer body */}
+            <div style={{ padding: "28px 24px", flex: 1 }}>
+              {formState === "done" ? (
+                <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "16px", padding: "64px 0", textAlign: "center" as const }}>
+                  <CheckCircle style={{ width: "48px", height: "48px", color: accent }} />
+                  <h3 style={{ fontSize: "22px", fontWeight: 700, color: ink, letterSpacing: "-0.02em", margin: 0 }}>Message sent!</h3>
+                  <p style={{ fontSize: "14px", color: muted, margin: 0 }}>We'll be in touch within 24 hours.</p>
+                  <button onClick={() => { setFormOpen(false); setFormState("idle"); setFormData({ name: "", phone: "", business: "", message: "" }); }} style={{ marginTop: "8px", fontSize: "13px", color: accent, background: "none", border: "none", cursor: "pointer", fontFamily: F, textDecoration: "underline" }}>Close</button>
+                </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column" as const, gap: "16px" }}>
+                  <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 4px" }}>Fill in your details and we'll get back to you within 24 hours.</p>
+                  <div>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Your Name</label>
+                    <input type="text" required placeholder="John Smith" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }} />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Phone Number</label>
+                    <input type="tel" placeholder="021 000 0000" value={formData.phone} onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))} style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }} />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Business Type</label>
+                    <input type="text" placeholder="e.g. Plumbing, Landscaping, Electrical" value={formData.business} onChange={e => setFormData(p => ({ ...p, business: e.target.value }))} style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }} />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Message</label>
+                    <textarea rows={5} placeholder="Tell us about your business and what you're looking to achieve..." value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", resize: "none" as const, boxSizing: "border-box" as const }} />
+                  </div>
+                  {formState === "error" && <p style={{ fontSize: "13px", color: "#dc2626", margin: 0 }}>Something went wrong. Please try again.</p>}
+                  <button type="submit" disabled={formState === "sending"} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "14px 24px", background: formState === "sending" ? "#94a3b8" : ink, color: "#fff", border: "none", borderRadius: "6px", fontSize: "14px", fontWeight: 600, fontFamily: F, cursor: formState === "sending" ? "not-allowed" : "pointer" }}>
+                    {formState === "sending" ? "Sending..." : <>Send Message <ArrowRight style={{ width: "14px", height: "14px" }} /></>}
+                  </button>
+                  <div style={{ borderTop: `1px solid ${line}`, paddingTop: "16px", display: "flex", flexDirection: "column" as const, gap: "10px" }}>
+                    <p style={{ fontSize: "12px", color: dim, margin: 0 }}>Prefer to talk directly?</p>
+                    <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: accent, textDecoration: "none" }}>
+                      Book a free 30-min call <ArrowRight style={{ width: "12px", height: "12px" }} />
+                    </a>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </div>
@@ -367,9 +430,9 @@ export default function Home() {
               <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "6px" }}>
                 Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
               </a>
-              <a href="#contact-form" className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "6px" }}>
-                Fill a Form
-              </a>
+              <button onClick={() => setFormOpen(true)} className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "6px", cursor: "pointer", fontFamily: F }}>
+                Send a Message
+              </button>
             </div>
             <p className="hero-note" style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>Free 30-min strategy call · No obligation</p>
           </div>
@@ -939,97 +1002,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CTA + CONTACT FORM ── */}
+      {/* ── CTA ── */}
       <section id="contact" style={{ background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div className="lp-rise m-cta-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "start" }}>
-
-            {/* Left — Calendly CTA */}
-            <div style={{ border: `1px solid ${line}`, borderRadius: "16px", padding: "48px 40px", background: "#fff" }}>
-              <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Book a Call</div>
-              <h2 style={{ fontSize: "clamp(28px,3.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
-              <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, marginBottom: "28px" }}>
-                Book a free 30-minute call. We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
-              </p>
-              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 32px", display: "flex", flexDirection: "column" as const, gap: "10px" }}>
-                {["No lock-in contracts", "Full setup handled for you", "Results within the first two weeks"].map(item => (
-                  <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: muted }}>
-                    <CheckCircle style={{ width: "14px", height: "14px", color: accent, flexShrink: 0 }} />{item}
-                  </li>
-                ))}
-              </ul>
-              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", width: "100%", borderRadius: "6px" }}>
-                Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
-              </a>
+          <div className="lp-rise" style={{ border: `1px solid ${line}`, borderRadius: "16px", padding: "64px 48px", background: "#fff", position: "relative" as const, overflow: "hidden" }}>
+            <div className="m-cta-stack" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "48px", flexWrap: "wrap" as const }}>
+              <div>
+                <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Get Started</div>
+                <h2 style={{ fontSize: "clamp(36px,5vw,72px)", fontWeight: 800, color: ink, lineHeight: 1.0, letterSpacing: "-0.03em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
+                <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
+                  Book a free 30-minute call. We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
+                </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: "10px" }}>
+                  {["No lock-in contracts", "Full setup handled for you", "Results within the first two weeks"].map(item => (
+                    <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: muted }}>
+                      <CheckCircle style={{ width: "14px", height: "14px", color: accent, flexShrink: 0 }} />{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px", minWidth: "260px" }}>
+                <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "6px" }}>
+                  Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
+                </a>
+                <button onClick={() => setFormOpen(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: ink, background: "transparent", border: `1px solid ${line}`, borderRadius: "6px", padding: "14px 28px", cursor: "pointer", fontFamily: F }}>
+                  Send a Message
+                </button>
+                <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "13px", color: dim, textDecoration: "none" }}>
+                  lsgrowthagency.co@gmail.com
+                </a>
+              </div>
             </div>
-
-            {/* Right — Contact Form */}
-            <div id="contact-form" style={{ border: `1px solid ${line}`, borderRadius: "16px", padding: "48px 40px", background: "#fff" }}>
-              <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Send a Message</div>
-              <h2 style={{ fontSize: "clamp(28px,3.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: "8px" }}>Prefer to reach<br />out directly?</h2>
-              <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, marginBottom: "28px" }}>Fill in your details and we'll get back to you within 24 hours.</p>
-
-              {formState === "done" ? (
-                <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "16px", padding: "48px 0", textAlign: "center" as const }}>
-                  <CheckCircle style={{ width: "48px", height: "48px", color: accent }} />
-                  <h3 style={{ fontSize: "22px", fontWeight: 700, color: ink, letterSpacing: "-0.02em" }}>Message sent!</h3>
-                  <p style={{ fontSize: "14px", color: muted }}>We'll be in touch within 24 hours.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column" as const, gap: "14px" }}>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
-                    <div>
-                      <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Your Name</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="John Smith"
-                        value={formData.name}
-                        onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                        style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }}
-                      />
-                    </div>
-                    <div>
-                      <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Phone Number</label>
-                      <input
-                        type="tel"
-                        placeholder="021 000 0000"
-                        value={formData.phone}
-                        onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
-                        style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Business Type</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Plumbing, Landscaping, Electrical"
-                      value={formData.business}
-                      onChange={e => setFormData(p => ({ ...p, business: e.target.value }))}
-                      style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }}
-                    />
-                  </div>
-                  <div>
-                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Message</label>
-                    <textarea
-                      rows={4}
-                      placeholder="Tell us about your business and what you're looking to achieve..."
-                      value={formData.message}
-                      onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
-                      style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", resize: "none" as const, boxSizing: "border-box" as const }}
-                    />
-                  </div>
-                  {formState === "error" && (
-                    <p style={{ fontSize: "13px", color: "#dc2626", margin: 0 }}>Something went wrong. Please try again or email us directly.</p>
-                  )}
-                  <button type="submit" disabled={formState === "sending"} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "14px 24px", background: formState === "sending" ? "#94a3b8" : ink, color: "#fff", border: "none", borderRadius: "6px", fontSize: "14px", fontWeight: 600, fontFamily: F, cursor: formState === "sending" ? "not-allowed" : "pointer", transition: "background 0.15s" }}>
-                    {formState === "sending" ? "Sending..." : <>Send Message <ArrowRight style={{ width: "14px", height: "14px" }} /></>}
-                  </button>
-                </form>
-              )}
-            </div>
-
           </div>
         </div>
       </section>
