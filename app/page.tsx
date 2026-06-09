@@ -291,8 +291,8 @@ export default function Home() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position: "fixed", top: "12px", left: 0, right: 0, zIndex: 50, padding: "0 20px" }}>
-        <div style={{ maxWidth: "1080px", margin: "0 auto", background: "#1e6080", borderRadius: "14px", height: "68px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px 0 24px", boxShadow: "0 4px 24px rgba(0,0,0,0.18)" }}>
+      <nav style={{ position: "fixed", top: "14px", left: 0, right: 0, zIndex: 50, padding: "0 32px" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", background: "#1a5c78", borderRadius: "40px", height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 12px 0 28px", boxShadow: "0 2px 16px rgba(0,0,0,0.15)", border: "1px solid rgba(255,255,255,0.12)" }}>
           <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
             <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "48px", width: "auto", objectFit: "contain" }} />
           </a>
@@ -300,7 +300,7 @@ export default function Home() {
             {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
               <a key={h} href={h} className="nav-link m-nav-text-link" style={{ fontSize: "14px", fontWeight: 400, color: "rgba(255,255,255,0.85)", textDecoration: "none" }}>{l}</a>
             ))}
-            <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", fontWeight: 700, color: "#1e6080", background: "#fff", borderRadius: "10px", padding: "10px 26px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const }}>
+            <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", fontWeight: 700, color: "#1a5c78", background: "#fff", borderRadius: "999px", padding: "10px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const }}>
               Book a Call <ArrowRight style={{ width: "13px", height: "13px" }} />
             </a>
             <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "36px", height: "36px", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "8px", cursor: "pointer", padding: "8px", flexShrink: 0 }}>
