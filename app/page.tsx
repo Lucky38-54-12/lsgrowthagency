@@ -297,7 +297,8 @@ export default function Home() {
           .m-nav-links { display: none !important; }
           .m-nav-hamburger { display: flex !important; }
           .btn-nav { display: none !important; }
-          nav { padding: 0 16px !important; }
+          .nav-cta { display: none !important; }
+          nav { padding: 0 16px 0 0 !important; height: 72px !important; }
           .m-hero-content { padding: 48px 20px 40px !important; grid-template-columns: 1fr !important; gap: 0 !important; }
           .m-hero-stats { display: none !important; }
           .m-trusted-row > div { border-right: none !important; border-bottom: 1px solid ${line}; min-width: calc(50% - 0px) !important; }
@@ -352,10 +353,10 @@ export default function Home() {
           <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 800, borderRadius: "999px", padding: "12px 28px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const, border: "2px solid rgba(255,255,255,0.9)", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
             Book a Call <ArrowUpRight style={{ width: "14px", height: "14px" }} />
           </a>
-          <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "36px", height: "36px", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "6px", cursor: "pointer", padding: "8px", flexShrink: 0 }}>
-            <span style={{ display: "block", width: "100%", height: "1.5px", background: "#fff" }} />
-            <span style={{ display: "block", width: "100%", height: "1.5px", background: "#fff" }} />
-            <span style={{ display: "block", width: "70%", height: "1.5px", background: "#fff" }} />
+          <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "52px", height: "52px", background: accent, border: "none", borderRadius: "8px", cursor: "pointer", padding: "14px", flexShrink: 0 }}>
+            <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
+            <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
+            <span style={{ display: "block", width: "65%", height: "2px", background: "#fff", borderRadius: "2px" }} />
           </button>
         </div>
       </nav>
