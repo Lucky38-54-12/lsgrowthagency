@@ -166,6 +166,21 @@ const faqs = [
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [navOpen, setNavOpen] = useState(false);
+  const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
+  const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormState("sending");
+    try {
+      const res = await fetch("https://formspree.io/f/xgvkwqob", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(formData),
+      });
+      setFormState(res.ok ? "done" : "error");
+    } catch { setFormState("error"); }
+  };
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -285,6 +300,7 @@ export default function Home() {
           .m-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
           .m-footer-brand { grid-column: 1/-1 !important; }
           .m-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+          .m-cta-stack { grid-template-columns: 1fr !important; gap: 24px !important; }
           section { padding-left: 20px !important; padding-right: 20px !important; }
           footer  { padding-left: 20px !important; padding-right: 20px !important; }
           .btn { min-height: 44px !important; }
@@ -348,11 +364,11 @@ export default function Home() {
               We handle your entire lead generation: targeted ads, instant follow-up, and a managed pipeline, so you only talk to people ready to book.
             </p>
             <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
-              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px" }}>
+              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "6px" }}>
                 Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
               </a>
-              <a href="#how" className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px" }}>
-                See how it works
+              <a href="#contact-form" className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "6px" }}>
+                Fill a Form
               </a>
             </div>
             <p className="hero-note" style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>Free 30-min strategy call · No obligation</p>
@@ -910,37 +926,97 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* ── CTA + CONTACT FORM ── */}
       <section id="contact" style={{ background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div className="lp-rise" style={{ border: `1px solid ${line}`, padding: "64px 48px", position: "relative" as const, overflow: "hidden" }}>
-            <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "48px", flexWrap: "wrap" as const, position: "relative" as const, zIndex: 1 }}>
-              <div>
-                <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Get Started</div>
-                <h2 style={{ fontSize: "clamp(36px,5vw,72px)", fontWeight: 800, color: ink, lineHeight: 1.0, letterSpacing: "-0.03em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
-                <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
-                  Book a free 30-minute call. We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
-                </p>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: "10px" }}>
-                  {["No lock-in contracts", "Full setup handled for you", "Results within the first two weeks"].map(item => (
-                    <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: muted }}>
-                      <CheckCircle style={{ width: "14px", height: "14px", color: accent, flexShrink: 0 }} />{item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px", minWidth: "260px" }}>
-                <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center" }}>
-                  Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
-                </a>
-                <a href="tel:02102820190" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", color: muted, textDecoration: "none", padding: "14px 28px", border: `1px solid ${line}` }}>
-                  021 028 20190
-                </a>
-                <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "13px", color: dim, textDecoration: "none" }}>
-                  lsgrowthagency.co@gmail.com
-                </a>
-              </div>
+          <div className="lp-rise m-cta-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "start" }}>
+
+            {/* Left — Calendly CTA */}
+            <div style={{ border: `1px solid ${line}`, borderRadius: "16px", padding: "48px 40px", background: "#fff" }}>
+              <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Book a Call</div>
+              <h2 style={{ fontSize: "clamp(28px,3.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
+              <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, marginBottom: "28px" }}>
+                Book a free 30-minute call. We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 32px", display: "flex", flexDirection: "column" as const, gap: "10px" }}>
+                {["No lock-in contracts", "Full setup handled for you", "Results within the first two weeks"].map(item => (
+                  <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: muted }}>
+                    <CheckCircle style={{ width: "14px", height: "14px", color: accent, flexShrink: 0 }} />{item}
+                  </li>
+                ))}
+              </ul>
+              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", width: "100%", borderRadius: "6px" }}>
+                Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
+              </a>
             </div>
+
+            {/* Right — Contact Form */}
+            <div id="contact-form" style={{ border: `1px solid ${line}`, borderRadius: "16px", padding: "48px 40px", background: "#fff" }}>
+              <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Send a Message</div>
+              <h2 style={{ fontSize: "clamp(28px,3.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: "8px" }}>Prefer to reach<br />out directly?</h2>
+              <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, marginBottom: "28px" }}>Fill in your details and we'll get back to you within 24 hours.</p>
+
+              {formState === "done" ? (
+                <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "16px", padding: "48px 0", textAlign: "center" as const }}>
+                  <CheckCircle style={{ width: "48px", height: "48px", color: accent }} />
+                  <h3 style={{ fontSize: "22px", fontWeight: 700, color: ink, letterSpacing: "-0.02em" }}>Message sent!</h3>
+                  <p style={{ fontSize: "14px", color: muted }}>We'll be in touch within 24 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column" as const, gap: "14px" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+                    <div>
+                      <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Your Name</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="John Smith"
+                        value={formData.name}
+                        onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
+                        style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Phone Number</label>
+                      <input
+                        type="tel"
+                        placeholder="021 000 0000"
+                        value={formData.phone}
+                        onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
+                        style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Business Type</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Plumbing, Landscaping, Electrical"
+                      value={formData.business}
+                      onChange={e => setFormData(p => ({ ...p, business: e.target.value }))}
+                      style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", boxSizing: "border-box" as const }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 600, color: ink, marginBottom: "6px" }}>Message</label>
+                    <textarea
+                      rows={4}
+                      placeholder="Tell us about your business and what you're looking to achieve..."
+                      value={formData.message}
+                      onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
+                      style={{ width: "100%", padding: "11px 14px", border: `1px solid ${line}`, borderRadius: "6px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fafafa", resize: "none" as const, boxSizing: "border-box" as const }}
+                    />
+                  </div>
+                  {formState === "error" && (
+                    <p style={{ fontSize: "13px", color: "#dc2626", margin: 0 }}>Something went wrong. Please try again or email us directly.</p>
+                  )}
+                  <button type="submit" disabled={formState === "sending"} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "14px 24px", background: formState === "sending" ? "#94a3b8" : ink, color: "#fff", border: "none", borderRadius: "6px", fontSize: "14px", fontWeight: 600, fontFamily: F, cursor: formState === "sending" ? "not-allowed" : "pointer", transition: "background 0.15s" }}>
+                    {formState === "sending" ? "Sending..." : <>Send Message <ArrowRight style={{ width: "14px", height: "14px" }} /></>}
+                  </button>
+                </form>
+              )}
+            </div>
+
           </div>
         </div>
       </section>
