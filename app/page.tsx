@@ -301,7 +301,7 @@ export default function Home() {
             {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
               <a key={h} href={h} className="nav-link m-nav-text-link" style={{ fontSize: "14px", fontWeight: 400, color: "rgba(255,255,255,0.85)", textDecoration: "none" }}>{l}</a>
             ))}
-            <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", fontWeight: 700, color: "#1a5c78", background: "#fff", borderRadius: "999px", padding: "10px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const }}>
+            <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", fontWeight: 700, color: "#1a5c78", background: "#fff", borderRadius: "10px", padding: "10px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", whiteSpace: "nowrap" as const }}>
               Book a Call <ArrowRight style={{ width: "13px", height: "13px" }} />
             </a>
             <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "36px", height: "36px", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "8px", cursor: "pointer", padding: "8px", flexShrink: 0 }}>
