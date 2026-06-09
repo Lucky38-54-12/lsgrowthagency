@@ -246,20 +246,20 @@ export default function Home() {
         .nav-cta {
           position: relative;
           overflow: hidden;
-          background: #fff;
-          color: #0a0f1a;
+          background: transparent;
+          color: #fff;
         }
         .nav-cta::after {
           content: "";
           position: absolute;
           inset: 0;
-          background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.7) 50%, transparent 60%);
+          background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.18) 50%, transparent 65%);
           background-size: 200% 100%;
-          animation: nav-shimmer 2.4s ease-in-out infinite;
+          animation: nav-shimmer 2.6s ease-in-out infinite;
           border-radius: inherit;
           pointer-events: none;
         }
-        .nav-cta:hover { background: #e8f4ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: all 0.15s; }
+        .nav-cta:hover { background: rgba(255,255,255,0.12); transform: translateY(-1px); transition: all 0.15s; }
         .hero-badge { animation: heroUp 0.5s ease 0.05s both; }
         .hero-h1    { animation: heroUp 0.55s ease 0.15s both; }
         .hero-sub   { animation: heroUp 0.55s ease 0.25s both; }
@@ -328,23 +328,22 @@ export default function Home() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 40px", height: "72px", display: "flex", alignItems: "center" }}>
-        {/* Left — links */}
-        <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px", flex: 1 }}>
-          {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
-            <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)", textDecoration: "none", whiteSpace: "nowrap" as const, letterSpacing: "0.01em" }}>{l}</a>
-          ))}
-          <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const, letterSpacing: "0.01em" }}>
-            Send a Message
-          </button>
-        </div>
-        {/* Center — logo */}
-        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", position: "absolute" as const, left: "50%", transform: "translateX(-50%)" }}>
-          <img src="/ls-growth-logo-long.png" alt="LS Growth" style={{ height: "56px", width: "auto", objectFit: "contain" }} />
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 48px", height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        {/* Logo — left */}
+        <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
+          <img src="/ls-growth-logo-long.png" alt="LS Growth" style={{ height: "58px", width: "auto", objectFit: "contain" }} />
         </a>
-        {/* Right — CTA + hamburger */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", flex: 1, justifyContent: "flex-end" }}>
-          <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, borderRadius: "4px", padding: "11px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const, border: "2px solid #fff", letterSpacing: "0.04em", textTransform: "uppercase" as const }}>
+        {/* Right — links + CTA + hamburger */}
+        <div style={{ display: "flex", alignItems: "center", gap: "36px" }}>
+          <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
+            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
+              <a key={h} href={h} className="nav-link" style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.85)", textDecoration: "none", whiteSpace: "nowrap" as const, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>{l}</a>
+            ))}
+            <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.85)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>
+              Contact
+            </button>
+          </div>
+          <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, borderRadius: "999px", padding: "12px 28px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const, border: "2px solid rgba(255,255,255,0.9)", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
             Book a Call <ArrowUpRight style={{ width: "14px", height: "14px" }} />
           </a>
           <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "36px", height: "36px", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "6px", cursor: "pointer", padding: "8px", flexShrink: 0 }}>

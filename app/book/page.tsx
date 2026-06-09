@@ -25,17 +25,15 @@ export default function BookPage() {
     <div style={{ minHeight: "100vh", background: "linear-gradient(170deg, #d6e8f5 0%, #e8f2f9 15%, #f2f7fb 35%, #f8fafb 60%, #ffffff 100%)", fontFamily: F, color: ink }}>
 
       {/* Nav */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 40px", height: "72px", display: "flex", alignItems: "center", background: "linear-gradient(180deg, rgba(4,17,31,0.7) 0%, transparent 100%)" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "36px", flex: 1 }}>
-          {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
-            <a key={l} href={h} style={{ fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)", textDecoration: "none", whiteSpace: "nowrap", letterSpacing: "0.01em" }}>{l}</a>
-          ))}
-        </div>
-        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", position: "absolute" as const, left: "50%", transform: "translateX(-50%)" }}>
-          <img src="/ls-growth-logo-long.png" alt="LS Growth" style={{ height: "56px", width: "auto", objectFit: "contain" }} />
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 48px", height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+          <img src="/ls-growth-logo-long.png" alt="LS Growth" style={{ height: "58px", width: "auto", objectFit: "contain" }} />
         </a>
-        <div style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
-          <a href="/" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#0a0f1a", background: "#fff", borderRadius: "4px", padding: "11px 24px", textDecoration: "none", border: "2px solid #fff", letterSpacing: "0.04em", textTransform: "uppercase" as const }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "36px" }}>
+          {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
+            <a key={l} href={h} style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.85)", textDecoration: "none", whiteSpace: "nowrap", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>{l}</a>
+          ))}
+          <a href="/" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#fff", background: "transparent", borderRadius: "999px", padding: "12px 28px", textDecoration: "none", border: "2px solid rgba(255,255,255,0.9)", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
             <ArrowLeft style={{ width: "13px", height: "13px" }} /> Back to site
           </a>
         </div>
