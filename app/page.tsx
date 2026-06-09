@@ -732,14 +732,36 @@ export default function Home() {
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <div className="m-how-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
 
-            <div className="m-how-sticky lp-rise" style={{ position: "sticky", top: "100px" }}>
-              <span style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>How It Works</span>
-              <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
-                How We Turn Leads Into <em style={{ fontStyle: "italic", fontWeight: 600, color: accent }}>Booked Jobs</em>
-              </h2>
-              <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "420px" }}>
-                Four steps. Fully managed. Running quietly in the background while you're out on the job.
-              </p>
+            <div className="m-how-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
+              <div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
+                  How We Work?
+                </span>
+                <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
+                  The LS Growth <em style={{ fontStyle: "italic", fontWeight: 600, color: accent }}>Process</em>
+                </h2>
+                <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
+                  Four steps. Fully managed. Running quietly in the background while you're out on the job.
+                </p>
+              </div>
+
+              {/* Get in Touch card */}
+              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", padding: "28px 28px 28px 28px", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                  <div style={{ width: "40px", height: "40px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                      {[0,1,2,3,4,5,6,7].map(i => (
+                        <line key={i} x1="18" y1="4" x2="18" y2="10" stroke={accent} strokeWidth="2.5" strokeLinecap="round" transform={`rotate(${i*45} 18 18)`} opacity={1 - i * 0.1} />
+                      ))}
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: "22px", fontWeight: 800, color: accent, letterSpacing: "-0.02em", marginBottom: "10px" }}>Get in Touch</h3>
+                    <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6 }}>Have a vision? Let's make a plan. Reach out and take the first step toward getting more leads.</p>
+                  </div>
+                </div>
+              </a>
             </div>
 
             <div>
