@@ -263,12 +263,16 @@ export default function Home() {
           .m-hero-content h1 { font-size: 34px !important; }
           .hero-sub { font-size: 15px !important; }
           .m-calendar-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .m-calendar-phone { display: none !important; }
+          .m-calendar-phone { display: flex !important; justify-content: center !important; margin-bottom: 32px !important; order: -1 !important; }
+          .m-calendar-phone img { height: 220px !important; }
           .m-calendar-stats { grid-template-columns: 1fr !important; max-width: 100% !important; }
           .m-calendar-stats > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
           .m-calendar-stats > div:last-child { border-bottom: none !important; }
           .m-build-grid { grid-template-columns: 1fr !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
+          .m-solution-split { grid-template-columns: 1fr !important; }
+          .m-solution-split > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
+          .m-solution-split > div:last-child { border-bottom: none !important; }
           .m-case-grid { grid-template-columns: 1fr !important; }
           .m-testi-grid { grid-template-columns: 1fr !important; }
           .m-how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
