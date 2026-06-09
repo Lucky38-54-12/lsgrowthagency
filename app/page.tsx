@@ -746,22 +746,6 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Get in Touch card */}
-              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", padding: "28px 28px 28px 28px", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
-                  <div style={{ width: "40px", height: "40px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                      {[0,1,2,3,4,5,6,7].map(i => (
-                        <line key={i} x1="18" y1="4" x2="18" y2="10" stroke={accent} strokeWidth="2.5" strokeLinecap="round" transform={`rotate(${i*45} 18 18)`} opacity={1 - i * 0.1} />
-                      ))}
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: "22px", fontWeight: 800, color: accent, letterSpacing: "-0.02em", marginBottom: "10px" }}>Get in Touch</h3>
-                    <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6 }}>Have a vision? Let's make a plan. Reach out and take the first step toward getting more leads.</p>
-                  </div>
-                </div>
-              </a>
             </div>
 
             <div>
@@ -796,6 +780,24 @@ export default function Home() {
                   {i < steps.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
                 </Fragment>
               ))}
+
+              {/* Get in Touch card */}
+              <div style={{ height: "40px" }} />
+              <a href="https://calendly.com/lsgrowthagency-co/30min" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", padding: "28px", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                  <div style={{ width: "40px", height: "40px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                      {[0,1,2,3,4,5,6,7].map(i => (
+                        <line key={i} x1="18" y1="4" x2="18" y2="10" stroke={accent} strokeWidth="2.5" strokeLinecap="round" transform={`rotate(${i*45} 18 18)`} opacity={1 - i * 0.1} />
+                      ))}
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: "22px", fontWeight: 800, color: accent, letterSpacing: "-0.02em", marginBottom: "10px" }}>Get in Touch</h3>
+                    <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6 }}>Have a vision? Let's make a plan. Reach out and take the first step toward getting more leads.</p>
+                  </div>
+                </div>
+              </a>
             </div>
 
           </div>
