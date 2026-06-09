@@ -339,7 +339,7 @@ export default function Home() {
             {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
               <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 800, color: "rgba(255,255,255,0.92)", textDecoration: "none", whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>{l}</a>
             ))}
-            <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "14px", fontWeight: 800, color: "rgba(255,255,255,0.92)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
+            <button onClick={() => setFormOpen(true)} className="nav-link m-nav-text-link" style={{ fontSize: "14px", fontWeight: 800, color: "rgba(255,255,255,0.92)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
               Contact
             </button>
           </div>
