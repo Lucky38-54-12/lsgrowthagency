@@ -337,13 +337,13 @@ export default function Home() {
         <div style={{ display: "flex", alignItems: "center", gap: "36px" }}>
           <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
             {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
-              <a key={h} href={h} className="nav-link" style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.85)", textDecoration: "none", whiteSpace: "nowrap" as const, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>{l}</a>
+              <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 800, color: "rgba(255,255,255,0.92)", textDecoration: "none", whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>{l}</a>
             ))}
-            <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.85)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>
+            <button onClick={() => setFormOpen(true)} className="m-nav-text-link" style={{ fontSize: "14px", fontWeight: 800, color: "rgba(255,255,255,0.92)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
               Contact
             </button>
           </div>
-          <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, borderRadius: "999px", padding: "12px 28px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const, border: "2px solid rgba(255,255,255,0.9)", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
+          <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 800, borderRadius: "999px", padding: "12px 28px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const, border: "2px solid rgba(255,255,255,0.9)", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
             Book a Call <ArrowUpRight style={{ width: "14px", height: "14px" }} />
           </a>
           <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "36px", height: "36px", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "6px", cursor: "pointer", padding: "8px", flexShrink: 0 }}>
