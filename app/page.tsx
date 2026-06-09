@@ -309,9 +309,9 @@ export default function Home() {
 
       {/* ── NAV ── */}
       <nav style={{ position: "fixed", top: "14px", left: 0, right: 0, zIndex: 50, padding: "0 80px" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto", background: "#1a5c78", borderRadius: "14px", height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 12px 0 28px", boxShadow: "0 2px 16px rgba(0,0,0,0.15)", border: "1px solid rgba(255,255,255,0.12)" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", background: "#1a5c78", borderRadius: "14px", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 12px 0 28px", boxShadow: "0 2px 16px rgba(0,0,0,0.15)", border: "1px solid rgba(255,255,255,0.12)" }}>
           <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-            <img src="/ls-growth-logo-long.png" alt="LS Growth" style={{ height: "80px", width: "auto", objectFit: "contain" }} />
+            <img src="/ls-growth-logo-long.png" alt="LS Growth" style={{ height: "60px", width: "auto", objectFit: "contain" }} />
           </a>
           <div style={{ display: "flex", alignItems: "center", gap: "28px" }}>
             {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
