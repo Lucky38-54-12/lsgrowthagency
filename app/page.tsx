@@ -328,14 +328,14 @@ export default function Home() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 48px 0 32px", height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        {/* Logo — left */}
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        {/* Logo — far left, no padding */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
           <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "110px", width: "auto", objectFit: "contain" }} />
         </a>
-        {/* Right — links + CTA + hamburger */}
-        <div style={{ display: "flex", alignItems: "center", gap: "36px" }}>
-          <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
+        {/* Far right — links then CTA then hamburger */}
+        <div style={{ display: "flex", alignItems: "center", gap: "40px", paddingRight: "40px" }}>
+          <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "40px" }}>
             {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
               <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 800, color: "rgba(255,255,255,0.92)", textDecoration: "none", whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>{l}</a>
             ))}
