@@ -22,25 +22,37 @@ export default function BookPage() {
   }, []);
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(170deg, #d6e8f5 0%, #e8f2f9 15%, #f2f7fb 35%, #f8fafb 60%, #ffffff 100%)", fontFamily: F, color: ink }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(170deg, #d6e8f5 0%, #e8f2f9 15%, #f2f7fb 35%, #f8fafb 60%, #ffffff 100%)", fontFamily: F, color: ink, overflowX: "hidden" }}>
+
+      <style jsx>{`
+        @media (max-width: 640px) {
+          .book-nav { padding: 0 16px !important; height: 64px !important; }
+          .book-logo { height: 48px !important; }
+          .book-links a.book-link { display: none !important; }
+          .book-back-text { display: none !important; }
+          .book-back { padding: 12px !important; gap: 0 !important; }
+          .book-content { padding: 88px 16px 48px !important; }
+          .book-trust { gap: 14px !important; }
+        }
+      `}</style>
 
       {/* Nav */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 48px", height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <nav className="book-nav" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 48px", height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-          <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "110px", width: "auto", objectFit: "contain" }} />
+          <img className="book-logo" src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "60px", width: "auto", objectFit: "contain" }} />
         </a>
-        <div style={{ display: "flex", alignItems: "center", gap: "36px" }}>
+        <div className="book-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
           {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
-            <a key={l} href={h} style={{ fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.85)", textDecoration: "none", whiteSpace: "nowrap", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>{l}</a>
+            <a key={l} className="book-link" href={h} style={{ fontSize: "13px", fontWeight: 600, color: ink, textDecoration: "none", whiteSpace: "nowrap", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>{l}</a>
           ))}
-          <a href="/" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#fff", background: "transparent", borderRadius: "999px", padding: "12px 28px", textDecoration: "none", border: "2px solid rgba(255,255,255,0.9)", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
-            <ArrowLeft style={{ width: "13px", height: "13px" }} /> Back to site
+          <a href="/" className="book-back" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: ink, background: "transparent", borderRadius: "999px", padding: "12px 28px", textDecoration: "none", border: `2px solid ${ink}`, letterSpacing: "0.06em", textTransform: "uppercase" as const, flexShrink: 0 }}>
+            <ArrowLeft style={{ width: "13px", height: "13px", flexShrink: 0 }} /> <span className="book-back-text">Back to site</span>
           </a>
         </div>
       </nav>
 
       {/* Page content */}
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "120px 40px 80px" }}>
+      <div className="book-content" style={{ maxWidth: "1100px", margin: "0 auto", padding: "120px 40px 80px" }}>
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
@@ -54,7 +66,7 @@ export default function BookPage() {
         </div>
 
         {/* Trust badges */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "32px", flexWrap: "wrap", marginBottom: "48px" }}>
+        <div className="book-trust" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "32px", flexWrap: "wrap", marginBottom: "48px" }}>
           {[
             "No lock-in contracts",
             "Full setup handled for you",
@@ -72,14 +84,14 @@ export default function BookPage() {
           <div
             className="calendly-inline-widget"
             data-url="https://calendly.com/lsgrowthagency-co/30min?hide_gdpr_banner=1&primary_color=0080e0"
-            style={{ minWidth: "320px", height: "700px" }}
+            style={{ minWidth: "280px", width: "100%", height: "700px" }}
           />
         </div>
 
       </div>
 
       {/* Footer strip */}
-      <div style={{ borderTop: `1px solid ${line}`, padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "center", gap: "24px" }}>
+      <div style={{ borderTop: `1px solid ${line}`, padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", flexWrap: "wrap", textAlign: "center" }}>
         <p style={{ fontSize: "13px", color: muted, margin: 0 }}>© {new Date().getFullYear()} LS Growth · NZ &amp; AU</p>
         <a href="mailto:lsgrowthagency.co@gmail.com" style={{ fontSize: "13px", color: muted, textDecoration: "none" }}>lsgrowthagency.co@gmail.com</a>
       </div>
