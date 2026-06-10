@@ -46,7 +46,7 @@ export default function BookPage() {
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
           <span style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Free Strategy Call</span>
           <h1 style={{ fontSize: "clamp(32px,4vw,56px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "14px" }}>
-            Book a Free 30-Minute Call
+            Book a Free 15-Minute Call
           </h1>
           <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "480px", margin: "0 auto" }}>
             We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
