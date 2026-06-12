@@ -102,9 +102,7 @@ export default function CleaningPage() {
           .hero-sub { font-size: 15px !important; }
           .m-pain-grid { grid-template-columns: 1fr !important; }
           .m-solution-grid { grid-template-columns: 1fr !important; }
-          .m-proof-stats { grid-template-columns: 1fr !important; }
-          .m-proof-stats > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
-          .m-proof-stats > div:last-child { border-bottom: none !important; }
+          .m-proof-split { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-trust-row { gap: 24px !important; }
           .m-trust-strip { flex-direction: column !important; align-items: flex-start !important; }
           .m-section-header { grid-template-columns: 1fr !important; gap: 16px !important; }
@@ -285,19 +283,29 @@ export default function CleaningPage() {
             </p>
           </div>
 
-          <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", height: "auto", display: "block", margin: "0 0 24px", border: `1px solid ${line}`, borderRadius: "0", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
+          <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", height: "auto", display: "block", margin: "0 0 32px", border: `1px solid ${line}`, borderRadius: "0", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
 
-          <div className="lp-rise d3 m-proof-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", border: `1px solid ${line}`, borderRadius: "0", overflow: "hidden", background: "#fff", margin: "0 0 48px" }}>
-            {[
-              { big: "57", small: "New leads in 30 days" },
-              { big: "30", small: "Turned into booked jobs" },
-              { big: "$7–$11", small: "Cost per lead" },
-            ].map(({ big, small }, i) => (
-              <div key={big} style={{ padding: "24px 22px", borderRight: i < 2 ? `1px solid ${line}` : "none" }}>
-                <div style={{ fontSize: "28px", fontWeight: 800, color: accent, letterSpacing: "-0.02em", marginBottom: "6px" }}>{big}</div>
-                <div style={{ fontSize: "13px", color: muted, lineHeight: 1.4 }}>{small}</div>
-              </div>
-            ))}
+          <div className="m-proof-split" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "32px", alignItems: "center", marginBottom: "48px" }}>
+            <div className="lp-rise d3">
+              <h3 style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 800, color: ink, lineHeight: 1.3, letterSpacing: "-0.02em", marginBottom: "12px" }}>
+                What that means in practice
+              </h3>
+              <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7 }}>
+                Every one of those 30 jobs came from a lead that was actually looking for a clean in their area, not a tyre-kicker or a wrong-fit enquiry.
+              </p>
+            </div>
+            <div className="lp-rise d3" style={{ display: "flex", flexDirection: "column" as const, border: `1px solid ${line}`, background: "#fff" }}>
+              {[
+                { big: "57", small: "New leads in 30 days" },
+                { big: "30", small: "Turned into booked jobs" },
+                { big: "$7–$11", small: "Cost per lead" },
+              ].map(({ big, small }, i) => (
+                <div key={big} style={{ padding: "24px 28px", borderBottom: i < 2 ? `1px solid ${line}` : "none", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
+                  <div style={{ fontSize: "13px", color: muted, lineHeight: 1.4 }}>{small}</div>
+                  <div style={{ fontSize: "32px", fontWeight: 800, color: accent, letterSpacing: "-0.02em", whiteSpace: "nowrap" as const }}>{big}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Trusted beyond one business */}
