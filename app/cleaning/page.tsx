@@ -92,6 +92,8 @@ export default function CleaningPage() {
         .footer-link:hover { color:${accent} !important; }
         .footer-link:hover::after { width:100%; }
 
+        .cmp-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 13px; line-height: 1.45; }
+
         @media (max-width: 640px) {
           .m-nav-links { display: none !important; }
           .m-nav-hamburger { display: flex !important; }
@@ -103,6 +105,10 @@ export default function CleaningPage() {
           .m-pain-grid { grid-template-columns: 1fr !important; }
           .m-solution-grid { grid-template-columns: 1fr !important; }
           .m-proof-split { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .m-bento-row { grid-template-columns: 1fr !important; }
+          .m-bento-hide { display: none !important; }
+          .cmp-grid { grid-template-columns: 1fr !important; }
+          .cmp-center { order: -1; }
           .m-trust-row { gap: 24px !important; }
           .m-trust-strip { flex-direction: column !important; align-items: flex-start !important; }
           .m-section-header { grid-template-columns: 1fr !important; gap: 16px !important; }
@@ -265,6 +271,65 @@ export default function CleaningPage() {
         </div>
       </section>
 
+      {/* ── WHAT SETS US APART ── */}
+      <section style={{ padding: "0 40px 80px", borderTop: `1px solid ${line}`, paddingTop: "80px" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ marginBottom: "32px", maxWidth: "640px" }}>
+            <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>What Sets Us Apart</div>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "14px" }}>
+              It's not about more leads. It's about better ones.
+            </h2>
+            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
+              Here's what that actually looked like for Queenstown Cleaning last month.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: "16px" }}>
+            <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", gap: "16px" }}>
+              {[
+                { value: "52%", scheme: "dark", text: "Of the 57 leads generated last month turned into real, booked cleaning jobs.", label: "Lead To Job Conversion" },
+                { value: "$7–$11", scheme: "light", text: "What it costs to generate a single qualified cleaning lead through targeted ads.", label: "Cost Per Lead" },
+              ].map(({ value, scheme, text, label }) => {
+                const dark2 = scheme === "dark";
+                return (
+                  <div key={value} style={{ background: dark2 ? dark : "#f8fafc", border: dark2 ? "none" : `1px solid ${line}`, borderRadius: "0", padding: "40px 36px", minHeight: "220px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
+                    <div style={{ fontSize: "clamp(48px,6vw,80px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1, color: dark2 ? "#fff" : ink }}>{value}</div>
+                    <div>
+                      <p style={{ fontSize: "14px", fontWeight: 500, color: dark2 ? "rgba(255,255,255,0.7)" : muted, lineHeight: 1.6, marginBottom: "16px", maxWidth: "360px" }}>{text}</p>
+                      <div style={{ fontSize: "11px", fontWeight: 600, color: dark2 ? "rgba(255,255,255,0.4)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{label}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.3fr 0.85fr", gap: "16px" }}>
+              {[
+                { value: "30", scheme: "accent", text: "Booked, paying jobs from last month's campaign alone.", label: "Booked Jobs Last Month", hide: true },
+                { value: "57", scheme: "light", text: "New leads generated in 30 days, each one tracked from click to job.", label: "New Leads In 30 Days", hide: false },
+                { value: "3", scheme: "dark", text: "Cleaning businesses currently running this exact system with us.", label: "Businesses On This System", hide: true },
+              ].map(({ value, scheme, text, label, hide }) => {
+                const dark2 = scheme === "dark";
+                const acc = scheme === "accent";
+                const bg = acc ? accent : dark2 ? dark : "#f8fafc";
+                const fg = acc || dark2 ? "#fff" : ink;
+                const sub = acc ? "rgba(255,255,255,0.82)" : dark2 ? "rgba(255,255,255,0.7)" : muted;
+                const lbl = acc ? "rgba(255,255,255,0.6)" : dark2 ? "rgba(255,255,255,0.4)" : dim;
+                return (
+                  <div key={value} className={hide ? "m-bento-hide" : ""} style={{ background: bg, border: !acc && !dark2 ? `1px solid ${line}` : "none", borderRadius: "0", padding: "36px 32px", minHeight: "240px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
+                    <div style={{ fontSize: "clamp(40px,5vw,64px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1, color: fg }}>{value}</div>
+                    <div>
+                      <p style={{ fontSize: "13px", fontWeight: 500, color: sub, lineHeight: 1.6, marginBottom: "14px" }}>{text}</p>
+                      <div style={{ fontSize: "11px", fontWeight: 600, color: lbl, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{label}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── PROOF / RESULTS ── */}
       <section id="proof" style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
@@ -317,6 +382,102 @@ export default function CleaningPage() {
             <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7 }}>
               For both Jim's Cleaning and Fantastic Services, we built everything from scratch, the website, social media, ad campaigns and email systems, the same system shown above.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── COMPARISON ── */}
+      <section style={{ background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div className="m-section-header" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "40px", alignItems: "end", marginBottom: "40px" }}>
+            <div>
+              <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 600, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>Why LS Growth?</p>
+              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em" }}>
+                Most cleaning ads get you enquiries.<br />We get you booked jobs.
+              </h2>
+            </div>
+            <p className="lp-rise d2" style={{ fontSize: "15px", color: muted, lineHeight: 1.65 }}>
+              Ads without follow-through is half a system. Tracking without action is just a number on a report. We do the whole job, from the first click to the booked job.
+            </p>
+          </div>
+
+          <div className="cmp-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr 1fr", gap: "16px", alignItems: "start" }}>
+
+            {/* Left — The Old Way */}
+            <div className="lp-rise" style={{ background: "#f8fafc", border: `1px solid ${line}`, borderRadius: "0", padding: "44px 32px" }}>
+              <p style={{ fontSize: "10px", fontWeight: 700, color: dim, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "14px" }}>The Old Way</p>
+              <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "28px", lineHeight: 1.15 }}>Generic Ads</h3>
+              {[
+                "Broad targeting, anyone and everyone",
+                "No idea which leads became jobs",
+                "Tyre-kickers mixed in with real buyers",
+                "Pay per click, not per result",
+                "You're left guessing what worked",
+              ].map(t => (
+                <div key={t} className="cmp-row" suppressHydrationWarning>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
+                    <circle cx="8" cy="8" r="7" stroke="rgba(239,68,68,0.4)" strokeWidth="1.5"/>
+                    <path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  <span style={{ color: muted }}>{t}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Centre — LS Growth (highlighted) */}
+            <div className="lp-rise d1 cmp-center" style={{ background: "rgba(0,128,224,0.05)", border: `1.5px solid ${accent}`, borderRadius: "0", padding: "32px 28px", position: "relative" as const }}>
+              <div style={{ position: "absolute" as const, top: "-13px", left: "50%", transform: "translateX(-50%)", background: accent, color: "#fff", fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "4px 14px" }}>
+                The Complete System
+              </div>
+              <p style={{ fontSize: "10px", fontWeight: 700, color: accent, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "14px" }}>&nbsp;</p>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "28px" }}>
+                <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
+                <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.15, margin: 0 }}>LS Growth</h3>
+              </div>
+              {[
+                "Ads targeted at people ready to book a clean",
+                "Every lead tracked through to a job",
+                "$7–$11 per lead, real numbers",
+                "57 leads, 30 booked jobs last month",
+                "One system across ads, tracking and reporting",
+              ].map(t => (
+                <div key={t} className="cmp-row" suppressHydrationWarning>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
+                    <circle cx="8" cy="8" r="7" stroke="rgba(0,128,224,0.5)" strokeWidth="1.5"/>
+                    <path d="M5 8.5l2.5 2.5L11 6" stroke={accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span style={{ color: ink, fontWeight: 500 }}>{t}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Right — The DIY Route */}
+            <div className="lp-rise d2" style={{ background: "#f8fafc", border: `1px solid ${line}`, borderRadius: "0", padding: "44px 32px" }}>
+              <p style={{ fontSize: "10px", fontWeight: 700, color: dim, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "14px" }}>The DIY Route</p>
+              <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "28px", lineHeight: 1.15 }}>Doing It Yourself</h3>
+              {[
+                "You're guessing which platforms to use",
+                "No tracking from lead to job",
+                "Budget spent without clear return",
+                "Time spent on ads instead of cleaning",
+                "Hard to know what's actually working",
+              ].map(t => (
+                <div key={t} className="cmp-row" suppressHydrationWarning>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
+                    <circle cx="8" cy="8" r="7" stroke="rgba(249,115,22,0.4)" strokeWidth="1.5"/>
+                    <path d="M8 5v4M8 10.5v.5" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                  <span style={{ color: muted }}>{t}</span>
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          <div style={{ marginTop: "40px" }}>
+            <a href="/book" className="lp-rise btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px" }}>
+              Get more booked jobs <ArrowRight style={{ width: "13px", height: "13px" }} />
+            </a>
           </div>
         </div>
       </section>
