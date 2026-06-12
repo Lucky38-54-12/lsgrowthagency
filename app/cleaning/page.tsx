@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { ArrowRight, ArrowUpRight, Phone, Inbox, Clock3, CheckCircle2, Megaphone, Timer, CalendarCheck } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowRight, ArrowUpRight, Phone, Inbox, Clock3, Megaphone, Timer, CalendarCheck } from "lucide-react";
 
 /* ── Design tokens (matches homepage) ── */
 const F = "var(--font-inter), system-ui, sans-serif";
@@ -11,34 +11,6 @@ const dim   = "#9ca3af";
 const line  = "#e5e7eb";
 const accent = "#0080e0";
 const dark  = "#0a0f1a";
-
-/* ── Count-up for the proof card ── */
-function CountUp({ to, suffix = "", prefix = "", duration = 1600, color }: { to: number; suffix?: string; prefix?: string; duration?: number; color: string }) {
-  const [val, setVal] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !started.current) {
-        started.current = true;
-        const start = performance.now();
-        const tick = (now: number) => {
-          const p = Math.min((now - start) / duration, 1);
-          const ease = 1 - Math.pow(1 - p, 3);
-          setVal(Math.round(ease * to));
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-        obs.disconnect();
-      }
-    }, { threshold: 0.3 });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [to, duration]);
-  return <span ref={ref} style={{ color }}>{prefix}{val}{suffix}</span>;
-}
 
 const PAINS = [
   { icon: Phone, title: "Calls go to voicemail", desc: "And most people calling a cleaning company just move to the next one on Google." },
@@ -208,25 +180,8 @@ export default function CleaningPage() {
             </div>
           </div>
 
-          <div className="hero-card" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "16px", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)", padding: "20px", boxShadow: "0 24px 60px rgba(0,0,0,0.35)" }}>
-            <p style={{ fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.55)", textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "12px" }}>
-              Queenstown Cleaning · Last 30 Days
-            </p>
-            <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block", marginBottom: "16px" }} />
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "8px" }}>
-              {[
-                { to: 57, suffix: "", label: "New leads" },
-                { to: 30, suffix: "", label: "Booked jobs" },
-                { to: 11, prefix: "$", suffix: "", label: "Max per lead" },
-              ].map(({ to, prefix, suffix, label }) => (
-                <div key={label} style={{ textAlign: "center" as const }}>
-                  <div style={{ fontSize: "26px", fontWeight: 800, letterSpacing: "-0.02em" }}>
-                    <CountUp to={to} prefix={prefix} suffix={suffix} color="#7cd4ff" />
-                  </div>
-                  <div style={{ fontSize: "11px", color: "rgba(255,255,255,0.55)", marginTop: "2px" }}>{label}</div>
-                </div>
-              ))}
-            </div>
+          <div className="hero-card" style={{ position: "relative", aspectRatio: "1 / 1", width: "100%", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 24px 60px rgba(0,0,0,0.35)", overflow: "hidden" }}>
+            <img src="/cleaning-team.jpg" alt="LS Growth cleaning client team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           </div>
         </div>
       </section>
@@ -247,7 +202,7 @@ export default function CleaningPage() {
       <section style={{ padding: "100px 40px 80px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div style={{ textAlign: "center" as const, maxWidth: "680px", margin: "0 auto 56px" }}>
-            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Problem</span>
+            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Problem</span>
             <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
               Sound familiar?
             </h2>
@@ -257,8 +212,8 @@ export default function CleaningPage() {
           </div>
           <div className="m-pain-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px" }}>
             {PAINS.map(({ icon: Icon, title, desc }, i) => (
-              <div key={title} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", padding: "32px" }}>
-                <div style={{ width: "44px", height: "44px", borderRadius: "10px", background: "#fef2f2", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+              <div key={title} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "32px" }}>
+                <div style={{ width: "44px", height: "44px", borderRadius: "0", background: "#fef2f2", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
                   <Icon style={{ width: "20px", height: "20px", color: "#dc2626" }} />
                 </div>
                 <h3 style={{ fontSize: "18px", fontWeight: 800, color: ink, letterSpacing: "-0.01em", marginBottom: "8px" }}>{title}</h3>
@@ -273,7 +228,7 @@ export default function CleaningPage() {
       <section style={{ padding: "0 40px 80px", borderTop: `1px solid ${line}`, paddingTop: "80px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <div style={{ textAlign: "center" as const, maxWidth: "680px", margin: "0 auto 56px" }}>
-            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Solution</span>
+            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Solution</span>
             <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
               Here's what changes
             </h2>
@@ -283,8 +238,8 @@ export default function CleaningPage() {
           </div>
           <div className="m-solution-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px" }}>
             {SOLUTIONS.map(({ icon: Icon, tag, title, desc }, i) => (
-              <div key={title} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ background: i === 1 ? dark : "#f8fafc", border: i === 1 ? "none" : `1px solid ${line}`, borderRadius: "16px", padding: "32px", display: "flex", flexDirection: "column" as const }}>
-                <div style={{ width: "44px", height: "44px", borderRadius: "10px", background: i === 1 ? "rgba(255,255,255,0.1)" : "#fff", border: i === 1 ? "none" : `1px solid ${line}`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+              <div key={title} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ background: i === 1 ? dark : "#f8fafc", border: i === 1 ? "none" : `1px solid ${line}`, borderRadius: "0", padding: "32px", display: "flex", flexDirection: "column" as const }}>
+                <div style={{ width: "44px", height: "44px", borderRadius: "0", background: i === 1 ? "rgba(255,255,255,0.1)" : "#fff", border: i === 1 ? "none" : `1px solid ${line}`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
                   <Icon style={{ width: "20px", height: "20px", color: i === 1 ? "#7cd4ff" : accent }} />
                 </div>
                 <span style={{ fontSize: "11px", fontWeight: 700, color: i === 1 ? "rgba(255,255,255,0.45)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: "8px" }}>{tag}</span>
@@ -301,7 +256,7 @@ export default function CleaningPage() {
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
         <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ textAlign: "center" as const, marginBottom: "32px" }}>
-            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Real Results</span>
+            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Real Results</span>
             <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "10px" }}>
               57 leads. 30 booked jobs. Last month.
             </h2>
@@ -310,9 +265,9 @@ export default function CleaningPage() {
             </p>
           </div>
 
-          <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto 24px", border: `1px solid ${line}`, borderRadius: "12px", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
+          <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto 24px", border: `1px solid ${line}`, borderRadius: "0", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
 
-          <div className="lp-rise d3 m-proof-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", border: `1px solid ${line}`, borderRadius: "12px", overflow: "hidden", background: "#fff", maxWidth: "760px", margin: "0 auto 48px" }}>
+          <div className="lp-rise d3 m-proof-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", border: `1px solid ${line}`, borderRadius: "0", overflow: "hidden", background: "#fff", maxWidth: "760px", margin: "0 auto 48px" }}>
             {[
               { big: "57", small: "New leads in 30 days" },
               { big: "30", small: "Turned into booked jobs" },
@@ -326,7 +281,7 @@ export default function CleaningPage() {
           </div>
 
           {/* Trusted beyond one business */}
-          <div className="lp-rise" style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", padding: "40px", textAlign: "center" as const }}>
+          <div className="lp-rise" style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "40px", textAlign: "center" as const }}>
             <p style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Trusted Beyond One Business</p>
             <h3 style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 800, color: ink, lineHeight: 1.3, letterSpacing: "-0.02em", marginBottom: "14px", maxWidth: "620px", marginLeft: "auto", marginRight: "auto" }}>
               Queenstown Cleaning's owner liked the results enough to bring us on for two more of his cleaning businesses
