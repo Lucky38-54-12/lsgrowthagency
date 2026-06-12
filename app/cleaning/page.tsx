@@ -202,8 +202,8 @@ export default function CleaningPage() {
           Trusted by cleaning businesses you know
         </p>
         <div className="m-trust-row" style={{ display: "flex", alignItems: "center", gap: "40px", flexWrap: "wrap" as const }}>
-          <span style={{ fontSize: "20px", fontWeight: 800, color: ink, letterSpacing: "-0.01em", opacity: 0.7 }}>Jim's Cleaning</span>
-          <img src="/logos/logo-7.png" alt="Fantastic Services" style={{ height: "30px", width: "auto", objectFit: "contain", opacity: 0.7 }} />
+          <img src="/logos/jims-cleaning.jpg" alt="Jim's Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
+          <img src="/logos/fantastic-services.jpg" alt="Fantastic Services" style={{ height: "38px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
           <span style={{ fontSize: "20px", fontWeight: 800, color: ink, letterSpacing: "-0.01em", opacity: 0.7 }}>Queenstown Cleaning</span>
         </div>
       </section>
