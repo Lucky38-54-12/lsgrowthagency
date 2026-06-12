@@ -449,10 +449,10 @@ export default function Home() {
               We handle your entire lead generation: targeted ads, instant follow-up, and a managed pipeline, so you only talk to people ready to book.
             </p>
             <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
-              <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "6px" }}>
+              <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
                 Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
               </a>
-              <button onClick={() => setFormOpen(true)} className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "6px", cursor: "pointer", fontFamily: F }}>
+              <button onClick={() => setFormOpen(true)} className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "0", cursor: "pointer", fontFamily: F }}>
                 Send a Message
               </button>
             </div>
@@ -1042,10 +1042,10 @@ export default function Home() {
                 </ul>
               </div>
               <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px", minWidth: "260px" }}>
-                <a href="/book" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "6px" }}>
+                <a href="/book" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "0" }}>
                   Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
                 </a>
-                <button onClick={() => setFormOpen(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: ink, background: "transparent", border: `1px solid ${line}`, borderRadius: "6px", padding: "14px 28px", cursor: "pointer", fontFamily: F }}>
+                <button onClick={() => setFormOpen(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: ink, background: "transparent", border: `1px solid ${line}`, borderRadius: "0", padding: "14px 28px", cursor: "pointer", fontFamily: F }}>
                   Send a Message
                 </button>
                 <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "13px", color: dim, textDecoration: "none" }}>

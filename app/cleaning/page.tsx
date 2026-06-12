@@ -97,18 +97,20 @@ export default function CleaningPage() {
           .m-nav-hamburger { display: flex !important; }
           .nav-cta { display: none !important; }
           nav { padding: 0 16px 0 0 !important; height: 72px !important; }
-          .m-hero-content { padding: 48px 20px 40px !important; }
+          .m-hero-content { padding: 48px 20px 40px !important; grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-hero-content h1 { font-size: 34px !important; }
           .hero-sub { font-size: 15px !important; }
-          .hero-card { grid-template-columns: 1fr !important; }
-          .hero-card > div { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.14) !important; }
-          .hero-card > div:last-child { border-bottom: none !important; }
           .m-pain-grid { grid-template-columns: 1fr !important; }
           .m-solution-grid { grid-template-columns: 1fr !important; }
           .m-proof-stats { grid-template-columns: 1fr !important; }
           .m-proof-stats > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
           .m-proof-stats > div:last-child { border-bottom: none !important; }
           .m-trust-row { gap: 24px !important; }
+          .m-trust-strip { flex-direction: column !important; align-items: flex-start !important; }
+          .m-section-header { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .m-trusted-box { grid-template-columns: 1fr !important; }
+          .m-cta-split { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .m-cta-split a { width: 100% !important; justify-content: center !important; }
           .m-footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
           section { padding-left: 20px !important; padding-right: 20px !important; }
@@ -162,34 +164,36 @@ export default function CleaningPage() {
       <section style={{ position: "relative", overflow: "hidden", minHeight: "560px", display: "flex", alignItems: "center", background: "linear-gradient(160deg, #04111f 0%, #0c3450 42%, #1c5d86 100%)" }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.55) 0%, transparent 100%)" }} />
-        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "820px", margin: "0 auto", padding: "150px 40px 90px", width: "100%", textAlign: "center" as const }}>
-          <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
-            For Cleaning Businesses · NZ &amp; AU
-          </p>
-          <h1 className="hero-h1" style={{ fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: "24px" }}>
-            More booked jobs.<br />Not just more leads.
-          </h1>
-          <p className="hero-sub" style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "36px", maxWidth: "560px", marginLeft: "auto", marginRight: "auto", fontWeight: 400 }}>
-            We run ads targeted at people who actually need a clean booked, then track every lead through to a real, paying job, not just a number on a report.
-          </p>
-          <div className="hero-ctas" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", flexWrap: "wrap", marginBottom: "48px" }}>
-            <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
-              Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
-            </a>
-            <a href="#proof" className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "0" }}>
-              See the Results
-            </a>
+        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "150px 40px 90px", width: "100%", display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "56px", alignItems: "center" }}>
+          <div>
+            <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
+              For Cleaning Businesses · NZ &amp; AU
+            </p>
+            <h1 className="hero-h1" style={{ fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: "24px" }}>
+              More booked jobs.<br />Not just more leads.
+            </h1>
+            <p className="hero-sub" style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "36px", maxWidth: "480px", fontWeight: 400 }}>
+              We run ads targeted at people who actually need a clean booked, then track every lead through to a real, paying job, not just a number on a report.
+            </p>
+            <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+              <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
+                Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
+              </a>
+              <a href="#proof" className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "0" }}>
+                See the Results
+              </a>
+            </div>
           </div>
 
-          <div className="hero-card" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", border: "1px solid rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}>
+          <div className="hero-card" style={{ display: "flex", flexDirection: "column" as const, border: "1px solid rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}>
             {[
-              { big: "57", small: "New leads, 30 days" },
+              { big: "57", small: "New leads, last 30 days" },
               { big: "30", small: "Turned into booked jobs" },
               { big: "$7–$11", small: "Cost per lead" },
             ].map(({ big, small }, i) => (
-              <div key={big} style={{ padding: "20px 16px", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.14)" : "none" }}>
-                <div style={{ fontSize: "28px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "4px" }}>{big}</div>
-                <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.4 }}>{small}</div>
+              <div key={big} style={{ padding: "24px 28px", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.14)" : "none", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
+                <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.4 }}>{small}</div>
+                <div style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", whiteSpace: "nowrap" as const }}>{big}</div>
               </div>
             ))}
           </div>
@@ -197,25 +201,27 @@ export default function CleaningPage() {
       </section>
 
       {/* ── TRUST STRIP ── */}
-      <section style={{ padding: "44px 40px", borderBottom: `1px solid ${line}` }}>
-        <p style={{ textAlign: "center" as const, fontSize: "12px", fontWeight: 500, color: dim, letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: "24px" }}>
+      <section className="m-trust-strip" style={{ padding: "32px 40px", borderBottom: `1px solid ${line}`, display: "flex", alignItems: "center", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" as const }}>
+        <p style={{ fontSize: "12px", fontWeight: 500, color: dim, letterSpacing: "0.06em", textTransform: "uppercase" as const, margin: 0, whiteSpace: "nowrap" as const }}>
           Trusted by cleaning businesses you know
         </p>
-        <div className="m-trust-row" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "48px", flexWrap: "wrap" as const }}>
-          <span style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.01em", opacity: 0.7 }}>Jim's Cleaning</span>
-          <img src="/logos/logo-7.png" alt="Fantastic Services" style={{ height: "32px", width: "auto", objectFit: "contain", opacity: 0.7 }} />
-          <span style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.01em", opacity: 0.7 }}>Queenstown Cleaning</span>
+        <div className="m-trust-row" style={{ display: "flex", alignItems: "center", gap: "40px", flexWrap: "wrap" as const }}>
+          <span style={{ fontSize: "20px", fontWeight: 800, color: ink, letterSpacing: "-0.01em", opacity: 0.7 }}>Jim's Cleaning</span>
+          <img src="/logos/logo-7.png" alt="Fantastic Services" style={{ height: "30px", width: "auto", objectFit: "contain", opacity: 0.7 }} />
+          <span style={{ fontSize: "20px", fontWeight: 800, color: ink, letterSpacing: "-0.01em", opacity: 0.7 }}>Queenstown Cleaning</span>
         </div>
       </section>
 
       {/* ── PROBLEM ── */}
       <section style={{ padding: "100px 40px 80px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center" as const, maxWidth: "680px", margin: "0 auto 56px" }}>
-            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Problem</span>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
-              Sound familiar?
-            </h2>
+          <div className="m-section-header" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "40px", alignItems: "end", marginBottom: "56px" }}>
+            <div>
+              <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Problem</span>
+              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
+                Sound familiar?
+              </h2>
+            </div>
             <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
               These are the three things quietly costing cleaning businesses jobs every single week.
             </p>
@@ -237,11 +243,13 @@ export default function CleaningPage() {
       {/* ── SOLUTION ── */}
       <section style={{ padding: "0 40px 80px", borderTop: `1px solid ${line}`, paddingTop: "80px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center" as const, maxWidth: "680px", margin: "0 auto 56px" }}>
-            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Solution</span>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
-              Here's what changes
-            </h2>
+          <div className="m-section-header" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "40px", alignItems: "end", marginBottom: "56px" }}>
+            <div>
+              <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Solution</span>
+              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
+                Here's what changes
+              </h2>
+            </div>
             <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
               The exact system we run for Queenstown Cleaning, Jim's Cleaning and Fantastic Services.
             </p>
@@ -265,25 +273,27 @@ export default function CleaningPage() {
       <section id="proof" style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
         <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center" as const, marginBottom: "32px" }}>
-            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Real Results</span>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "10px" }}>
-              57 leads. 30 booked jobs. Last month.
-            </h2>
-            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "640px", margin: "0 auto" }}>
+          <div className="m-section-header" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "40px", alignItems: "end", marginBottom: "32px" }}>
+            <div>
+              <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Real Results</span>
+              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
+                57 leads. 30 booked jobs. Last month.
+              </h2>
+            </div>
+            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
               This is the live ad account for Queenstown Cleaning, one of the businesses we run this system for.
             </p>
           </div>
 
-          <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto 24px", border: `1px solid ${line}`, borderRadius: "0", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
+          <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", height: "auto", display: "block", margin: "0 0 24px", border: `1px solid ${line}`, borderRadius: "0", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
 
-          <div className="lp-rise d3 m-proof-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", border: `1px solid ${line}`, borderRadius: "0", overflow: "hidden", background: "#fff", maxWidth: "760px", margin: "0 auto 48px" }}>
+          <div className="lp-rise d3 m-proof-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", border: `1px solid ${line}`, borderRadius: "0", overflow: "hidden", background: "#fff", margin: "0 0 48px" }}>
             {[
               { big: "57", small: "New leads in 30 days" },
               { big: "30", small: "Turned into booked jobs" },
               { big: "$7–$11", small: "Cost per lead" },
             ].map(({ big, small }, i) => (
-              <div key={big} style={{ padding: "24px 22px", textAlign: "center" as const, borderRight: i < 2 ? `1px solid ${line}` : "none" }}>
+              <div key={big} style={{ padding: "24px 22px", borderRight: i < 2 ? `1px solid ${line}` : "none" }}>
                 <div style={{ fontSize: "28px", fontWeight: 800, color: accent, letterSpacing: "-0.02em", marginBottom: "6px" }}>{big}</div>
                 <div style={{ fontSize: "13px", color: muted, lineHeight: 1.4 }}>{small}</div>
               </div>
@@ -291,12 +301,14 @@ export default function CleaningPage() {
           </div>
 
           {/* Trusted beyond one business */}
-          <div className="lp-rise" style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "40px", textAlign: "center" as const }}>
-            <p style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Trusted Beyond One Business</p>
-            <h3 style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 800, color: ink, lineHeight: 1.3, letterSpacing: "-0.02em", marginBottom: "14px", maxWidth: "620px", marginLeft: "auto", marginRight: "auto" }}>
-              Queenstown Cleaning's owner liked the results enough to bring us on for two more of his cleaning businesses
-            </h3>
-            <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, maxWidth: "600px", margin: "0 auto" }}>
+          <div className="lp-rise m-trusted-box" style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "40px", display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "32px", alignItems: "center" }}>
+            <div>
+              <p style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Trusted Beyond One Business</p>
+              <h3 style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 800, color: ink, lineHeight: 1.3, letterSpacing: "-0.02em" }}>
+                Queenstown Cleaning's owner liked the results enough to bring us on for two more of his cleaning businesses
+              </h3>
+            </div>
+            <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7 }}>
               For both Jim's Cleaning and Fantastic Services, we built everything from scratch, the website, social media, ad campaigns and email systems, the same system shown above.
             </p>
           </div>
@@ -305,14 +317,16 @@ export default function CleaningPage() {
 
       {/* ── CTA ── */}
       <section style={{ padding: "90px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "760px", margin: "0 auto", textAlign: "center" as const }}>
-          <h2 className="lp-rise" style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
-            Want results like this for your business?
-          </h2>
-          <p className="lp-rise d1" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, marginBottom: "32px" }}>
-            Free 30-minute strategy call. We'll look at what's working for cleaning businesses like Queenstown Cleaning, Jim's Cleaning and Fantastic Services, and map out what it'd look like for you.
-          </p>
-          <a href="/book" className="lp-rise d2 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px" }}>
+        <div className="m-cta-split" style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "1.2fr auto", gap: "40px", alignItems: "center" }}>
+          <div>
+            <h2 className="lp-rise" style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
+              Want results like this for your business?
+            </h2>
+            <p className="lp-rise d1" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "560px" }}>
+              Free 30-minute strategy call. We'll look at what's working for cleaning businesses like Queenstown Cleaning, Jim's Cleaning and Fantastic Services, and map out what it'd look like for you.
+            </p>
+          </div>
+          <a href="/book" className="lp-rise d2 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", whiteSpace: "nowrap" as const }}>
             Book a Free Call <ArrowRight style={{ width: "13px", height: "13px" }} />
           </a>
         </div>
