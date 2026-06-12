@@ -107,8 +107,6 @@ export default function CleaningPage() {
           .m-trust-strip { flex-direction: column !important; align-items: flex-start !important; }
           .m-section-header { grid-template-columns: 1fr !important; gap: 16px !important; }
           .m-trusted-box { grid-template-columns: 1fr !important; }
-          .m-cta-split { grid-template-columns: 1fr !important; gap: 24px !important; }
-          .m-cta-split a { width: 100% !important; justify-content: center !important; }
           .m-footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
           section { padding-left: 20px !important; padding-right: 20px !important; }
@@ -325,16 +323,14 @@ export default function CleaningPage() {
 
       {/* ── CTA ── */}
       <section style={{ padding: "90px 40px", borderTop: `1px solid ${line}` }}>
-        <div className="m-cta-split" style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "1.2fr auto", gap: "40px", alignItems: "center" }}>
-          <div>
-            <h2 className="lp-rise" style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
-              Want results like this for your business?
-            </h2>
-            <p className="lp-rise d1" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "560px" }}>
-              Free 30-minute strategy call. We'll look at what's working for cleaning businesses like Queenstown Cleaning, Jim's Cleaning and Fantastic Services, and map out what it'd look like for you.
-            </p>
-          </div>
-          <a href="/book" className="lp-rise d2 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", whiteSpace: "nowrap" as const }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <h2 className="lp-rise" style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
+            Want results like this for your business?
+          </h2>
+          <p className="lp-rise d1" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, marginBottom: "32px", maxWidth: "560px" }}>
+            Free 30-minute strategy call. We'll look at what's working for cleaning businesses like Queenstown Cleaning, Jim's Cleaning and Fantastic Services, and map out what it'd look like for you.
+          </p>
+          <a href="/book" className="lp-rise d2 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px" }}>
             Book a Free Call <ArrowRight style={{ width: "13px", height: "13px" }} />
           </a>
         </div>
