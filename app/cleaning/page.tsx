@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowRight, ArrowUpRight, Phone, Inbox, Clock3, Megaphone, Timer, CalendarCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Filter, CalendarX, BarChart3, Target, ClipboardCheck, Briefcase } from "lucide-react";
 
 /* ── Design tokens (matches homepage) ── */
 const F = "var(--font-inter), system-ui, sans-serif";
@@ -13,15 +13,15 @@ const accent = "#0080e0";
 const dark  = "#0a0f1a";
 
 const PAINS = [
-  { icon: Phone, title: "Calls go to voicemail", desc: "And most people calling a cleaning company just move to the next one on Google." },
-  { icon: Inbox, title: "Enquiries sit for hours", desc: "By the time someone replies to a Facebook message or web form, the job's already booked elsewhere." },
-  { icon: Clock3, title: "Slow weeks, no warning", desc: "Work comes from word of mouth and referrals, so the calendar is either too full or too empty." },
+  { icon: Filter, title: "Leads that go nowhere", desc: "Tyre-kickers, wrong suburb, wrong job size. A lot of leads from generic marketing were never going to book in the first place." },
+  { icon: CalendarX, title: "Feast or famine weeks", desc: "Work comes from referrals and word of mouth, so the calendar swings between fully booked and dead quiet." },
+  { icon: BarChart3, title: "No idea what's working", desc: "Money goes into ads or directories every month with no clear picture of which leads actually became paying jobs." },
 ];
 
 const SOLUTIONS = [
-  { icon: Megaphone, tag: "Step 1", title: "Ads that bring in real jobs", desc: "Targeted Facebook & Instagram campaigns aimed at people who need a clean booked this week, not just browsers." },
-  { icon: Timer, tag: "Step 2", title: "Every lead contacted in under 60 seconds", desc: "Automated instant follow-up means no enquiry sits in an inbox overnight. We chase it down so you don't have to." },
-  { icon: CalendarCheck, tag: "Step 3", title: "Jobs land straight on your calendar", desc: "By the time it reaches you, the lead is qualified and ready to book, no back and forth, no chasing quotes." },
+  { icon: Target, tag: "Step 1", title: "Ads built around lead quality", desc: "Campaigns targeted at people who actually need a clean booked, not broad reach for the sake of more enquiries." },
+  { icon: ClipboardCheck, tag: "Step 2", title: "Every lead tracked through to a job", desc: "We don't just count enquiries. Each lead is followed through the pipeline so you know exactly which ones turned into real work." },
+  { icon: Briefcase, tag: "Step 3", title: "Real jobs, not vanity numbers", desc: "Queenstown Cleaning's 57 leads became 30 booked jobs last month. That's the number that matters, not clicks or impressions." },
 ];
 
 export default function CleaningPage() {
@@ -97,9 +97,12 @@ export default function CleaningPage() {
           .m-nav-hamburger { display: flex !important; }
           .nav-cta { display: none !important; }
           nav { padding: 0 16px 0 0 !important; height: 72px !important; }
-          .m-hero-content { padding: 48px 20px 40px !important; grid-template-columns: 1fr !important; gap: 32px !important; }
+          .m-hero-content { padding: 48px 20px 40px !important; }
           .m-hero-content h1 { font-size: 34px !important; }
           .hero-sub { font-size: 15px !important; }
+          .hero-card { grid-template-columns: 1fr !important; }
+          .hero-card > div { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.14) !important; }
+          .hero-card > div:last-child { border-bottom: none !important; }
           .m-pain-grid { grid-template-columns: 1fr !important; }
           .m-solution-grid { grid-template-columns: 1fr !important; }
           .m-proof-stats { grid-template-columns: 1fr !important; }
@@ -155,33 +158,40 @@ export default function CleaningPage() {
         </div>
       )}
 
-      {/* ── HERO (split: text / proof card) ── */}
-      <section style={{ position: "relative", overflow: "hidden", minHeight: "640px", display: "flex", alignItems: "center", background: "linear-gradient(160deg, #04111f 0%, #0c3450 42%, #1c5d86 100%)" }}>
+      {/* ── HERO ── */}
+      <section style={{ position: "relative", overflow: "hidden", minHeight: "560px", display: "flex", alignItems: "center", background: "linear-gradient(160deg, #04111f 0%, #0c3450 42%, #1c5d86 100%)" }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.55) 0%, transparent 100%)" }} />
-        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "150px 40px 100px", width: "100%", display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "56px", alignItems: "center" }}>
-          <div>
-            <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
-              For Cleaning Businesses · NZ &amp; AU
-            </p>
-            <h1 className="hero-h1" style={{ fontSize: "clamp(40px, 5vw, 68px)", fontWeight: 800, color: "#fff", lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: "24px", maxWidth: "640px" }}>
-              Stop losing cleaning jobs to slow follow-up.
-            </h1>
-            <p className="hero-sub" style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "36px", maxWidth: "480px", fontWeight: 400 }}>
-              Most cleaning businesses lose work simply because nobody replies fast enough. We run the ads, answer every enquiry in under 60 seconds, and get the job on your calendar.
-            </p>
-            <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
-              <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
-                Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
-              </a>
-              <a href="#proof" className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "0" }}>
-                See the Results
-              </a>
-            </div>
+        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "820px", margin: "0 auto", padding: "150px 40px 90px", width: "100%", textAlign: "center" as const }}>
+          <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
+            For Cleaning Businesses · NZ &amp; AU
+          </p>
+          <h1 className="hero-h1" style={{ fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: "24px" }}>
+            More booked jobs.<br />Not just more leads.
+          </h1>
+          <p className="hero-sub" style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "36px", maxWidth: "560px", marginLeft: "auto", marginRight: "auto", fontWeight: 400 }}>
+            We run ads targeted at people who actually need a clean booked, then track every lead through to a real, paying job, not just a number on a report.
+          </p>
+          <div className="hero-ctas" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", flexWrap: "wrap", marginBottom: "48px" }}>
+            <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
+              Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
+            </a>
+            <a href="#proof" className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "0" }}>
+              See the Results
+            </a>
           </div>
 
-          <div className="hero-card" style={{ position: "relative", aspectRatio: "1 / 1", width: "100%", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 24px 60px rgba(0,0,0,0.35)", overflow: "hidden" }}>
-            <img src="/cleaning-team.jpg" alt="LS Growth cleaning client team" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <div className="hero-card" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", border: "1px solid rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}>
+            {[
+              { big: "57", small: "New leads, 30 days" },
+              { big: "30", small: "Turned into booked jobs" },
+              { big: "$7–$11", small: "Cost per lead" },
+            ].map(({ big, small }, i) => (
+              <div key={big} style={{ padding: "20px 16px", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.14)" : "none" }}>
+                <div style={{ fontSize: "28px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "4px" }}>{big}</div>
+                <div style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.4 }}>{small}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
