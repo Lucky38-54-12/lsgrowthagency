@@ -220,13 +220,11 @@ export default function CleaningPage() {
       {/* ── PROBLEM ── */}
       <section style={{ padding: "100px 40px 80px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div className="m-section-header" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "40px", alignItems: "end", marginBottom: "56px" }}>
-            <div>
-              <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Problem</span>
-              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
-                Sound familiar?
-              </h2>
-            </div>
+          <div style={{ maxWidth: "640px", marginBottom: "56px" }}>
+            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Problem</span>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "12px" }}>
+              Sound familiar?
+            </h2>
             <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
               These are the three things quietly costing cleaning businesses jobs every single week.
             </p>
@@ -248,13 +246,11 @@ export default function CleaningPage() {
       {/* ── SOLUTION ── */}
       <section style={{ padding: "0 40px 80px", borderTop: `1px solid ${line}`, paddingTop: "80px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div className="m-section-header" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "40px", alignItems: "end", marginBottom: "56px" }}>
-            <div>
-              <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Solution</span>
-              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
-                Here's what changes
-              </h2>
-            </div>
+          <div style={{ maxWidth: "640px", marginBottom: "56px" }}>
+            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Solution</span>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "12px" }}>
+              Here's what changes
+            </h2>
             <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
               The exact system we run for Queenstown Cleaning, Jim's Cleaning and Fantastic Services.
             </p>
