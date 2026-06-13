@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, Fragment } from "react";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle } from "lucide-react";
 
 /* ── Design tokens (matches homepage) ── */
 const F = "var(--font-inter), system-ui, sans-serif";
@@ -93,6 +93,7 @@ export default function CleaningPage() {
         .footer-link:hover::after { width:100%; }
 
         .cmp-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 13px; line-height: 1.45; }
+        .cmp-card { border-radius: 16px; transition: transform 0.2s ease; }
 
         @media (max-width: 640px) {
           .m-nav-links { display: none !important; }
@@ -109,9 +110,10 @@ export default function CleaningPage() {
           .m-bento-hide { display: none !important; }
           .cmp-grid { grid-template-columns: 1fr !important; }
           .cmp-center { order: -1; }
+          .cmp-stack { padding: 32px 20px !important; border-radius: 20px !important; }
+          .m-cta-stack { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-trust-row { gap: 24px !important; }
           .m-trust-strip { flex-direction: column !important; align-items: flex-start !important; }
-          .m-section-header { grid-template-columns: 1fr !important; gap: 16px !important; }
           .m-footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
           section { padding-left: 20px !important; padding-right: 20px !important; }
@@ -386,24 +388,22 @@ export default function CleaningPage() {
       </section>
 
       {/* ── COMPARISON ── */}
-      <section style={{ background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div className="m-section-header" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "40px", alignItems: "end", marginBottom: "40px" }}>
-            <div>
-              <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 600, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>Why LS Growth?</p>
-              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em" }}>
-                Most cleaning ads get you enquiries.<br />We get you booked jobs.
-              </h2>
-            </div>
-            <p className="lp-rise d2" style={{ fontSize: "15px", color: muted, lineHeight: 1.65 }}>
-              Ads without follow-through is half a system. Tracking without action is just a number on a report. We do the whole job, from the first click to the booked job.
+      <section style={{ background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
+        <div className="cmp-stack" style={{ maxWidth: "1020px", margin: "0 auto", background: "transparent", borderRadius: "28px", padding: "64px 56px" }}>
+          <div style={{ textAlign: "center" as const, marginBottom: "56px" }}>
+            <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 600, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>· Why LS Growth?</p>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
+              Most cleaning ads get you enquiries.<br />We get you booked jobs.
+            </h2>
+            <p className="lp-rise d2" style={{ fontSize: "15px", color: muted, maxWidth: "500px", margin: "0 auto", lineHeight: 1.65 }}>
+              Ads without follow-through is half a system. Tracking without action is just a number on a report.<br />We do the whole job, from the first click to the booked job.
             </p>
           </div>
 
           <div className="cmp-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr 1fr", gap: "16px", alignItems: "start" }}>
 
             {/* Left — The Old Way */}
-            <div className="lp-rise" style={{ background: "#f8fafc", border: `1px solid ${line}`, borderRadius: "0", padding: "44px 32px" }}>
+            <div className="lp-rise cmp-card" style={{ background: "#f8fafc", border: `1px solid ${line}`, borderRadius: "16px", padding: "44px 32px" }}>
               <p style={{ fontSize: "10px", fontWeight: 700, color: dim, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "14px" }}>The Old Way</p>
               <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "28px", lineHeight: 1.15 }}>Generic Ads</h3>
               {[
@@ -424,7 +424,7 @@ export default function CleaningPage() {
             </div>
 
             {/* Centre — LS Growth (highlighted) */}
-            <div className="lp-rise d1 cmp-center" style={{ background: "rgba(0,128,224,0.05)", border: `1.5px solid ${accent}`, borderRadius: "0", padding: "32px 28px", position: "relative" as const }}>
+            <div className="lp-rise d1 cmp-card cmp-center" style={{ background: "rgba(0,128,224,0.05)", border: `1.5px solid ${accent}`, borderRadius: "16px", padding: "32px 28px", position: "relative" as const }}>
               <div style={{ position: "absolute" as const, top: "-13px", left: "50%", transform: "translateX(-50%)", background: accent, color: "#fff", fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "4px 14px" }}>
                 The Complete System
               </div>
@@ -451,7 +451,7 @@ export default function CleaningPage() {
             </div>
 
             {/* Right — The DIY Route */}
-            <div className="lp-rise d2" style={{ background: "#f8fafc", border: `1px solid ${line}`, borderRadius: "0", padding: "44px 32px" }}>
+            <div className="lp-rise d2 cmp-card" style={{ background: "#f8fafc", border: `1px solid ${line}`, borderRadius: "16px", padding: "44px 32px" }}>
               <p style={{ fontSize: "10px", fontWeight: 700, color: dim, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "14px" }}>The DIY Route</p>
               <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "28px", lineHeight: 1.15 }}>Doing It Yourself</h3>
               {[
@@ -473,7 +473,7 @@ export default function CleaningPage() {
 
           </div>
 
-          <div style={{ marginTop: "40px" }}>
+          <div style={{ textAlign: "center" as const, marginTop: "48px" }}>
             <a href="/book" className="lp-rise btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px" }}>
               Get more booked jobs <ArrowRight style={{ width: "13px", height: "13px" }} />
             </a>
@@ -482,17 +482,37 @@ export default function CleaningPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: "90px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <h2 className="lp-rise" style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
-            Want results like this for your business?
-          </h2>
-          <p className="lp-rise d1" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, marginBottom: "32px", maxWidth: "560px" }}>
-            Free 30-minute strategy call. We'll look at what's working for cleaning businesses like Queenstown Cleaning, Jim's Cleaning and Fantastic Services, and map out what it'd look like for you.
-          </p>
-          <a href="/book" className="lp-rise d2 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px" }}>
-            Book a Free Call <ArrowRight style={{ width: "13px", height: "13px" }} />
-          </a>
+      <section style={{ background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div className="lp-rise" style={{ border: `1px solid ${line}`, borderRadius: "16px", padding: "64px 48px", background: "#fff", position: "relative" as const, overflow: "hidden" }}>
+            <div className="m-cta-stack" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "48px", flexWrap: "wrap" as const }}>
+              <div>
+                <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Get Started</div>
+                <h2 style={{ fontSize: "clamp(36px,5vw,72px)", fontWeight: 800, color: ink, lineHeight: 1.0, letterSpacing: "-0.03em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
+                <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
+                  Book a free 30-minute call. We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
+                </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: "10px" }}>
+                  {["No lock-in contracts", "Full setup handled for you", "Results within the first two weeks"].map(item => (
+                    <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: muted }}>
+                      <CheckCircle style={{ width: "14px", height: "14px", color: accent, flexShrink: 0 }} />{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px", minWidth: "260px" }}>
+                <a href="/book" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "0" }}>
+                  Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
+                </a>
+                <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: ink, background: "transparent", border: `1px solid ${line}`, borderRadius: "0", padding: "14px 28px", textDecoration: "none", fontFamily: F }}>
+                  Send a Message
+                </a>
+                <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "13px", color: dim, textDecoration: "none" }}>
+                  lsgrowthagency.co@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
