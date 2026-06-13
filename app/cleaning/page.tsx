@@ -118,11 +118,6 @@ export default function CleaningPage() {
           footer { padding-left: 20px !important; padding-right: 20px !important; }
           .btn { min-height: 44px !important; }
         }
-
-        @media (max-width: 480px) {
-          .m-proof-split { grid-template-columns: 1fr !important; gap: 24px !important; }
-          .m-trusted-box { grid-template-columns: 1fr !important; }
-        }
       `}</style>
 
       {/* ── NAV (same as homepage) ── */}
@@ -359,55 +354,42 @@ export default function CleaningPage() {
       {/* ── PROOF / RESULTS ── */}
       <section id="proof" style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
-        <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
-          <div className="m-section-header" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "40px", alignItems: "end", marginBottom: "32px" }}>
-            <div>
-              <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Real Results</span>
-              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
-                57 leads. 30 booked jobs. Last month.
-              </h2>
-            </div>
-            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
-              This is the live ad account for Queenstown Cleaning, one of the businesses we run this system for.
-            </p>
+        <div style={{ position: "relative", maxWidth: "680px", margin: "0 auto" }}>
+          <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>Real Results</span>
+
+          <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,40px)", fontWeight: 800, color: ink, lineHeight: 1.2, letterSpacing: "-0.02em", marginBottom: "32px", maxWidth: "480px" }}>
+            57 leads. 30 booked jobs. Last month.
+          </h2>
+
+          <div className="lp-rise d2" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", border: `1px solid ${line}`, background: "#fff", marginBottom: "40px" }}>
+            {[
+              { big: "57", small: "New leads in 30 days" },
+              { big: "30", small: "Turned into booked jobs", hl: true },
+              { big: "$7–$11", small: "Cost per lead" },
+            ].map(({ big, small, hl }, i) => (
+              <div key={big} style={{ padding: "28px 16px", textAlign: "center" as const, borderLeft: i > 0 ? `1px solid ${line}` : "none" }}>
+                <div style={{ fontSize: "clamp(28px,4vw,40px)", fontWeight: 900, color: hl ? accent : ink, letterSpacing: "-0.03em", marginBottom: "6px" }}>{big}</div>
+                <div style={{ fontSize: "12px", color: muted }}>{small}</div>
+              </div>
+            ))}
           </div>
 
-          <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", height: "auto", display: "block", margin: "0 0 32px", border: `1px solid ${line}`, borderRadius: "0", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
+          <p className="lp-rise d2" style={{ fontSize: "11px", fontWeight: 600, color: dim, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: "12px" }}>
+            Live Ad Account &mdash; Queenstown Cleaning
+          </p>
+          <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", height: "auto", display: "block", margin: "0 0 40px", border: `1px solid ${line}`, borderRadius: "0", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
 
-          <div className="m-proof-split" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "32px", alignItems: "start", marginBottom: "48px" }}>
-            <div className="lp-rise d3">
-              <h3 style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 800, color: ink, lineHeight: 1.3, letterSpacing: "-0.02em", marginBottom: "12px" }}>
-                What that means in practice
-              </h3>
-              <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7 }}>
-                Every one of those 30 jobs came from a lead that was actually looking for a clean in their area, not a tyre-kicker or a wrong-fit enquiry.
-              </p>
-            </div>
-            <div className="lp-rise d3" style={{ display: "flex", flexDirection: "column" as const, border: `1px solid ${line}`, background: "#fff" }}>
-              {[
-                { big: "57", small: "New leads in 30 days" },
-                { big: "30", small: "Turned into booked jobs" },
-                { big: "$7–$11", small: "Cost per lead" },
-              ].map(({ big, small }, i) => (
-                <div key={big} style={{ padding: "24px 28px", borderBottom: i < 2 ? `1px solid ${line}` : "none", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
-                  <div style={{ fontSize: "13px", color: muted, lineHeight: 1.4 }}>{small}</div>
-                  <div style={{ fontSize: "32px", fontWeight: 800, color: accent, letterSpacing: "-0.02em", whiteSpace: "nowrap" as const }}>{big}</div>
-                </div>
-              ))}
-            </div>
+          <div className="lp-rise d3" style={{ borderLeft: `2px solid ${accent}`, padding: "2px 0 2px 24px", marginBottom: "32px" }}>
+            <p style={{ fontSize: "16px", color: ink, lineHeight: 1.7, marginBottom: "12px" }}>
+              Every one of those 30 jobs came from a lead that was actually looking for a clean in their area, not a tyre-kicker or a wrong-fit enquiry. The results were good enough that the owner brought us on for two more of his cleaning businesses, building everything from scratch: website, social media, ad campaigns and email systems.
+            </p>
+            <p style={{ fontSize: "13px", color: muted }}>Queenstown Cleaning</p>
           </div>
 
-          {/* Trusted beyond one business */}
-          <div className="lp-rise m-trusted-box" style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "40px", display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "32px", alignItems: "center" }}>
-            <div>
-              <p style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Trusted Beyond One Business</p>
-              <h3 style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 800, color: ink, lineHeight: 1.3, letterSpacing: "-0.02em" }}>
-                Queenstown Cleaning's owner liked the results enough to bring us on for two more of his cleaning businesses
-              </h3>
-            </div>
-            <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7 }}>
-              For both Jim's Cleaning and Fantastic Services, we built everything from scratch, the website, social media, ad campaigns and email systems, the same system shown above.
-            </p>
+          <div className="lp-rise d3" style={{ display: "flex", gap: "8px", flexWrap: "wrap" as const }}>
+            {["Queenstown Cleaning", "Jim's Cleaning", "Fantastic Services"].map(b => (
+              <span key={b} style={{ fontSize: "12px", fontWeight: 600, color: muted, border: `1px solid ${line}`, padding: "6px 14px" }}>{b}</span>
+            ))}
           </div>
         </div>
       </section>
