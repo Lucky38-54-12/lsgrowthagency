@@ -99,12 +99,12 @@ export default function CleaningPage() {
           .m-nav-hamburger { display: flex !important; }
           .nav-cta { display: none !important; }
           nav { padding: 0 16px 0 0 !important; height: 72px !important; }
-          .m-hero-content { padding: 48px 20px 40px !important; grid-template-columns: 1fr !important; gap: 32px !important; }
+          .m-hero-content { padding: 110px 20px 40px !important; grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-hero-content h1 { font-size: 34px !important; }
           .hero-sub { font-size: 15px !important; }
           .m-pain-split { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-split-sticky { position: static !important; }
-          .how-step-card { top: 88px !important; }
+          .how-step-card { position: static !important; box-shadow: 0 8px 24px rgba(10,15,26,0.1) !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
           .cmp-grid { grid-template-columns: 1fr !important; }
@@ -209,10 +209,7 @@ export default function CleaningPage() {
         <div className="m-trust-row" style={{ display: "flex", alignItems: "center", gap: "40px", flexWrap: "wrap" as const }}>
           <img src="/logos/jims-cleaning.png" alt="Jim's Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
           <img src="/logos/fantastic-services.png" alt="Fantastic Services" style={{ height: "38px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <img src="/logos/queenstown-cleaning.png" alt="" style={{ height: "28px", width: "28px", objectFit: "contain", opacity: 0.8 }} />
-            <span style={{ fontSize: "20px", fontWeight: 800, color: ink, letterSpacing: "-0.01em", opacity: 0.7 }}>Queenstown Cleaning</span>
-          </div>
+          <img src="/logos/queenstown-cleaning.png" alt="Queenstown Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
         </div>
       </section>
 
@@ -362,35 +359,20 @@ export default function CleaningPage() {
             57 leads. 30 booked jobs. Last month.
           </h2>
 
-          <div className="lp-rise d2" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", border: `1px solid ${line}`, background: "#fff", marginBottom: "40px" }}>
-            {[
-              { big: "57", small: "New leads in 30 days" },
-              { big: "30", small: "Turned into booked jobs", hl: true },
-              { big: "$7–$11", small: "Cost per lead" },
-            ].map(({ big, small, hl }, i) => (
-              <div key={big} style={{ padding: "28px 16px", textAlign: "center" as const, borderLeft: i > 0 ? `1px solid ${line}` : "none" }}>
-                <div style={{ fontSize: "clamp(28px,4vw,40px)", fontWeight: 900, color: hl ? accent : ink, letterSpacing: "-0.03em", marginBottom: "6px" }}>{big}</div>
-                <div style={{ fontSize: "12px", color: muted }}>{small}</div>
-              </div>
-            ))}
-          </div>
-
-          <p className="lp-rise d2" style={{ fontSize: "11px", fontWeight: 600, color: dim, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: "12px" }}>
+          <p className="lp-rise d2" style={{ fontSize: "11px", fontWeight: 600, color: dim, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: "12px", marginTop: "40px" }}>
             Live Ad Account &mdash; Queenstown Cleaning
           </p>
           <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", height: "auto", display: "block", margin: "0 0 40px", border: `1px solid ${line}`, borderRadius: "0", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
 
           <div className="lp-rise d3" style={{ borderLeft: `2px solid ${accent}`, padding: "2px 0 2px 24px", marginBottom: "32px" }}>
-            <p style={{ fontSize: "16px", color: ink, lineHeight: 1.7, marginBottom: "12px" }}>
+            <p style={{ fontSize: "16px", color: ink, lineHeight: 1.7 }}>
               Every one of those 30 jobs came from a lead that was actually looking for a clean in their area, not a tyre-kicker or a wrong-fit enquiry. The results were good enough that the owner brought us on for two more of his cleaning businesses, building everything from scratch: website, social media, ad campaigns and email systems.
             </p>
-            <p style={{ fontSize: "13px", color: muted }}>Queenstown Cleaning</p>
           </div>
 
           <div className="lp-rise d3" style={{ display: "flex", gap: "12px", flexWrap: "wrap" as const, alignItems: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", border: `1px solid ${line}`, padding: "8px 16px" }}>
-              <img src="/logos/queenstown-cleaning.png" alt="" style={{ height: "20px", width: "20px", objectFit: "contain" }} />
-              <span style={{ fontSize: "13px", fontWeight: 600, color: ink }}>Queenstown Cleaning</span>
+            <div style={{ display: "flex", alignItems: "center", border: `1px solid ${line}`, padding: "8px 20px" }}>
+              <img src="/logos/queenstown-cleaning.png" alt="Queenstown Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain" }} />
             </div>
             <div style={{ display: "flex", alignItems: "center", border: `1px solid ${line}`, padding: "8px 20px" }}>
               <img src="/logos/jims-cleaning.png" alt="Jim's Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain" }} />
