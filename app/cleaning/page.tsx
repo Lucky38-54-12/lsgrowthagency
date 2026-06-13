@@ -354,7 +354,8 @@ export default function CleaningPage() {
       {/* ── PROOF / RESULTS ── */}
       <section id="proof" style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
-        <div style={{ position: "relative", maxWidth: "680px", margin: "0 auto" }}>
+        <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "680px" }}>
           <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>Real Results</span>
 
           <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,40px)", fontWeight: 800, color: ink, lineHeight: 1.2, letterSpacing: "-0.02em", marginBottom: "32px", maxWidth: "480px" }}>
@@ -386,11 +387,19 @@ export default function CleaningPage() {
             <p style={{ fontSize: "13px", color: muted }}>Queenstown Cleaning</p>
           </div>
 
-          <div className="lp-rise d3" style={{ display: "flex", gap: "8px", flexWrap: "wrap" as const }}>
-            {["Queenstown Cleaning", "Jim's Cleaning", "Fantastic Services"].map(b => (
-              <span key={b} style={{ fontSize: "12px", fontWeight: 600, color: muted, border: `1px solid ${line}`, padding: "6px 14px" }}>{b}</span>
-            ))}
+          <div className="lp-rise d3" style={{ display: "flex", gap: "12px", flexWrap: "wrap" as const, alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", border: `1px solid ${line}`, padding: "8px 16px" }}>
+              <img src="/logos/queenstown-cleaning.png" alt="" style={{ height: "20px", width: "20px", objectFit: "contain" }} />
+              <span style={{ fontSize: "13px", fontWeight: 600, color: ink }}>Queenstown Cleaning</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", border: `1px solid ${line}`, padding: "8px 20px" }}>
+              <img src="/logos/jims-cleaning.png" alt="Jim's Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain" }} />
+            </div>
+            <div style={{ display: "flex", alignItems: "center", border: `1px solid ${line}`, padding: "8px 20px" }}>
+              <img src="/logos/fantastic-services.png" alt="Fantastic Services" style={{ height: "38px", width: "auto", objectFit: "contain" }} />
+            </div>
           </div>
+        </div>
         </div>
       </section>
 
