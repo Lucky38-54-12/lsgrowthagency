@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ArrowRight, ArrowUpRight, Filter, CalendarX, BarChart3, Target, ClipboardCheck, Briefcase } from "lucide-react";
+import { useState, useEffect, Fragment } from "react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 /* ── Design tokens (matches homepage) ── */
 const F = "var(--font-inter), system-ui, sans-serif";
@@ -13,15 +13,15 @@ const accent = "#0080e0";
 const dark  = "#0a0f1a";
 
 const PAINS = [
-  { icon: Filter, title: "Leads that go nowhere", desc: "Tyre-kickers, wrong suburb, wrong job size. A lot of leads from generic marketing were never going to book in the first place." },
-  { icon: CalendarX, title: "Feast or famine weeks", desc: "Work comes from referrals and word of mouth, so the calendar swings between fully booked and dead quiet." },
-  { icon: BarChart3, title: "No idea what's working", desc: "Money goes into ads or directories every month with no clear picture of which leads actually became paying jobs." },
+  { title: "Leads that go nowhere", desc: "Tyre-kickers, wrong suburb, wrong job size. A lot of leads from generic marketing were never going to book in the first place." },
+  { title: "Feast or famine weeks", desc: "Work comes from referrals and word of mouth, so the calendar swings between fully booked and dead quiet." },
+  { title: "No idea what's working", desc: "Money goes into ads or directories every month with no clear picture of which leads actually became paying jobs." },
 ];
 
 const SOLUTIONS = [
-  { icon: Target, tag: "Step 1", title: "Ads built around lead quality", desc: "Campaigns targeted at people who actually need a clean booked, not broad reach for the sake of more enquiries." },
-  { icon: ClipboardCheck, tag: "Step 2", title: "Every lead tracked through to a job", desc: "We don't just count enquiries. Each lead is followed through the pipeline so you know exactly which ones turned into real work." },
-  { icon: Briefcase, tag: "Step 3", title: "Real jobs, not vanity numbers", desc: "Queenstown Cleaning's 57 leads became 30 booked jobs last month. That's the number that matters, not clicks or impressions." },
+  { tag: "Step 1", title: "Ads built around lead quality", desc: "Campaigns targeted at people who actually need a clean booked, not broad reach for the sake of more enquiries." },
+  { tag: "Step 2", title: "Every lead tracked through to a job", desc: "We don't just count enquiries. Each lead is followed through the pipeline so you know exactly which ones turned into real work." },
+  { tag: "Step 3", title: "Real jobs, not vanity numbers", desc: "Queenstown Cleaning's 57 leads became 30 booked jobs last month. That's the number that matters, not clicks or impressions." },
 ];
 
 export default function CleaningPage() {
@@ -102,8 +102,9 @@ export default function CleaningPage() {
           .m-hero-content { padding: 48px 20px 40px !important; grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-hero-content h1 { font-size: 34px !important; }
           .hero-sub { font-size: 15px !important; }
-          .m-pain-split { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .m-pain-split { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-split-sticky { position: static !important; }
+          .how-step-card { top: 88px !important; }
           .m-proof-split { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
@@ -219,28 +220,34 @@ export default function CleaningPage() {
 
       {/* ── PROBLEM ── */}
       <section style={{ padding: "100px 40px 80px" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div className="m-pain-split" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "48px" }}>
-            <div className="m-split-sticky" style={{ position: "sticky", top: "120px", alignSelf: "start" }}>
-              <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Problem</span>
-              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "12px" }}>
-                Sound familiar?
-              </h2>
-              <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
-                These are the three things quietly costing cleaning businesses jobs every single week.
-              </p>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div className="m-pain-split" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
+            <div className="m-split-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
+              <div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
+                  The Problem
+                </span>
+                <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
+                  Sound familiar?
+                </h2>
+                <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
+                  These are the three things quietly costing cleaning businesses jobs every single week.
+                </p>
+              </div>
             </div>
-            <div style={{ border: `1px solid ${line}` }}>
-              {PAINS.map(({ icon: Icon, title, desc }, i) => (
-                <div key={title} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ display: "flex", gap: "20px", padding: "32px", background: "#fff", borderBottom: i < PAINS.length - 1 ? `1px solid ${line}` : "none" }}>
-                  <div style={{ width: "44px", height: "44px", borderRadius: "0", background: "#fef2f2", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <Icon style={{ width: "20px", height: "20px", color: "#dc2626" }} />
+            <div>
+              {PAINS.map(({ title, desc }, i) => (
+                <Fragment key={title}>
+                  <div className="lp-rise how-step-card" style={{ position: "sticky" as const, top: `${110 + i * 28}px`, zIndex: i + 1, display: "flex", gap: "28px", alignItems: "flex-start", background: "#fff", border: `1px solid ${line}`, boxShadow: "0 24px 64px rgba(10,15,26,0.14)", padding: "36px 40px" }}>
+                    <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: "#dc2626", letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{String(i + 1).padStart(2, "0")}</div>
+                    <div>
+                      <h3 style={{ fontSize: "clamp(18px,2vw,22px)", fontWeight: 800, color: ink, letterSpacing: "-0.01em", marginBottom: "10px" }}>{title}</h3>
+                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7 }}>{desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 style={{ fontSize: "18px", fontWeight: 800, color: ink, letterSpacing: "-0.01em", marginBottom: "8px" }}>{title}</h3>
-                    <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7 }}>{desc}</p>
-                  </div>
-                </div>
+                  {i < PAINS.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
+                </Fragment>
               ))}
             </div>
           </div>
@@ -249,31 +256,37 @@ export default function CleaningPage() {
 
       {/* ── SOLUTION ── */}
       <section style={{ padding: "0 40px 80px", borderTop: `1px solid ${line}`, paddingTop: "80px" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div className="m-pain-split" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: "48px" }}>
-            <div className="m-split-sticky" style={{ position: "sticky", top: "120px", alignSelf: "start" }}>
-              <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "0", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>The Solution</span>
-              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "12px" }}>
-                Here's what changes
-              </h2>
-              <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
-                The exact system we run for Queenstown Cleaning, Jim's Cleaning and Fantastic Services.
-              </p>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div className="m-pain-split" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
+            <div className="m-split-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
+              <div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
+                  The Solution
+                </span>
+                <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
+                  Here's what changes
+                </h2>
+                <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
+                  The exact system we run for Queenstown Cleaning, Jim's Cleaning and Fantastic Services.
+                </p>
+              </div>
             </div>
-            <div style={{ border: `1px solid ${line}` }}>
-              {SOLUTIONS.map(({ icon: Icon, tag, title, desc }, i) => {
+            <div>
+              {SOLUTIONS.map(({ tag, title, desc }, i) => {
                 const dark2 = i === 1;
                 return (
-                  <div key={title} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ display: "flex", gap: "20px", padding: "32px", background: dark2 ? dark : "#fff", borderBottom: i < SOLUTIONS.length - 1 ? `1px solid ${line}` : "none" }}>
-                    <div style={{ width: "44px", height: "44px", borderRadius: "0", background: dark2 ? "rgba(255,255,255,0.1)" : "#f8fafc", border: dark2 ? "none" : `1px solid ${line}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <Icon style={{ width: "20px", height: "20px", color: dark2 ? "#7cd4ff" : accent }} />
+                  <Fragment key={title}>
+                    <div className="lp-rise how-step-card" style={{ position: "sticky" as const, top: `${110 + i * 28}px`, zIndex: i + 1, display: "flex", gap: "28px", alignItems: "flex-start", background: dark2 ? dark : "#fff", border: dark2 ? "none" : `1px solid ${line}`, boxShadow: dark2 ? "0 24px 64px rgba(10,15,26,0.24)" : "0 24px 64px rgba(10,15,26,0.14)", padding: "36px 40px" }}>
+                      <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: dark2 ? "#7cd4ff" : accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{String(i + 1).padStart(2, "0")}</div>
+                      <div>
+                        <span style={{ display: "block", fontSize: "11px", fontWeight: 700, color: dark2 ? "rgba(255,255,255,0.45)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: "8px" }}>{tag}</span>
+                        <h3 style={{ fontSize: "clamp(18px,2vw,22px)", fontWeight: 800, color: dark2 ? "#fff" : ink, letterSpacing: "-0.01em", marginBottom: "10px" }}>{title}</h3>
+                        <p style={{ fontSize: "14px", color: dark2 ? "rgba(255,255,255,0.65)" : muted, lineHeight: 1.7 }}>{desc}</p>
+                      </div>
                     </div>
-                    <div>
-                      <span style={{ display: "block", fontSize: "11px", fontWeight: 700, color: dark2 ? "rgba(255,255,255,0.45)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: "8px" }}>{tag}</span>
-                      <h3 style={{ fontSize: "18px", fontWeight: 800, color: dark2 ? "#fff" : ink, letterSpacing: "-0.01em", marginBottom: "8px" }}>{title}</h3>
-                      <p style={{ fontSize: "14px", color: dark2 ? "rgba(255,255,255,0.65)" : muted, lineHeight: 1.7 }}>{desc}</p>
-                    </div>
-                  </div>
+                    {i < SOLUTIONS.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
+                  </Fragment>
                 );
               })}
             </div>
