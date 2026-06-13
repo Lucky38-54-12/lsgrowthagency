@@ -19,9 +19,9 @@ const PAINS = [
 ];
 
 const SOLUTIONS = [
-  { tag: "Step 1", title: "Ads built around lead quality", desc: "Campaigns targeted at people who actually need a clean booked, not broad reach for the sake of more enquiries." },
-  { tag: "Step 2", title: "Every lead tracked through to a job", desc: "We don't just count enquiries. Each lead is followed through the pipeline so you know exactly which ones turned into real work." },
-  { tag: "Step 3", title: "Real jobs, not vanity numbers", desc: "Queenstown Cleaning's 57 leads became 30 booked jobs last month. That's the number that matters, not clicks or impressions." },
+  { tag: "Step 4", title: "Ads built around lead quality", desc: "Campaigns targeted at people who actually need a clean booked, not broad reach for the sake of more enquiries." },
+  { tag: "Step 5", title: "Every lead tracked through to a job", desc: "We don't just count enquiries. Each lead is followed through the pipeline so you know exactly which ones turned into real work." },
+  { tag: "Step 6", title: "Real jobs, not vanity numbers", desc: "Queenstown Cleaning's 57 leads became 30 booked jobs last month. That's the number that matters, not clicks or impressions." },
 ];
 
 export default function CleaningPage() {
@@ -105,7 +105,6 @@ export default function CleaningPage() {
           .m-pain-split { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-split-sticky { position: static !important; }
           .how-step-card { top: 88px !important; }
-          .m-proof-split { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
           .cmp-grid { grid-template-columns: 1fr !important; }
@@ -113,12 +112,16 @@ export default function CleaningPage() {
           .m-trust-row { gap: 24px !important; }
           .m-trust-strip { flex-direction: column !important; align-items: flex-start !important; }
           .m-section-header { grid-template-columns: 1fr !important; gap: 16px !important; }
-          .m-trusted-box { grid-template-columns: 1fr !important; }
           .m-footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
           section { padding-left: 20px !important; padding-right: 20px !important; }
           footer { padding-left: 20px !important; padding-right: 20px !important; }
           .btn { min-height: 44px !important; }
+        }
+
+        @media (max-width: 480px) {
+          .m-proof-split { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .m-trusted-box { grid-template-columns: 1fr !important; }
         }
       `}</style>
 
@@ -278,7 +281,7 @@ export default function CleaningPage() {
                 return (
                   <Fragment key={title}>
                     <div className="lp-rise how-step-card" style={{ position: "sticky" as const, top: `${110 + i * 28}px`, zIndex: i + 1, display: "flex", gap: "28px", alignItems: "flex-start", background: dark2 ? dark : "#fff", border: dark2 ? "none" : `1px solid ${line}`, boxShadow: dark2 ? "0 24px 64px rgba(10,15,26,0.24)" : "0 24px 64px rgba(10,15,26,0.14)", padding: "36px 40px" }}>
-                      <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: dark2 ? "#7cd4ff" : accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{String(i + 1).padStart(2, "0")}</div>
+                      <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: dark2 ? "#7cd4ff" : accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{String(i + 4).padStart(2, "0")}</div>
                       <div>
                         <span style={{ display: "block", fontSize: "11px", fontWeight: 700, color: dark2 ? "rgba(255,255,255,0.45)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: "8px" }}>{tag}</span>
                         <h3 style={{ fontSize: "clamp(18px,2vw,22px)", fontWeight: 800, color: dark2 ? "#fff" : ink, letterSpacing: "-0.01em", marginBottom: "10px" }}>{title}</h3>
