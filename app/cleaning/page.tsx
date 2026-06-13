@@ -374,7 +374,7 @@ export default function CleaningPage() {
 
           <img src="/queenstown-ads.png" alt="Queenstown Cleaning ad results, last 30 days" className="lp-rise d2" style={{ width: "100%", height: "auto", display: "block", margin: "0 0 32px", border: `1px solid ${line}`, borderRadius: "0", boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }} />
 
-          <div className="m-proof-split" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "32px", alignItems: "center", marginBottom: "48px" }}>
+          <div className="m-proof-split" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "32px", alignItems: "start", marginBottom: "48px" }}>
             <div className="lp-rise d3">
               <h3 style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 800, color: ink, lineHeight: 1.3, letterSpacing: "-0.02em", marginBottom: "12px" }}>
                 What that means in practice
