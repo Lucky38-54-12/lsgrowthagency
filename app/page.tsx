@@ -299,6 +299,7 @@ export default function Home() {
           .btn-nav { display: none !important; }
           .nav-cta { display: none !important; }
           nav { padding: 0 16px 0 0 !important; height: 72px !important; }
+          .nav-logo { height: 60px !important; }
           .m-hero-content { padding: 48px 20px 40px !important; grid-template-columns: 1fr !important; gap: 0 !important; }
           .m-hero-stats { display: none !important; }
           .m-trusted-row > div { border-right: none !important; border-bottom: 1px solid ${line}; min-width: calc(50% - 0px) !important; }
@@ -335,10 +336,10 @@ export default function Home() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", background: scrolled ? "rgba(5,10,18,0.96)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none", transition: "background 0.3s ease, border-color 0.3s ease" }}>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", background: scrolled ? "rgba(5,10,18,0.96)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none", transition: "background 0.3s ease, border-color 0.3s ease", transform: "translateZ(0)" }}>
         {/* Logo — far left, no padding */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "110px", width: "auto", objectFit: "contain" }} />
+          <img className="nav-logo" src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "110px", width: "auto", objectFit: "contain" }} />
         </a>
         {/* Far right — links then CTA then hamburger */}
         <div style={{ display: "flex", alignItems: "center", gap: "40px", paddingRight: "40px" }}>
