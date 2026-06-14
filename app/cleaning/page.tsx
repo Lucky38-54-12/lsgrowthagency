@@ -209,9 +209,9 @@ export default function CleaningPage() {
           Trusted by cleaning businesses you know
         </p>
         <div className="m-trust-row" style={{ display: "flex", alignItems: "center", gap: "40px", flexWrap: "wrap" as const }}>
-          <img src="/logos/jims-cleaning.png" alt="Jim's Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
-          <img src="/logos/fantastic-services.png" alt="Fantastic Services" style={{ height: "38px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
-          <img src="/logos/queenstown-cleaning.png" alt="Queenstown Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
+          <img src="/logos/jims-cleaning.png" alt="Jim's Cleaning" style={{ height: "52px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
+          <img src="/logos/fantastic-services.png" alt="Fantastic Services" style={{ height: "52px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
+          <img src="/logos/queenstown-cleaning.png" alt="Queenstown Cleaning" style={{ height: "52px", width: "auto", objectFit: "contain", opacity: 0.8 }} />
         </div>
       </section>
 
@@ -374,13 +374,13 @@ export default function CleaningPage() {
 
           <div className="lp-rise d3" style={{ display: "flex", gap: "12px", flexWrap: "wrap" as const, alignItems: "center" }}>
             <div style={{ display: "flex", alignItems: "center", border: `1px solid ${line}`, padding: "8px 20px" }}>
-              <img src="/logos/queenstown-cleaning.png" alt="Queenstown Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain" }} />
+              <img src="/logos/queenstown-cleaning.png" alt="Queenstown Cleaning" style={{ height: "52px", width: "auto", objectFit: "contain" }} />
             </div>
             <div style={{ display: "flex", alignItems: "center", border: `1px solid ${line}`, padding: "8px 20px" }}>
-              <img src="/logos/jims-cleaning.png" alt="Jim's Cleaning" style={{ height: "38px", width: "auto", objectFit: "contain" }} />
+              <img src="/logos/jims-cleaning.png" alt="Jim's Cleaning" style={{ height: "52px", width: "auto", objectFit: "contain" }} />
             </div>
             <div style={{ display: "flex", alignItems: "center", border: `1px solid ${line}`, padding: "8px 20px" }}>
-              <img src="/logos/fantastic-services.png" alt="Fantastic Services" style={{ height: "38px", width: "auto", objectFit: "contain" }} />
+              <img src="/logos/fantastic-services.png" alt="Fantastic Services" style={{ height: "52px", width: "auto", objectFit: "contain" }} />
             </div>
           </div>
         </div>
