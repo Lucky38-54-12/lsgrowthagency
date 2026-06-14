@@ -300,8 +300,10 @@ export default function Home() {
           .nav-cta { display: none !important; }
           nav { padding: 0 16px 0 0 !important; height: 72px !important; }
           .nav-logo { height: 60px !important; }
-          .m-hero-content { padding: 48px 20px 40px !important; grid-template-columns: 1fr !important; gap: 0 !important; }
-          .m-hero-stats { display: none !important; }
+          .m-hero-content { padding: 48px 20px 40px !important; }
+          .m-hero-stats { grid-template-columns: 1fr !important; max-width: 100% !important; margin-top: 32px !important; padding-top: 24px !important; }
+          .m-hero-stats > div { border-left: none !important; padding: 16px 0 !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
+          .m-hero-stats > div:first-child { border-top: none !important; padding-top: 0 !important; }
           .m-trusted-row > div { border-right: none !important; border-bottom: 1px solid ${line}; min-width: calc(50% - 0px) !important; }
           .m-trusted-row > div:last-child { border-bottom: none !important; }
           .m-hero-content h1 { font-size: 34px !important; }
@@ -437,12 +439,12 @@ export default function Home() {
       <section style={{ position: "relative", overflow: "hidden", minHeight: "680px", display: "flex", alignItems: "center", background: "linear-gradient(160deg, #04111f 0%, #0c3450 42%, #1c5d86 100%)" }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.55) 0%, transparent 100%)" }} />
-        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "150px 40px 110px", width: "100%", display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: "56px", alignItems: "center" }}>
-          <div>
+        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "150px 40px 110px", width: "100%" }}>
+          <div style={{ maxWidth: "640px" }}>
             <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
               Done-for-you lead generation · NZ & AU
             </p>
-            <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.5vw, 82px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "24px", maxWidth: "780px" }}>
+            <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.5vw, 82px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "24px" }}>
               More booked jobs.{" "}
               <span style={{ color: "rgba(255,255,255,0.5)" }}>Less chasing leads.</span>
             </h1>
@@ -460,14 +462,14 @@ export default function Home() {
             <p className="hero-note" style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>Free 30-min strategy call · No obligation</p>
           </div>
 
-          <div className="m-hero-stats" style={{ display: "flex", flexDirection: "column" as const, gap: "10px", alignSelf: "stretch" as const }}>
+          <div className="m-hero-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", borderTop: "1px solid rgba(255,255,255,0.14)", marginTop: "56px", paddingTop: "32px", maxWidth: "780px" }}>
             {[
-              { to: 350000, prefix: "$", suffix: "+", format: true, label: "In added projects for clients" },
-              { to: 300, prefix: "", suffix: "+", format: false, label: "Qualified consultations booked per month" },
-              { to: 700, prefix: "", suffix: "+", format: false, label: "Hours saved per client in admin & follow-up" },
-            ].map(({ to, prefix, suffix, format, label }) => (
-              <div key={label} style={{ flex: 1, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "14px", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)", padding: "14px 20px", display: "flex", flexDirection: "column" as const, justifyContent: "center" as const }}>
-                <div style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "2px" }}><CountUp to={to} prefix={prefix} suffix={suffix} format={format} color="#7cd4ff" /></div>
+              { to: 350000, prefix: "$", suffix: "+", format: true, label: "Added in client projects" },
+              { to: 300, prefix: "", suffix: "+", format: false, label: "Qualified consultations/month" },
+              { to: 700, prefix: "", suffix: "+", format: false, label: "Hours saved per client" },
+            ].map(({ to, prefix, suffix, format, label }, i) => (
+              <div key={label} style={{ paddingLeft: i === 0 ? 0 : "32px", paddingRight: "24px", borderLeft: i === 0 ? "none" : "1px solid rgba(255,255,255,0.14)" }}>
+                <div style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "6px" }}><CountUp to={to} prefix={prefix} suffix={suffix} format={format} color="#7cd4ff" /></div>
                 <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.4 }}>{label}</div>
               </div>
             ))}
