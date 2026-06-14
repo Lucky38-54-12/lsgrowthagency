@@ -101,9 +101,12 @@ export default function CleaningPage() {
           .nav-cta { display: none !important; }
           nav { padding: 0 16px 0 0 !important; height: 72px !important; }
           .nav-logo { height: 60px !important; }
-          .m-hero-content { padding: 110px 20px 40px !important; grid-template-columns: 1fr !important; gap: 32px !important; }
+          .m-hero-content { padding: 110px 20px 40px !important; }
           .m-hero-content h1 { font-size: 34px !important; }
           .hero-sub { font-size: 15px !important; }
+          .m-hero-stats { grid-template-columns: 1fr !important; max-width: 100% !important; margin-top: 32px !important; padding-top: 24px !important; }
+          .m-hero-stats > div { border-left: none !important; padding: 16px 0 !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
+          .m-hero-stats > div:first-child { border-top: none !important; padding-top: 0 !important; }
           .m-pain-split { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-split-sticky { position: static !important; }
           .how-step-card { position: sticky !important; box-shadow: 0 12px 32px rgba(10,15,26,0.18) !important; }
@@ -172,8 +175,8 @@ export default function CleaningPage() {
       <section style={{ position: "relative", overflow: "hidden", minHeight: "560px", display: "flex", alignItems: "center", background: "linear-gradient(160deg, #04111f 0%, #0c3450 42%, #1c5d86 100%)" }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.55) 0%, transparent 100%)" }} />
-        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "150px 40px 90px", width: "100%", display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: "56px", alignItems: "center" }}>
-          <div>
+        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "150px 40px 90px", width: "100%" }}>
+          <div style={{ maxWidth: "640px" }}>
             <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
               For Cleaning Businesses · NZ &amp; AU
             </p>
@@ -193,15 +196,15 @@ export default function CleaningPage() {
             </div>
           </div>
 
-          <div className="hero-card" style={{ display: "flex", flexDirection: "column" as const, border: "1px solid rgba(255,255,255,0.14)", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}>
+          <div className="m-hero-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", borderTop: "1px solid rgba(255,255,255,0.14)", marginTop: "48px", paddingTop: "32px", maxWidth: "780px" }}>
             {[
               { big: "57", small: "New leads, last 30 days" },
               { big: "30", small: "Turned into booked jobs" },
               { big: "$7–$11", small: "Cost per lead" },
             ].map(({ big, small }, i) => (
-              <div key={big} style={{ padding: "24px 28px", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.14)" : "none", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
-                <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.4 }}>{small}</div>
-                <div style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", whiteSpace: "nowrap" as const }}>{big}</div>
+              <div key={big} style={{ paddingLeft: i === 0 ? 0 : "32px", paddingRight: "24px", borderLeft: i === 0 ? "none" : "1px solid rgba(255,255,255,0.14)" }}>
+                <div style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "6px", whiteSpace: "nowrap" as const }}>{big}</div>
+                <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.4 }}>{small}</div>
               </div>
             ))}
           </div>
