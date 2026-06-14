@@ -105,7 +105,11 @@ export default function CleaningPage() {
           .hero-sub { font-size: 15px !important; }
           .m-pain-split { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-split-sticky { position: static !important; }
-          .how-step-card { position: static !important; box-shadow: 0 8px 24px rgba(10,15,26,0.1) !important; }
+          .how-step-card { position: sticky !important; box-shadow: 0 12px 32px rgba(10,15,26,0.18) !important; }
+          .how-step-card-0 { top: 84px !important; }
+          .how-step-card-1 { top: 104px !important; }
+          .how-step-card-2 { top: 124px !important; }
+          .how-step-gap { height: 20px !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
           .cmp-grid { grid-template-columns: 1fr !important; }
@@ -236,14 +240,14 @@ export default function CleaningPage() {
             <div>
               {PAINS.map(({ title, desc }, i) => (
                 <Fragment key={title}>
-                  <div className="lp-rise how-step-card" style={{ position: "sticky" as const, top: `${110 + i * 28}px`, zIndex: i + 1, display: "flex", gap: "28px", alignItems: "flex-start", background: "#fff", border: `1px solid ${line}`, boxShadow: "0 24px 64px rgba(10,15,26,0.14)", padding: "36px 40px" }}>
+                  <div className={`lp-rise how-step-card how-step-card-${i}`} style={{ position: "sticky" as const, top: `${110 + i * 28}px`, zIndex: i + 1, display: "flex", gap: "28px", alignItems: "flex-start", background: "#fff", border: `1px solid ${line}`, boxShadow: "0 24px 64px rgba(10,15,26,0.14)", padding: "36px 40px" }}>
                     <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: "#dc2626", letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{String(i + 1).padStart(2, "0")}</div>
                     <div>
                       <h3 style={{ fontSize: "clamp(18px,2vw,22px)", fontWeight: 800, color: ink, letterSpacing: "-0.01em", marginBottom: "10px" }}>{title}</h3>
                       <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7 }}>{desc}</p>
                     </div>
                   </div>
-                  {i < PAINS.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
+                  {i < PAINS.length - 1 && <div aria-hidden className="how-step-gap" style={{ height: "40px" }} />}
                 </Fragment>
               ))}
             </div>
@@ -274,7 +278,7 @@ export default function CleaningPage() {
                 const dark2 = i === 1;
                 return (
                   <Fragment key={title}>
-                    <div className="lp-rise how-step-card" style={{ position: "sticky" as const, top: `${110 + i * 28}px`, zIndex: i + 1, display: "flex", gap: "28px", alignItems: "flex-start", background: dark2 ? dark : "#fff", border: dark2 ? "none" : `1px solid ${line}`, boxShadow: dark2 ? "0 24px 64px rgba(10,15,26,0.24)" : "0 24px 64px rgba(10,15,26,0.14)", padding: "36px 40px" }}>
+                    <div className={`lp-rise how-step-card how-step-card-${i}`} style={{ position: "sticky" as const, top: `${110 + i * 28}px`, zIndex: i + 1, display: "flex", gap: "28px", alignItems: "flex-start", background: dark2 ? dark : "#fff", border: dark2 ? "none" : `1px solid ${line}`, boxShadow: dark2 ? "0 24px 64px rgba(10,15,26,0.24)" : "0 24px 64px rgba(10,15,26,0.14)", padding: "36px 40px" }}>
                       <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: dark2 ? "#7cd4ff" : accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{String(i + 4).padStart(2, "0")}</div>
                       <div>
                         <span style={{ display: "block", fontSize: "11px", fontWeight: 700, color: dark2 ? "rgba(255,255,255,0.45)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: "8px" }}>{tag}</span>
@@ -282,7 +286,7 @@ export default function CleaningPage() {
                         <p style={{ fontSize: "14px", color: dark2 ? "rgba(255,255,255,0.65)" : muted, lineHeight: 1.7 }}>{desc}</p>
                       </div>
                     </div>
-                    {i < SOLUTIONS.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
+                    {i < SOLUTIONS.length - 1 && <div aria-hidden className="how-step-gap" style={{ height: "40px" }} />}
                   </Fragment>
                 );
               })}
