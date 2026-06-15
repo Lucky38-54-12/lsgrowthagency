@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, Fragment } from "react";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
 
 /* ── Design tokens (matches homepage) ── */
 const F = "var(--font-inter), system-ui, sans-serif";
@@ -62,6 +62,30 @@ export default function CleaningPage() {
         .nav-link::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:${accent}; transition:width 0.2s ease; }
         .nav-link:hover { color:${accent} !important; }
         .nav-link:hover::after { width:100%; }
+
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-menu {
+          position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+          padding-top: 14px;
+          opacity: 0; visibility: hidden; pointer-events: none;
+          transition: opacity 0.15s ease, visibility 0.15s ease;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+          opacity: 1; visibility: visible; pointer-events: auto;
+        }
+        .nav-dropdown-panel {
+          background: #fff; border-radius: 10px; padding: 8px; min-width: 190px;
+          box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+          display: flex; flex-direction: column; gap: 2px;
+        }
+        .nav-dropdown-item {
+          display: block; width: 100%; padding: 10px 14px; border-radius: 6px;
+          font-size: 14px; font-weight: 500; color: #0a0f1a; text-decoration: none;
+          background: none; border: none; cursor: pointer; font-family: inherit;
+          text-align: left; white-space: nowrap;
+          transition: background 0.12s ease, color 0.12s ease;
+        }
+        .nav-dropdown-item:hover { background: #f1f5f9; color: ${accent}; }
 
         @keyframes nav-shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
         .nav-cta { position: relative; overflow: hidden; }
@@ -131,9 +155,19 @@ export default function CleaningPage() {
           <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "64px", width: "auto", objectFit: "contain" }} />
         </a>
         <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
-          {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
-            <a key={h} href={h} className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
-          ))}
+          <a href="/#about" className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", textDecoration: "none", whiteSpace: "nowrap" as const }}>About</a>
+          <div className="nav-dropdown">
+            <button className="nav-link" style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const }}>
+              Services <ChevronDown style={{ width: "14px", height: "14px" }} />
+            </button>
+            <div className="nav-dropdown-menu">
+              <div className="nav-dropdown-panel">
+                <a href="/#services" className="nav-dropdown-item">Services</a>
+                <a href="/#work" className="nav-dropdown-item">Our Work</a>
+                <a href="/#how" className="nav-dropdown-item">How It Works</a>
+              </div>
+            </div>
+          </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "8px", padding: "11px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
