@@ -402,11 +402,11 @@ export default function CleaningPage() {
         <div className="cmp-stack" style={{ maxWidth: "1020px", margin: "0 auto", background: "transparent", borderRadius: "28px", padding: "64px 56px" }}>
           <div style={{ textAlign: "center" as const, marginBottom: "56px" }}>
             <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 600, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>· Why LS Growth?</p>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
-              Most cleaning ads get you enquiries.<br />We get you booked jobs.
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(24px,3.6vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.03em", marginBottom: "16px" }}>
+              Most cleaning ads get enquiries.<br />We get you booked jobs.
             </h2>
             <p className="lp-rise d2" style={{ fontSize: "15px", color: muted, maxWidth: "500px", margin: "0 auto", lineHeight: 1.65 }}>
-              Ads without follow-through is half a system. Tracking without action is just a number on a report.<br />We do the whole job, from the first click to the booked job.
+              Ads without follow-through is half a system.<br />We do the whole job, from first click to booked job.
             </p>
           </div>
 
