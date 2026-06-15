@@ -1077,7 +1077,7 @@ export default function Home() {
                 </h3>
                 <p style={{ fontSize: "16px", color: muted, marginBottom: "28px" }}>Done-for-you lead generation.</p>
               </div>
-              <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "60px", width: "auto", objectFit: "contain" }} />
+              <img src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "44px", width: "auto", objectFit: "contain", alignSelf: "flex-start" }} />
             </div>
             <div>
               <p style={{ fontSize: "13px", fontWeight: 600, color: ink, marginBottom: "20px" }}>Navigation</p>
