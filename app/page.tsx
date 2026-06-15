@@ -471,7 +471,7 @@ export default function Home() {
       </section>
 
       {/* ── TRUSTED BY ── */}
-      <section style={{ position: "relative", padding: "56px 0 72px", overflow: "hidden", background: "transparent" }}>
+      <section style={{ position: "relative", padding: "56px 0 72px", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}`, borderBottom: `1px solid ${line}` }}>
         <style suppressHydrationWarning>{`
           .m-trusted-track { gap: 80px; animation: trusted-marquee 32s linear infinite; }
           .m-trusted-track img { height: 56px; width: auto; opacity: 0.85; filter: grayscale(100%); flex-shrink: 0; }
