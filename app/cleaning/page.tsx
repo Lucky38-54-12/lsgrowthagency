@@ -99,8 +99,8 @@ export default function CleaningPage() {
           .m-nav-links { display: none !important; }
           .m-nav-hamburger { display: flex !important; }
           .nav-cta { display: none !important; }
-          nav { padding: 0 16px !important; height: 72px !important; }
-          .nav-logo { height: 48px !important; }
+          nav { padding: 0 16px !important; height: 60px !important; }
+          .nav-logo { height: 34px !important; }
           .m-hero-content { padding: 110px 20px 40px !important; }
           .m-hero-content h1 { font-size: 34px !important; }
           .hero-sub { font-size: 15px !important; }
@@ -131,20 +131,20 @@ export default function CleaningPage() {
       `}</style>
 
       {/* ── NAV (same as homepage) ── */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 40px", background: "rgba(255,255,255,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(10,15,26,0.08)", transform: "translateZ(0)" }}>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px", background: "rgba(255,255,255,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(10,15,26,0.08)", transform: "translateZ(0)" }}>
         <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "64px", width: "auto", objectFit: "contain" }} />
+          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "42px", width: "auto", objectFit: "contain" }} />
         </a>
-        <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
+        <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
           {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
-            <a key={h} href={h} className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
+            <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
           ))}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "13px 26px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+          <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "10px 18px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
             Talk To Us
           </a>
-          <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "52px", height: "52px", background: accent, border: "none", borderRadius: "0", cursor: "pointer", padding: "14px", flexShrink: 0 }}>
+          <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "4px", width: "44px", height: "44px", background: accent, border: "none", borderRadius: "0", cursor: "pointer", padding: "11px", flexShrink: 0 }}>
             <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
             <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
             <span style={{ display: "block", width: "65%", height: "2px", background: "#fff", borderRadius: "2px" }} />

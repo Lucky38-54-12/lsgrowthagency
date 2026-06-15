@@ -294,8 +294,8 @@ export default function Home() {
           .m-nav-hamburger { display: flex !important; }
           .btn-nav { display: none !important; }
           .nav-cta { display: none !important; }
-          nav { padding: 0 16px !important; height: 72px !important; }
-          .nav-logo { height: 48px !important; }
+          nav { padding: 0 16px !important; height: 60px !important; }
+          .nav-logo { height: 34px !important; }
           .m-hero-content { padding: 100px 20px 40px !important; }
           .m-hero-stats { grid-template-columns: 1fr !important; max-width: 100% !important; margin-top: 32px !important; padding-top: 24px !important; }
           .m-hero-stats > div { border-left: none !important; padding: 16px 0 !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
@@ -334,23 +334,23 @@ export default function Home() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 40px", background: "rgba(255,255,255,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(10,15,26,0.08)", transform: "translateZ(0)" }}>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px", background: "rgba(255,255,255,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(10,15,26,0.08)", transform: "translateZ(0)" }}>
         {/* Logo — far left */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "64px", width: "auto", objectFit: "contain" }} />
+          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "42px", width: "auto", objectFit: "contain" }} />
         </a>
         {/* Center/right — simple text links */}
-        <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
+        <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
           {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
-            <a key={h} href={h} className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
+            <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
           ))}
         </div>
         {/* Far right — CTA + hamburger */}
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "13px 26px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+          <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "10px 18px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
             Talk To Us
           </a>
-          <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "52px", height: "52px", background: accent, border: "none", borderRadius: "0", cursor: "pointer", padding: "14px", flexShrink: 0 }}>
+          <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "4px", width: "44px", height: "44px", background: accent, border: "none", borderRadius: "0", cursor: "pointer", padding: "11px", flexShrink: 0 }}>
             <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
             <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
             <span style={{ display: "block", width: "65%", height: "2px", background: "#fff", borderRadius: "2px" }} />
@@ -524,8 +524,9 @@ export default function Home() {
       </section>
 
       {/* ── CALENDAR PROMISE ── */}
-      <section style={{ background: "transparent", padding: "100px 40px 80px", borderTop: `1px solid ${line}` }}>
-        <div className="m-calendar-grid" style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr auto", gap: "64px", alignItems: "center" }}>
+      <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px 80px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
+        <div className="m-calendar-grid" style={{ position: "relative", maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr auto", gap: "64px", alignItems: "center" }}>
           <div>
             <span className="lp-rise" style={{ display: "inline-block", fontSize: "13px", fontWeight: 500, color: muted, background: "#f8fafc", border: `1px solid ${line}`, padding: "8px 16px", marginBottom: "28px" }}>
               Client acquisition, fully handled
@@ -713,7 +714,8 @@ export default function Home() {
       </section>
 
       {/* ── COMPARISON ── */}
-      <section style={{ background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
+      <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
         <style suppressHydrationWarning>{`
           .cmp-card { border-radius: 16px; transition: transform 0.2s ease; }
           .cmp-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 13px; line-height: 1.45; }
@@ -726,6 +728,7 @@ export default function Home() {
         <div
           className="cmp-stack"
           style={{
+            position: "relative",
             maxWidth: "1020px",
             margin: "0 auto",
             background: "transparent",
@@ -833,9 +836,8 @@ export default function Home() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section id="how" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
-        <div style={{ position: "relative", maxWidth: "1280px", margin: "0 auto" }}>
+      <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <div className="m-how-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
 
             <div className="m-how-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
