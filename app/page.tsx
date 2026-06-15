@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useState, useEffect, useRef } from "react";
-import { ArrowRight, ArrowUpRight, CheckCircle, Plus, Minus } from "lucide-react";
+import { ArrowRight, CheckCircle, Plus, Minus } from "lucide-react";
 
 /* ── CountUp component ── */
 function CountUp({ to, suffix = "", prefix = "", duration = 1800, color, format }: { to: number; suffix?: string; prefix?: string; duration?: number; color: string; format?: boolean }) {
@@ -167,12 +167,6 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [navOpen, setNavOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
   const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
 
@@ -252,8 +246,6 @@ export default function Home() {
         .nav-cta {
           position: relative;
           overflow: hidden;
-          background: transparent;
-          color: #fff;
         }
         .nav-cta::after {
           content: "";
@@ -265,7 +257,7 @@ export default function Home() {
           border-radius: inherit;
           pointer-events: none;
         }
-        .nav-cta:hover { background: rgba(255,255,255,0.12); transform: translateY(-1px); transition: all 0.15s; }
+        .nav-cta:hover { background: ${accentDark} !important; transform: translateY(-1px); transition: all 0.15s; }
         .hero-badge { animation: heroUp 0.5s ease 0.05s both; }
         .hero-h1    { animation: heroUp 0.55s ease 0.15s both; }
         .hero-sub   { animation: heroUp 0.55s ease 0.25s both; }
@@ -338,23 +330,24 @@ export default function Home() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", background: scrolled ? "rgba(5,10,18,0.96)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none", transition: "background 0.3s ease, border-color 0.3s ease", transform: "translateZ(0)" }}>
-        {/* Logo — far left, no padding */}
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 40px", background: "rgba(5,10,18,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)", transform: "translateZ(0)" }}>
+        {/* Logo — far left */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
           <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "64px", width: "auto", objectFit: "contain" }} />
         </a>
-        {/* Far right — links then CTA then hamburger */}
-        <div style={{ display: "flex", alignItems: "center", gap: "40px", paddingRight: "40px" }}>
-          <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "40px" }}>
-            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
-              <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 800, color: "rgba(255,255,255,0.92)", textDecoration: "none", whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>{l}</a>
-            ))}
-            <button onClick={() => setFormOpen(true)} className="nav-link m-nav-text-link" style={{ fontSize: "14px", fontWeight: 800, color: "rgba(255,255,255,0.92)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
-              Contact
-            </button>
-          </div>
-          <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 800, borderRadius: "999px", padding: "12px 28px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const, border: "2px solid rgba(255,255,255,0.9)", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
-            Book a Call <ArrowUpRight style={{ width: "14px", height: "14px" }} />
+        {/* Center/right — simple text links */}
+        <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
+          {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
+            <a key={h} href={h} className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
+          ))}
+          <button onClick={() => setFormOpen(true)} className="nav-link m-nav-text-link" style={{ fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const }}>
+            Contact
+          </button>
+        </div>
+        {/* Far right — CTA + hamburger */}
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "8px", padding: "11px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
+            Talk To Us
           </a>
           <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "52px", height: "52px", background: accent, border: "none", borderRadius: "8px", cursor: "pointer", padding: "14px", flexShrink: 0 }}>
             <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
@@ -478,32 +471,31 @@ export default function Home() {
       </section>
 
       {/* ── TRUSTED BY ── */}
-      <section style={{ position: "relative", padding: "64px 40px 72px", overflow: "hidden", background: "transparent" }}>
+      <section style={{ position: "relative", padding: "56px 0 72px", overflow: "hidden", background: "transparent" }}>
         <style suppressHydrationWarning>{`
-          .m-trusted-track { gap: 96px; animation: trusted-marquee 36s linear infinite; }
-          .m-trusted-track img { height: 42px; width: auto; opacity: 0.38; flex-shrink: 0; }
+          .m-trusted-track { gap: 80px; animation: trusted-marquee 32s linear infinite; }
+          .m-trusted-track img { height: 56px; width: auto; opacity: 0.85; filter: grayscale(100%); flex-shrink: 0; }
           .m-trusted-mask:hover .m-trusted-track { animation-play-state: paused; }
           @keyframes trusted-marquee {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
           }
           @media (max-width: 640px) {
-            .m-trusted-track { gap: 48px; }
-            .m-trusted-track img { height: 28px; }
+            .m-trusted-track { gap: 44px; }
+            .m-trusted-track img { height: 34px; }
           }
         `}</style>
-        <p style={{ position: "relative", textAlign: "center", fontSize: "12px", fontWeight: 500, color: dim, letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: "36px" }}>
+        <p style={{ position: "relative", textAlign: "center", fontSize: "12px", fontWeight: 500, color: dim, letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: "36px", padding: "0 40px" }}>
           Trusted by local service businesses across New Zealand
         </p>
         <div
           className="m-trusted-mask"
           style={{
             position: "relative",
-            maxWidth: "760px",
-            margin: "0 auto",
+            width: "100%",
             overflow: "hidden",
-            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%)",
-            maskImage: "linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
+            maskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
           }}
         >
           <div className="m-trusted-track" style={{ display: "flex", alignItems: "center", width: "max-content" }}>

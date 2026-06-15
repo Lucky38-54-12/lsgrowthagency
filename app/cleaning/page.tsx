@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, Fragment } from "react";
-import { ArrowRight, ArrowUpRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 /* ── Design tokens (matches homepage) ── */
 const F = "var(--font-inter), system-ui, sans-serif";
@@ -10,6 +10,7 @@ const muted = "#6b7280";
 const dim   = "#9ca3af";
 const line  = "#e5e7eb";
 const accent = "#0080e0";
+const accentDark = "#006bbf";
 const dark  = "#0a0f1a";
 
 const PAINS = [
@@ -26,12 +27,6 @@ const SOLUTIONS = [
 
 export default function CleaningPage() {
   const [navOpen, setNavOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -69,9 +64,9 @@ export default function CleaningPage() {
         .nav-link:hover::after { width:100%; }
 
         @keyframes nav-shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-        .nav-cta { position: relative; overflow: hidden; background: transparent; color: #fff; }
+        .nav-cta { position: relative; overflow: hidden; }
         .nav-cta::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.18) 50%, transparent 65%); background-size: 200% 100%; animation: nav-shimmer 2.6s ease-in-out infinite; border-radius: inherit; pointer-events: none; }
-        .nav-cta:hover { background: rgba(255,255,255,0.12); transform: translateY(-1px); transition: all 0.15s; }
+        .nav-cta:hover { background: ${accentDark} !important; transform: translateY(-1px); transition: all 0.15s; }
 
         @keyframes heroUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
         .hero-badge { animation: heroUp 0.5s ease 0.05s both; }
@@ -131,18 +126,18 @@ export default function CleaningPage() {
       `}</style>
 
       {/* ── NAV (same as homepage) ── */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", background: scrolled ? "rgba(5,10,18,0.96)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none", transition: "background 0.3s ease, border-color 0.3s ease", transform: "translateZ(0)" }}>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 40px", background: "rgba(5,10,18,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)", transform: "translateZ(0)" }}>
         <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
           <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "64px", width: "auto", objectFit: "contain" }} />
         </a>
-        <div style={{ display: "flex", alignItems: "center", gap: "40px", paddingRight: "40px" }}>
-          <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "40px" }}>
-            {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
-              <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 800, color: "rgba(255,255,255,0.92)", textDecoration: "none", whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>{l}</a>
-            ))}
-          </div>
-          <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 800, borderRadius: "999px", padding: "12px 28px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const, border: "2px solid rgba(255,255,255,0.9)", letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
-            Book a Call <ArrowUpRight style={{ width: "14px", height: "14px" }} />
+        <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
+          {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
+            <a key={h} href={h} className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
+          ))}
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "8px", padding: "11px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
+            Talk To Us
           </a>
           <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "52px", height: "52px", background: accent, border: "none", borderRadius: "8px", cursor: "pointer", padding: "14px", flexShrink: 0 }}>
             <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
