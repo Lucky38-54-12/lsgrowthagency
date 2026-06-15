@@ -512,7 +512,7 @@ export default function Home() {
                   { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
                   { src: "/logos/logo-7.png", alt: "Fantastic Services" },
                   { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services", big: true },
-                  { src: "/logos/logo-9.png", alt: "Jim's Cleaning" },
+                  { src: "/logos/logo-9.png", alt: "Jim's Cleaning", big: true },
                 ].map(({ src, alt, big }) => (
                   <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
                     <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} className={big ? "m-trusted-big" : undefined} />
