@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useState, useEffect, useRef } from "react";
-import { ArrowRight, CheckCircle, Plus, Minus, ChevronDown } from "lucide-react";
+import { ArrowRight, CheckCircle, Plus, Minus } from "lucide-react";
 
 /* ── CountUp component ── */
 function CountUp({ to, suffix = "", prefix = "", duration = 1800, color, format }: { to: number; suffix?: string; prefix?: string; duration?: number; color: string; format?: boolean }) {
@@ -196,6 +196,7 @@ export default function Home() {
 
   return (
     <div style={{ ...s, color: ink, background: "linear-gradient(170deg, #d6e8f5 0%, #e8f2f9 15%, #f2f7fb 35%, #f8fafb 60%, #ffffff 100%)" }}>
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.035) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
       <style suppressHydrationWarning>{`
         .btn {
           display: inline-flex; align-items: center; gap: 8px;
@@ -240,30 +241,6 @@ export default function Home() {
         .nav-link::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:${accent}; transition:width 0.2s ease; }
         .nav-link:hover { color:${accent} !important; }
         .nav-link:hover::after { width:100%; }
-
-        .nav-dropdown { position: relative; }
-        .nav-dropdown-menu {
-          position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-          padding-top: 14px;
-          opacity: 0; visibility: hidden; pointer-events: none;
-          transition: opacity 0.15s ease, visibility 0.15s ease;
-        }
-        .nav-dropdown:hover .nav-dropdown-menu {
-          opacity: 1; visibility: visible; pointer-events: auto;
-        }
-        .nav-dropdown-panel {
-          background: #fff; border-radius: 10px; padding: 8px; min-width: 190px;
-          box-shadow: 0 16px 40px rgba(0,0,0,0.22);
-          display: flex; flex-direction: column; gap: 2px;
-        }
-        .nav-dropdown-item {
-          display: block; width: 100%; padding: 10px 14px; border-radius: 6px;
-          font-size: 14px; font-weight: 500; color: #0a0f1a; text-decoration: none;
-          background: none; border: none; cursor: pointer; font-family: inherit;
-          text-align: left; white-space: nowrap;
-          transition: background 0.12s ease, color 0.12s ease;
-        }
-        .nav-dropdown-item:hover { background: #f1f5f9; color: ${accent}; }
 
         @keyframes heroUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
         @keyframes nav-shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
@@ -353,34 +330,23 @@ export default function Home() {
       `}</style>
 
       {/* ── NAV ── */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 40px", background: "rgba(5,10,18,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)", transform: "translateZ(0)" }}>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 40px", background: "rgba(255,255,255,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(10,15,26,0.08)", transform: "translateZ(0)" }}>
         {/* Logo — far left */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
           <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "64px", width: "auto", objectFit: "contain" }} />
         </a>
         {/* Center/right — simple text links */}
         <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
-          <a href="#about" className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", textDecoration: "none", whiteSpace: "nowrap" as const }}>About</a>
-          <div className="nav-dropdown">
-            <button className="nav-link" style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const }}>
-              Services <ChevronDown style={{ width: "14px", height: "14px" }} />
-            </button>
-            <div className="nav-dropdown-menu">
-              <div className="nav-dropdown-panel">
-                <a href="#services" className="nav-dropdown-item">Services</a>
-                <a href="#work" className="nav-dropdown-item">Our Work</a>
-                <a href="#how" className="nav-dropdown-item">How It Works</a>
-                <button onClick={() => setFormOpen(true)} className="nav-dropdown-item">Contact</button>
-              </div>
-            </div>
-          </div>
+          {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
+            <a key={h} href={h} className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
+          ))}
         </div>
         {/* Far right — CTA + hamburger */}
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "8px", padding: "11px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
+          <a href="/book" className="nav-cta" style={{ fontSize: "14px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "13px 26px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
             Talk To Us
           </a>
-          <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "52px", height: "52px", background: accent, border: "none", borderRadius: "8px", cursor: "pointer", padding: "14px", flexShrink: 0 }}>
+          <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "5px", width: "52px", height: "52px", background: accent, border: "none", borderRadius: "0", cursor: "pointer", padding: "14px", flexShrink: 0 }}>
             <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
             <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
             <span style={{ display: "block", width: "65%", height: "2px", background: "#fff", borderRadius: "2px" }} />
