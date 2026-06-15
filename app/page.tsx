@@ -926,6 +926,7 @@ export default function Home() {
 
       {/* ── TESTIMONIALS ── */}
       <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 0", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
         <style suppressHydrationWarning>{`
           .testi-card { width: 360px; flex-shrink: 0; }
           .testi-row { gap: 20px; }
@@ -1029,8 +1030,9 @@ export default function Home() {
       </section>
 
       {/* ── CTA ── */}
-      <section id="contact" style={{ background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <section id="contact" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
+        <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
           <div className="lp-rise" style={{ border: `1px solid ${line}`, borderRadius: "16px", padding: "64px 48px", background: "#fff", position: "relative" as const, overflow: "hidden" }}>
             <div className="m-cta-stack" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "48px", flexWrap: "wrap" as const }}>
               <div>
