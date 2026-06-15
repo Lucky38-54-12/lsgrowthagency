@@ -517,7 +517,7 @@ export default function Home() {
             .m-trusted-track img { height: 26px; }
           }
         `}</style>
-        <div style={{ borderTop: "1px solid #cbd5e1", borderBottom: "1px solid #cbd5e1", padding: "40px 0" }}>
+        <div style={{ borderTop: "1px solid #cbd5e1", borderBottom: "1px solid #cbd5e1", padding: "30px 0" }}>
           <div
             className="m-trusted-mask"
             style={{
