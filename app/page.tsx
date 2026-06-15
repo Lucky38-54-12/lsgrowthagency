@@ -476,7 +476,8 @@ export default function Home() {
       {/* ── TRUSTED BY ── */}
       <section style={{ position: "relative", padding: "56px 0 72px", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}`, borderBottom: `1px solid ${line}` }}>
         <style suppressHydrationWarning>{`
-          .m-trusted-track { gap: 80px; animation: trusted-marquee 32s linear infinite; }
+          .m-trusted-track { animation: trusted-marquee 32s linear infinite; }
+          .m-trusted-item { padding: 0 40px; border-right: 1px solid ${line}; }
           .m-trusted-track img { height: 40px; width: auto; opacity: 0.85; filter: grayscale(100%); flex-shrink: 0; }
           .m-trusted-mask:hover .m-trusted-track { animation-play-state: paused; }
           @keyframes trusted-marquee {
@@ -484,7 +485,7 @@ export default function Home() {
             to { transform: translateX(-50%); }
           }
           @media (max-width: 640px) {
-            .m-trusted-track { gap: 44px; }
+            .m-trusted-item { padding: 0 22px; }
             .m-trusted-track img { height: 26px; }
           }
         `}</style>
@@ -498,7 +499,7 @@ export default function Home() {
             maskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
           }}
         >
-          <div className="m-trusted-track" style={{ display: "flex", alignItems: "center", width: "max-content" }}>
+          <div className="m-trusted-track" style={{ display: "flex", alignItems: "stretch", width: "max-content" }}>
             {[...Array(2)].flatMap((_, dup) =>
               [
                 { src: "/logos/logo-1.png", alt: "We Do Electrical" },
@@ -509,7 +510,9 @@ export default function Home() {
                 { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
                 { src: "/logos/logo-7.png", alt: "Fantastic Services" },
               ].map(({ src, alt }) => (
-                <img key={`${dup}-${src}`} src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} />
+                <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+                  <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} />
+                </div>
               ))
             )}
           </div>
