@@ -474,7 +474,7 @@ export default function Home() {
       <section style={{ position: "relative", padding: "56px 0 72px", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}`, borderBottom: `1px solid ${line}` }}>
         <style suppressHydrationWarning>{`
           .m-trusted-track { gap: 80px; animation: trusted-marquee 32s linear infinite; }
-          .m-trusted-track img { height: 56px; width: auto; opacity: 0.85; filter: grayscale(100%); flex-shrink: 0; }
+          .m-trusted-track img { height: 40px; width: auto; opacity: 0.85; filter: grayscale(100%); flex-shrink: 0; }
           .m-trusted-mask:hover .m-trusted-track { animation-play-state: paused; }
           @keyframes trusted-marquee {
             from { transform: translateX(0); }
@@ -482,7 +482,7 @@ export default function Home() {
           }
           @media (max-width: 640px) {
             .m-trusted-track { gap: 44px; }
-            .m-trusted-track img { height: 34px; }
+            .m-trusted-track img { height: 26px; }
           }
         `}</style>
         <p style={{ position: "relative", textAlign: "center", fontSize: "12px", fontWeight: 500, color: dim, letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: "36px", padding: "0 40px" }}>
