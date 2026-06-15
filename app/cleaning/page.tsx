@@ -99,8 +99,8 @@ export default function CleaningPage() {
           .m-nav-links { display: none !important; }
           .m-nav-hamburger { display: flex !important; }
           .nav-cta { display: none !important; }
-          nav { padding: 0 16px 0 0 !important; height: 72px !important; }
-          .nav-logo { height: 60px !important; }
+          nav { padding: 0 16px !important; height: 72px !important; }
+          .nav-logo { height: 48px !important; }
           .m-hero-content { padding: 110px 20px 40px !important; }
           .m-hero-content h1 { font-size: 34px !important; }
           .hero-sub { font-size: 15px !important; }
@@ -133,7 +133,7 @@ export default function CleaningPage() {
       {/* ── NAV (same as homepage) ── */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "88px", display: "flex", alignItems: "center", justifyContent: "space-between", background: scrolled ? "rgba(5,10,18,0.96)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none", transition: "background 0.3s ease, border-color 0.3s ease", transform: "translateZ(0)" }}>
         <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "110px", width: "auto", objectFit: "contain" }} />
+          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "64px", width: "auto", objectFit: "contain" }} />
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: "40px", paddingRight: "40px" }}>
           <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "40px" }}>
