@@ -281,6 +281,11 @@ export default function Home() {
         .footer-link:hover { color:${accent} !important; }
         .footer-link:hover::after { width:100%; }
 
+        @media (max-width: 700px) {
+          nav { padding: 0 20px !important; }
+          .m-nav-links { gap: 18px !important; }
+        }
+
         @media (max-width: 980px) {
           .m-testi-grid { grid-template-columns: repeat(2,1fr) !important; }
         }
@@ -504,6 +509,7 @@ export default function Home() {
                   { src: "/logos/logo-5.png", alt: "CN-Electrical" },
                   { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
                   { src: "/logos/logo-7.png", alt: "Fantastic Services" },
+                  { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services" },
                 ].map(({ src, alt }) => (
                   <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
                     <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} />
