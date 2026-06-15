@@ -505,7 +505,7 @@ export default function Home() {
       <section style={{ position: "relative", padding: "24px 0", overflow: "hidden", background: "transparent" }}>
         <style suppressHydrationWarning>{`
           .m-trusted-track { animation: trusted-marquee 32s linear infinite; }
-          .m-trusted-item { padding: 0 40px; border-right: 1px solid #cbd5e1; }
+          .m-trusted-item { padding: 0 40px; }
           .m-trusted-track img { height: 40px; width: auto; opacity: 0.85; filter: grayscale(100%); flex-shrink: 0; }
           .m-trusted-mask:hover .m-trusted-track { animation-play-state: paused; }
           @keyframes trusted-marquee {
