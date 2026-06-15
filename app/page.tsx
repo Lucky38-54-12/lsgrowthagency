@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useState, useEffect, useRef } from "react";
-import { ArrowRight, CheckCircle, Plus, Minus } from "lucide-react";
+import { ArrowRight, CheckCircle, Plus, Minus, ChevronDown } from "lucide-react";
 
 /* ── CountUp component ── */
 function CountUp({ to, suffix = "", prefix = "", duration = 1800, color, format }: { to: number; suffix?: string; prefix?: string; duration?: number; color: string; format?: boolean }) {
@@ -241,6 +241,30 @@ export default function Home() {
         .nav-link:hover { color:${accent} !important; }
         .nav-link:hover::after { width:100%; }
 
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-menu {
+          position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+          padding-top: 14px;
+          opacity: 0; visibility: hidden; pointer-events: none;
+          transition: opacity 0.15s ease, visibility 0.15s ease;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+          opacity: 1; visibility: visible; pointer-events: auto;
+        }
+        .nav-dropdown-panel {
+          background: #fff; border-radius: 10px; padding: 8px; min-width: 190px;
+          box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+          display: flex; flex-direction: column; gap: 2px;
+        }
+        .nav-dropdown-item {
+          display: block; width: 100%; padding: 10px 14px; border-radius: 6px;
+          font-size: 14px; font-weight: 500; color: #0a0f1a; text-decoration: none;
+          background: none; border: none; cursor: pointer; font-family: inherit;
+          text-align: left; white-space: nowrap;
+          transition: background 0.12s ease, color 0.12s ease;
+        }
+        .nav-dropdown-item:hover { background: #f1f5f9; color: ${accent}; }
+
         @keyframes heroUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
         @keyframes nav-shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
         .nav-cta {
@@ -282,10 +306,6 @@ export default function Home() {
 
         @media (max-width: 980px) {
           .m-testi-grid { grid-template-columns: repeat(2,1fr) !important; }
-        }
-
-        @media (max-width: 860px) {
-          .m-nav-text-link { display: none !important; }
         }
 
         @media (max-width: 640px) {
@@ -340,12 +360,20 @@ export default function Home() {
         </a>
         {/* Center/right — simple text links */}
         <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
-          {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
-            <a key={h} href={h} className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
-          ))}
-          <button onClick={() => setFormOpen(true)} className="nav-link m-nav-text-link" style={{ fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const }}>
-            Contact
-          </button>
+          <a href="#about" className="nav-link" style={{ fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", textDecoration: "none", whiteSpace: "nowrap" as const }}>About</a>
+          <div className="nav-dropdown">
+            <button className="nav-link" style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "15px", fontWeight: 500, color: "rgba(255,255,255,0.8)", background: "none", border: "none", cursor: "pointer", fontFamily: F, padding: 0, whiteSpace: "nowrap" as const }}>
+              Services <ChevronDown style={{ width: "14px", height: "14px" }} />
+            </button>
+            <div className="nav-dropdown-menu">
+              <div className="nav-dropdown-panel">
+                <a href="#services" className="nav-dropdown-item">Services</a>
+                <a href="#work" className="nav-dropdown-item">Our Work</a>
+                <a href="#how" className="nav-dropdown-item">How It Works</a>
+                <button onClick={() => setFormOpen(true)} className="nav-dropdown-item">Contact</button>
+              </div>
+            </div>
+          </div>
         </div>
         {/* Far right — CTA + hamburger */}
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
@@ -474,7 +502,7 @@ export default function Home() {
       </section>
 
       {/* ── TRUSTED BY ── */}
-      <section style={{ position: "relative", padding: "56px 0 72px", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}`, borderBottom: `1px solid ${line}` }}>
+      <section style={{ position: "relative", padding: "24px 0", overflow: "hidden", background: "transparent" }}>
         <style suppressHydrationWarning>{`
           .m-trusted-track { animation: trusted-marquee 32s linear infinite; }
           .m-trusted-item { padding: 0 40px; border-right: 1px solid ${line}; }
@@ -489,32 +517,34 @@ export default function Home() {
             .m-trusted-track img { height: 26px; }
           }
         `}</style>
-        <div
-          className="m-trusted-mask"
-          style={{
-            position: "relative",
-            width: "100%",
-            overflow: "hidden",
-            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
-            maskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
-          }}
-        >
-          <div className="m-trusted-track" style={{ display: "flex", alignItems: "stretch", width: "max-content" }}>
-            {[...Array(2)].flatMap((_, dup) =>
-              [
-                { src: "/logos/logo-1.png", alt: "We Do Electrical" },
-                { src: "/logos/logo-2.png", alt: "Common Ground Electrical" },
-                { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD" },
-                { src: "/logos/logo-4.png", alt: "SSP Electrical" },
-                { src: "/logos/logo-5.png", alt: "CN-Electrical" },
-                { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
-                { src: "/logos/logo-7.png", alt: "Fantastic Services" },
-              ].map(({ src, alt }) => (
-                <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                  <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} />
-                </div>
-              ))
-            )}
+        <div style={{ borderTop: `1px solid ${line}`, borderBottom: `1px solid ${line}`, padding: "20px 0" }}>
+          <div
+            className="m-trusted-mask"
+            style={{
+              position: "relative",
+              width: "100%",
+              overflow: "hidden",
+              WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
+              maskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
+            }}
+          >
+            <div className="m-trusted-track" style={{ display: "flex", alignItems: "stretch", width: "max-content" }}>
+              {[...Array(2)].flatMap((_, dup) =>
+                [
+                  { src: "/logos/logo-1.png", alt: "We Do Electrical" },
+                  { src: "/logos/logo-2.png", alt: "Common Ground Electrical" },
+                  { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD" },
+                  { src: "/logos/logo-4.png", alt: "SSP Electrical" },
+                  { src: "/logos/logo-5.png", alt: "CN-Electrical" },
+                  { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
+                  { src: "/logos/logo-7.png", alt: "Fantastic Services" },
+                ].map(({ src, alt }) => (
+                  <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+                    <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} />
+                  </div>
+                ))
+              )}
+            </div>
           </div>
         </div>
       </section>
