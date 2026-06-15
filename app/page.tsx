@@ -477,6 +477,7 @@ export default function Home() {
           .m-trusted-track { animation: trusted-marquee 32s linear infinite; }
           .m-trusted-item { padding: 0 40px; }
           .m-trusted-track img { height: 40px; width: auto; opacity: 0.85; filter: grayscale(100%); flex-shrink: 0; }
+          .m-trusted-track img.m-trusted-big { height: 56px; }
           .m-trusted-mask:hover .m-trusted-track { animation-play-state: paused; }
           @keyframes trusted-marquee {
             from { transform: translateX(0); }
@@ -485,6 +486,7 @@ export default function Home() {
           @media (max-width: 640px) {
             .m-trusted-item { padding: 0 22px; }
             .m-trusted-track img { height: 26px; }
+            .m-trusted-track img.m-trusted-big { height: 36px; }
           }
         `}</style>
         <div style={{ borderTop: "1px solid #cbd5e1", borderBottom: "1px solid #cbd5e1", padding: "30px 0" }}>
@@ -508,10 +510,11 @@ export default function Home() {
                   { src: "/logos/logo-5.png", alt: "CN-Electrical" },
                   { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
                   { src: "/logos/logo-7.png", alt: "Fantastic Services" },
-                  { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services" },
-                ].map(({ src, alt }) => (
+                  { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services", big: true },
+                  { src: "/logos/logo-9.png", alt: "Jim's Cleaning" },
+                ].map(({ src, alt, big }) => (
                   <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                    <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} />
+                    <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} className={big ? "m-trusted-big" : undefined} />
                   </div>
                 ))
               )}
