@@ -504,18 +504,18 @@ export default function Home() {
             <div className="m-trusted-track" style={{ display: "flex", alignItems: "stretch", width: "max-content" }}>
               {[...Array(2)].flatMap((_, dup) =>
                 [
-                  { src: "/logos/logo-1.png", alt: "We Do Electrical" },
-                  { src: "/logos/logo-2.png", alt: "Common Ground Electrical" },
-                  { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD" },
-                  { src: "/logos/logo-4.png", alt: "SSP Electrical" },
-                  { src: "/logos/logo-5.png", alt: "CN-Electrical" },
-                  { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
-                  { src: "/logos/logo-7.png", alt: "Fantastic Services" },
-                  { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services", big: true },
-                  { src: "/logos/logo-9.png", alt: "Jim's Cleaning", big: true },
-                ].map(({ src, alt, big }) => (
+                  { src: "/logos/logo-1.png", alt: "We Do Electrical", w: 331, h: 122 },
+                  { src: "/logos/logo-2.png", alt: "Common Ground Electrical", w: 142, h: 173 },
+                  { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD", w: 341, h: 129 },
+                  { src: "/logos/logo-4.png", alt: "SSP Electrical", w: 261, h: 71 },
+                  { src: "/logos/logo-5.png", alt: "CN-Electrical", w: 362, h: 86 },
+                  { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South", w: 346, h: 136 },
+                  { src: "/logos/logo-7.png", alt: "Fantastic Services", w: 352, h: 136 },
+                  { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services", w: 200, h: 200, big: true },
+                  { src: "/logos/logo-9.png", alt: "Jim's Cleaning", w: 200, h: 200, big: true },
+                ].map(({ src, alt, w, h, big }) => (
                   <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                    <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} className={big ? "m-trusted-big" : undefined} />
+                    <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} width={w} height={h} className={big ? "m-trusted-big" : undefined} />
                   </div>
                 ))
               )}
