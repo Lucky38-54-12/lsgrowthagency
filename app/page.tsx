@@ -284,8 +284,11 @@ export default function Home() {
           .m-testi-grid { grid-template-columns: repeat(2,1fr) !important; }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 860px) {
           .m-nav-text-link { display: none !important; }
+        }
+
+        @media (max-width: 640px) {
           .m-nav-links { display: none !important; }
           .m-nav-hamburger { display: flex !important; }
           .btn-nav { display: none !important; }
