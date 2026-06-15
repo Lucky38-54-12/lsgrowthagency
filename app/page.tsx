@@ -196,7 +196,6 @@ export default function Home() {
 
   return (
     <div style={{ ...s, color: ink, background: "linear-gradient(170deg, #d6e8f5 0%, #e8f2f9 15%, #f2f7fb 35%, #f8fafb 60%, #ffffff 100%)" }}>
-      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.035) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
       <style suppressHydrationWarning>{`
         .btn {
           display: inline-flex; align-items: center; gap: 8px;
