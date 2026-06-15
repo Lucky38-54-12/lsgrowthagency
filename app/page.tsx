@@ -485,9 +485,6 @@ export default function Home() {
             .m-trusted-track img { height: 26px; }
           }
         `}</style>
-        <p style={{ position: "relative", textAlign: "center", fontSize: "12px", fontWeight: 500, color: dim, letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: "36px", padding: "0 40px" }}>
-          Trusted by local service businesses across New Zealand
-        </p>
         <div
           className="m-trusted-mask"
           style={{
