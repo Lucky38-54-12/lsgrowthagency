@@ -1069,7 +1069,7 @@ export default function Home() {
       {/* ── FOOTER ── */}
       <footer id="about" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "60px 40px 0" }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
-          <div className="m-footer-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr", gap: "48px", paddingBottom: "48px" }}>
+          <div className="m-footer-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: "48px", paddingBottom: "48px" }}>
             <div className="lp-rise m-footer-brand" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
                 <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "6px" }}>
@@ -1083,12 +1083,6 @@ export default function Home() {
               <p style={{ fontSize: "13px", fontWeight: 600, color: ink, marginBottom: "20px" }}>Navigation</p>
               {[["Home","#"],["Our Work","#work"],["Services","#services"],["How It Works","#how"]].map(([l,h]) => (
                 <a key={l} href={h} style={{ display: "block", fontSize: "14px", color: muted, textDecoration: "none", marginBottom: "12px", transition: "color 0.15s" }} onMouseEnter={e => (e.currentTarget.style.color = ink)} onMouseLeave={e => (e.currentTarget.style.color = muted)}>{l}</a>
-              ))}
-            </div>
-            <div>
-              <p style={{ fontSize: "13px", fontWeight: 600, color: ink, marginBottom: "20px" }}>Services</p>
-              {["Qualified Leads","Instant Response","Conversion Website","Pipeline Management"].map(l => (
-                <span key={l} style={{ display: "block", fontSize: "14px", color: muted, marginBottom: "12px" }}>{l}</span>
               ))}
             </div>
             <div>
