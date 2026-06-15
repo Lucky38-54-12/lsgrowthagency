@@ -300,7 +300,7 @@ export default function Home() {
           .nav-cta { display: none !important; }
           nav { padding: 0 16px 0 0 !important; height: 72px !important; }
           .nav-logo { height: 60px !important; }
-          .m-hero-content { padding: 48px 20px 40px !important; }
+          .m-hero-content { padding: 100px 20px 40px !important; }
           .m-hero-stats { grid-template-columns: 1fr !important; max-width: 100% !important; margin-top: 32px !important; padding-top: 24px !important; }
           .m-hero-stats > div { border-left: none !important; padding: 16px 0 !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
           .m-hero-stats > div:first-child { border-top: none !important; padding-top: 0 !important; }
