@@ -339,22 +339,23 @@ export default function Home() {
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
           <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "42px", width: "auto", objectFit: "contain" }} />
         </a>
-        {/* Center/right — simple text links */}
-        <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
-          {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
-            <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
-          ))}
-        </div>
-        {/* Far right — CTA + hamburger */}
-        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-          <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "10px 18px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
-            Talk To Us
-          </a>
-          <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "4px", width: "44px", height: "44px", background: accent, border: "none", borderRadius: "0", cursor: "pointer", padding: "11px", flexShrink: 0 }}>
-            <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
-            <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
-            <span style={{ display: "block", width: "65%", height: "2px", background: "#fff", borderRadius: "2px" }} />
-          </button>
+        {/* Right side — links, CTA, hamburger grouped together */}
+        <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
+          <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
+            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
+              <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
+            ))}
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "10px 18px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
+              Talk To Us
+            </a>
+            <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "4px", width: "44px", height: "44px", background: accent, border: "none", borderRadius: "0", cursor: "pointer", padding: "11px", flexShrink: 0 }}>
+              <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
+              <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
+              <span style={{ display: "block", width: "65%", height: "2px", background: "#fff", borderRadius: "2px" }} />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -578,7 +579,7 @@ export default function Home() {
       </section>
 
       {/* ── WHAT WE BUILD FOR YOU ── */}
-      <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
+      <section id="services" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
         <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ textAlign: "center" as const, maxWidth: "720px", margin: "0 auto 56px" }}>
