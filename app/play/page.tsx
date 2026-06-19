@@ -1,37 +1,37 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import { ArrowLeft, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 const ink = "#0a0a0a";
 const muted = "#6b7280";
-const line = "#e5e7eb";
 const accent = "#0080e0";
-const dark = "#0a0f1a";
 const F = "var(--font-inter), system-ui, sans-serif";
 
-const W = 360;
-const H = 600;
-const GRAVITY = 0.45;
-const FLAP_V = -7.6;
-const PIPE_W = 60;
-const PIPE_GAP = 155;
-const PIPE_SPEED = 2.6;
-const PIPE_SPACING = 220;
-const BIRD_R = 14;
+const SKY = "#70c5ce";
+const GROUND_TOP = "#ded895";
+const GROUND_BOTTOM = "#c8b86a";
+const PIPE_GREEN = "#73c026";
+const PIPE_GREEN_DARK = "#4f8a1a";
+const PIPE_GREEN_LIGHT = "#9ee85a";
 
 type Pipe = { x: number; gapY: number; passed: boolean };
+type Cloud = { x: number; y: number; scale: number; speed: number };
 
 export default function PlayPage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number | null>(null);
+  const sizeRef = useRef({ w: 0, h: 0 });
   const state = useRef({
-    birdY: H / 2,
+    birdY: 0,
     vel: 0,
     pipes: [] as Pipe[],
+    clouds: [] as Cloud[],
     frame: 0,
+    groundX: 0,
     running: false,
     over: false,
+    flapAnim: 0,
   });
 
   const [score, setScore] = useState(0);
@@ -39,8 +39,24 @@ export default function PlayPage() {
   const [showWin, setShowWin] = useState(false);
   const wonOnce = useRef(false);
 
+  const dims = () => {
+    const { w, h } = sizeRef.current;
+    return {
+      w, h,
+      birdR: h * 0.022,
+      pipeW: Math.max(60, w * 0.075),
+      pipeGap: h * 0.24,
+      groundH: h * 0.12,
+      gravity: h * 0.0011,
+      flapV: -h * 0.0155,
+      pipeSpeed: Math.max(2.2, w * 0.0042),
+      pipeSpacingPx: w * 0.45,
+    };
+  };
+
   const reset = useCallback(() => {
-    state.current.birdY = H / 2;
+    const { h } = sizeRef.current;
+    state.current.birdY = h / 2;
     state.current.vel = 0;
     state.current.pipes = [];
     state.current.frame = 0;
@@ -52,12 +68,10 @@ export default function PlayPage() {
 
   const flap = useCallback(() => {
     const s = state.current;
-    if (phase === "idle") {
-      reset();
-      return;
-    }
+    if (phase === "idle") { reset(); return; }
     if (phase === "over") return;
-    s.vel = FLAP_V;
+    s.vel = dims().flapV;
+    s.flapAnim = 10;
   }, [phase, reset]);
 
   const endGame = useCallback(() => {
@@ -67,7 +81,7 @@ export default function PlayPage() {
     setPhase("over");
     if (!wonOnce.current) {
       wonOnce.current = true;
-      setTimeout(() => setShowWin(true), 700);
+      setTimeout(() => setShowWin(true), 900);
     }
   }, []);
 
@@ -76,88 +90,187 @@ export default function PlayPage() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    ctx.imageSmoothingEnabled = false;
+
+    const resize = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      sizeRef.current = { w, h };
+      canvas.width = w;
+      canvas.height = h;
+      if (state.current.clouds.length === 0) {
+        state.current.clouds = Array.from({ length: 5 }, () => ({
+          x: Math.random() * w,
+          y: h * (0.08 + Math.random() * 0.28),
+          scale: 0.6 + Math.random() * 0.8,
+          speed: 0.25 + Math.random() * 0.3,
+        }));
+      }
+      if (state.current.birdY === 0) state.current.birdY = h / 2;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const drawBird = (x: number, y: number, vel: number, flapAnim: number, r: number) => {
+      ctx.save();
+      ctx.translate(x, y);
+      const angle = Math.max(-0.5, Math.min(0.9, vel * 0.05));
+      ctx.rotate(angle);
+
+      const wingUp = flapAnim > 5;
+
+      ctx.fillStyle = "#f8d347";
+      ctx.beginPath();
+      ctx.ellipse(0, 0, r * 1.15, r, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#fff7e0";
+      ctx.beginPath();
+      ctx.ellipse(-r * 0.15, r * 0.35, r * 0.7, r * 0.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#f2a93b";
+      ctx.beginPath();
+      if (wingUp) {
+        ctx.ellipse(-r * 0.1, -r * 0.25, r * 0.6, r * 0.32, -0.4, 0, Math.PI * 2);
+      } else {
+        ctx.ellipse(-r * 0.1, r * 0.15, r * 0.6, r * 0.32, 0.3, 0, Math.PI * 2);
+      }
+      ctx.fill();
+
+      ctx.fillStyle = "#fff";
+      ctx.beginPath();
+      ctx.arc(r * 0.55, -r * 0.25, r * 0.32, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#1a1a1a";
+      ctx.beginPath();
+      ctx.arc(r * 0.65, -r * 0.25, r * 0.14, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#ef7f1a";
+      ctx.beginPath();
+      ctx.moveTo(r * 0.95, -r * 0.05);
+      ctx.lineTo(r * 1.55, r * 0.08);
+      ctx.lineTo(r * 0.95, r * 0.25);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+    };
+
+    const drawPipe = (x: number, topH: number, bottomY: number, h: number, pipeW: number) => {
+      const capH = pipeW * 0.28;
+      const capOverhang = pipeW * 0.12;
+
+      ctx.fillStyle = PIPE_GREEN;
+      ctx.fillRect(x, 0, pipeW, Math.max(0, topH - capH));
+      ctx.fillRect(x, bottomY + capH, pipeW, Math.max(0, h - (bottomY + capH)));
+
+      ctx.fillStyle = PIPE_GREEN_DARK;
+      ctx.fillRect(x, 0, pipeW * 0.18, Math.max(0, topH - capH));
+      ctx.fillRect(x, bottomY + capH, pipeW * 0.18, Math.max(0, h - (bottomY + capH)));
+      ctx.fillRect(x + pipeW - pipeW * 0.1, 0, pipeW * 0.1, Math.max(0, topH - capH));
+      ctx.fillRect(x + pipeW - pipeW * 0.1, bottomY + capH, pipeW * 0.1, Math.max(0, h - (bottomY + capH)));
+
+      ctx.fillStyle = PIPE_GREEN_LIGHT;
+      ctx.fillRect(x + pipeW * 0.22, 0, pipeW * 0.12, Math.max(0, topH - capH));
+      ctx.fillRect(x + pipeW * 0.22, bottomY + capH, pipeW * 0.12, Math.max(0, h - (bottomY + capH)));
+
+      ctx.fillStyle = PIPE_GREEN;
+      ctx.fillRect(x - capOverhang, topH - capH, pipeW + capOverhang * 2, capH);
+      ctx.fillRect(x - capOverhang, bottomY, pipeW + capOverhang * 2, capH);
+      ctx.fillStyle = PIPE_GREEN_DARK;
+      ctx.fillRect(x - capOverhang, topH - capH, (pipeW + capOverhang * 2) * 0.18, capH);
+      ctx.fillRect(x - capOverhang, bottomY, (pipeW + capOverhang * 2) * 0.18, capH);
+      ctx.fillStyle = PIPE_GREEN_LIGHT;
+      ctx.fillRect(x - capOverhang + (pipeW + capOverhang * 2) * 0.24, topH - capH, (pipeW + capOverhang * 2) * 0.1, capH);
+      ctx.fillRect(x - capOverhang + (pipeW + capOverhang * 2) * 0.24, bottomY, (pipeW + capOverhang * 2) * 0.1, capH);
+    };
 
     const loop = () => {
       const s = state.current;
+      const { w, h, birdR, pipeW, pipeGap, groundH, gravity, pipeSpeed, pipeSpacingPx } = dims();
 
-      ctx.fillStyle = "#bfe8f5";
-      ctx.fillRect(0, 0, W, H);
-      ctx.strokeStyle = "rgba(10,15,26,0.06)";
-      for (let gx = 0; gx < W; gx += 24) {
-        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
-      }
-      for (let gy = 0; gy < H; gy += 24) {
-        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
-      }
+      const sky = ctx.createLinearGradient(0, 0, 0, h);
+      sky.addColorStop(0, "#4ec0ca");
+      sky.addColorStop(1, SKY);
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.fillStyle = "rgba(255,255,255,0.85)";
+      s.clouds.forEach(c => {
+        c.x -= c.speed;
+        if (c.x < -80 * c.scale) c.x = w + 80 * c.scale;
+        const cw = 70 * c.scale, ch = 26 * c.scale;
+        ctx.beginPath();
+        ctx.ellipse(c.x, c.y, cw, ch, 0, 0, Math.PI * 2);
+        ctx.ellipse(c.x + cw * 0.55, c.y + ch * 0.15, cw * 0.6, ch * 0.75, 0, 0, Math.PI * 2);
+        ctx.ellipse(c.x - cw * 0.55, c.y + ch * 0.2, cw * 0.5, ch * 0.65, 0, 0, Math.PI * 2);
+        ctx.fill();
+      });
 
       if (s.running) {
         s.frame++;
-        s.vel += GRAVITY;
+        s.vel += gravity;
         s.birdY += s.vel;
+        if (s.flapAnim > 0) s.flapAnim--;
+        s.groundX -= pipeSpeed;
 
-        if (s.frame % Math.round(PIPE_SPACING / PIPE_SPEED) === 0) {
-          const gapY = 90 + Math.random() * (H - 180 - PIPE_GAP);
-          s.pipes.push({ x: W + 20, gapY, passed: false });
+        if (s.pipes.length === 0 || (w - s.pipes[s.pipes.length - 1].x) >= pipeSpacingPx) {
+          const margin = h * 0.12;
+          const gapY = margin + Math.random() * (h - groundH - margin * 2 - pipeGap);
+          s.pipes.push({ x: w + 20, gapY, passed: false });
         }
 
-        s.pipes.forEach(p => (p.x -= PIPE_SPEED));
-        s.pipes = s.pipes.filter(p => p.x > -PIPE_W - 20);
+        s.pipes.forEach(p => (p.x -= pipeSpeed));
+        s.pipes = s.pipes.filter(p => p.x > -pipeW - 40);
 
+        const birdX = w * 0.32;
         for (const p of s.pipes) {
-          if (!p.passed && p.x + PIPE_W < W / 2 - BIRD_R) {
+          if (!p.passed && p.x + pipeW < birdX - birdR) {
             p.passed = true;
             setScore(sc => sc + 1);
           }
-          const birdX = W / 2;
-          const hitX = birdX + BIRD_R > p.x && birdX - BIRD_R < p.x + PIPE_W;
-          const hitY = s.birdY - BIRD_R < p.gapY || s.birdY + BIRD_R > p.gapY + PIPE_GAP;
+          const hitX = birdX + birdR > p.x && birdX - birdR < p.x + pipeW;
+          const hitY = s.birdY - birdR < p.gapY || s.birdY + birdR > p.gapY + pipeGap;
           if (hitX && hitY) endGame();
         }
 
-        if (s.birdY + BIRD_R > H - 20 || s.birdY - BIRD_R < 0) {
-          s.birdY = Math.max(BIRD_R, Math.min(H - 20 - BIRD_R, s.birdY));
+        if (s.birdY + birdR > h - groundH) {
+          s.birdY = h - groundH - birdR;
           endGame();
+        }
+        if (s.birdY - birdR < 0) {
+          s.birdY = birdR;
+          s.vel = 0;
         }
       }
 
-      ctx.fillStyle = "#7cc97a";
-      ctx.fillRect(0, H - 20, W, 20);
+      const birdX = w * 0.32;
+      s.pipes.forEach(p => drawPipe(p.x, p.gapY, p.gapY + pipeGap, h - groundH, pipeW));
 
-      ctx.fillStyle = dark;
-      state.current.pipes.forEach(p => {
-        ctx.fillRect(p.x, 0, PIPE_W, p.gapY);
-        ctx.fillRect(p.x, p.gapY + PIPE_GAP, PIPE_W, H - (p.gapY + PIPE_GAP));
-        ctx.fillStyle = accent;
-        ctx.fillRect(p.x - 3, p.gapY - 12, PIPE_W + 6, 12);
-        ctx.fillRect(p.x - 3, p.gapY + PIPE_GAP, PIPE_W + 6, 12);
-        ctx.fillStyle = dark;
-      });
+      ctx.fillStyle = GROUND_TOP;
+      ctx.fillRect(0, h - groundH, w, groundH * 0.25);
+      ctx.fillStyle = GROUND_BOTTOM;
+      ctx.fillRect(0, h - groundH * 0.75, w, groundH * 0.75);
 
-      const birdX = W / 2;
-      ctx.save();
-      ctx.translate(birdX, state.current.birdY);
-      const angle = Math.max(-0.4, Math.min(0.9, state.current.vel * 0.06));
-      ctx.rotate(angle);
-      ctx.fillStyle = accent;
-      ctx.beginPath();
-      ctx.arc(0, 0, BIRD_R, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = "#fff";
-      ctx.beginPath();
-      ctx.arc(5, -4, 4, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = dark;
-      ctx.beginPath();
-      ctx.arc(6, -4, 2, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
+      ctx.fillStyle = "rgba(0,0,0,0.08)";
+      const stripeW = 28;
+      let gx = (s.groundX % stripeW) - stripeW;
+      while (gx < w) {
+        ctx.fillRect(gx, h - groundH, 14, groundH * 0.25);
+        gx += stripeW;
+      }
+
+      drawBird(birdX, s.birdY, s.vel, s.flapAnim, birdR);
 
       rafRef.current = requestAnimationFrame(loop);
     };
 
     rafRef.current = requestAnimationFrame(loop);
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+    return () => {
+      window.removeEventListener("resize", resize);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [endGame]);
 
   useEffect(() => {
@@ -169,72 +282,60 @@ export default function PlayPage() {
   }, [flap]);
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(170deg, #d6e8f5 0%, #e8f2f9 15%, #f2f7fb 35%, #f8fafb 60%, #ffffff 100%)", fontFamily: F, color: ink }}>
-      <style suppressHydrationWarning>{`
-        @media (max-width: 640px) {
-          .play-nav { padding: 0 16px !important; height: 64px !important; }
-          .play-logo { height: 40px !important; }
-          .play-back-text { display: none !important; }
-          .play-content { padding: 88px 16px 48px !important; }
-        }
-      `}</style>
+    <div
+      onMouseDown={flap}
+      onTouchStart={e => { e.preventDefault(); flap(); }}
+      style={{ position: "fixed", inset: 0, overflow: "hidden", fontFamily: F, color: ink, cursor: "pointer", userSelect: "none" as const, background: SKY }}
+    >
+      <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, display: "block" }} />
 
-      <nav className="play-nav" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 48px", height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "rgba(255,255,255,0.9)", backdropFilter: "blur(10px)", borderBottom: `1px solid ${line}` }}>
-        <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-          <img className="play-logo" src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "52px", width: "auto", objectFit: "contain" }} />
-        </a>
-        <a href="/" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: ink, background: "transparent", borderRadius: "999px", padding: "12px 28px", textDecoration: "none", border: `2px solid ${ink}`, letterSpacing: "0.06em", textTransform: "uppercase" as const, flexShrink: 0 }}>
-          <ArrowLeft style={{ width: "13px", height: "13px" }} /> <span className="play-back-text">Back to site</span>
-        </a>
-      </nav>
+      <a
+        href="/"
+        onClick={e => e.stopPropagation()}
+        onMouseDown={e => e.stopPropagation()}
+        style={{ position: "absolute", top: "20px", right: "20px", zIndex: 20, fontSize: "13px", fontWeight: 700, color: "#fff", background: "rgba(10,15,26,0.35)", border: "1px solid rgba(255,255,255,0.4)", borderRadius: "999px", padding: "8px 18px", textDecoration: "none", letterSpacing: "0.06em", textTransform: "uppercase" as const }}
+      >
+        Back
+      </a>
 
-      <div className="play-content" style={{ maxWidth: "440px", margin: "0 auto", padding: "120px 24px 60px", textAlign: "center" as const }}>
-        <span style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>
-          LS Growth Arcade
-        </span>
-        <h1 style={{ fontSize: "clamp(26px,4vw,38px)", fontWeight: 800, lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: "10px" }}>
-          Flap your way to a free call.
-        </h1>
-        <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6, marginBottom: "24px" }}>
-          Just give it a go. However far you get, you win a free 15-minute chat with Lucky.
-        </p>
-
-        <div
-          onMouseDown={flap}
-          onTouchStart={e => { e.preventDefault(); flap(); }}
-          style={{ position: "relative", width: "100%", maxWidth: `${W}px`, margin: "0 auto", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 32px rgba(0,0,0,0.08)", cursor: "pointer", userSelect: "none" as const }}
-        >
-          <div style={{ position: "absolute", top: "12px", left: "50%", transform: "translateX(-50%)", zIndex: 5, fontSize: "28px", fontWeight: 900, color: "#fff", textShadow: "0 2px 6px rgba(0,0,0,0.35)" }}>
-            {score}
-          </div>
-
-          <canvas ref={canvasRef} width={W} height={H} style={{ width: "100%", height: "auto", display: "block" }} />
-
-          {phase === "idle" && (
-            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(10,15,26,0.35)" }}>
-              <span style={{ color: "#fff", fontSize: "16px", fontWeight: 700 }}>Tap or press Space to start</span>
-            </div>
-          )}
-
-          {phase === "over" && !showWin && (
-            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(10,15,26,0.45)" }}>
-              <span style={{ color: "#fff", fontSize: "16px", fontWeight: 700 }}>Nice try…</span>
-            </div>
-          )}
+      {(phase === "playing" || phase === "over") && (
+        <div style={{ position: "absolute", top: "24px", left: "50%", transform: "translateX(-50%)", zIndex: 20, fontSize: "44px", fontWeight: 900, color: "#fff", textShadow: "0 3px 0 rgba(0,0,0,0.25)", letterSpacing: "0.02em" }}>
+          {score}
         </div>
+      )}
 
-        {phase === "over" && (
-          <button
-            onClick={reset}
-            style={{ marginTop: "20px", fontSize: "13px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "0", padding: "10px 22px", cursor: "pointer", fontFamily: F }}
-          >
-            Play again
-          </button>
-        )}
-      </div>
+      {phase === "idle" && (
+        <div style={{ position: "absolute", inset: 0, zIndex: 15, display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "18px", background: "rgba(10,15,26,0.25)", textAlign: "center" as const, padding: "0 24px" }}>
+          <span style={{ fontSize: "12px", fontWeight: 700, color: "#fff", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+            LS Growth Arcade
+          </span>
+          <h1 style={{ fontSize: "clamp(32px,6vw,56px)", fontWeight: 900, color: "#fff", textShadow: "0 4px 0 rgba(0,0,0,0.25)", letterSpacing: "-0.02em", margin: 0 }}>
+            Flappy Lucky
+          </h1>
+          <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.9)", margin: 0 }}>
+            Tap, click, or press Space to flap
+          </p>
+        </div>
+      )}
+
+      {phase === "over" && !showWin && (
+        <div style={{ position: "absolute", inset: 0, zIndex: 15, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(10,15,26,0.35)" }}>
+          <span style={{ color: "#fff", fontSize: "20px", fontWeight: 800, textShadow: "0 3px 0 rgba(0,0,0,0.25)" }}>Nice try…</span>
+        </div>
+      )}
+
+      {phase === "over" && (
+        <button
+          onClick={e => { e.stopPropagation(); reset(); }}
+          onMouseDown={e => e.stopPropagation()}
+          style={{ position: "absolute", bottom: "40px", left: "50%", transform: "translateX(-50%)", zIndex: 20, fontSize: "14px", fontWeight: 700, color: ink, background: "#fff", border: "none", borderRadius: "999px", padding: "14px 30px", cursor: "pointer", fontFamily: F, boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}
+        >
+          Play again
+        </button>
+      )}
 
       {showWin && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+        <div onMouseDown={e => e.stopPropagation()} style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px", cursor: "default" }}>
           <div onClick={() => setShowWin(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.6)", backdropFilter: "blur(6px)" }} />
           <div style={{ position: "relative", width: "100%", maxWidth: "420px", background: "#fff", borderRadius: "16px", boxShadow: "0 24px 80px rgba(0,0,0,0.25)", padding: "40px 32px", textAlign: "center" as const }}>
             <CheckCircle style={{ width: "48px", height: "48px", color: accent, margin: "0 auto 16px" }} />
