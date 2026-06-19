@@ -362,12 +362,12 @@ export default function PlayPage() {
           <span style={{ color: "#fff", fontSize: "20px", fontWeight: 800, textShadow: "0 3px 0 rgba(0,0,0,0.25)" }}>Nice try…</span>
 
           {highScores.length > 0 && (
-            <div style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "12px", padding: "18px 28px", minWidth: "200px" }}>
-              <div style={{ fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.75)", letterSpacing: "0.1em", textTransform: "uppercase" as const, textAlign: "center" as const, marginBottom: "10px", textShadow: "0 2px 0 rgba(0,0,0,0.25)" }}>
+            <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", gap: "6px" }}>
+              <div style={{ fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.75)", letterSpacing: "0.1em", textTransform: "uppercase" as const, textShadow: "0 2px 0 rgba(0,0,0,0.25)" }}>
                 High Scores
               </div>
               {highScores.map((s, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", padding: "4px 0", fontWeight: i === justAddedIndex ? 800 : 500, color: i === justAddedIndex ? "#7cd4ff" : "#fff", fontSize: "14px", textShadow: "0 2px 0 rgba(0,0,0,0.25)" }}>
+                <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", fontWeight: i === justAddedIndex ? 800 : 500, color: i === justAddedIndex ? "#7cd4ff" : "#fff", fontSize: "14px", textShadow: "0 2px 0 rgba(0,0,0,0.25)" }}>
                   <span>{i + 1}.</span>
                   <span>{s}</span>
                 </div>
