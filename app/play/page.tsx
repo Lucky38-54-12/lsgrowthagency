@@ -37,7 +37,16 @@ export default function PlayPage() {
   const [score, setScore] = useState(0);
   const [phase, setPhase] = useState<"idle" | "playing" | "over">("idle");
   const [showWin, setShowWin] = useState(false);
+  const [highScores, setHighScores] = useState<number[]>([]);
+  const [justAddedIndex, setJustAddedIndex] = useState<number | null>(null);
   const wonOnce = useRef(false);
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("flappyLuckyHighScores") || "[]");
+      if (Array.isArray(saved)) setHighScores(saved.filter((n: unknown) => typeof n === "number"));
+    } catch {}
+  }, []);
 
   const dims = () => {
     const { w, h } = sizeRef.current;
@@ -54,6 +63,8 @@ export default function PlayPage() {
     };
   };
 
+  const scoreRef = useRef(0);
+
   const reset = useCallback(() => {
     const { h } = sizeRef.current;
     state.current.birdY = h / 2;
@@ -62,14 +73,16 @@ export default function PlayPage() {
     state.current.frame = 0;
     state.current.running = true;
     state.current.over = false;
+    scoreRef.current = 0;
     setScore(0);
+    setShowWin(false);
+    setJustAddedIndex(null);
     setPhase("playing");
   }, []);
 
   const flap = useCallback(() => {
     const s = state.current;
-    if (phase === "idle") { reset(); return; }
-    if (phase === "over") return;
+    if (phase === "idle" || phase === "over") { reset(); return; }
     s.vel = dims().flapV;
     s.flapAnim = 10;
   }, [phase, reset]);
@@ -79,6 +92,15 @@ export default function PlayPage() {
     s.running = false;
     s.over = true;
     setPhase("over");
+
+    const finalScore = scoreRef.current;
+    setHighScores(prev => {
+      const next = [...prev, finalScore].sort((a, b) => b - a).slice(0, 5);
+      setJustAddedIndex(next.lastIndexOf(finalScore));
+      try { localStorage.setItem("flappyLuckyHighScores", JSON.stringify(next)); } catch {}
+      return next;
+    });
+
     if (!wonOnce.current) {
       wonOnce.current = true;
       setTimeout(() => setShowWin(true), 900);
@@ -228,7 +250,8 @@ export default function PlayPage() {
         for (const p of s.pipes) {
           if (!p.passed && p.x + pipeW < birdX - birdR) {
             p.passed = true;
-            setScore(sc => sc + 1);
+            scoreRef.current += 1;
+            setScore(scoreRef.current);
           }
           const hitX = birdX + birdR > p.x && birdX - birdR < p.x + pipeW;
           const hitY = s.birdY - birdR < p.gapY || s.birdY + birdR > p.gapY + pipeGap;
@@ -281,18 +304,34 @@ export default function PlayPage() {
     return () => window.removeEventListener("keydown", onKey);
   }, [flap]);
 
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+
+    const blockTouchMove = (e: TouchEvent) => e.preventDefault();
+    window.addEventListener("touchmove", blockTouchMove, { passive: false });
+
+    return () => {
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      window.removeEventListener("touchmove", blockTouchMove);
+    };
+  }, []);
+
   return (
     <div
-      onMouseDown={flap}
-      onTouchStart={e => { e.preventDefault(); flap(); }}
-      style={{ position: "fixed", inset: 0, overflow: "hidden", fontFamily: F, color: ink, cursor: "pointer", userSelect: "none" as const, background: SKY }}
+      onPointerDown={e => { e.preventDefault(); flap(); }}
+      style={{ position: "fixed", inset: 0, overflow: "hidden", fontFamily: F, color: ink, cursor: "pointer", userSelect: "none" as const, touchAction: "none", WebkitUserSelect: "none" as const, WebkitTapHighlightColor: "transparent", background: SKY }}
     >
-      <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, display: "block" }} />
+      <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, display: "block", touchAction: "none" }} />
 
       <a
         href="/"
-        onClick={e => e.stopPropagation()}
-        onMouseDown={e => e.stopPropagation()}
+        onPointerDown={e => e.stopPropagation()}
         style={{ position: "absolute", top: "20px", right: "20px", zIndex: 20, fontSize: "13px", fontWeight: 700, color: "#fff", background: "rgba(10,15,26,0.35)", border: "1px solid rgba(255,255,255,0.4)", borderRadius: "999px", padding: "8px 18px", textDecoration: "none", letterSpacing: "0.06em", textTransform: "uppercase" as const }}
       >
         Back
@@ -319,23 +358,29 @@ export default function PlayPage() {
       )}
 
       {phase === "over" && !showWin && (
-        <div style={{ position: "absolute", inset: 0, zIndex: 15, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(10,15,26,0.35)" }}>
+        <div style={{ position: "absolute", inset: 0, zIndex: 15, display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "20px", background: "rgba(10,15,26,0.35)", padding: "0 24px" }}>
           <span style={{ color: "#fff", fontSize: "20px", fontWeight: 800, textShadow: "0 3px 0 rgba(0,0,0,0.25)" }}>Nice try…</span>
+
+          {highScores.length > 0 && (
+            <div style={{ background: "rgba(255,255,255,0.95)", borderRadius: "12px", padding: "18px 28px", minWidth: "200px", boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}>
+              <div style={{ fontSize: "11px", fontWeight: 700, color: muted, letterSpacing: "0.1em", textTransform: "uppercase" as const, textAlign: "center" as const, marginBottom: "10px" }}>
+                High Scores
+              </div>
+              {highScores.map((s, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", padding: "4px 0", fontWeight: i === justAddedIndex ? 800 : 500, color: i === justAddedIndex ? accent : ink, fontSize: "14px" }}>
+                  <span>{i + 1}.</span>
+                  <span>{s}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <span style={{ color: "rgba(255,255,255,0.85)", fontSize: "13px" }}>Tap to play again</span>
         </div>
       )}
 
-      {phase === "over" && (
-        <button
-          onClick={e => { e.stopPropagation(); reset(); }}
-          onMouseDown={e => e.stopPropagation()}
-          style={{ position: "absolute", bottom: "40px", left: "50%", transform: "translateX(-50%)", zIndex: 20, fontSize: "14px", fontWeight: 700, color: ink, background: "#fff", border: "none", borderRadius: "999px", padding: "14px 30px", cursor: "pointer", fontFamily: F, boxShadow: "0 8px 24px rgba(0,0,0,0.25)" }}
-        >
-          Play again
-        </button>
-      )}
-
       {showWin && (
-        <div onMouseDown={e => e.stopPropagation()} style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px", cursor: "default" }}>
+        <div onPointerDown={e => e.stopPropagation()} style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px", cursor: "default", touchAction: "none" }}>
           <div onClick={() => setShowWin(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.6)", backdropFilter: "blur(6px)" }} />
           <div style={{ position: "relative", width: "100%", maxWidth: "420px", background: "#fff", borderRadius: "16px", boxShadow: "0 24px 80px rgba(0,0,0,0.25)", padding: "40px 32px", textAlign: "center" as const }}>
             <CheckCircle style={{ width: "48px", height: "48px", color: accent, margin: "0 auto 16px" }} />
