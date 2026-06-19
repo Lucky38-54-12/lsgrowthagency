@@ -342,7 +342,7 @@ export default function Home() {
         {/* Right side — links, CTA, hamburger grouped together */}
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
           <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
-            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
+            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"],["Play & Win","/play"]].map(([l,h]) => (
               <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
             ))}
           </div>
@@ -369,7 +369,7 @@ export default function Home() {
               <button onClick={() => setNavOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: muted, fontSize: "22px", lineHeight: 1, padding: "4px" }}>×</button>
             </div>
             <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>
-              {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"]].map(([l,h]) => (
+              {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"],["Play & Win","/play"]].map(([l,h]) => (
                 <a key={h} href={h} onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f8fafc", border: `1px solid ${line}`, fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>{l}</a>
               ))}
               <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: "#f1f5f9", border: `1px solid ${line}`, color: ink, fontSize: "14px", fontWeight: 600, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Send a Message</button>
