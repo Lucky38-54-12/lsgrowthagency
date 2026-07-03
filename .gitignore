@@ -42,3 +42,6 @@ next-env.d.ts
 
 # service account credentials — never commit these
 ls-growth-*.json
+
+# raw video assets — backed up via OneDrive sync instead, not git
+*.mp4
