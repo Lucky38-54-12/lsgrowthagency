@@ -598,94 +598,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── HOW WE WORK (SPLIT) ── */}
-      <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div className="m-how-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
-
-            <div className="m-how-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
-              <div>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
-                  How We Work?
-                </span>
-                <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
-                  The L&S Growth <em style={{ fontStyle: "italic", fontWeight: 600, color: accent }}>Process</em>
-                </h2>
-                <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
-                  Four steps. Fully managed. Running quietly in the background while you're out on the job.
-                </p>
-              </div>
-
-            </div>
-
-            <div>
-              {steps.map(({ num, title, desc, bullets }, i) => (
-                <Fragment key={num}>
-                  <div
-                    className="lp-rise how-step-card"
-                    style={{
-                      position: "sticky" as const,
-                      top: `${110 + i * 28}px`,
-                      zIndex: i + 1,
-                      background: "#fff",
-                      border: `1px solid ${line}`,
-                      boxShadow: "0 24px 64px rgba(10,15,26,0.14)",
-                      padding: "36px 40px",
-                      display: "flex",
-                      gap: "28px",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{num}</div>
-                    <div>
-                      <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "10px" }}>{title}</h3>
-                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7, marginBottom: "18px" }}>{desc}</p>
-                      <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "8px" }}>
-                        {bullets.map(b => (
-                          <span key={b} style={{ fontSize: "12px", fontWeight: 500, color: muted, background: "#f8fafc", border: `1px solid ${line}`, padding: "6px 14px" }}>{b}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  {i < steps.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
-                </Fragment>
-              ))}
-
-              {/* Get in Touch card */}
-              <div aria-hidden style={{ height: "40px" }} />
-              <a
-                href="/book"
-                className="lp-rise how-step-card"
-                style={{
-                  position: "sticky" as const,
-                  top: `${110 + steps.length * 28}px`,
-                  zIndex: steps.length + 2,
-                  textDecoration: "none",
-                  display: "flex",
-                  gap: "28px",
-                  alignItems: "flex-start",
-                  background: accent,
-                  border: `1px solid ${accent}`,
-                  boxShadow: "0 24px 64px rgba(10,15,26,0.18)",
-                  padding: "36px 40px",
-                }}
-              >
-                <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: "#fff", letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>5</div>
-                <div>
-                  <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px" }}>Get in Touch</h3>
-                  <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "18px" }}>Have a vision? Let's make a plan. Book a free 30-minute call and take the first step toward a full pipeline.</p>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#fff", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.3)", padding: "8px 18px" }}>
-                    Book a Call <ArrowRight style={{ width: "12px", height: "12px" }} />
-                  </span>
-                </div>
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       {/* ── WHAT WE BUILD FOR YOU ── */}
       <section id="services" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
@@ -941,6 +853,94 @@ export default function Home() {
             </a>
           </div>
 
+        </div>
+      </section>
+
+      {/* ── HOW WE WORK (SPLIT) ── */}
+      <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div className="m-how-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
+
+            <div className="m-how-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
+              <div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
+                  How We Work?
+                </span>
+                <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
+                  The L&S Growth <em style={{ fontStyle: "italic", fontWeight: 600, color: accent }}>Process</em>
+                </h2>
+                <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
+                  Four steps. Fully managed. Running quietly in the background while you're out on the job.
+                </p>
+              </div>
+
+            </div>
+
+            <div>
+              {steps.map(({ num, title, desc, bullets }, i) => (
+                <Fragment key={num}>
+                  <div
+                    className="lp-rise how-step-card"
+                    style={{
+                      position: "sticky" as const,
+                      top: `${110 + i * 28}px`,
+                      zIndex: i + 1,
+                      background: "#fff",
+                      border: `1px solid ${line}`,
+                      boxShadow: "0 24px 64px rgba(10,15,26,0.14)",
+                      padding: "36px 40px",
+                      display: "flex",
+                      gap: "28px",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{num}</div>
+                    <div>
+                      <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "10px" }}>{title}</h3>
+                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7, marginBottom: "18px" }}>{desc}</p>
+                      <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "8px" }}>
+                        {bullets.map(b => (
+                          <span key={b} style={{ fontSize: "12px", fontWeight: 500, color: muted, background: "#f8fafc", border: `1px solid ${line}`, padding: "6px 14px" }}>{b}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  {i < steps.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
+                </Fragment>
+              ))}
+
+              {/* Get in Touch card */}
+              <div aria-hidden style={{ height: "40px" }} />
+              <a
+                href="/book"
+                className="lp-rise how-step-card"
+                style={{
+                  position: "sticky" as const,
+                  top: `${110 + steps.length * 28}px`,
+                  zIndex: steps.length + 2,
+                  textDecoration: "none",
+                  display: "flex",
+                  gap: "28px",
+                  alignItems: "flex-start",
+                  background: accent,
+                  border: `1px solid ${accent}`,
+                  boxShadow: "0 24px 64px rgba(10,15,26,0.18)",
+                  padding: "36px 40px",
+                }}
+              >
+                <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: "#fff", letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>5</div>
+                <div>
+                  <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px" }}>Get in Touch</h3>
+                  <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "18px" }}>Have a vision? Let's make a plan. Book a free 30-minute call and take the first step toward a full pipeline.</p>
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#fff", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.3)", padding: "8px 18px" }}>
+                    Book a Call <ArrowRight style={{ width: "12px", height: "12px" }} />
+                  </span>
+                </div>
+              </a>
+            </div>
+
+          </div>
         </div>
       </section>
 
