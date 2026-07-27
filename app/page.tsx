@@ -79,15 +79,43 @@ const steps = [
   },
 ];
 
+const apartStats = [
+  {
+    stat: "3X",
+    title: "Jobs Won From Existing Leads",
+    desc: "More jobs booked from the exact same leads, without spending a cent more on ads.",
+  },
+  {
+    stat: "60s",
+    title: "Average First Response Time",
+    desc: "Most jobs go to whoever replies first. We make sure that's always you, every time.",
+  },
+  {
+    stat: "5–7",
+    title: "Follow-Ups Per Lead",
+    desc: "Automated touchpoints before a lead is ever written off as cold.",
+  },
+  {
+    stat: "100%",
+    title: "Of Leads Tracked & Managed",
+    desc: "Every enquiry logged, tracked and assigned to a stage. Nothing slips through the cracks.",
+  },
+  {
+    stat: "24/7",
+    title: "Coverage, Not Office Hours",
+    desc: "Your pipeline keeps working nights, weekends and public holidays.",
+  },
+];
+
 const testimonials = [
   {
-    quote: "Great experience working with LS Growth. Got over $80K in booked jobs in just a couple of months. Perfect for a trade business without a dedicated marketing team.",
+    quote: "Great experience working with L&S Growth. Got over $80K in booked jobs in just a couple of months. Perfect for a trade business without a dedicated marketing team.",
     author: "Thomas Cooper",
     company: "Cooper Electrical",
     color: "#0080e0",
   },
   {
-    quote: "We gave LS Growth a shot with zero expectations. Within a month they'd achieved what other agencies couldn't do in almost a year. Highly recommend.",
+    quote: "We gave L&S Growth a shot with zero expectations. Within a month they'd achieved what other agencies couldn't do in almost a year. Highly recommend.",
     author: "Luis Luigi",
     company: "GoPro Plumbing",
     color: "#16a34a",
@@ -99,7 +127,7 @@ const testimonials = [
     color: "#7c3aed",
   },
   {
-    quote: "LS Growth has been really helpful for our business, sending us a steady stream of leads. We had a great campaign running for months. Really recommend them.",
+    quote: "L&S Growth has been really helpful for our business, sending us a steady stream of leads. We had a great campaign running for months. Really recommend them.",
     author: "Julian Da Costa",
     company: "Da Costa Builders",
     color: "#ea580c",
@@ -311,11 +339,6 @@ export default function Home() {
           .m-calendar-stats > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
           .m-calendar-stats > div:last-child { border-bottom: none !important; }
           .m-build-grid { grid-template-columns: 1fr !important; }
-          .m-bento-row { grid-template-columns: 1fr !important; }
-          .m-bento-hide { display: none !important; }
-          .m-solution-split { display: none !important; }
-          .m-solution-split > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
-          .m-solution-split > div:last-child { border-bottom: none !important; }
           .m-case-grid { grid-template-columns: 1fr !important; }
           .m-testi-grid { grid-template-columns: 1fr !important; }
           .m-how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -337,7 +360,7 @@ export default function Home() {
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px", background: "rgba(255,255,255,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(10,15,26,0.08)", transform: "translateZ(0)" }}>
         {/* Logo — far left */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "42px", width: "auto", objectFit: "contain" }} />
+          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="L&S Growth" style={{ height: "42px", width: "auto", objectFit: "contain" }} />
         </a>
         {/* Right side — links, CTA, hamburger grouped together */}
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
@@ -365,7 +388,7 @@ export default function Home() {
           <div onClick={() => setNavOpen(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.5)", backdropFilter: "blur(4px)" }} />
           <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: "280px", background: "#fff", display: "flex", flexDirection: "column", boxShadow: "-8px 0 32px rgba(0,0,0,0.12)" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", height: "56px", borderBottom: `1px solid ${line}` }}>
-              <span style={{ fontSize: "16px", fontWeight: 800, color: ink }}>LS Growth</span>
+              <span style={{ fontSize: "16px", fontWeight: 800, color: ink }}>L&S Growth</span>
               <button onClick={() => setNavOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: muted, fontSize: "22px", lineHeight: 1, padding: "4px" }}>×</button>
             </div>
             <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -572,10 +595,80 @@ export default function Home() {
             Unlock a ton of new leads, without having to pay a fortune.
           </p>
           <img src="/results-mockup.png" alt="Dashboard showing leads, cost per lead, and ad spend results for Queenstown Cleaning, SSP Electrical, and Perl Electrical campaigns" className="lp-rise d3" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto" }} />
-          <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "20px" }}>
+
+          <p className="lp-rise d3" style={{ fontSize: "13px", fontWeight: 600, color: accent, letterSpacing: "0.04em", marginTop: "40px", marginBottom: "16px" }}>
+            See the process behind those numbers
+          </p>
+
+          <div className="lp-rise d3 laptop-frame">
+            <div className="laptop-screen">
+              <span className="laptop-cam" />
+              <div className="laptop-inner">
+                <iframe src="/process-demo.html" title="The L&#38;S Growth process, from form to quoted job" loading="lazy" />
+              </div>
+            </div>
+            <div className="laptop-base"><span /></div>
+          </div>
+
+          <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "28px" }}>
             Get Results Like This <ArrowRight style={{ width: "13px", height: "13px" }} />
           </a>
         </div>
+
+        <style suppressHydrationWarning>{`
+          .laptop-frame {
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto;
+          }
+          .laptop-screen {
+            background: linear-gradient(180deg, #2c2c2f 0%, #1a1a1c 100%);
+            border-radius: 16px 16px 4px 4px;
+            padding: 16px 16px 0;
+            position: relative;
+            box-shadow: 0 30px 70px -25px rgba(10,10,10,0.45);
+          }
+          .laptop-cam {
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #050505;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.04);
+          }
+          .laptop-inner {
+            background: #fff;
+            border-radius: 4px 4px 0 0;
+            overflow: hidden;
+            aspect-ratio: 16 / 11;
+          }
+          .laptop-inner iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+          }
+          .laptop-base {
+            height: 14px;
+            background: linear-gradient(180deg, #3d3d40 0%, #232326 100%);
+            border-radius: 0 0 10px 10px;
+            display: flex;
+            justify-content: center;
+          }
+          .laptop-base span {
+            width: 90px;
+            height: 5px;
+            margin-top: -1px;
+            background: #141416;
+            border-radius: 0 0 6px 6px;
+          }
+          @media (max-width: 640px) {
+            .laptop-inner { aspect-ratio: 3 / 4; }
+          }
+        `}</style>
       </section>
 
       {/* ── WHAT WE BUILD FOR YOU ── */}
@@ -638,78 +731,88 @@ export default function Home() {
       </section>
 
       {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── */}
-      <section style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ marginBottom: "48px", maxWidth: "640px" }}>
-            <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>What Sets Us Apart</div>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "14px" }}>
-              We're not just another marketing company.
-            </h2>
-            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
-              You've probably been promised results before and didn't see them. That's exactly what we do differently.
-            </p>
-          </div>
+      <section style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div className="m-how-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
 
-          <div style={{ display: "flex", flexDirection: "column" as const, gap: "16px" }}>
-            <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", gap: "16px" }}>
-              {[
-                { value: "3X", num: 3, suffix: "X", scheme: "dark", text: "More jobs booked from the exact same leads, without spending a cent more on ads.", label: "Jobs Won From Existing Leads" },
-                { value: "60s", num: 60, suffix: "s", scheme: "light", text: "Most jobs go to whoever replies first. We make sure that's always you, every time.", label: "Average First Response Time" },
-              ].map(({ value, num, suffix, scheme, text, label }) => {
-                const dark2 = scheme === "dark";
-                return (
-                  <div key={value} style={{ background: dark2 ? dark : "#f8fafc", border: dark2 ? "none" : `1px solid ${line}`, padding: "40px 36px", minHeight: "240px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
-                    <div style={{ fontSize: "clamp(48px,6vw,80px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1 }}><CountUp to={num} suffix={suffix} color={dark2 ? "#fff" : ink} /></div>
-                    <div>
-                      <p style={{ fontSize: "14px", fontWeight: 500, color: dark2 ? "rgba(255,255,255,0.7)" : muted, lineHeight: 1.6, marginBottom: "16px", maxWidth: "360px" }}>{text}</p>
-                      <div style={{ fontSize: "11px", fontWeight: 600, color: dark2 ? "rgba(255,255,255,0.4)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{label}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.3fr 0.85fr", gap: "16px" }}>
-              {[
-                { value: "5–7", num: null, suffix: "", scheme: "accent", text: "Automated touchpoints before a lead is ever written off as cold.", label: "Follow-Ups Per Lead", hide: true },
-                { value: "100%", num: 100, suffix: "%", scheme: "light", text: "Every enquiry logged, tracked and assigned to a stage. Nothing slips through the cracks.", label: "Of Leads Tracked & Managed", hide: false },
-                { value: "24/7", num: null, suffix: "", scheme: "dark", text: "Your pipeline keeps working nights, weekends and public holidays.", label: "Coverage, Not Office Hours", hide: true },
-              ].map(({ value, num, suffix, scheme, text, label, hide }) => {
-                const dark2 = scheme === "dark";
-                const acc = scheme === "accent";
-                const bg = acc ? accent : dark2 ? dark : "#f8fafc";
-                const fg = acc || dark2 ? "#fff" : ink;
-                const sub = acc ? "rgba(255,255,255,0.82)" : dark2 ? "rgba(255,255,255,0.7)" : muted;
-                const lbl = acc ? "rgba(255,255,255,0.6)" : dark2 ? "rgba(255,255,255,0.4)" : dim;
-                return (
-                  <div key={value} className={hide ? "m-bento-hide" : ""} style={{ background: bg, border: !acc && !dark2 ? `1px solid ${line}` : "none", padding: "36px 32px", minHeight: "260px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
-                    <div style={{ fontSize: "clamp(40px,5vw,64px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1 }}>
-                      {num !== null ? <CountUp to={num} suffix={suffix} color={fg} /> : <span style={{ color: fg }}>{value}</span>}
-                    </div>
-                    <div>
-                      <p style={{ fontSize: "13px", fontWeight: 500, color: sub, lineHeight: 1.6, marginBottom: "14px" }}>{text}</p>
-                      <div style={{ fontSize: "11px", fontWeight: 600, color: lbl, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{label}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="m-solution-split" style={{ border: `1px solid ${line}`, display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-              <div style={{ padding: "40px 44px", borderRight: `1px solid ${line}` }}>
-                <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>The Solution</div>
-                <h3 style={{ fontSize: "clamp(18px,2vw,26px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "12px" }}>The Full Done-For-You Service</h3>
-                <p style={{ fontSize: "13px", color: muted, lineHeight: 1.7, marginBottom: "24px" }}>Winning local service businesses don't just run ads. They have someone managing the whole process. That's what LS Growth does, built specifically for trades and home services in NZ and AU.</p>
-                <a href="/book" className="btn btn-dark" style={{ fontSize: "13px", padding: "10px 18px" }}>
-                  Fill your pipeline <ArrowRight style={{ width: "12px", height: "12px" }} />
-                </a>
-              </div>
-              <div style={{ padding: "40px 44px" }}>
-                <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>100% Done For You</div>
-                <h3 style={{ fontSize: "clamp(18px,2vw,26px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "12px" }}>You Do the Work. We Fill Your Pipeline.</h3>
-                <p style={{ fontSize: "13px", color: muted, lineHeight: 1.7 }}>Ads, landing pages, follow-up, CRM, and reporting. We manage everything end-to-end so you can focus on the jobs, not chasing the leads.</p>
+            <div className="m-how-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
+              <div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
+                  What Sets Us Apart
+                </span>
+                <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
+                  We're not just another marketing company.
+                </h2>
+                <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
+                  You've probably been promised results before and didn't see them. That's exactly what we do differently.
+                </p>
               </div>
             </div>
+
+            <div>
+              {apartStats.map(({ stat, title, desc }, i) => (
+                <Fragment key={stat}>
+                  <div
+                    className="lp-rise how-step-card"
+                    style={{
+                      position: "sticky" as const,
+                      top: `${110 + i * 28}px`,
+                      zIndex: i + 1,
+                      background: "#fff",
+                      border: `1px solid ${line}`,
+                      boxShadow: "0 24px 64px rgba(10,15,26,0.14)",
+                      padding: "36px 40px",
+                      display: "flex",
+                      gap: "28px",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <div style={{ fontSize: "clamp(30px,3.2vw,40px)", fontWeight: 900, color: accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0, width: "104px" }}>{stat}</div>
+                    <div>
+                      <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "10px" }}>{title}</h3>
+                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7 }}>{desc}</p>
+                    </div>
+                  </div>
+                  {i < apartStats.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
+                </Fragment>
+              ))}
+
+              {/* The Solution / CTA card */}
+              <div aria-hidden style={{ height: "40px" }} />
+              <a
+                href="/book"
+                className="lp-rise how-step-card"
+                style={{
+                  position: "sticky" as const,
+                  top: `${110 + apartStats.length * 28}px`,
+                  zIndex: apartStats.length + 2,
+                  textDecoration: "none",
+                  display: "flex",
+                  gap: "28px",
+                  alignItems: "flex-start",
+                  background: accent,
+                  border: `1px solid ${accent}`,
+                  boxShadow: "0 24px 64px rgba(10,15,26,0.18)",
+                  padding: "36px 40px",
+                }}
+              >
+                <div style={{ width: "104px", flexShrink: 0, display: "flex", alignItems: "flex-start", paddingTop: "6px" }}>
+                  <ArrowRight style={{ width: "32px", height: "32px", color: "#fff" }} />
+                </div>
+                <div>
+                  <div style={{ fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.7)", textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "10px" }}>The Solution</div>
+                  <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px" }}>The Full Done-For-You Service</h3>
+                  <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "18px" }}>
+                    Winning local service businesses don't just run ads. They have someone managing the whole process, ads, landing pages, follow-up, CRM, and reporting, so you can focus on the jobs, not chasing the leads.
+                  </p>
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#fff", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.3)", padding: "8px 18px" }}>
+                    Fill Your Pipeline <ArrowRight style={{ width: "12px", height: "12px" }} />
+                  </span>
+                </div>
+              </a>
+            </div>
+
           </div>
         </div>
       </section>
@@ -740,7 +843,7 @@ export default function Home() {
 
           {/* Header */}
           <div style={{ textAlign: "center" as const, marginBottom: "56px" }}>
-            <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 600, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>· Why LS Growth?</p>
+            <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 600, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>· Why L&S Growth?</p>
             <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
               Most agencies get you leads.<br />We get you booked jobs.
             </h2>
@@ -774,15 +877,15 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Centre — LS Growth (highlighted) */}
+            {/* Centre — L&S Growth (highlighted) */}
             <div className="lp-rise d1 cmp-card cmp-center" style={{ background: "rgba(0,128,224,0.05)", border: `1.5px solid ${accent}`, borderRadius: "16px", padding: "32px 28px", position: "relative" as const }}>
               <div style={{ position: "absolute" as const, top: "-13px", left: "50%", transform: "translateX(-50%)", background: accent, color: "#fff", fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "4px 14px" }}>
                 The Complete System
               </div>
               <p style={{ fontSize: "10px", fontWeight: 700, color: accent, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "14px" }}>&nbsp;</p>
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "28px" }}>
-                <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
-                <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.15, margin: 0 }}>LS Growth</h3>
+                <img src="/ls-growth-logo-new.png" alt="L&S Growth" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
+                <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.15, margin: 0 }}>L&S Growth</h3>
               </div>
               {[
                 "Hyper-local Meta ads, built for you",
@@ -848,7 +951,7 @@ export default function Home() {
                   How We Work?
                 </span>
                 <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
-                  The LS Growth <em style={{ fontStyle: "italic", fontWeight: 600, color: accent }}>Process</em>
+                  The L&S Growth <em style={{ fontStyle: "italic", fontWeight: 600, color: accent }}>Process</em>
                 </h2>
                 <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
                   Four steps. Fully managed. Running quietly in the background while you're out on the job.
@@ -1077,7 +1180,7 @@ export default function Home() {
                 </h3>
                 <p style={{ fontSize: "16px", color: muted, marginBottom: "28px" }}>Done-for-you lead generation.</p>
               </div>
-              <img src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "44px", width: "auto", objectFit: "contain", alignSelf: "flex-start" }} />
+              <img src="/ls-growth-logo-trimmed.png" alt="L&S Growth" style={{ height: "44px", width: "auto", objectFit: "contain", alignSelf: "flex-start" }} />
             </div>
             <div>
               <p style={{ fontSize: "13px", fontWeight: 600, color: ink, marginBottom: "20px" }}>Navigation</p>
@@ -1095,7 +1198,7 @@ export default function Home() {
             </div>
           </div>
           <div className="m-footer-bottom" style={{ borderTop: `1px solid ${line}`, padding: "20px 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <p style={{ fontSize: "13px", color: dim }}>© {new Date().getFullYear()} LS Growth. All rights reserved.</p>
+            <p style={{ fontSize: "13px", color: dim }}>© {new Date().getFullYear()} L&S Growth. All rights reserved.</p>
             <p style={{ fontSize: "13px", color: dim }}>NZ & AU Local Service Businesses</p>
           </div>
         </div>
