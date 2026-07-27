@@ -346,7 +346,7 @@ export default function PlayPage() {
       {phase === "idle" && (
         <div style={{ position: "absolute", inset: 0, zIndex: 15, display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: "18px", background: "rgba(10,15,26,0.25)", textAlign: "center" as const, padding: "0 24px" }}>
           <span style={{ fontSize: "12px", fontWeight: 700, color: "#fff", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.35)", borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-            LS Growth Arcade
+            L&S Growth Arcade
           </span>
           <h1 style={{ fontSize: "clamp(32px,6vw,56px)", fontWeight: 900, color: "#fff", textShadow: "0 4px 0 rgba(0,0,0,0.25)", letterSpacing: "-0.02em", margin: 0 }}>
             Flappy Lucky

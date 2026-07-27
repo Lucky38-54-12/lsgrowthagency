@@ -7,8 +7,8 @@ const accent = "#0080e0";
 const F = "var(--font-inter), system-ui, sans-serif";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — LS Growth",
-  description: "How LS Growth collects, uses, and protects data for our clients and their leads.",
+  title: "Privacy Policy — L&S Growth",
+  description: "How L&S Growth collects, uses, and protects data for our clients and their leads.",
 };
 
 const LAST_UPDATED = "6 July 2026";
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
       <nav style={{ borderBottom: `1px solid ${line}`, padding: "20px 24px" }}>
         <div style={{ maxWidth: "760px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <a href="/" style={{ textDecoration: "none" }}>
-            <img src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "36px", width: "auto", objectFit: "contain" }} />
+            <img src="/ls-growth-logo-trimmed.png" alt="L&S Growth" style={{ height: "36px", width: "auto", objectFit: "contain" }} />
           </a>
           <a href="/" style={{ fontSize: "14px", fontWeight: 500, color: accent, textDecoration: "none" }}>← Back to site</a>
         </div>
@@ -42,7 +42,7 @@ export default function PrivacyPage() {
 
         <Section title="Who we are">
           <p>
-            LS Growth ("we", "us", "our") provides lead generation, cold outreach, and AI-powered lead
+            L&S Growth ("we", "us", "our") provides lead generation, cold outreach, and AI-powered lead
             qualification services to local service businesses ("clients") in New Zealand and Australia.
             This policy explains what data we collect, why, and how it's handled — both for our clients
             and for the people who message our clients' businesses.

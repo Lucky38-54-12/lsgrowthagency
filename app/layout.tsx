@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["700", "800"] });
 
 export const metadata: Metadata = {
-  title: "LS Growth — More Jobs. Less Chasing.",
+  title: "L&S Growth",
   description: "Done-for-you lead generation and client acquisition system for local service businesses in NZ & AU.",
 };
 

@@ -133,7 +133,7 @@ export default function CleaningPage() {
       {/* ── NAV (same as homepage) ── */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px", background: "rgba(255,255,255,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(10,15,26,0.08)", transform: "translateZ(0)" }}>
         <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="LS Growth" style={{ height: "42px", width: "auto", objectFit: "contain" }} />
+          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="L&S Growth" style={{ height: "42px", width: "auto", objectFit: "contain" }} />
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
           <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
@@ -160,7 +160,7 @@ export default function CleaningPage() {
           <div onClick={() => setNavOpen(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.5)", backdropFilter: "blur(4px)" }} />
           <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: "280px", background: "#fff", display: "flex", flexDirection: "column", boxShadow: "-8px 0 32px rgba(0,0,0,0.12)" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", height: "56px", borderBottom: `1px solid ${line}` }}>
-              <span style={{ fontSize: "16px", fontWeight: 800, color: ink }}>LS Growth</span>
+              <span style={{ fontSize: "16px", fontWeight: 800, color: ink }}>L&S Growth</span>
               <button onClick={() => setNavOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: muted, fontSize: "22px", lineHeight: 1, padding: "4px" }}>×</button>
             </div>
             <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -401,7 +401,7 @@ export default function CleaningPage() {
       <section style={{ background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
         <div className="cmp-stack" style={{ maxWidth: "1020px", margin: "0 auto", background: "transparent", borderRadius: "28px", padding: "64px 56px" }}>
           <div style={{ textAlign: "center" as const, marginBottom: "56px" }}>
-            <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 600, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>· Why LS Growth?</p>
+            <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 600, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>· Why L&S Growth?</p>
             <h2 className="lp-rise d1" style={{ fontSize: "clamp(24px,3.6vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.03em", marginBottom: "16px" }}>
               Most cleaning ads get enquiries.<br />We get you booked jobs.
             </h2>
@@ -433,15 +433,15 @@ export default function CleaningPage() {
               ))}
             </div>
 
-            {/* Centre — LS Growth (highlighted) */}
+            {/* Centre — L&S Growth (highlighted) */}
             <div className="lp-rise d1 cmp-card cmp-center" style={{ background: "rgba(0,128,224,0.05)", border: `1.5px solid ${accent}`, borderRadius: "16px", padding: "32px 28px", position: "relative" as const }}>
               <div style={{ position: "absolute" as const, top: "-13px", left: "50%", transform: "translateX(-50%)", background: accent, color: "#fff", fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "4px 14px" }}>
                 The Complete System
               </div>
               <p style={{ fontSize: "10px", fontWeight: 700, color: accent, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "14px" }}>&nbsp;</p>
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "28px" }}>
-                <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
-                <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.15, margin: 0 }}>LS Growth</h3>
+                <img src="/ls-growth-logo-new.png" alt="L&S Growth" style={{ width: "40px", height: "40px", objectFit: "contain" }} />
+                <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.15, margin: 0 }}>L&S Growth</h3>
               </div>
               {[
                 "Ads targeted at people ready to book a clean",
@@ -530,7 +530,7 @@ export default function CleaningPage() {
       <footer style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "48px 40px 0" }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <div className="m-footer-grid" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: "32px", flexWrap: "wrap" as const, gap: "24px" }}>
-            <img src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "48px", width: "auto", objectFit: "contain" }} />
+            <img src="/ls-growth-logo-new.png" alt="L&S Growth" style={{ height: "48px", width: "auto", objectFit: "contain" }} />
             <div style={{ display: "flex", gap: "32px", flexWrap: "wrap" as const }}>
               <a href="/" className="footer-link" style={{ fontSize: "14px", color: muted }}>Home</a>
               <a href="/#services" className="footer-link" style={{ fontSize: "14px", color: muted }}>Services</a>
@@ -539,7 +539,7 @@ export default function CleaningPage() {
             </div>
           </div>
           <div className="m-footer-bottom" style={{ borderTop: `1px solid ${line}`, padding: "20px 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <p style={{ fontSize: "13px", color: dim }}>© {new Date().getFullYear()} LS Growth. All rights reserved.</p>
+            <p style={{ fontSize: "13px", color: dim }}>© {new Date().getFullYear()} L&S Growth. All rights reserved.</p>
             <p style={{ fontSize: "13px", color: dim }}>NZ &amp; AU Local Service Businesses</p>
           </div>
         </div>

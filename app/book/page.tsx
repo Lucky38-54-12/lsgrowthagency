@@ -39,7 +39,7 @@ export default function BookPage() {
       {/* Nav */}
       <nav className="book-nav" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, padding: "0 48px", height: "80px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-          <img className="book-logo" src="/ls-growth-logo-new.png" alt="LS Growth" style={{ height: "60px", width: "auto", objectFit: "contain" }} />
+          <img className="book-logo" src="/ls-growth-logo-new.png" alt="L&S Growth" style={{ height: "60px", width: "auto", objectFit: "contain" }} />
         </a>
         <div className="book-links" style={{ display: "flex", alignItems: "center", gap: "36px" }}>
           {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
@@ -92,7 +92,7 @@ export default function BookPage() {
 
       {/* Footer strip */}
       <div style={{ borderTop: `1px solid ${line}`, padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", flexWrap: "wrap", textAlign: "center" }}>
-        <p style={{ fontSize: "13px", color: muted, margin: 0 }}>© {new Date().getFullYear()} LS Growth · NZ &amp; AU</p>
+        <p style={{ fontSize: "13px", color: muted, margin: 0 }}>© {new Date().getFullYear()} L&S Growth · NZ &amp; AU</p>
         <a href="mailto:lsgrowthagency.co@gmail.com" style={{ fontSize: "13px", color: muted, textDecoration: "none" }}>lsgrowthagency.co@gmail.com</a>
       </div>
     </div>
