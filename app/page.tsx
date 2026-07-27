@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowRight, CheckCircle, Plus, Minus } from "lucide-react";
 
 /* ── CountUp component ── */
@@ -50,34 +50,6 @@ const bentoCards = [
   { num: 5,  suffix: "min",label: "Until a Lead Goes Cold",     desc: "Prospects make a decision fast. If you don't reach them first, someone else will. Automation closes that window.", bg: "#f8fafc", textColor: ink, dimColor: dim, descColor: muted, span: "1/5", border: true },
   { num: 3,  suffix: "×",  label: "More Booked Jobs",          desc: "Clients running our full system (ads, instant response, follow-up) book 3x more jobs from the same enquiry volume.", bg: "#fff", textColor: ink, dimColor: dim, descColor: muted, span: "5/10", border: true },
   { num: 700,suffix: "+",  label: "Admin Hours Saved/Client",  desc: "Manual follow-up, chasing quotes, updating spreadsheets. Our CRM and automations handle all of it.", bg: dark, textColor: "#fff", dimColor: "rgba(255,255,255,0.25)", descColor: "rgba(255,255,255,0.5)", span: "10/13" },
-];
-
-const apartStats = [
-  {
-    stat: "3X",
-    title: "Jobs Won From Existing Leads",
-    desc: "More jobs booked from the exact same leads, without spending a cent more on ads.",
-  },
-  {
-    stat: "60s",
-    title: "Average First Response Time",
-    desc: "Most jobs go to whoever replies first. We make sure that's always you, every time.",
-  },
-  {
-    stat: "5–7",
-    title: "Follow-Ups Per Lead",
-    desc: "Automated touchpoints before a lead is ever written off as cold.",
-  },
-  {
-    stat: "100%",
-    title: "Of Leads Tracked & Managed",
-    desc: "Every enquiry logged, tracked and assigned to a stage. Nothing slips through the cracks.",
-  },
-  {
-    stat: "24/7",
-    title: "Coverage, Not Office Hours",
-    desc: "Your pipeline keeps working nights, weekends and public holidays.",
-  },
 ];
 
 const testimonials = [
@@ -312,11 +284,13 @@ export default function Home() {
           .m-calendar-stats > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
           .m-calendar-stats > div:last-child { border-bottom: none !important; }
           .m-build-grid { grid-template-columns: 1fr !important; }
+          .m-bento-row { grid-template-columns: 1fr !important; }
+          .m-bento-hide { display: none !important; }
+          .m-solution-split { display: none !important; }
+          .m-solution-split > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
+          .m-solution-split > div:last-child { border-bottom: none !important; }
           .m-case-grid { grid-template-columns: 1fr !important; }
           .m-testi-grid { grid-template-columns: 1fr !important; }
-          .m-how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .m-how-sticky { position: static !important; }
-          .how-step-card { top: 88px !important; }
           .m-faq-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-faq-sticky { position: static !important; }
           .m-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
@@ -704,88 +678,78 @@ export default function Home() {
       </section>
 
       {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── */}
-      <section style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div className="m-how-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
+      <section style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div style={{ marginBottom: "48px", maxWidth: "640px" }}>
+            <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>What Sets Us Apart</div>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "14px" }}>
+              We're not just another marketing company.
+            </h2>
+            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
+              You've probably been promised results before and didn't see them. That's exactly what we do differently.
+            </p>
+          </div>
 
-            <div className="m-how-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
-              <div>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
-                  What Sets Us Apart
-                </span>
-                <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
-                  We're not just another marketing company.
-                </h2>
-                <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
-                  You've probably been promised results before and didn't see them. That's exactly what we do differently.
-                </p>
-              </div>
-            </div>
-
-            <div>
-              {apartStats.map(({ stat, title, desc }, i) => (
-                <Fragment key={stat}>
-                  <div
-                    className="lp-rise how-step-card"
-                    style={{
-                      position: "sticky" as const,
-                      top: `${110 + i * 28}px`,
-                      zIndex: i + 1,
-                      background: "#fff",
-                      border: `1px solid ${line}`,
-                      boxShadow: "0 24px 64px rgba(10,15,26,0.14)",
-                      padding: "36px 40px",
-                      display: "flex",
-                      gap: "28px",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <div style={{ fontSize: "clamp(30px,3.2vw,40px)", fontWeight: 900, color: accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0, width: "104px" }}>{stat}</div>
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: "16px" }}>
+            <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", gap: "16px" }}>
+              {[
+                { value: "3X", num: 3, suffix: "X", scheme: "dark", text: "More jobs booked from the exact same leads, without spending a cent more on ads.", label: "Jobs Won From Existing Leads" },
+                { value: "60s", num: 60, suffix: "s", scheme: "light", text: "Most jobs go to whoever replies first. We make sure that's always you, every time.", label: "Average First Response Time" },
+              ].map(({ value, num, suffix, scheme, text, label }) => {
+                const dark2 = scheme === "dark";
+                return (
+                  <div key={value} style={{ background: dark2 ? dark : "#f8fafc", border: dark2 ? "none" : `1px solid ${line}`, padding: "40px 36px", minHeight: "240px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
+                    <div style={{ fontSize: "clamp(48px,6vw,80px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1 }}><CountUp to={num} suffix={suffix} color={dark2 ? "#fff" : ink} /></div>
                     <div>
-                      <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "10px" }}>{title}</h3>
-                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7 }}>{desc}</p>
+                      <p style={{ fontSize: "14px", fontWeight: 500, color: dark2 ? "rgba(255,255,255,0.7)" : muted, lineHeight: 1.6, marginBottom: "16px", maxWidth: "360px" }}>{text}</p>
+                      <div style={{ fontSize: "11px", fontWeight: 600, color: dark2 ? "rgba(255,255,255,0.4)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{label}</div>
                     </div>
                   </div>
-                  {i < apartStats.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
-                </Fragment>
-              ))}
-
-              {/* The Solution / CTA card */}
-              <div aria-hidden style={{ height: "40px" }} />
-              <a
-                href="/book"
-                className="lp-rise how-step-card"
-                style={{
-                  position: "sticky" as const,
-                  top: `${110 + apartStats.length * 28}px`,
-                  zIndex: apartStats.length + 2,
-                  textDecoration: "none",
-                  display: "flex",
-                  gap: "28px",
-                  alignItems: "flex-start",
-                  background: accent,
-                  border: `1px solid ${accent}`,
-                  boxShadow: "0 24px 64px rgba(10,15,26,0.18)",
-                  padding: "36px 40px",
-                }}
-              >
-                <div style={{ width: "104px", flexShrink: 0, display: "flex", alignItems: "flex-start", paddingTop: "6px" }}>
-                  <ArrowRight style={{ width: "32px", height: "32px", color: "#fff" }} />
-                </div>
-                <div>
-                  <div style={{ fontSize: "11px", fontWeight: 600, color: "rgba(255,255,255,0.7)", textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "10px" }}>The Solution</div>
-                  <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px" }}>The Full Done-For-You Service</h3>
-                  <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "18px" }}>
-                    Winning local service businesses don't just run ads. They have someone managing the whole process, ads, landing pages, follow-up, CRM, and reporting, so you can focus on the jobs, not chasing the leads.
-                  </p>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#fff", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.3)", padding: "8px 18px" }}>
-                    Fill Your Pipeline <ArrowRight style={{ width: "12px", height: "12px" }} />
-                  </span>
-                </div>
-              </a>
+                );
+              })}
             </div>
 
+            <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.3fr 0.85fr", gap: "16px" }}>
+              {[
+                { value: "5–7", num: null, suffix: "", scheme: "accent", text: "Automated touchpoints before a lead is ever written off as cold.", label: "Follow-Ups Per Lead", hide: true },
+                { value: "100%", num: 100, suffix: "%", scheme: "light", text: "Every enquiry logged, tracked and assigned to a stage. Nothing slips through the cracks.", label: "Of Leads Tracked & Managed", hide: false },
+                { value: "24/7", num: null, suffix: "", scheme: "dark", text: "Your pipeline keeps working nights, weekends and public holidays.", label: "Coverage, Not Office Hours", hide: true },
+              ].map(({ value, num, suffix, scheme, text, label, hide }) => {
+                const dark2 = scheme === "dark";
+                const acc = scheme === "accent";
+                const bg = acc ? accent : dark2 ? dark : "#f8fafc";
+                const fg = acc || dark2 ? "#fff" : ink;
+                const sub = acc ? "rgba(255,255,255,0.82)" : dark2 ? "rgba(255,255,255,0.7)" : muted;
+                const lbl = acc ? "rgba(255,255,255,0.6)" : dark2 ? "rgba(255,255,255,0.4)" : dim;
+                return (
+                  <div key={value} className={hide ? "m-bento-hide" : ""} style={{ background: bg, border: !acc && !dark2 ? `1px solid ${line}` : "none", padding: "36px 32px", minHeight: "260px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
+                    <div style={{ fontSize: "clamp(40px,5vw,64px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1 }}>
+                      {num !== null ? <CountUp to={num} suffix={suffix} color={fg} /> : <span style={{ color: fg }}>{value}</span>}
+                    </div>
+                    <div>
+                      <p style={{ fontSize: "13px", fontWeight: 500, color: sub, lineHeight: 1.6, marginBottom: "14px" }}>{text}</p>
+                      <div style={{ fontSize: "11px", fontWeight: 600, color: lbl, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{label}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="m-solution-split" style={{ border: `1px solid ${line}`, display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+              <div style={{ padding: "40px 44px", borderRight: `1px solid ${line}` }}>
+                <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>The Solution</div>
+                <h3 style={{ fontSize: "clamp(18px,2vw,26px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "12px" }}>The Full Done-For-You Service</h3>
+                <p style={{ fontSize: "13px", color: muted, lineHeight: 1.7, marginBottom: "24px" }}>Winning local service businesses don't just run ads. They have someone managing the whole process. That's what L&S Growth does, built specifically for trades and home services in NZ and AU.</p>
+                <a href="/book" className="btn btn-dark" style={{ fontSize: "13px", padding: "10px 18px" }}>
+                  Fill your pipeline <ArrowRight style={{ width: "12px", height: "12px" }} />
+                </a>
+              </div>
+              <div style={{ padding: "40px 44px" }}>
+                <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>100% Done For You</div>
+                <h3 style={{ fontSize: "clamp(18px,2vw,26px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "12px" }}>You Do the Work. We Fill Your Pipeline.</h3>
+                <p style={{ fontSize: "13px", color: muted, lineHeight: 1.7 }}>Ads, landing pages, follow-up, CRM, and reporting. We manage everything end-to-end so you can focus on the jobs, not chasing the leads.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
