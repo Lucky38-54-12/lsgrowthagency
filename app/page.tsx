@@ -568,36 +568,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── RESULTS ── */}
-      <section style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "40px 40px 32px", borderTop: `1px solid ${line}` }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
-        <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
-          <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Results</span>
-          <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "10px", maxWidth: "760px", marginLeft: "auto", marginRight: "auto" }}>
-            A few results from previous lead-gen campaigns
-          </h2>
-          <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, marginBottom: "16px" }}>
-            Unlock a ton of new leads, without having to pay a fortune.
-          </p>
-          <img src="/results-mockup.png" alt="Dashboard showing leads, cost per lead, and ad spend results for Queenstown Cleaning, SSP Electrical, and Perl Electrical campaigns" className="lp-rise d3" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto" }} />
-        </div>
-
-        <iframe
-          src="/process-demo.html"
-          title="The L&#38;S Growth Pipeline, from form to quoted job"
-          loading="lazy"
-          scrolling="no"
-          className="lp-rise d3"
-          style={{ position: "relative", display: "block", width: "100%", height: `${howHeight}px`, border: "none", overflow: "hidden", marginTop: "40px" }}
-        />
-
-        <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
-          <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "28px" }}>
-            Get Results Like This <ArrowRight style={{ width: "13px", height: "13px" }} />
-          </a>
-        </div>
-      </section>
-
       {/* ── HOW WE WORK (SPLIT) ── */}
       <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
@@ -683,6 +653,36 @@ export default function Home() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* ── RESULTS ── */}
+      <section style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "40px 40px 32px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
+        <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
+          <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Results</span>
+          <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "10px", maxWidth: "760px", marginLeft: "auto", marginRight: "auto" }}>
+            A few results from previous lead-gen campaigns
+          </h2>
+          <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, marginBottom: "16px" }}>
+            Unlock a ton of new leads, without having to pay a fortune.
+          </p>
+          <img src="/results-mockup.png" alt="Dashboard showing leads, cost per lead, and ad spend results for Queenstown Cleaning, SSP Electrical, and Perl Electrical campaigns" className="lp-rise d3" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto" }} />
+        </div>
+
+        <iframe
+          src="/process-demo.html"
+          title="The L&#38;S Growth Pipeline, from form to quoted job"
+          loading="lazy"
+          scrolling="no"
+          className="lp-rise d3"
+          style={{ position: "relative", display: "block", width: "100%", height: `${howHeight}px`, border: "none", overflow: "hidden", marginTop: "40px" }}
+        />
+
+        <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
+          <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "28px" }}>
+            Get Results Like This <ArrowRight style={{ width: "13px", height: "13px" }} />
+          </a>
         </div>
       </section>
 
