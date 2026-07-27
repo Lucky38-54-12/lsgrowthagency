@@ -623,5 +623,14 @@
   });
 
   goTo(0);
+
+  function postHeight() {
+    if (window.parent === window) return;
+    window.parent.postMessage({ type: "lsgrowth-demo-height", height: document.documentElement.scrollHeight }, "*");
+  }
+  window.addEventListener("load", postHeight);
+  window.addEventListener("resize", postHeight);
+  setTimeout(postHeight, 50);
+  setTimeout(postHeight, 400);
 })();
 </script>

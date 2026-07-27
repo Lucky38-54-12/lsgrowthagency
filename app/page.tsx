@@ -142,6 +142,17 @@ export default function Home() {
   const [formOpen, setFormOpen] = useState(false);
   const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
+  const [howHeight, setHowHeight] = useState(980);
+
+  useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      if (e.data && e.data.type === "lsgrowth-demo-height" && typeof e.data.height === "number") {
+        setHowHeight(e.data.height);
+      }
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -877,17 +888,14 @@ export default function Home() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section id="how" className="how-embed" style={{ background: "transparent", borderTop: `1px solid ${line}` }}>
-        <iframe src="/process-demo.html" title="The L&#38;S Growth Pipeline, from form to quoted job" loading="lazy" />
-        <style suppressHydrationWarning>{`
-          .how-embed iframe { display: block; width: 100%; height: 980px; border: none; }
-          @media (max-width: 900px) {
-            .how-embed iframe { height: 1160px; }
-          }
-          @media (max-width: 640px) {
-            .how-embed iframe { height: 1520px; }
-          }
-        `}</style>
+      <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}` }}>
+        <iframe
+          src="/process-demo.html"
+          title="The L&#38;S Growth Pipeline, from form to quoted job"
+          loading="lazy"
+          scrolling="no"
+          style={{ display: "block", width: "100%", height: `${howHeight}px`, border: "none", overflow: "hidden" }}
+        />
       </section>
 
 
