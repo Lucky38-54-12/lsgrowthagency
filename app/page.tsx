@@ -598,17 +598,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ── */}
-      <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}` }}>
-        <iframe
-          src="/process-demo.html"
-          title="The L&#38;S Growth Pipeline, from form to quoted job"
-          loading="lazy"
-          scrolling="no"
-          style={{ display: "block", width: "100%", height: `${howHeight}px`, border: "none", overflow: "hidden" }}
-        />
-      </section>
-
       {/* ── WHAT WE BUILD FOR YOU ── */}
       <section id="services" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
@@ -868,7 +857,7 @@ export default function Home() {
       </section>
 
       {/* ── HOW WE WORK (SPLIT) ── */}
-      <section style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
+      <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <div className="m-how-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
 
