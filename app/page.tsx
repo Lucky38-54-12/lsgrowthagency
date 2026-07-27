@@ -558,75 +558,19 @@ export default function Home() {
             See the process behind those numbers
           </p>
 
-          <div className="lp-rise d3 laptop-frame">
-            <div className="laptop-screen">
-              <span className="laptop-cam" />
-              <div className="laptop-inner">
-                <iframe src="/process-demo.html" title="The L&#38;S Growth process, from form to quoted job" loading="lazy" />
-              </div>
-            </div>
-            <div className="laptop-base"><span /></div>
-          </div>
+          <iframe
+            src="/process-demo.html"
+            title="The L&#38;S Growth Pipeline, from form to quoted job"
+            loading="lazy"
+            scrolling="no"
+            className="lp-rise d3"
+            style={{ display: "block", width: "100%", maxWidth: "880px", margin: "0 auto", height: `${howHeight}px`, border: "none", overflow: "hidden" }}
+          />
 
           <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "28px" }}>
             Get Results Like This <ArrowRight style={{ width: "13px", height: "13px" }} />
           </a>
         </div>
-
-        <style suppressHydrationWarning>{`
-          .laptop-frame {
-            width: 100%;
-            max-width: 880px;
-            margin: 0 auto;
-          }
-          .laptop-screen {
-            background: linear-gradient(180deg, #2c2c2f 0%, #1a1a1c 100%);
-            border-radius: 16px 16px 4px 4px;
-            padding: 16px 16px 0;
-            position: relative;
-            box-shadow: 0 30px 70px -25px rgba(10,10,10,0.45);
-          }
-          .laptop-cam {
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #050505;
-            box-shadow: 0 0 0 2px rgba(255,255,255,0.04);
-          }
-          .laptop-inner {
-            background: #fff;
-            border-radius: 4px 4px 0 0;
-            overflow: hidden;
-            aspect-ratio: 16 / 11;
-          }
-          .laptop-inner iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-          }
-          .laptop-base {
-            height: 14px;
-            background: linear-gradient(180deg, #3d3d40 0%, #232326 100%);
-            border-radius: 0 0 10px 10px;
-            display: flex;
-            justify-content: center;
-          }
-          .laptop-base span {
-            width: 90px;
-            height: 5px;
-            margin-top: -1px;
-            background: #141416;
-            border-radius: 0 0 6px 6px;
-          }
-          @media (max-width: 640px) {
-            .laptop-inner { aspect-ratio: 3 / 4; }
-          }
-        `}</style>
       </section>
 
       {/* ── WHAT WE BUILD FOR YOU ── */}
