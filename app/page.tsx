@@ -553,20 +553,18 @@ export default function Home() {
             Unlock a ton of new leads, without having to pay a fortune.
           </p>
           <img src="/results-mockup.png" alt="Dashboard showing leads, cost per lead, and ad spend results for Queenstown Cleaning, SSP Electrical, and Perl Electrical campaigns" className="lp-rise d3" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto" }} />
+        </div>
 
-          <p className="lp-rise d3" style={{ fontSize: "13px", fontWeight: 600, color: accent, letterSpacing: "0.04em", marginTop: "40px", marginBottom: "16px" }}>
-            See the process behind those numbers
-          </p>
+        <iframe
+          src="/process-demo.html"
+          title="The L&#38;S Growth Pipeline, from form to quoted job"
+          loading="lazy"
+          scrolling="no"
+          className="lp-rise d3"
+          style={{ position: "relative", display: "block", width: "100%", height: `${howHeight}px`, border: "none", overflow: "hidden", marginTop: "40px" }}
+        />
 
-          <iframe
-            src="/process-demo.html"
-            title="The L&#38;S Growth Pipeline, from form to quoted job"
-            loading="lazy"
-            scrolling="no"
-            className="lp-rise d3"
-            style={{ display: "block", width: "100%", maxWidth: "880px", margin: "0 auto", height: `${howHeight}px`, border: "none", overflow: "hidden" }}
-          />
-
+        <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
           <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "28px" }}>
             Get Results Like This <ArrowRight style={{ width: "13px", height: "13px" }} />
           </a>
