@@ -445,14 +445,13 @@ export default function Home() {
         <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "150px 40px 110px", width: "100%" }}>
           <div style={{ maxWidth: "640px" }}>
             <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
-              Done-for-you lead generation · NZ & AU
+              Your growth partner · NZ & AU
             </p>
             <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.5vw, 82px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "24px" }}>
-              More booked jobs.{" "}
-              <span style={{ color: "rgba(255,255,255,0.5)" }}>Less chasing leads.</span>
+              From ad to booked job to money in your account.
             </h1>
             <p className="hero-sub" style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "40px", maxWidth: "520px", fontWeight: 400 }}>
-              We handle your entire lead generation: targeted ads, instant follow-up, and a managed pipeline, so you only talk to people ready to book.
+              We build and run the whole system: ads that pull in the right people, instant follow-up so nothing goes cold, qualified leads booked straight into your calendar, and a dashboard showing exactly what it's all earning you. You do the work, we grow the pipeline.
             </p>
             <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
               <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
@@ -467,9 +466,9 @@ export default function Home() {
 
           <div className="m-hero-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", borderTop: "1px solid rgba(255,255,255,0.14)", marginTop: "56px", paddingTop: "32px", maxWidth: "780px" }}>
             {[
-              { to: 350000, prefix: "$", suffix: "+", format: true, label: "Added in client projects" },
+              { to: 350000, prefix: "$", suffix: "+", format: true, label: "Added in client revenue" },
               { to: 300, prefix: "", suffix: "+", format: false, label: "Qualified consultations/month" },
-              { to: 700, prefix: "", suffix: "+", format: false, label: "Hours saved per client" },
+              { to: 700, prefix: "", suffix: "+", format: false, label: "Admin hours removed" },
             ].map(({ to, prefix, suffix, format, label }, i) => (
               <div key={label} style={{ paddingLeft: i === 0 ? 0 : "32px", paddingRight: "24px", borderLeft: i === 0 ? "none" : "1px solid rgba(255,255,255,0.14)" }}>
                 <div style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "6px" }}><CountUp to={to} prefix={prefix} suffix={suffix} format={format} color="#7cd4ff" /></div>
