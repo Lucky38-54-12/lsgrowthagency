@@ -783,7 +783,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── HOW WE WORK (SPLIT) ── */}
+      {/* ── HOW WE WORK (SPLIT) ── hidden for now ── */}
+      {false && (
       <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <div className="m-how-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
@@ -870,6 +871,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── COMPARISON ── */}
       <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
