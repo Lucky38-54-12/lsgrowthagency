@@ -489,9 +489,6 @@ export default function Home() {
             <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.5vw, 82px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "24px" }}>
               From ad to booked job to money in your account.
             </h1>
-            <p className="hero-sub" style={{ fontSize: "18px", color: "rgba(255,255,255,0.72)", lineHeight: 1.65, marginBottom: "40px", maxWidth: "520px", fontWeight: 400 }}>
-              We build and run the whole system: ads that pull in the right people, instant follow-up so nothing goes cold, qualified leads booked straight into your calendar, and a dashboard showing exactly what it's all earning you. You do the work, we grow the pipeline.
-            </p>
             <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
               <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
                 Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
