@@ -754,36 +754,36 @@ export default function Home() {
                 title: "Bring In High-Intent Enquiries",
                 desc: "Targeted campaigns designed to attract people ready to buy, not just browse.",
                 tags: ["Meta Ads", "Local Targeting"],
-                visual: <img src="/img-qualified-leads.avif" alt="Qualified Leads" style={{ width: "auto", maxWidth: "200px", height: "200px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.2))" }} />,
+                visual: <img src="/img-qualified-leads.avif" alt="Qualified Leads" style={{ width: "auto", maxWidth: "110px", height: "110px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.2))" }} />,
               },
               {
                 tag: "Instant Response",
                 title: "Turn Enquiries Into Booked Jobs",
                 desc: "We respond instantly and follow up until they book, so you don't lose work.",
                 tags: ["Booking System", "Automated Follow-Up"],
-                visual: <img src="/mockup-phone.avif" alt="" style={{ width: "auto", maxWidth: "150px", height: "230px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.35))" }} />,
+                visual: <img src="/mockup-phone.avif" alt="" style={{ width: "auto", maxWidth: "85px", height: "130px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.35))" }} />,
               },
               {
                 tag: "Website",
                 title: "Filter & Qualify Before They Enquire",
                 desc: "Simple pages that attract the right people and push the wrong ones away.",
                 tags: ["Conversion-Focused", "Mobile Optimised"],
-                visual: <img src="/img-website.avif" alt="Website" style={{ width: "auto", maxWidth: "200px", height: "200px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.2))" }} />,
+                visual: <img src="/img-website.avif" alt="Website" style={{ width: "auto", maxWidth: "110px", height: "110px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.2))" }} />,
               },
             ].map(({ tag, title, desc, tags, visual }, i) => (
-              <div key={tag} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", padding: "0 0 36px", display: "flex", flexDirection: "column" as const }}>
-                <div style={{ aspectRatio: "1 / 1", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: `1px solid ${line}`, marginBottom: "32px", background: "#f8fafc" }}>
+              <div key={tag} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ aspectRatio: "1 / 1", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", display: "flex", flexDirection: "column" as const }}>
+                <div style={{ flex: "0 0 40%", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: `1px solid ${line}`, background: "#f8fafc" }}>
                   {visual}
                 </div>
-                <div style={{ padding: "0 32px", display: "flex", flexDirection: "column" as const, flex: 1 }}>
-                  <span style={{ display: "inline-block", alignSelf: "flex-start", fontSize: "11px", fontWeight: 600, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" as const, border: `1px solid ${accent}55`, padding: "5px 12px", marginBottom: "20px" }}>
+                <div style={{ padding: "18px 22px", display: "flex", flexDirection: "column" as const, flex: 1, minHeight: 0 }}>
+                  <span style={{ display: "inline-block", alignSelf: "flex-start", fontSize: "10px", fontWeight: 600, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" as const, border: `1px solid ${accent}55`, padding: "4px 10px", marginBottom: "10px" }}>
                     {tag}
                   </span>
-                  <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "12px" }}>{title}</h3>
-                  <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7, marginBottom: "24px" }}>{desc}</p>
-                  <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "8px", marginTop: "auto" }}>
+                  <h3 style={{ fontSize: "clamp(14px,1.6vw,17px)", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "6px" }}>{title}</h3>
+                  <p style={{ fontSize: "12.5px", color: muted, lineHeight: 1.5, marginBottom: "10px" }}>{desc}</p>
+                  <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "6px", marginTop: "auto" }}>
                     {tags.map(t => (
-                      <span key={t} style={{ fontSize: "12px", color: muted, background: "#f8fafc", border: `1px solid ${line}`, padding: "6px 14px" }}>{t}</span>
+                      <span key={t} style={{ fontSize: "10px", color: muted, background: "#f8fafc", border: `1px solid ${line}`, padding: "4px 10px" }}>{t}</span>
                     ))}
                   </div>
                 </div>
