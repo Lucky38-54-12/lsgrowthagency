@@ -43,6 +43,42 @@ const accentDark = "#006bbf";
 const accentLight = "#40c0f0";
 const dark  = "#0a0f1a";
 
+/* ── ScrollRevealText: words darken progressively as the block scrolls up the viewport ── */
+function ScrollRevealText({ text, style, className }: { text: string; style?: React.CSSProperties; className?: string }) {
+  const words = text.split(" ");
+  const ref = useRef<HTMLParagraphElement>(null);
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const onScroll = () => {
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const start = vh * 0.85;
+      const end = vh * 0.35;
+      const p = (start - rect.top) / (start - end);
+      setProgress(Math.min(1, Math.max(0, p)));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+  const activeCount = Math.round(progress * words.length);
+  return (
+    <p ref={ref} className={className} style={style}>
+      {words.map((w, i) => (
+        <span key={i} style={{ color: i < activeCount ? ink : "#cbd0d6", transition: "color 0.3s ease" }}>
+          {w}{i < words.length - 1 ? " " : ""}
+        </span>
+      ))}
+    </p>
+  );
+}
+
 /* ── Data ── */
 const bentoCards = [
   { num: 70, suffix: "%+", label: "Leads Lost to No Follow-Up", desc: "Most local service businesses respond to less than 30% of enquiries within the first hour. The rest go cold and book someone else.", bg: dark, textColor: "#fff", dimColor: "rgba(255,255,255,0.25)", descColor: "rgba(255,255,255,0.55)", span: "1/8" },
@@ -531,6 +567,17 @@ export default function Home() {
               )}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── AT L&S GROWTH ── */}
+      <section style={{ background: "transparent", padding: "90px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "880px", margin: "0 auto" }}>
+          <p style={{ fontSize: "16px", fontWeight: 700, color: ink, marginBottom: "22px", fontFamily: F }}>At L&S Growth</p>
+          <ScrollRevealText
+            text="We build and run the whole system: ads that pull in the right people, instant follow-up so nothing goes cold, qualified leads booked straight into your calendar, and a dashboard showing exactly what it's all earning you. You do the work, we grow the pipeline."
+            style={{ fontSize: "clamp(22px,3.2vw,36px)", fontWeight: 600, lineHeight: 1.5, letterSpacing: "-0.01em", fontFamily: F }}
+          />
         </div>
       </section>
 
