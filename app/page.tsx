@@ -322,6 +322,9 @@ export default function Home() {
           .m-calendar-stats > div { border-right: none !important; border-bottom: 1px solid ${line} !important; }
           .m-calendar-stats > div:last-child { border-bottom: none !important; }
           .m-build-grid { grid-template-columns: 1fr !important; }
+          .m-how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .m-how-sticky { position: static !important; top: auto !important; }
+          .how-step-card { position: static !important; padding: 28px 24px !important; box-shadow: 0 12px 32px rgba(10,15,26,0.14) !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
           .m-solution-split { display: none !important; }
@@ -605,7 +608,7 @@ export default function Home() {
               },
             ].map(({ tag, title, desc, tags, visual }, i) => (
               <div key={tag} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", padding: "0 0 36px", display: "flex", flexDirection: "column" as const }}>
-                <div style={{ height: "260px", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: `1px solid ${line}`, marginBottom: "32px", background: "#f8fafc" }}>
+                <div style={{ aspectRatio: "1 / 1", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: `1px solid ${line}`, marginBottom: "32px", background: "#f8fafc" }}>
                   {visual}
                 </div>
                 <div style={{ padding: "0 32px", display: "flex", flexDirection: "column" as const, flex: 1 }}>
