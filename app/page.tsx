@@ -801,17 +801,17 @@ export default function Home() {
           <div style={{ marginBottom: "48px", maxWidth: "640px" }}>
             <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>What Sets Us Apart</div>
             <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "14px" }}>
-              We're not just another marketing company.
+              Marketing companies get you leads. We make sure they turn into money.
             </h2>
             <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
-              You've probably been promised results before and didn't see them. That's exactly what we do differently.
+              You've probably paid for leads before and watched most of them go nowhere. Not because the leads were bad, but because nobody owned what happened next. That's the part we run.
             </p>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column" as const, gap: "16px" }}>
             <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", gap: "16px" }}>
               {[
-                { value: "3X", num: 3, suffix: "X", scheme: "dark", text: "More jobs booked from the exact same leads, without spending a cent more on ads.", label: "Jobs Won From Existing Leads" },
+                { value: "3X", num: 3, suffix: "X", scheme: "dark", text: "More revenue from the same ad spend, without spending a cent more on ads.", label: "More Revenue From The Same Ad Spend" },
                 { value: "60s", num: 60, suffix: "s", scheme: "light", text: "Most jobs go to whoever replies first. We make sure that's always you, every time.", label: "Average First Response Time" },
               ].map(({ value, num, suffix, scheme, text, label }) => {
                 const dark2 = scheme === "dark";
@@ -830,7 +830,7 @@ export default function Home() {
             <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.3fr 0.85fr", gap: "16px" }}>
               {[
                 { value: "5–7", num: null, suffix: "", scheme: "accent", text: "Automated touchpoints before a lead is ever written off as cold.", label: "Follow-Ups Per Lead", hide: true },
-                { value: "100%", num: 100, suffix: "%", scheme: "light", text: "Every enquiry logged, tracked and assigned to a stage. Nothing slips through the cracks.", label: "Of Leads Tracked & Managed", hide: false },
+                { value: "100%", num: 100, suffix: "%", scheme: "light", text: "Every enquiry logged, tracked and visible in your dashboard. Nothing slips through the cracks.", label: "Of Leads Tracked & Managed", hide: false },
                 { value: "24/7", num: null, suffix: "", scheme: "dark", text: "Your pipeline keeps working nights, weekends and public holidays.", label: "Coverage, Not Office Hours", hide: true },
               ].map(({ value, num, suffix, scheme, text, label, hide }) => {
                 const dark2 = scheme === "dark";
@@ -856,10 +856,10 @@ export default function Home() {
             <div className="m-solution-split" style={{ border: `1px solid ${line}`, display: "grid", gridTemplateColumns: "1fr 1fr" }}>
               <div style={{ padding: "40px 44px", borderRight: `1px solid ${line}` }}>
                 <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>The Solution</div>
-                <h3 style={{ fontSize: "clamp(18px,2vw,26px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "12px" }}>The Full Done-For-You Service</h3>
-                <p style={{ fontSize: "13px", color: muted, lineHeight: 1.7, marginBottom: "24px" }}>Winning local service businesses don't just run ads. They have someone managing the whole process. That's what L&S Growth does, built specifically for trades and home services in NZ and AU.</p>
+                <h3 style={{ fontSize: "clamp(18px,2vw,26px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "12px" }}>The Full Growth System, Done For You</h3>
+                <p style={{ fontSize: "13px", color: muted, lineHeight: 1.7, marginBottom: "24px" }}>Winning trade and home service businesses don't just run ads. They have a system behind them: instant response, real follow-up, qualified bookings, and numbers that show what it's all earning. Most owners don't have time to build that. So we build it and run it for you, made specifically for trades and home services in NZ and AU.</p>
                 <a href="/book" className="btn btn-dark" style={{ fontSize: "13px", padding: "10px 18px" }}>
-                  Fill your pipeline <ArrowRight style={{ width: "12px", height: "12px" }} />
+                  See what your pipeline could earn <ArrowRight style={{ width: "12px", height: "12px" }} />
                 </a>
               </div>
               <div style={{ padding: "40px 44px" }}>
