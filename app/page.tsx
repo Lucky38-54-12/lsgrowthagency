@@ -437,7 +437,7 @@ export default function Home() {
           .m-faq-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-faq-sticky { position: static !important; }
           .m-connect-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .m-connect-scatter { height: 260px !important; margin-top: 8px !important; }
+          .m-connect-scatter { width: 100% !important; height: 260px !important; margin-top: 8px !important; }
           .m-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
           .m-footer-brand { grid-column: 1/-1 !important; }
           .m-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
@@ -941,9 +941,9 @@ export default function Home() {
       </section>
 
       {/* ── CONNECTIONS ── */}
-      <section style={{ background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+      <section style={{ background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "center" }}>
+          <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "1fr 480px", gap: "48px", alignItems: "center" }}>
             <div>
               <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Connections</div>
               <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "16px", maxWidth: "480px" }}>
@@ -956,7 +956,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="m-connect-scatter lp-rise d3" style={{ position: "relative", height: "380px" }}>
+            <div className="m-connect-scatter lp-rise d3" style={{ position: "relative", width: "480px", height: "380px", background: "#fff", border: `1px solid ${line}`, borderRadius: "20px", flexShrink: 0 }}>
               {connectedTools.map(({ Logo, size, top, left, rot, delay }, i) => (
                 <div
                   key={i}
