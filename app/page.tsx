@@ -956,7 +956,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="m-connect-scatter lp-rise d3" style={{ position: "relative", width: "480px", height: "380px", background: "#fff", border: `1px solid ${line}`, borderRadius: "20px", flexShrink: 0 }}>
+            <div className="m-connect-scatter lp-rise d3" style={{ position: "relative", width: "480px", height: "380px", flexShrink: 0 }}>
               {connectedTools.map(({ Logo, size, top, left, rot, delay }, i) => (
                 <div
                   key={i}
