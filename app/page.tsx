@@ -1136,7 +1136,34 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer id="about" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "60px 40px 0" }}>
+      <section id="about" style={{ padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+          <h2 className="lp-rise" style={{ fontSize: "40px", fontWeight: 800, color: ink, letterSpacing: "-0.03em", marginBottom: "48px" }}>
+            Meet the team.
+          </h2>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "40px" }}>
+            <div className="lp-rise" style={{ width: "260px" }}>
+              <img
+                src="/team-lucky.jpg"
+                alt="Lucky Singh"
+                style={{ width: "100%", aspectRatio: "1 / 1", objectFit: "cover", borderRadius: "4px", marginBottom: "20px" }}
+              />
+              <h3 style={{ fontSize: "18px", fontWeight: 700, color: ink, letterSpacing: "-0.01em", marginBottom: "2px" }}>Lucky Singh</h3>
+              <p style={{ fontSize: "14px", color: muted, marginBottom: "14px" }}>Founder</p>
+              <div style={{ display: "flex", gap: "14px" }}>
+                <a href="mailto:lsgrowthagency.co@gmail.com" aria-label="Email Lucky Singh" style={{ color: muted, display: "flex" }} onMouseEnter={e => (e.currentTarget.style.color = ink)} onMouseLeave={e => (e.currentTarget.style.color = muted)}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 6-10 7L2 6" /></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/lucky-singh-0ba328287/" target="_blank" rel="noopener noreferrer" aria-label="Lucky Singh on LinkedIn" style={{ color: muted, display: "flex" }} onMouseEnter={e => (e.currentTarget.style.color = ink)} onMouseLeave={e => (e.currentTarget.style.color = muted)}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" /></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "60px 40px 0" }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <div className="m-footer-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: "48px", paddingBottom: "48px" }}>
             <div className="lp-rise m-footer-brand" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
