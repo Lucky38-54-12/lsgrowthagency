@@ -1142,14 +1142,14 @@ export default function Home() {
             Meet the team.
           </h2>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "40px" }}>
-            <div className="lp-rise" style={{ width: "260px" }}>
+            <div className="lp-rise" style={{ width: "340px" }}>
               <img
                 src="/team-lucky.jpg"
                 alt="Lucky Singh"
-                style={{ width: "100%", aspectRatio: "1 / 1", objectFit: "cover", borderRadius: "4px", marginBottom: "20px" }}
+                style={{ width: "100%", aspectRatio: "3 / 4", objectFit: "cover", borderRadius: "4px", marginBottom: "24px", filter: "grayscale(1) contrast(1.05)" }}
               />
-              <h3 style={{ fontSize: "18px", fontWeight: 700, color: ink, letterSpacing: "-0.01em", marginBottom: "2px" }}>Lucky Singh</h3>
-              <p style={{ fontSize: "14px", color: muted, marginBottom: "14px" }}>Founder</p>
+              <h3 style={{ fontSize: "20px", fontWeight: 700, color: ink, letterSpacing: "-0.01em", marginBottom: "2px" }}>Lucky Singh</h3>
+              <p style={{ fontSize: "15px", color: muted, marginBottom: "16px" }}>Founder</p>
               <div style={{ display: "flex", gap: "14px" }}>
                 <a href="mailto:lsgrowthagency.co@gmail.com" aria-label="Email Lucky Singh" style={{ color: muted, display: "flex" }} onMouseEnter={e => (e.currentTarget.style.color = ink)} onMouseLeave={e => (e.currentTarget.style.color = muted)}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 6-10 7L2 6" /></svg>
