@@ -137,13 +137,163 @@ function SlackLogo({ size = 88 }: { size?: number }) {
   );
 }
 
-const connectedTools = [
-  { Logo: GmailLogo,  size: 96,  top: "2%",  left: "6%",  rot: -12, delay: "d1" },
-  { Logo: SlackLogo,  size: 78,  top: "0%",  left: "58%", rot: 10,  delay: "d3" },
-  { Logo: MetaLogo,   size: 84,  top: "34%", left: "30%", rot: -6,  delay: "d2" },
-  { Logo: SheetsLogo, size: 80,  top: "30%", left: "68%", rot: 14,  delay: "d4" },
-  { Logo: GCalLogo,   size: 100, top: "62%", left: "8%",  rot: 8,   delay: "d5" },
+function SparkIcon({ size = 88 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="11" fill={accent} />
+      <path d="M24 9l3.4 10.6L38 23l-10.6 3.4L24 37l-3.4-10.6L10 23l10.6-3.4z" fill="#fff" />
+    </svg>
+  );
+}
+
+/* ── Connections: animated step sequence ── */
+const connectSteps = [
+  {
+    title: "Connections",
+    desc: "We connect straight into your ads, your inbox and your calendar — all linked under your own accounts, nothing new to log into.",
+    tools: [MetaLogo, GmailLogo, GCalLogo, SheetsLogo, SlackLogo],
+  },
+  {
+    title: "Qualification",
+    desc: "Every lead gets checked in seconds by AI that never sleeps, never forgets, and never leaves someone waiting on a reply.",
+    tools: [MetaLogo, GmailLogo, SparkIcon],
+  },
+  {
+    title: "Booking",
+    desc: "A qualified lead doesn't wait for a callback. It books itself straight onto your calendar, in a slot you're actually free.",
+    tools: [GCalLogo],
+  },
+  {
+    title: "Integrated",
+    desc: "None of it needs babysitting. Ads, AI, calendar and follow-up all run together, quietly, in the background.",
+    tools: [MetaLogo, GmailLogo, GCalLogo, SheetsLogo, SlackLogo, SparkIcon],
+  },
 ];
+
+function ConnectionsAnimated() {
+  const [active, setActive] = useState(0);
+  const skyRef = useRef<HTMLDivElement>(null);
+  const chipRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const sky = skyRef.current;
+    if (!sky) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const w = sky.clientWidth, h = sky.clientHeight;
+    const els = chipRefs.current.filter(Boolean) as HTMLDivElement[];
+
+    const bodies = els.map((el, i) => {
+      const cw = el.offsetWidth, ch = el.offsetHeight;
+      const margin = 8;
+      const maxX = Math.max(margin, w - cw - margin);
+      const x = margin + Math.random() * (maxX - margin);
+      return { el, w: cw, h: ch, x, y: -ch - i * 60, vx: (Math.random() - 0.5) * 0.5, vy: 0, rot: (Math.random() - 0.5) * 16, vrot: (Math.random() - 0.5) * 1.6, settled: false };
+    });
+
+    if (reduceMotion) {
+      bodies.forEach((b, i) => {
+        b.el.style.opacity = "1";
+        b.el.style.transform = `translate(${b.x}px,${(h - b.h - 12) - i * (b.h * 0.5)}px) rotate(0deg)`;
+      });
+      const t = setTimeout(() => setActive(a => (a + 1) % connectSteps.length), 4200);
+      return () => clearTimeout(t);
+    }
+
+    let raf: number;
+    function tick() {
+      let allSettled = true;
+      bodies.forEach(b => {
+        if (b.settled) return;
+        allSettled = false;
+        b.vy += 0.55; b.y += b.vy; b.x += b.vx; b.rot += b.vrot;
+        if (b.x < 4) { b.x = 4; b.vx *= -0.4; }
+        if (b.x + b.w > w - 4) { b.x = w - 4 - b.w; b.vx *= -0.4; }
+        let floor = h - 10;
+        bodies.forEach(o => {
+          if (o === b || !o.settled) return;
+          const overlapX = b.x < o.x + o.w && b.x + b.w > o.x;
+          if (overlapX && o.y < floor) floor = o.y;
+        });
+        if (b.y + b.h >= floor) {
+          b.y = floor - b.h;
+          b.vy = -b.vy * 0.3;
+          b.vrot *= 0.5;
+          if (Math.abs(b.vy) < 1.2) {
+            b.vy = 0; b.vx = 0; b.vrot = 0; b.settled = true;
+            b.rot = Math.max(-8, Math.min(8, b.rot));
+          }
+        }
+        b.el.style.opacity = "1";
+        b.el.style.transform = `translate(${b.x}px,${b.y}px) rotate(${b.rot}deg)`;
+      });
+      if (!allSettled) raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+
+    const t = setTimeout(() => setActive(a => (a + 1) % connectSteps.length), 4400);
+    return () => { cancelAnimationFrame(raf); clearTimeout(t); };
+  }, [active]);
+
+  return (
+    <section style={{ background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "1fr 480px", gap: "48px", alignItems: "center" }}>
+          <div>
+            <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "20px" }}>
+              How It All Works Together
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: "4px" }}>
+              {connectSteps.map((s, i) => {
+                const isActive = i === active;
+                return (
+                  <button
+                    key={s.title}
+                    onClick={() => setActive(i)}
+                    style={{
+                      display: "flex", alignItems: "baseline", gap: "16px",
+                      textAlign: "left" as const, background: "none", border: "none", cursor: "pointer",
+                      padding: "10px 0", font: "inherit",
+                    }}
+                  >
+                    <span style={{ fontSize: "13px", fontFamily: "ui-monospace,monospace", color: isActive ? accent : dim, transition: "color 0.4s", flexShrink: 0, minWidth: "22px" }}>
+                      0{i + 1}
+                    </span>
+                    <span>
+                      <span style={{ display: "block", fontSize: "clamp(22px,2.6vw,32px)", fontWeight: 800, letterSpacing: "-0.02em", color: isActive ? ink : dim, transition: "color 0.4s" }}>
+                        {s.title}
+                      </span>
+                      <span
+                        style={{
+                          display: "block", fontSize: "15px", color: muted, lineHeight: 1.65, maxWidth: "440px",
+                          marginTop: isActive ? "10px" : "0", maxHeight: isActive ? "120px" : "0", opacity: isActive ? 1 : 0,
+                          overflow: "hidden", transition: "all 0.4s ease",
+                        }}
+                      >
+                        {s.desc}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div ref={skyRef} className="m-connect-scatter" style={{ position: "relative", width: "480px", height: "380px", flexShrink: 0 }}>
+            {connectSteps[active].tools.map((Logo, i) => (
+              <div
+                key={`${active}-${i}`}
+                ref={el => { chipRefs.current[i] = el; }}
+                style={{ position: "absolute", top: 0, left: 0, opacity: 0, filter: "drop-shadow(0 12px 20px rgba(10,15,26,0.14))" }}
+              >
+                <Logo size={connectSteps[active].tools.length > 4 ? 74 : 96} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 /* ── Data ── */
 const bentoCards = [
@@ -941,37 +1091,7 @@ export default function Home() {
       </section>
 
       {/* ── CONNECTIONS ── */}
-      <section style={{ background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "1fr 480px", gap: "48px", alignItems: "center" }}>
-            <div>
-              <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Connections</div>
-              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "16px", maxWidth: "480px" }}>
-                We plug straight into what you already use.
-              </h2>
-              <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "460px" }}>
-                No new software to learn, no extra app on your phone. We connect directly to your calendar,
-                your inbox and your ad account, so a lead that comes in Friday night is already booked in
-                by Monday morning &mdash; without you touching a spreadsheet.
-              </p>
-            </div>
-
-            <div className="m-connect-scatter lp-rise d3" style={{ position: "relative", width: "480px", height: "380px", flexShrink: 0 }}>
-              {connectedTools.map(({ Logo, size, top, left, rot, delay }, i) => (
-                <div
-                  key={i}
-                  className={`lp-rise ${delay}`}
-                  style={{ position: "absolute", top, left }}
-                >
-                  <div style={{ transform: `rotate(${rot}deg)`, filter: "drop-shadow(0 12px 20px rgba(10,15,26,0.12))" }}>
-                    <Logo size={size} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ConnectionsAnimated />
 
       {/* ── COMPARISON ── */}
       <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
