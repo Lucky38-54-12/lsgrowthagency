@@ -79,6 +79,72 @@ function ScrollRevealText({ text, style, className }: { text: string; style?: Re
   );
 }
 
+/* ── Connected tool logos ── */
+function MetaLogo({ size = 88 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="11" fill="#0866FF" />
+      <path d="M31.6 24.4h-4.2v13h-5.4v-13h-3v-4.6h3v-3.3c0-4 1.9-6.5 6.6-6.5h4v4.6h-2.5c-1.9 0-2 .7-2 2v3.2h4.6l-.5 4.6z" fill="#fff" />
+    </svg>
+  );
+}
+function GCalLogo({ size = 88 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48">
+      <rect x="4" y="8" width="40" height="36" rx="4" fill="#fff" stroke="#dadce0" strokeWidth="1" />
+      <path d="M4 12a4 4 0 0 1 4-4h6v9H4z" fill="#1A73E8" />
+      <path d="M44 12a4 4 0 0 0-4-4h-6v9h10z" fill="#1A73E8" />
+      <rect x="4" y="17" width="40" height="6" fill="#EA4335" />
+      <text x="24" y="37" textAnchor="middle" fontFamily="Arial,sans-serif" fontSize="16" fontWeight="700" fill="#3C4043">18</text>
+    </svg>
+  );
+}
+function GmailLogo({ size = 88 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="11" fill="#fff" stroke="#e5e7eb" strokeWidth="1" />
+      <path d="M9 15h30v18a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2V15z" fill="#F5F5F5" />
+      <path d="M9 15l15 11 15-11" fill="none" stroke="#EA4335" strokeWidth="3.4" strokeLinejoin="round" strokeLinecap="round" />
+      <path d="M9 15v18M39 15v18" stroke="#4285F4" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+function SheetsLogo({ size = 88 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48">
+      <path d="M12 4h16l8 8v28a3 3 0 0 1-3 3H12a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3z" fill="#0F9D58" />
+      <path d="M28 4l8 8h-8V4z" fill="#0B8043" />
+      <rect x="14" y="19" width="20" height="15" fill="#fff" />
+      <path d="M14 24h20M14 29h20M21.3 19v15M27 19v15" stroke="#0F9D58" strokeWidth="1.4" />
+    </svg>
+  );
+}
+function SlackLogo({ size = 88 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="11" fill="#fff" stroke="#e5e7eb" strokeWidth="1" />
+      <g>
+        <rect x="14" y="8" width="5" height="14" rx="2.5" fill="#36C5F0" />
+        <rect x="14" y="24" width="5" height="14" rx="2.5" fill="#2EB67D" />
+        <rect x="8" y="29" width="14" height="5" rx="2.5" fill="#ECB22E" />
+        <rect x="24" y="29" width="14" height="5" rx="2.5" fill="#E01E5A" />
+        <rect x="29" y="24" width="5" height="14" rx="2.5" fill="#36C5F0" />
+        <rect x="29" y="6" width="5" height="14" rx="2.5" fill="#E01E5A" />
+        <rect x="26" y="8" width="14" height="5" rx="2.5" fill="#2EB67D" />
+        <rect x="10" y="14" width="14" height="5" rx="2.5" fill="#ECB22E" />
+      </g>
+    </svg>
+  );
+}
+
+const connectedTools = [
+  { Logo: GmailLogo,  size: 96,  top: "2%",  left: "6%",  rot: -12, delay: "d1" },
+  { Logo: SlackLogo,  size: 78,  top: "0%",  left: "58%", rot: 10,  delay: "d3" },
+  { Logo: MetaLogo,   size: 84,  top: "34%", left: "30%", rot: -6,  delay: "d2" },
+  { Logo: SheetsLogo, size: 80,  top: "30%", left: "68%", rot: 14,  delay: "d4" },
+  { Logo: GCalLogo,   size: 100, top: "62%", left: "8%",  rot: 8,   delay: "d5" },
+];
+
 /* ── Data ── */
 const bentoCards = [
   { num: 70, suffix: "%+", label: "Leads Lost to No Follow-Up", desc: "Most local service businesses respond to less than 30% of enquiries within the first hour. The rest go cold and book someone else.", bg: dark, textColor: "#fff", dimColor: "rgba(255,255,255,0.25)", descColor: "rgba(255,255,255,0.55)", span: "1/8" },
@@ -370,6 +436,8 @@ export default function Home() {
           .m-testi-grid { grid-template-columns: 1fr !important; }
           .m-faq-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
           .m-faq-sticky { position: static !important; }
+          .m-connect-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .m-connect-scatter { height: 260px !important; margin-top: 8px !important; }
           .m-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
           .m-footer-brand { grid-column: 1/-1 !important; }
           .m-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
@@ -867,6 +935,39 @@ export default function Home() {
                 <h3 style={{ fontSize: "clamp(18px,2vw,26px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "12px" }}>You Do the Work. We Fill Your Pipeline.</h3>
                 <p style={{ fontSize: "13px", color: muted, lineHeight: 1.7 }}>Ads, landing pages, follow-up, CRM, and reporting. We manage everything end-to-end so you can focus on the jobs, not chasing the leads.</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONNECTIONS ── */}
+      <section style={{ background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "center" }}>
+            <div>
+              <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Connections</div>
+              <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "16px", maxWidth: "480px" }}>
+                We plug straight into what you already use.
+              </h2>
+              <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "460px" }}>
+                No new software to learn, no extra app on your phone. We connect directly to your calendar,
+                your inbox and your ad account, so a lead that comes in Friday night is already booked in
+                by Monday morning &mdash; without you touching a spreadsheet.
+              </p>
+            </div>
+
+            <div className="m-connect-scatter lp-rise d3" style={{ position: "relative", height: "380px" }}>
+              {connectedTools.map(({ Logo, size, top, left, rot, delay }, i) => (
+                <div
+                  key={i}
+                  className={`lp-rise ${delay}`}
+                  style={{ position: "absolute", top, left }}
+                >
+                  <div style={{ transform: `rotate(${rot}deg)`, filter: "drop-shadow(0 12px 20px rgba(10,15,26,0.12))" }}>
+                    <Logo size={size} />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
