@@ -1042,7 +1042,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── */}
+      {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── hidden for now ── */}
+      {false && (
       <section style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ marginBottom: "48px", maxWidth: "640px" }}>
@@ -1118,6 +1119,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── CONNECTIONS ── */}
       <ConnectionsAnimated />
