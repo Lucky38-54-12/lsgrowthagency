@@ -153,6 +153,15 @@ function SparkIcon({ size = 88 }: { size?: number }) {
     </svg>
   );
 }
+function ChatIcon({ size = 88 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="11" fill={ink} />
+      <path d="M10 15a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H21l-7 6v-6h-0a4 4 0 0 1-4-4z" fill="#fff" />
+      <path d="M17 20l4 4 9-9" stroke={accent} strokeWidth="2.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 /* ── Connections: animated step sequence ── */
 const connectSteps = [
@@ -164,7 +173,7 @@ const connectSteps = [
   {
     title: "Qualification",
     desc: "Every lead gets checked in seconds, day or night, so the ones worth your time get chased and the time wasters don't eat your afternoon.",
-    tools: [MetaLogo, GmailLogo, SparkIcon],
+    tools: [ChatIcon, SparkIcon],
   },
   {
     title: "Booking",
