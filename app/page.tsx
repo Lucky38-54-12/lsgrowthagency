@@ -150,7 +150,7 @@ function SparkIcon({ size = 88 }: { size?: number }) {
 const connectSteps = [
   {
     title: "Connections",
-    desc: "We connect straight into your ads, your inbox and your calendar — all linked under your own accounts, nothing new to log into.",
+    desc: "We connect straight into your ads, your inbox and your calendar, all linked under your own accounts, nothing new to log into.",
     tools: [MetaLogo, GmailLogo, GCalLogo, SheetsLogo, SlackLogo],
   },
   {
@@ -245,13 +245,13 @@ function ConnectionsAnimated() {
 
   return (
     <section style={{ background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "1fr 620px", gap: "48px", alignItems: "center" }}>
+      <div style={{ maxWidth: "1360px", margin: "0 auto" }}>
+        <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "minmax(560px,1fr) 620px", gap: "56px", alignItems: "center" }}>
           <div>
-            <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "20px" }}>
+            <div className="lp-rise" style={{ fontSize: "13px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "24px" }}>
               How It All Works Together
             </div>
-            <div style={{ display: "flex", flexDirection: "column" as const, gap: "4px" }}>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: "6px" }}>
               {connectSteps.map((s, i) => {
                 const isActive = i === active;
                 return (
@@ -259,22 +259,22 @@ function ConnectionsAnimated() {
                     key={s.title}
                     onClick={() => setActive(i)}
                     style={{
-                      display: "flex", alignItems: "baseline", gap: "16px",
+                      display: "flex", alignItems: "baseline", gap: "20px",
                       textAlign: "left" as const, background: "none", border: "none", cursor: "pointer",
-                      padding: "10px 0", font: "inherit",
+                      padding: "14px 0", font: "inherit",
                     }}
                   >
-                    <span style={{ fontSize: "13px", fontFamily: "ui-monospace,monospace", color: isActive ? accent : dim, transition: "color 0.4s", flexShrink: 0, minWidth: "22px" }}>
+                    <span style={{ fontSize: "16px", fontFamily: "ui-monospace,monospace", color: isActive ? accent : dim, transition: "color 0.4s", flexShrink: 0, minWidth: "28px" }}>
                       0{i + 1}
                     </span>
                     <span>
-                      <span style={{ display: "block", fontSize: "clamp(22px,2.6vw,32px)", fontWeight: 800, letterSpacing: "-0.02em", color: isActive ? ink : dim, transition: "color 0.4s" }}>
+                      <span style={{ display: "block", fontSize: "clamp(28px,3.4vw,44px)", fontWeight: 800, letterSpacing: "-0.025em", color: isActive ? ink : dim, transition: "color 0.4s" }}>
                         {s.title}
                       </span>
                       <span
                         style={{
-                          display: "block", fontSize: "15px", color: muted, lineHeight: 1.65, maxWidth: "440px",
-                          marginTop: isActive ? "10px" : "0", maxHeight: isActive ? "120px" : "0", opacity: isActive ? 1 : 0,
+                          display: "block", fontSize: "18px", color: muted, lineHeight: 1.65, maxWidth: "540px",
+                          marginTop: isActive ? "12px" : "0", maxHeight: isActive ? "140px" : "0", opacity: isActive ? 1 : 0,
                           overflow: "hidden", transition: "all 0.4s ease",
                         }}
                       >
