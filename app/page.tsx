@@ -181,30 +181,38 @@ function ConnectionsAnimated() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const w = sky.clientWidth, h = sky.clientHeight;
     const els = chipRefs.current.filter(Boolean) as HTMLDivElement[];
-
-    const bodies = els.map((el, i) => {
-      const cw = el.offsetWidth, ch = el.offsetHeight;
-      const margin = 8;
-      const maxX = Math.max(margin, w - cw - margin);
-      const x = margin + Math.random() * (maxX - margin);
-      return { el, w: cw, h: ch, x, y: -ch - i * 60, vx: (Math.random() - 0.5) * 0.5, vy: 0, rot: (Math.random() - 0.5) * 16, vrot: (Math.random() - 0.5) * 1.6, settled: false };
-    });
+    const total = els.length;
+    const DROP_GAP = 380;
 
     if (reduceMotion) {
-      bodies.forEach((b, i) => {
-        b.el.style.opacity = "1";
-        b.el.style.transform = `translate(${b.x}px,${(h - b.h - 12) - i * (b.h * 0.5)}px) rotate(0deg)`;
+      els.forEach((el, i) => {
+        const ch = el.offsetHeight, cw = el.offsetWidth;
+        el.style.opacity = "1";
+        el.style.transform = `translate(${(w - cw) / 2}px,${(h - ch - 12) - i * (ch * 0.45)}px) rotate(0deg)`;
       });
-      const t = setTimeout(() => setActive(a => (a + 1) % connectSteps.length), 4200);
+      const t = setTimeout(() => setActive(a => (a + 1) % connectSteps.length), total * DROP_GAP + 2600);
       return () => clearTimeout(t);
     }
 
+    type Body = { el: HTMLDivElement; w: number; h: number; x: number; y: number; vx: number; vy: number; rot: number; vrot: number; settled: boolean };
+    const bodies: Body[] = [];
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    els.forEach((el, i) => {
+      const t = setTimeout(() => {
+        const cw = el.offsetWidth, ch = el.offsetHeight;
+        const margin = 8;
+        const maxX = Math.max(margin, w - cw - margin);
+        const x = margin + Math.random() * (maxX - margin);
+        bodies.push({ el, w: cw, h: ch, x, y: -ch - 10, vx: (Math.random() - 0.5) * 0.5, vy: 0, rot: (Math.random() - 0.5) * 16, vrot: (Math.random() - 0.5) * 1.6, settled: false });
+      }, i * DROP_GAP);
+      timers.push(t);
+    });
+
     let raf: number;
     function tick() {
-      let allSettled = true;
       bodies.forEach(b => {
         if (b.settled) return;
-        allSettled = false;
         b.vy += 0.55; b.y += b.vy; b.x += b.vx; b.rot += b.vrot;
         if (b.x < 4) { b.x = 4; b.vx *= -0.4; }
         if (b.x + b.w > w - 4) { b.x = w - 4 - b.w; b.vx *= -0.4; }
@@ -226,18 +234,19 @@ function ConnectionsAnimated() {
         b.el.style.opacity = "1";
         b.el.style.transform = `translate(${b.x}px,${b.y}px) rotate(${b.rot}deg)`;
       });
-      if (!allSettled) raf = requestAnimationFrame(tick);
+      raf = requestAnimationFrame(tick);
     }
     raf = requestAnimationFrame(tick);
 
-    const t = setTimeout(() => setActive(a => (a + 1) % connectSteps.length), 4400);
-    return () => { cancelAnimationFrame(raf); clearTimeout(t); };
+    const t = setTimeout(() => setActive(a => (a + 1) % connectSteps.length), total * DROP_GAP + 3000);
+    timers.push(t);
+    return () => { cancelAnimationFrame(raf); timers.forEach(clearTimeout); };
   }, [active]);
 
   return (
     <section style={{ background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "1fr 480px", gap: "48px", alignItems: "center" }}>
+        <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "1fr 620px", gap: "48px", alignItems: "center" }}>
           <div>
             <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "20px" }}>
               How It All Works Together
@@ -278,14 +287,14 @@ function ConnectionsAnimated() {
             </div>
           </div>
 
-          <div ref={skyRef} className="m-connect-scatter" style={{ position: "relative", width: "480px", height: "380px", flexShrink: 0 }}>
+          <div ref={skyRef} className="m-connect-scatter" style={{ position: "relative", width: "620px", height: "480px", flexShrink: 0 }}>
             {connectSteps[active].tools.map((Logo, i) => (
               <div
                 key={`${active}-${i}`}
                 ref={el => { chipRefs.current[i] = el; }}
-                style={{ position: "absolute", top: 0, left: 0, opacity: 0, filter: "drop-shadow(0 12px 20px rgba(10,15,26,0.14))" }}
+                style={{ position: "absolute", top: 0, left: 0, opacity: 0, filter: "drop-shadow(0 14px 24px rgba(10,15,26,0.16))" }}
               >
-                <Logo size={connectSteps[active].tools.length > 4 ? 74 : 96} />
+                <Logo size={connectSteps[active].tools.length > 4 ? 96 : 128} />
               </div>
             ))}
           </div>
