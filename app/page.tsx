@@ -150,22 +150,22 @@ function SparkIcon({ size = 88 }: { size?: number }) {
 const connectSteps = [
   {
     title: "Connections",
-    desc: "We connect straight into your ads, your inbox and your calendar, all linked under your own accounts, nothing new to log into.",
+    desc: "Every enquiry from your ads, your inbox and your calendar feeds into one system, so a lead never sits unseen because nobody was checking the right app.",
     tools: [MetaLogo, GmailLogo, GCalLogo, SheetsLogo, SlackLogo],
   },
   {
     title: "Qualification",
-    desc: "Every lead gets checked in seconds by AI that never sleeps, never forgets, and never leaves someone waiting on a reply.",
+    desc: "Every lead gets checked in seconds, day or night, so the ones worth your time get chased and the time wasters don't eat your afternoon.",
     tools: [MetaLogo, GmailLogo, SparkIcon],
   },
   {
     title: "Booking",
-    desc: "A qualified lead doesn't wait for a callback. It books itself straight onto your calendar, in a slot you're actually free.",
+    desc: "A qualified lead doesn't wait for a callback. It books itself straight onto your calendar, so more enquiries actually turn into a job on the books.",
     tools: [GCalLogo],
   },
   {
     title: "Integrated",
-    desc: "None of it needs babysitting. Ads, AI, calendar and follow-up all run together, quietly, in the background.",
+    desc: "More jobs booked, less admin to do at night. It all runs quietly in the background so you can stay on the tools.",
     tools: [MetaLogo, GmailLogo, GCalLogo, SheetsLogo, SlackLogo, SparkIcon],
   },
 ];
@@ -248,9 +248,12 @@ function ConnectionsAnimated() {
       <div style={{ maxWidth: "1360px", margin: "0 auto" }}>
         <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "minmax(560px,1fr) 620px", gap: "56px", alignItems: "center" }}>
           <div>
-            <div className="lp-rise" style={{ fontSize: "13px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "24px" }}>
+            <div className="lp-rise" style={{ fontSize: "13px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>
               How It All Works Together
             </div>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(26px,3vw,38px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "36px", maxWidth: "540px" }}>
+              More jobs booked. Less admin to deal with.
+            </h2>
             <div style={{ display: "flex", flexDirection: "column" as const, gap: "6px" }}>
               {connectSteps.map((s, i) => {
                 const isActive = i === active;
