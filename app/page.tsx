@@ -1042,8 +1042,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── hidden for now ── */}
-      {false && (
+      {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── */}
       <section style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ marginBottom: "48px", maxWidth: "640px" }}>
@@ -1119,10 +1118,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      )}
 
-      {/* ── CONNECTIONS ── */}
-      <ConnectionsAnimated />
+      {/* ── CONNECTIONS ── hidden for now ── */}
+      {false && <ConnectionsAnimated />}
 
       {/* ── COMPARISON ── */}
       <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
