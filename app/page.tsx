@@ -636,7 +636,7 @@ export default function Home() {
         {/* Right side — links, CTA, hamburger grouped together */}
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
           <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
-            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"],["Play & Win","/play"]].map(([l,h]) => (
+            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["Play & Win","/play"]].map(([l,h]) => (
               <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
             ))}
           </div>
@@ -663,7 +663,7 @@ export default function Home() {
               <button onClick={() => setNavOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: muted, fontSize: "22px", lineHeight: 1, padding: "4px" }}>×</button>
             </div>
             <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>
-              {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["About","#about"],["Play & Win","/play"]].map(([l,h]) => (
+              {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["Play & Win","/play"]].map(([l,h]) => (
                 <a key={h} href={h} onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f8fafc", border: `1px solid ${line}`, fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>{l}</a>
               ))}
               <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: "#f1f5f9", border: `1px solid ${line}`, color: ink, fontSize: "14px", fontWeight: 600, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Send a Message</button>
@@ -1386,32 +1386,6 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ── */}
-      <section id="about" style={{ padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
-          <h2 className="lp-rise" style={{ fontSize: "40px", fontWeight: 800, color: ink, letterSpacing: "-0.03em", marginBottom: "48px" }}>
-            Meet the team.
-          </h2>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "40px" }}>
-            <div className="lp-rise" style={{ width: "340px" }}>
-              <img
-                src="/team-lucky.jpg"
-                alt="Lucky Singh"
-                style={{ width: "100%", aspectRatio: "3 / 4", objectFit: "cover", borderRadius: "4px", marginBottom: "24px", filter: "grayscale(1) contrast(1.05)" }}
-              />
-              <h3 style={{ fontSize: "20px", fontWeight: 700, color: ink, letterSpacing: "-0.01em", marginBottom: "2px" }}>Lucky Singh</h3>
-              <p style={{ fontSize: "15px", color: muted, marginBottom: "16px" }}>Founder</p>
-              <div style={{ display: "flex", gap: "14px" }}>
-                <a href="mailto:lsgrowthagency.co@gmail.com" aria-label="Email Lucky Singh" style={{ color: muted, display: "flex" }} onMouseEnter={e => (e.currentTarget.style.color = ink)} onMouseLeave={e => (e.currentTarget.style.color = muted)}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 6-10 7L2 6" /></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/lucky-singh-0ba328287/" target="_blank" rel="noopener noreferrer" aria-label="Lucky Singh on LinkedIn" style={{ color: muted, display: "flex" }} onMouseEnter={e => (e.currentTarget.style.color = ink)} onMouseLeave={e => (e.currentTarget.style.color = muted)}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" /></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <footer style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "60px 40px 0" }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
