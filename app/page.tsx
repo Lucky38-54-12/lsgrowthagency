@@ -953,12 +953,12 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  {i < steps.length - 1 && <div aria-hidden style={{ height: "340px" }} />}
+                  {i < steps.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
                 </Fragment>
               ))}
 
               {/* Get in Touch card */}
-              <div aria-hidden style={{ height: "340px" }} />
+              <div aria-hidden style={{ height: "40px" }} />
               <a
                 href="/book"
                 className="lp-rise how-step-card"
