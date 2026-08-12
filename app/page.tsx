@@ -1249,7 +1249,7 @@ export default function Home() {
       {/* ── CLIENT STORY: AMAN ── */}
       <section style={{ position: "relative", overflow: "hidden", background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div className="m-client-story-grid" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "64px", alignItems: "center" }}>
+          <div className="m-client-story-grid" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "64px", alignItems: "start" }}>
 
             <div>
               <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
