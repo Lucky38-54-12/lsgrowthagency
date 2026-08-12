@@ -1,7 +1,18 @@
 "use client";
 
-import { useState, useEffect, useRef, Fragment } from "react";
-import { ArrowRight, CheckCircle, Plus, Minus } from "lucide-react";
+import { useState, useEffect, useRef, Fragment, type CSSProperties } from "react";
+import { ArrowRight, CheckCircle, Plus, Minus, Volume2, VolumeX } from "lucide-react";
+
+/* ── Instagram glyph (lucide-react dropped brand icons) ── */
+function InstagramIcon({ style }: { style?: CSSProperties }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
 
 /* ── CountUp component ── */
 function CountUp({ to, suffix = "", prefix = "", duration = 1800, color, format }: { to: number; suffix?: string; prefix?: string; duration?: number; color: string; format?: boolean }) {
@@ -451,6 +462,8 @@ export default function Home() {
   const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
   const [howHeight, setHowHeight] = useState(980);
+  const [amanMuted, setAmanMuted] = useState(true);
+  const amanVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     function onMessage(e: MessageEvent) {
@@ -1228,6 +1241,67 @@ export default function Home() {
             </a>
           </div>
 
+        </div>
+      </section>
+
+      {/* ── CLIENT STORY: AMAN ── */}
+      <section style={{ position: "relative", overflow: "hidden", background: dark, padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 60% 60% at 50% 0%, rgba(0,128,224,0.16) 0%, transparent 65%)" }} />
+        <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center" as const, maxWidth: "640px", margin: "0 auto 48px" }}>
+            <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: "#fff", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
+              Client Story
+            </span>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "14px" }}>
+              Hear it straight from a client
+            </h2>
+            <p className="lp-rise d2" style={{ fontSize: "16px", color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>
+              Aman's been with us for over a year, running lead gen across multiple of his businesses in Queenstown and Dunedin, including Fantastic Services and Jim's Cleaning.
+            </p>
+          </div>
+
+          <div
+            className="lp-rise d3"
+            style={{ position: "relative", maxWidth: "420px", margin: "0 auto", borderRadius: "20px", overflow: "hidden", boxShadow: "0 32px 80px rgba(0,0,0,0.45)", background: "#000" }}
+          >
+            <video
+              ref={amanVideoRef}
+              src="/testimonials/aman-case-study.mp4"
+              autoPlay
+              loop
+              muted={amanMuted}
+              playsInline
+              preload="metadata"
+              style={{ display: "block", width: "100%", height: "auto", aspectRatio: "9/16", objectFit: "cover" as const }}
+            />
+            <button
+              onClick={() => {
+                const v = amanVideoRef.current;
+                if (!v) return;
+                const next = !amanMuted;
+                v.muted = next;
+                setAmanMuted(next);
+              }}
+              aria-label={amanMuted ? "Unmute video" : "Mute video"}
+              style={{ position: "absolute", bottom: "16px", right: "16px", width: "40px", height: "40px", borderRadius: "50%", background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", backdropFilter: "blur(4px)" }}
+            >
+              {amanMuted ? <VolumeX style={{ width: "18px", height: "18px", color: "#fff" }} /> : <Volume2 style={{ width: "18px", height: "18px", color: "#fff" }} />}
+            </button>
+          </div>
+
+          <div className="lp-rise d4" style={{ textAlign: "center" as const, marginTop: "32px" }}>
+            <div style={{ fontSize: "16px", fontWeight: 700, color: "#fff", marginBottom: "4px" }}>Aman</div>
+            <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.55)", marginBottom: "18px" }}>Fantastic Services &amp; Jim's Cleaning, Queenstown &amp; Dunedin</div>
+            <a
+              href="https://www.instagram.com/queenstown.cleaning/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: "#fff", background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "999px", padding: "8px 18px", textDecoration: "none" }}
+            >
+              <InstagramIcon style={{ width: "14px", height: "14px" }} />
+              @queenstown.cleaning
+            </a>
+          </div>
         </div>
       </section>
 
