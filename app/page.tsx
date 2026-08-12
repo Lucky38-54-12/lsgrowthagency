@@ -828,19 +828,78 @@ export default function Home() {
           <img src="/results-mockup.png" alt="Dashboard showing leads, cost per lead, and ad spend results for Queenstown Cleaning, SSP Electrical, and Perl Electrical campaigns" className="lp-rise d3" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto" }} />
         </div>
 
-        <iframe
+        {/* <iframe
           src="/process-demo.html"
           title="The L&#38;S Growth Pipeline, from form to quoted job"
           loading="lazy"
           scrolling="no"
           className="lp-rise d3"
           style={{ position: "relative", display: "block", width: "100%", height: `${howHeight}px`, border: "none", overflow: "hidden", marginTop: "40px" }}
-        />
+        /> */}
 
         <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
           <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "28px" }}>
             Get Results Like This <ArrowRight style={{ width: "13px", height: "13px" }} />
           </a>
+        </div>
+      </section>
+
+      {/* ── WHAT WE BUILD FOR YOU ── */}
+      <section id="services" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
+        <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center" as const, maxWidth: "720px", margin: "0 auto 56px" }}>
+            <p className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Our Services</p>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
+              We help local service businesses turn enquiries into booked jobs.
+            </h2>
+            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.65 }}>
+              We focus on enquiry quality, so you spend less time chasing and more time working.
+            </p>
+          </div>
+          <div className="m-build-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px" }}>
+            {[
+              {
+                tag: "Qualified Leads",
+                title: "Bring In High-Intent Enquiries",
+                desc: "Targeted campaigns designed to attract people ready to buy, not just browse.",
+                tags: ["Meta Ads", "Local Targeting"],
+                visual: <img src="/img-qualified-leads.avif" alt="Qualified Leads" style={{ width: "auto", maxWidth: "200px", height: "200px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.2))" }} />,
+              },
+              {
+                tag: "Instant Response",
+                title: "Turn Enquiries Into Booked Jobs",
+                desc: "We respond instantly and follow up until they book, so you don't lose work.",
+                tags: ["Booking System", "Automated Follow-Up"],
+                visual: <img src="/mockup-phone.avif" alt="" style={{ width: "auto", maxWidth: "150px", height: "230px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.35))" }} />,
+              },
+              {
+                tag: "Website",
+                title: "Filter & Qualify Before They Enquire",
+                desc: "Simple pages that attract the right people and push the wrong ones away.",
+                tags: ["Conversion-Focused", "Mobile Optimised"],
+                visual: <img src="/img-website.avif" alt="Website" style={{ width: "auto", maxWidth: "200px", height: "200px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.2))" }} />,
+              },
+            ].map(({ tag, title, desc, tags, visual }, i) => (
+              <div key={tag} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", padding: "0 0 36px", display: "flex", flexDirection: "column" as const }}>
+                <div style={{ height: "260px", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: `1px solid ${line}`, marginBottom: "32px", background: "#f8fafc" }}>
+                  {visual}
+                </div>
+                <div style={{ padding: "0 32px", display: "flex", flexDirection: "column" as const, flex: 1 }}>
+                  <span style={{ display: "inline-block", alignSelf: "flex-start", fontSize: "11px", fontWeight: 600, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" as const, border: `1px solid ${accent}55`, padding: "5px 12px", marginBottom: "20px" }}>
+                    {tag}
+                  </span>
+                  <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "12px" }}>{title}</h3>
+                  <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7, marginBottom: "24px" }}>{desc}</p>
+                  <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "8px", marginTop: "auto" }}>
+                    {tags.map(t => (
+                      <span key={t} style={{ fontSize: "12px", color: muted, background: "#f8fafc", border: `1px solid ${line}`, padding: "6px 14px" }}>{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -894,12 +953,12 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  {i < steps.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
+                  {i < steps.length - 1 && <div aria-hidden style={{ height: "340px" }} />}
                 </Fragment>
               ))}
 
               {/* Get in Touch card */}
-              <div aria-hidden style={{ height: "40px" }} />
+              <div aria-hidden style={{ height: "340px" }} />
               <a
                 href="/book"
                 className="lp-rise how-step-card"
@@ -969,65 +1028,6 @@ export default function Home() {
         </div>
       </section>
       )}
-
-      {/* ── WHAT WE BUILD FOR YOU ── */}
-      <section id="services" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
-        <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center" as const, maxWidth: "720px", margin: "0 auto 56px" }}>
-            <p className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Our Services</p>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px" }}>
-              We help local service businesses turn enquiries into booked jobs.
-            </h2>
-            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.65 }}>
-              We focus on enquiry quality, so you spend less time chasing and more time working.
-            </p>
-          </div>
-          <div className="m-build-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "16px" }}>
-            {[
-              {
-                tag: "Qualified Leads",
-                title: "Bring In High-Intent Enquiries",
-                desc: "Targeted campaigns designed to attract people ready to buy, not just browse.",
-                tags: ["Meta Ads", "Local Targeting"],
-                visual: <img src="/img-qualified-leads.avif" alt="Qualified Leads" style={{ width: "auto", maxWidth: "200px", height: "200px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.2))" }} />,
-              },
-              {
-                tag: "Instant Response",
-                title: "Turn Enquiries Into Booked Jobs",
-                desc: "We respond instantly and follow up until they book, so you don't lose work.",
-                tags: ["Booking System", "Automated Follow-Up"],
-                visual: <img src="/mockup-phone.avif" alt="" style={{ width: "auto", maxWidth: "150px", height: "230px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.35))" }} />,
-              },
-              {
-                tag: "Website",
-                title: "Filter & Qualify Before They Enquire",
-                desc: "Simple pages that attract the right people and push the wrong ones away.",
-                tags: ["Conversion-Focused", "Mobile Optimised"],
-                visual: <img src="/img-website.avif" alt="Website" style={{ width: "auto", maxWidth: "200px", height: "200px", objectFit: "contain", filter: "drop-shadow(0 12px 36px rgba(0,0,0,0.2))" }} />,
-              },
-            ].map(({ tag, title, desc, tags, visual }, i) => (
-              <div key={tag} className={`lp-rise${i === 1 ? " d1" : i === 2 ? " d2" : ""}`} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", padding: "0 0 36px", display: "flex", flexDirection: "column" as const }}>
-                <div style={{ height: "260px", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: `1px solid ${line}`, marginBottom: "32px", background: "#f8fafc" }}>
-                  {visual}
-                </div>
-                <div style={{ padding: "0 32px", display: "flex", flexDirection: "column" as const, flex: 1 }}>
-                  <span style={{ display: "inline-block", alignSelf: "flex-start", fontSize: "11px", fontWeight: 600, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" as const, border: `1px solid ${accent}55`, padding: "5px 12px", marginBottom: "20px" }}>
-                    {tag}
-                  </span>
-                  <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "12px" }}>{title}</h3>
-                  <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7, marginBottom: "24px" }}>{desc}</p>
-                  <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "8px", marginTop: "auto" }}>
-                    {tags.map(t => (
-                      <span key={t} style={{ fontSize: "12px", color: muted, background: "#f8fafc", border: `1px solid ${line}`, padding: "6px 14px" }}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── */}
       <section style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
