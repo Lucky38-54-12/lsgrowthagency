@@ -814,17 +814,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── AT L&S GROWTH ── */}
-      <section style={{ background: "transparent", padding: "90px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "880px" }}>
-          <p style={{ fontSize: "16px", fontWeight: 700, color: ink, marginBottom: "22px", fontFamily: F }}>At L&S Growth</p>
-          <ScrollRevealText
-            text="We build and run the whole system: ads that pull in the right people, instant follow-up so nothing goes cold, qualified leads booked straight into your calendar, and a dashboard showing exactly what it's all earning you. You do the work, we grow the pipeline."
-            style={{ fontSize: "clamp(22px,3.2vw,36px)", fontWeight: 500, lineHeight: 1.5, letterSpacing: "-0.01em", fontFamily: "var(--font-fraunces), Georgia, serif" }}
-          />
-        </div>
-      </section>
-
       {/* ── RESULTS ── */}
       <section style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "40px 40px 32px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
