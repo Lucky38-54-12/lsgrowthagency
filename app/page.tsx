@@ -837,7 +837,7 @@ export default function Home() {
               Your growth partner · NZ & AU
             </p>
             <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.8vw, 96px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "18px" }}>
-              Most agencies get you leads.<br />We get you{" "}
+              Most agencies<br />get you leads.<br />We get you{" "}
               <span style={{ position: "relative", display: "inline-block" }}>
                 booked jobs
                 <svg viewBox="0 0 220 14" preserveAspectRatio="none" style={{ position: "absolute", left: 0, right: 0, bottom: "-0.14em", width: "100%", height: "0.22em" }}>
