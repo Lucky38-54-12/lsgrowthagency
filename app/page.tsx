@@ -830,12 +830,18 @@ export default function Home() {
       </section>
 
       {/* ── BUILD STATEMENT ── */}
-      <section className="m-build-statement" style={{ background: "transparent", borderTop: `1px solid ${line}`, minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "80px 40px" }}>
-        <div style={{ maxWidth: "980px", textAlign: "center" as const }}>
+      <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}`, minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "80px 40px" }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const }}>
+          <div style={{ position: "absolute", top: "-10%", left: "-6%", width: "42%", paddingBottom: "42%", borderRadius: "50%", background: "rgba(0,128,224,0.16)", filter: "blur(70px)" }} />
+          <div style={{ position: "absolute", bottom: "-14%", right: "-8%", width: "46%", paddingBottom: "46%", borderRadius: "50%", background: "rgba(64,192,240,0.14)", filter: "blur(80px)" }} />
+          <div style={{ position: "absolute", top: "30%", left: "38%", width: "30%", paddingBottom: "30%", borderRadius: "50%", background: "rgba(0,128,224,0.08)", filter: "blur(90px)" }} />
+        </div>
+        <div style={{ position: "relative", maxWidth: "980px", textAlign: "center" as const }}>
           <ScrollRevealText
             as="h2"
             text="We build the system that turns ads into booked work."
             style={{ fontSize: "clamp(34px,6.5vw,72px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
+            revealedColor={accent}
           />
         </div>
       </section>
