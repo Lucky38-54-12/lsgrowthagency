@@ -708,7 +708,7 @@ export default function Home() {
           .m-client-story-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .m-how-sticky { position: static !important; top: auto !important; }
           .how-step-card { padding: 24px 20px !important; box-shadow: 0 12px 32px rgba(10,15,26,0.14) !important; }
-          .m-build-statement { padding: 56px 20px 44px !important; }
+          .m-build-inner { min-height: 44vh !important; padding: 64px 20px !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
           .m-solution-split { display: none !important; }
@@ -874,31 +874,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BUILD STATEMENT ── */}
-      <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}`, minHeight: "48vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "56px 40px" }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const }}>
-          <div style={{ position: "absolute", top: "-10%", left: "-6%", width: "42%", paddingBottom: "42%", borderRadius: "50%", background: "rgba(0,128,224,0.16)", filter: "blur(70px)" }} />
-          <div style={{ position: "absolute", bottom: "-14%", right: "-8%", width: "46%", paddingBottom: "46%", borderRadius: "50%", background: "rgba(64,192,240,0.14)", filter: "blur(80px)" }} />
-          <div style={{ position: "absolute", top: "30%", left: "38%", width: "30%", paddingBottom: "30%", borderRadius: "50%", background: "rgba(0,128,224,0.08)", filter: "blur(90px)" }} />
-        </div>
-        <div style={{ position: "relative", maxWidth: "980px", textAlign: "center" as const }}>
-          <ScrollRevealText
-            as="h2"
-            text="We build the system that turns ads into booked work."
-            style={{ fontSize: "clamp(34px,6.5vw,72px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
-            revealedColor={accentLight}
-          />
-          <ScrollFadeOverlay style={{ position: "absolute", inset: "-20% -10%", pointerEvents: "none" as const }}>
-            <div style={{ position: "absolute", top: "8%", left: "6%", width: "30%", paddingBottom: "20%", borderRadius: "50%", background: "rgba(255,255,255,0.85)", filter: "blur(28px)" }} />
-            <div style={{ position: "absolute", top: "38%", right: "4%", width: "34%", paddingBottom: "22%", borderRadius: "50%", background: "rgba(255,255,255,0.8)", filter: "blur(32px)" }} />
-            <div style={{ position: "absolute", bottom: "6%", left: "22%", width: "36%", paddingBottom: "20%", borderRadius: "50%", background: "rgba(255,255,255,0.75)", filter: "blur(30px)" }} />
-            <div style={{ position: "absolute", top: "0", left: "42%", width: "26%", paddingBottom: "18%", borderRadius: "50%", background: "rgba(255,255,255,0.7)", filter: "blur(26px)" }} />
-          </ScrollFadeOverlay>
-        </div>
-      </section>
-
-      {/* ── TRUSTED BY ── */}
-      <section style={{ position: "relative", padding: "24px 0", overflow: "hidden", background: "transparent" }}>
+      {/* ── BUILD STATEMENT + TRUSTED BY (shared cloudy background) ── */}
+      <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}` }}>
         <style suppressHydrationWarning>{`
           .m-trusted-track { animation: trusted-marquee 32s linear infinite; }
           .m-trusted-item { padding: 0 40px; }
@@ -915,7 +892,30 @@ export default function Home() {
             .m-trusted-track img.m-trusted-big { height: 36px; }
           }
         `}</style>
-        <div style={{ borderTop: "1px solid #cbd5e1", borderBottom: "1px solid #cbd5e1", padding: "30px 0" }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const }}>
+          <div style={{ position: "absolute", top: "-10%", left: "-6%", width: "42%", paddingBottom: "42%", borderRadius: "50%", background: "rgba(0,128,224,0.16)", filter: "blur(70px)" }} />
+          <div style={{ position: "absolute", bottom: "-14%", right: "-8%", width: "46%", paddingBottom: "46%", borderRadius: "50%", background: "rgba(64,192,240,0.14)", filter: "blur(80px)" }} />
+          <div style={{ position: "absolute", top: "30%", left: "38%", width: "30%", paddingBottom: "30%", borderRadius: "50%", background: "rgba(0,128,224,0.08)", filter: "blur(90px)" }} />
+        </div>
+
+        <div className="m-build-inner" style={{ position: "relative", minHeight: "68vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "110px 40px" }}>
+          <div style={{ position: "relative", maxWidth: "980px", textAlign: "center" as const }}>
+            <ScrollRevealText
+              as="h2"
+              text="We build the system that turns ads into booked work."
+              style={{ fontSize: "clamp(34px,6.5vw,72px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
+              revealedColor={accent}
+            />
+            <ScrollFadeOverlay style={{ position: "absolute", inset: "-20% -10%", pointerEvents: "none" as const }}>
+              <div style={{ position: "absolute", top: "8%", left: "6%", width: "30%", paddingBottom: "20%", borderRadius: "50%", background: "rgba(255,255,255,0.85)", filter: "blur(28px)" }} />
+              <div style={{ position: "absolute", top: "38%", right: "4%", width: "34%", paddingBottom: "22%", borderRadius: "50%", background: "rgba(255,255,255,0.8)", filter: "blur(32px)" }} />
+              <div style={{ position: "absolute", bottom: "6%", left: "22%", width: "36%", paddingBottom: "20%", borderRadius: "50%", background: "rgba(255,255,255,0.75)", filter: "blur(30px)" }} />
+              <div style={{ position: "absolute", top: "0", left: "42%", width: "26%", paddingBottom: "18%", borderRadius: "50%", background: "rgba(255,255,255,0.7)", filter: "blur(26px)" }} />
+            </ScrollFadeOverlay>
+          </div>
+        </div>
+
+        <div style={{ position: "relative", borderTop: "1px solid #cbd5e1", borderBottom: "1px solid #cbd5e1", padding: "30px 0" }}>
           <p style={{ textAlign: "center" as const, fontSize: "13px", fontWeight: 500, color: muted, letterSpacing: "0.02em", marginBottom: "24px" }}>
             Trusted by trade businesses across NZ &amp; AU
           </p>
