@@ -798,6 +798,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── BUILD STATEMENT ── */}
+      <section className="m-build-statement" style={{ background: "transparent", padding: "110px 40px 90px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "980px" }}>
+          <ScrollRevealText
+            as="h2"
+            text="We build the system that turns ads into booked work."
+            style={{ fontSize: "clamp(30px,5.5vw,58px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
+          />
+        </div>
+      </section>
+
       {/* ── TRUSTED BY ── */}
       <section style={{ position: "relative", padding: "24px 0", overflow: "hidden", background: "transparent" }}>
         <style suppressHydrationWarning>{`
@@ -817,6 +828,9 @@ export default function Home() {
           }
         `}</style>
         <div style={{ borderTop: "1px solid #cbd5e1", borderBottom: "1px solid #cbd5e1", padding: "30px 0" }}>
+          <p style={{ textAlign: "center" as const, fontSize: "13px", fontWeight: 500, color: muted, letterSpacing: "0.02em", marginBottom: "24px" }}>
+            Trusted by trade businesses across NZ &amp; AU
+          </p>
           <div
             className="m-trusted-mask"
             style={{
@@ -847,17 +861,6 @@ export default function Home() {
               )}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── BUILD STATEMENT ── */}
-      <section className="m-build-statement" style={{ background: "transparent", padding: "110px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "980px" }}>
-          <ScrollRevealText
-            as="h2"
-            text="We build the system that turns ads into booked work."
-            style={{ fontSize: "clamp(30px,5.5vw,58px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
-          />
         </div>
       </section>
 
