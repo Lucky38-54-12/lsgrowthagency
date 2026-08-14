@@ -54,39 +54,50 @@ const accentDark = "#006bbf";
 const accentLight = "#40c0f0";
 const dark  = "#0a0f1a";
 
-/* ── ScrollRevealText: words darken progressively as the block scrolls up the viewport ── */
-function ScrollRevealText({ text, style, className }: { text: string; style?: React.CSSProperties; className?: string }) {
+/* ── ScrollRevealText: words darken progressively as the block scrolls up the viewport ──
+   Mutates span colors directly via refs (no setState per scroll frame) so it stays smooth on mobile. */
+function ScrollRevealText({ text, style, className, as = "p", revealedColor = ink }: { text: string; style?: React.CSSProperties; className?: string; as?: "p" | "h2" | "h3"; revealedColor?: string }) {
   const words = text.split(" ");
-  const ref = useRef<HTMLParagraphElement>(null);
-  const [progress, setProgress] = useState(0);
+  const containerRef = useRef<HTMLElement>(null);
+  const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
   useEffect(() => {
-    const el = ref.current;
+    const el = containerRef.current;
     if (!el) return;
-    const onScroll = () => {
+    let ticking = false;
+    const update = () => {
+      ticking = false;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
       const start = vh * 0.85;
       const end = vh * 0.35;
-      const p = (start - rect.top) / (start - end);
-      setProgress(Math.min(1, Math.max(0, p)));
+      const p = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+      const activeCount = Math.round(p * words.length);
+      wordRefs.current.forEach((span, i) => {
+        if (span) span.style.color = i < activeCount ? revealedColor : "#cbd0d6";
+      });
     };
-    onScroll();
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
-  const activeCount = Math.round(progress * words.length);
+  }, [words.length, revealedColor]);
+  const Tag = as as React.ElementType;
   return (
-    <p ref={ref} className={className} style={style}>
+    <Tag ref={containerRef} className={className} style={style}>
       {words.map((w, i) => (
-        <span key={i} style={{ color: i < activeCount ? ink : "#cbd0d6", transition: "color 0.3s ease" }}>
+        <span key={i} ref={(el: HTMLSpanElement | null) => { wordRefs.current[i] = el; }} style={{ color: "#cbd0d6", transition: "color 0.3s ease" }}>
           {w}{i < words.length - 1 ? " " : ""}
         </span>
       ))}
-    </p>
+    </Tag>
   );
 }
 
@@ -618,6 +629,7 @@ export default function Home() {
           .m-client-story-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .m-how-sticky { position: static !important; top: auto !important; }
           .how-step-card { padding: 24px 20px !important; box-shadow: 0 12px 32px rgba(10,15,26,0.14) !important; }
+          .m-build-statement { padding: 56px 20px 44px !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
           .m-solution-split { display: none !important; }
@@ -836,15 +848,17 @@ export default function Home() {
       </section>
 
       {/* ── BUILD STATEMENT ── */}
-      <section style={{ background: "transparent", padding: "90px 40px 70px", borderTop: `1px solid ${line}` }}>
+      <section className="m-build-statement" style={{ background: "transparent", padding: "90px 40px 70px", borderTop: `1px solid ${line}` }}>
         <div style={{ maxWidth: "880px", margin: "0 auto" }}>
           <ScrollRevealText
+            as="h2"
             text="We build the system that turns ads into booked work."
-            style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, lineHeight: 1.25, letterSpacing: "-0.02em", marginBottom: "22px" }}
+            style={{ fontSize: "clamp(24px,4vw,44px)", fontWeight: 800, lineHeight: 1.25, letterSpacing: "-0.02em", marginBottom: "18px" }}
           />
           <ScrollRevealText
             text="From getting your business in front of the right people to following up and converting them, we manage the entire journey around one goal: getting more qualified customers through the door and more jobs on your calendar."
-            style={{ fontSize: "clamp(16px,2vw,20px)", fontWeight: 500, lineHeight: 1.65 }}
+            style={{ fontSize: "clamp(14px,2vw,20px)", fontWeight: 500, lineHeight: 1.65 }}
+            revealedColor={muted}
           />
         </div>
       </section>
