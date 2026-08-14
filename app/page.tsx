@@ -1397,28 +1397,19 @@ export default function Home() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 0", borderTop: `1px solid ${line}` }}>
+      <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
         <style suppressHydrationWarning>{`
-          .testi-card { width: 360px; flex-shrink: 0; }
-          .testi-row { gap: 20px; }
-          .testi-row-1 { animation: testi-scroll-left 70s linear infinite; }
-          .testi-row-2 { animation: testi-scroll-right 70s linear infinite; }
-          .testi-mask:hover .testi-row-1, .testi-mask:hover .testi-row-2 { animation-play-state: paused; }
-          @keyframes testi-scroll-left {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-          }
-          @keyframes testi-scroll-right {
-            from { transform: translateX(-50%); }
-            to { transform: translateX(0); }
+          .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+          @media (max-width: 900px) {
+            .testi-grid { grid-template-columns: repeat(2,1fr); }
           }
           @media (max-width: 640px) {
-            .testi-card { width: 280px; }
+            .testi-grid { grid-template-columns: 1fr; }
           }
         `}</style>
-        <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 40px" }}>
-          <div style={{ textAlign: "center" as const, maxWidth: "640px", margin: "0 auto 56px" }}>
+        <div style={{ position: "relative", maxWidth: "1240px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center" as const, maxWidth: "640px", margin: "0 auto 48px" }}>
             <p className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Client Results</p>
             <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "14px" }}>
               Don't just take our word for it.
@@ -1427,47 +1418,31 @@ export default function Home() {
               Real businesses, real results. Here's what it's like working with us.
             </p>
           </div>
-        </div>
 
-        {[0, 1].map(rowIndex => {
-          const rowSize = Math.ceil(testimonials.length / 2);
-          const rowItems = testimonials.slice(rowIndex * rowSize, rowIndex * rowSize + rowSize);
-          return (
-            <div
-              key={rowIndex}
-              className="testi-mask"
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                marginBottom: rowIndex === 0 ? "20px" : 0,
-                WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%)",
-                maskImage: "linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%)",
-              }}
-            >
-              <div className={`testi-row testi-row-${rowIndex + 1}`} style={{ display: "flex", width: "max-content" }}>
-                {[...Array(2)].flatMap((_, dup) =>
-                  rowItems.map(({ quote, author, company, color }) => (
-                    <div key={`${dup}-${author}`} className="testi-card" aria-hidden={dup === 1 || undefined} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", padding: "28px 26px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
-                      <p style={{ fontSize: "14px", color: ink, lineHeight: 1.65, letterSpacing: "-0.005em", marginBottom: "24px" }}>{quote}</p>
-                      <div>
-                        <div style={{ height: "1px", background: line, marginBottom: "18px" }} />
-                        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                          <div style={{ width: "34px", height: "34px", borderRadius: "50%", background: color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", fontWeight: 700, flexShrink: 0 }}>
-                            {author.charAt(0)}
-                          </div>
-                          <div>
-                            <div style={{ fontSize: "13px", fontWeight: 700, color: ink, letterSpacing: "-0.01em" }}>{author}</div>
-                            <div style={{ fontSize: "12px", color: muted }}>{company}</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                )}
+          <div className="testi-grid lp-rise d2">
+            {testimonials.map(({ quote, author, company, color }) => (
+              <div key={author} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "14px", padding: "22px 22px 20px", display: "flex", flexDirection: "column" as const }}>
+                <div style={{ display: "flex", gap: "2px", marginBottom: "12px" }}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill={accent}>
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, letterSpacing: "-0.005em", marginBottom: "16px" }}>{quote}</p>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "auto" }}>
+                  <div style={{ width: "30px", height: "30px", borderRadius: "50%", background: color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "12px", fontWeight: 700, flexShrink: 0 }}>
+                    {author.charAt(0)}
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "12.5px", fontWeight: 700, color: ink, letterSpacing: "-0.01em" }}>{author}</div>
+                    <div style={{ fontSize: "11.5px", color: muted }}>{company}</div>
+                  </div>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── FAQ ── */}
