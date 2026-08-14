@@ -1457,12 +1457,18 @@ export default function Home() {
             -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
             mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
           }
-          .testi-track { display: flex; width: max-content; gap: 20px; animation: testi-scroll 80s linear infinite; }
+          .testi-track { display: flex; align-items: flex-start; width: max-content; gap: 20px; }
+          .testi-track-1 { animation: testi-scroll-left 90s linear infinite; }
+          .testi-track-2 { animation: testi-scroll-right 90s linear infinite; }
           .testi-mask:hover .testi-track { animation-play-state: paused; }
           .testi-card { width: 360px; flex-shrink: 0; }
-          @keyframes testi-scroll {
+          @keyframes testi-scroll-left {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
+          }
+          @keyframes testi-scroll-right {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
           }
           @media (max-width: 640px) {
             .testi-card { width: 280px; }
@@ -1480,33 +1486,39 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="testi-mask lp-rise d2">
-          <div className="testi-track">
-            {[...Array(2)].flatMap((_, dup) =>
-              testimonials.map(({ quote, author, company, color }) => (
-                <div key={`${dup}-${author}`} className="testi-card" aria-hidden={dup === 1 || undefined} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "14px", padding: "22px 22px 20px", display: "flex", flexDirection: "column" as const }}>
-                  <div style={{ display: "flex", gap: "2px", marginBottom: "12px" }}>
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill={accent}>
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, letterSpacing: "-0.005em", marginBottom: "16px" }}>{quote}</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "auto" }}>
-                    <div style={{ width: "30px", height: "30px", borderRadius: "50%", background: color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "12px", fontWeight: 700, flexShrink: 0 }}>
-                      {author.charAt(0)}
+        {[0, 1].map(rowIndex => {
+          const rowSize = Math.ceil(testimonials.length / 2);
+          const rowItems = testimonials.slice(rowIndex * rowSize, rowIndex * rowSize + rowSize);
+          return (
+            <div key={rowIndex} className="testi-mask lp-rise d2" style={{ marginBottom: rowIndex === 0 ? "16px" : 0 }}>
+              <div className={`testi-track testi-track-${rowIndex + 1}`}>
+                {[...Array(2)].flatMap((_, dup) =>
+                  rowItems.map(({ quote, author, company, color }) => (
+                    <div key={`${dup}-${author}`} className="testi-card" aria-hidden={dup === 1 || undefined} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "14px", padding: "20px 20px 16px", display: "flex", flexDirection: "column" as const }}>
+                      <div style={{ display: "flex", gap: "2px", marginBottom: "10px" }}>
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill={accent}>
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <p style={{ fontSize: "13px", color: ink, lineHeight: 1.55, letterSpacing: "-0.005em", marginBottom: "12px" }}>{quote}</p>
+                      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                        <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, flexShrink: 0 }}>
+                          {author.charAt(0)}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: "12.5px", fontWeight: 700, color: ink, letterSpacing: "-0.01em" }}>{author}</div>
+                          <div style={{ fontSize: "11.5px", color: muted }}>{company}</div>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <div style={{ fontSize: "12.5px", fontWeight: 700, color: ink, letterSpacing: "-0.01em" }}>{author}</div>
-                      <div style={{ fontSize: "11.5px", color: muted }}>{company}</div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
+                  ))
+                )}
+              </div>
+            </div>
+          );
+        })}
       </section>
 
       {/* ── FAQ ── */}
