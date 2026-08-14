@@ -349,25 +349,21 @@ const steps = [
     num: "01",
     title: "Generate Demand",
     desc: "No more relying on referrals or slow weeks. You get a steady flow of people actively looking for your service.",
-    bullets: ["Paid Media", "Facebook Ads", "Instagram Ads"],
   },
   {
     num: "02",
     title: "Instant Response",
     desc: "Leads get contacted immediately. So you don't lose jobs to the guy who replies first.",
-    bullets: ["SMS within 30 seconds", "AI voice call", "24/7 coverage"],
   },
   {
     num: "03",
     title: "Automated Follow-Up",
     desc: "Most jobs are lost after the first message. We keep following up so your leads don't go cold.",
-    bullets: ["Multi-step sequences", "SMS + Email", "Smart timing"],
   },
   {
     num: "04",
     title: "Pipeline Management",
     desc: "No more missed calls or forgotten enquiries. Every lead is tracked and handled properly.",
-    bullets: ["CRM dashboard", "Pipeline stages", "Mobile app"],
   },
 ];
 
@@ -620,7 +616,8 @@ export default function Home() {
           .m-client-story-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .m-client-story-grid > div:last-child { order: -1 !important; }
           .m-how-sticky { position: static !important; top: auto !important; }
-          .how-step-card { position: static !important; padding: 28px 24px !important; box-shadow: 0 12px 32px rgba(10,15,26,0.14) !important; }
+          .how-step-card { padding: 24px 20px !important; box-shadow: 0 12px 32px rgba(10,15,26,0.14) !important; }
+          .m-proof-hide { display: none !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
           .m-solution-split { display: none !important; }
@@ -940,7 +937,7 @@ export default function Home() {
             </div>
 
             <div>
-              {steps.map(({ num, title, desc, bullets }, i) => (
+              {steps.map(({ num, title, desc }, i) => (
                 <Fragment key={num}>
                   <div
                     className="lp-rise how-step-card"
@@ -960,12 +957,7 @@ export default function Home() {
                     <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{num}</div>
                     <div>
                       <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "10px" }}>{title}</h3>
-                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7, marginBottom: "18px" }}>{desc}</p>
-                      <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "8px" }}>
-                        {bullets.map(b => (
-                          <span key={b} style={{ fontSize: "12px", fontWeight: 500, color: muted, background: "#f8fafc", border: `1px solid ${line}`, padding: "6px 14px" }}>{b}</span>
-                        ))}
-                      </div>
+                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7 }}>{desc}</p>
                     </div>
                   </div>
                   {i < steps.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
@@ -1045,7 +1037,7 @@ export default function Home() {
       )}
 
       {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── */}
-      <section style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
+      <section className="m-proof-hide" style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ marginBottom: "48px", maxWidth: "640px" }}>
             <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>What Sets Us Apart</div>
