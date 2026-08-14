@@ -614,7 +614,6 @@ export default function Home() {
           .m-build-grid { grid-template-columns: 1fr !important; }
           .m-how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-client-story-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .m-client-story-grid > div:last-child { order: -1 !important; }
           .m-how-sticky { position: static !important; top: auto !important; }
           .how-step-card { padding: 24px 20px !important; box-shadow: 0 12px 32px rgba(10,15,26,0.14) !important; }
           .m-proof-hide { display: none !important; }
