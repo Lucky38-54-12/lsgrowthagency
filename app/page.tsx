@@ -618,7 +618,6 @@ export default function Home() {
           .m-client-story-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .m-how-sticky { position: static !important; top: auto !important; }
           .how-step-card { padding: 24px 20px !important; box-shadow: 0 12px 32px rgba(10,15,26,0.14) !important; }
-          .m-proof-hide { display: none !important; }
           .m-bento-row { grid-template-columns: 1fr !important; }
           .m-bento-hide { display: none !important; }
           .m-solution-split { display: none !important; }
@@ -1118,8 +1117,9 @@ export default function Home() {
       </section>
       )}
 
-      {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── */}
-      <section className="m-proof-hide" style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
+      {/* ── PROOF: NOT JUST ANOTHER MARKETING COMPANY ── hidden for now ── */}
+      {false && (
+      <section style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           <div style={{ marginBottom: "48px", maxWidth: "640px" }}>
             <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>What Sets Us Apart</div>
@@ -1194,6 +1194,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── CONNECTIONS ── hidden for now ── */}
       {false && <ConnectionsAnimated />}
