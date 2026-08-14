@@ -458,12 +458,10 @@ const caseStudies = [
 ];
 
 const faqs = [
-  { q: "What types of businesses do you work with?",         a: "We work exclusively with local service businesses in New Zealand and Australia: trades, construction, landscaping, home services, and similar. If you rely on local enquiries to generate jobs, we can help." },
-  { q: "How quickly will I see results?",                    a: "Most clients see qualified bookings within the first two weeks of campaigns going live. Results compound over the first 60–90 days as our follow-up sequences warm up and retargeting audiences build." },
-  { q: "Is this fully done-for-you?",                       a: "Yes. We handle everything: ad creative, targeting, landing pages, automation setup, CRM configuration, and ongoing management. You focus on delivering the work and we fill your pipeline." },
-  { q: "What makes you different from a regular agency?",   a: "We don't just run ads. We manage your entire lead generation: ads, instant response, follow-up, and pipeline tracking. Most agencies stop at getting you traffic. We focus on getting you booked jobs." },
-  { q: "Do I need to provide anything?",                    a: "Just a few details about your services, target area, and ideal customer. We handle everything else: creative, copy, targeting, automation, and setup." },
-  { q: "What happens after the initial setup?",             a: "We manage and optimise everything on an ongoing basis. You get monthly reporting on leads, bookings, and ROI, plus a direct line to your account manager for anything that comes up." },
+  { q: "What types of businesses do you work with?", a: "We work with service and trade businesses across New Zealand. If your business relies on a steady flow of customers and booked work, we can build a growth strategy around it." },
+  { q: "How quickly will I see results?", a: "Most clients start seeing enquiries within the first 2–3 weeks. From there, we use the data to improve what is working, cut what isn't, and build toward a consistent flow of opportunities." },
+  { q: "Is everything done for me?", a: "Yes. We manage the process from generating demand through to lead follow-up and pipeline management, so you can stay focused on running the business and delivering the work." },
+  { q: "What makes L&S Growth different?", a: "We're not here to simply run ads and send you a report at the end of the month. We act as a growth partner, looking at the entire journey from getting the customer's attention to turning that enquiry into a real business opportunity." },
 ];
 
 /* ── Counter hook ── */
@@ -665,7 +663,7 @@ export default function Home() {
         {/* Right side — links, CTA, hamburger grouped together */}
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
           <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
-            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["Play & Win","/play"]].map(([l,h]) => (
+            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"]].map(([l,h]) => (
               <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
             ))}
           </div>
@@ -692,7 +690,7 @@ export default function Home() {
               <button onClick={() => setNavOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: muted, fontSize: "22px", lineHeight: 1, padding: "4px" }}>×</button>
             </div>
             <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>
-              {[["Our Work","#work"],["Services","#services"],["How It Works","#how"],["Play & Win","/play"]].map(([l,h]) => (
+              {[["Our Work","#work"],["Services","#services"],["How It Works","#how"]].map(([l,h]) => (
                 <a key={h} href={h} onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f8fafc", border: `1px solid ${line}`, fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>{l}</a>
               ))}
               <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: "#f1f5f9", border: `1px solid ${line}`, color: ink, fontSize: "14px", fontWeight: 600, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Send a Message</button>
