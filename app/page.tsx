@@ -687,7 +687,8 @@ export default function Home() {
           .nav-cta { display: none !important; }
           nav { padding: 0 16px !important; height: 60px !important; }
           .nav-logo { height: 34px !important; }
-          .m-hero-content { padding: 100px 20px 40px !important; }
+          .m-hero-section { min-height: auto !important; }
+          .m-hero-content { padding: 88px 20px 32px !important; }
           .m-trusted-row > div { border-right: none !important; border-bottom: 1px solid ${line}; min-width: calc(50% - 0px) !important; }
           .m-trusted-row > div:last-child { border-bottom: none !important; }
           .m-hero-content h1 { font-size: clamp(22px, 7.2vw, 30px) !important; }
@@ -823,7 +824,7 @@ export default function Home() {
       )}
 
       {/* ── HERO ── */}
-      <section style={{ position: "relative", overflow: "hidden", minHeight: "680px", display: "flex", alignItems: "center", background: "linear-gradient(160deg, #04111f 0%, #0c3450 42%, #1c5d86 100%)" }}>
+      <section className="m-hero-section" style={{ position: "relative", overflow: "hidden", minHeight: "680px", display: "flex", alignItems: "center", background: "linear-gradient(160deg, #04111f 0%, #0c3450 42%, #1c5d86 100%)" }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.55) 0%, transparent 100%)" }} />
         <div className="m-hero-content" style={{ position: "relative", zIndex: 1, padding: "150px 40px 110px", width: "100%" }}>
@@ -938,13 +939,10 @@ export default function Home() {
       <section style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "40px 40px 32px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
         <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
-          <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Results</span>
-          <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "10px", maxWidth: "760px", marginLeft: "auto", marginRight: "auto" }}>
-            A few results from previous lead-gen campaigns
+          <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>A few results from previous campaigns</span>
+          <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px", maxWidth: "760px", marginLeft: "auto", marginRight: "auto" }}>
+            The goal isn't more leads. It's more booked work.
           </h2>
-          <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, marginBottom: "16px" }}>
-            Unlock a ton of new leads, without having to pay a fortune.
-          </p>
           <img src="/results-mockup.png" alt="Dashboard showing leads, cost per lead, and ad spend results for Queenstown Cleaning, SSP Electrical, and Perl Electrical campaigns" className="lp-rise d3" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto" }} />
         </div>
 
@@ -957,11 +955,6 @@ export default function Home() {
           style={{ position: "relative", display: "block", width: "100%", height: `${howHeight}px`, border: "none", overflow: "hidden", marginTop: "40px" }}
         /> */}
 
-        <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
-          <a href="/book" className="lp-rise d3 btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px", marginTop: "28px" }}>
-            Get Results Like This <ArrowRight style={{ width: "13px", height: "13px" }} />
-          </a>
-        </div>
       </section>
 
       {/* ── WHAT WE BUILD FOR YOU ── hidden for now ── */}
@@ -1417,13 +1410,6 @@ export default function Home() {
               ))}
             </div>
 
-          </div>
-
-          {/* CTA */}
-          <div style={{ textAlign: "center" as const, marginTop: "48px" }}>
-            <a href="/book" className="btn btn-dark" style={{ fontSize: "14px", padding: "13px 28px" }}>
-              Get more booked jobs <ArrowRight style={{ width: "13px", height: "13px" }} />
-            </a>
           </div>
 
         </div>
