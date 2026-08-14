@@ -746,9 +746,18 @@ export default function Home() {
             <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
               Your growth partner · NZ & AU
             </p>
-            <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.5vw, 82px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "24px" }}>
-              We don't just bring leads.<br />We build the system.
+            <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.5vw, 82px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "18px" }}>
+              Most agencies get you leads.<br />We get you{" "}
+              <span style={{ position: "relative", display: "inline-block" }}>
+                booked jobs
+                <svg viewBox="0 0 220 14" preserveAspectRatio="none" style={{ position: "absolute", left: 0, right: 0, bottom: "-6px", width: "100%", height: "12px" }}>
+                  <path d="M2 9 C 60 2, 160 2, 218 9" stroke={accent} strokeWidth="5" fill="none" strokeLinecap="round" />
+                </svg>
+              </span>.
             </h1>
+            <p className="hero-sub" style={{ fontSize: "17px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "28px", maxWidth: "480px" }}>
+              No tyre kickers, no time-wasters. Just qualified enquiries from people ready to book.
+            </p>
             <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
               <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
                 Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
