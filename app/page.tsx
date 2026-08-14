@@ -799,12 +799,12 @@ export default function Home() {
       </section>
 
       {/* ── BUILD STATEMENT ── */}
-      <section className="m-build-statement" style={{ background: "transparent", padding: "110px 40px 90px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "980px" }}>
+      <section className="m-build-statement" style={{ background: "transparent", borderTop: `1px solid ${line}`, minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "80px 40px" }}>
+        <div style={{ maxWidth: "980px", textAlign: "center" as const }}>
           <ScrollRevealText
             as="h2"
             text="We build the system that turns ads into booked work."
-            style={{ fontSize: "clamp(30px,5.5vw,58px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(34px,6.5vw,72px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
           />
         </div>
       </section>
