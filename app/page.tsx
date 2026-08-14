@@ -832,11 +832,11 @@ export default function Home() {
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.55) 0%, transparent 100%)" }} />
         <div className="m-hero-content" style={{ position: "relative", zIndex: 1, padding: "150px 40px 110px", width: "100%" }}>
-          <div style={{ maxWidth: "640px" }}>
+          <div style={{ maxWidth: "820px" }}>
             <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
               Your growth partner · NZ & AU
             </p>
-            <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.5vw, 82px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "18px" }}>
+            <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.8vw, 96px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "18px" }}>
               Most agencies get you leads.<br />We get you{" "}
               <span style={{ position: "relative", display: "inline-block" }}>
                 booked jobs
