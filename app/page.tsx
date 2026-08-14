@@ -619,7 +619,7 @@ export default function Home() {
           .m-hero-stat-label { font-size: 11px !important; }
           .m-trusted-row > div { border-right: none !important; border-bottom: 1px solid ${line}; min-width: calc(50% - 0px) !important; }
           .m-trusted-row > div:last-child { border-bottom: none !important; }
-          .m-hero-content h1 { font-size: 34px !important; }
+          .m-hero-content h1 { font-size: clamp(26px, 8vw, 34px) !important; }
           .hero-sub { font-size: 15px !important; }
           .m-calendar-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .m-calendar-phone { display: flex !important; justify-content: center !important; margin-top: 32px !important; }
