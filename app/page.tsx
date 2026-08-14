@@ -54,29 +54,60 @@ const accentDark = "#006bbf";
 const accentLight = "#40c0f0";
 const dark  = "#0a0f1a";
 
-/* ── ScrollRevealText: words darken in a staggered wave once the block scrolls into view ──
-   Triggers once via IntersectionObserver (no per-scroll-frame work), so it stays smooth on mobile. */
+/* ── ScrollRevealText: words darken progressively as the block scrolls up the viewport ──
+   A scroll listener is only attached while the block is near the viewport (gated by
+   IntersectionObserver), and colors are written directly via refs (no setState), so it
+   scrubs with scroll position without costing anything the rest of the time. */
 function ScrollRevealText({ text, style, className, as = "p", revealedColor = ink }: { text: string; style?: React.CSSProperties; className?: string; as?: "p" | "h2" | "h3"; revealedColor?: string }) {
   const words = text.split(" ");
   const containerRef = useRef<HTMLElement>(null);
-  const [revealed, setRevealed] = useState(false);
+  const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setRevealed(true);
-        obs.disconnect();
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const start = vh * 0.9;
+      const end = vh * 0.35;
+      const p = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+      const activeCount = Math.round(p * words.length);
+      wordRefs.current.forEach((span, i) => {
+        if (span) span.style.color = i < activeCount ? revealedColor : "#cbd0d6";
+      });
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    let attached = false;
+    const gate = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !attached) {
+        attached = true;
+        update();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+      } else if (!entry.isIntersecting && attached) {
+        attached = false;
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
       }
-    }, { threshold: 0.3, rootMargin: "0px 0px -10% 0px" });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+    }, { rootMargin: "35% 0px 35% 0px" });
+    gate.observe(el);
+    return () => {
+      gate.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [words.length, revealedColor]);
   const Tag = as as React.ElementType;
   return (
     <Tag ref={containerRef} className={className} style={style}>
       {words.map((w, i) => (
-        <span key={i} style={{ color: revealed ? revealedColor : "#cbd0d6", transition: `color 0.45s ease ${Math.min(i * 22, 480)}ms` }}>
+        <span key={i} ref={(el: HTMLSpanElement | null) => { wordRefs.current[i] = el; }} style={{ color: "#cbd0d6", transition: "color 0.25s ease" }}>
           {w}{i < words.length - 1 ? " " : ""}
         </span>
       ))}
