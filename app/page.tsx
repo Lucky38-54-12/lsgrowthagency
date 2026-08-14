@@ -410,6 +410,24 @@ const testimonials = [
     company: "SSP Electrical",
     color: "#0d9488",
   },
+  {
+    quote: "Lucky has been great to work with. He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results and would definitely recommend LS Growth.",
+    author: "Queenstown Cleaning",
+    company: "Cleaning Services, Queenstown",
+    color: "#2563eb",
+  },
+  {
+    quote: "Lucky has been awesome to work with. He took the time to understand the type of painting work we wanted more of and helped us get in front of the right people around Canterbury. More importantly, he actually helped us turn that into booked jobs, not just a bunch of enquiries. He was easy to deal with, kept things moving, and genuinely cared about getting results for our business. Highly recommend LS Growth if you're looking to grow your business.",
+    author: "Canterbury Coat",
+    company: "Painting, Canterbury",
+    color: "#c2410c",
+  },
+  {
+    quote: "LS Growth has helped us get a much steadier flow of residential cleaning work in Christchurch while also helping us break into the commercial cleaning market. Great communication, real results, and they genuinely care about growing your business. Highly recommend Lucky.",
+    author: "Spotless Cleaning Services",
+    company: "Cleaning Services, Christchurch",
+    color: "#0e7490",
+  },
 ];
 
 const caseStudies = [
@@ -1366,7 +1384,8 @@ export default function Home() {
         </div>
 
         {[0, 1].map(rowIndex => {
-          const rowItems = testimonials.slice(rowIndex * 4, rowIndex * 4 + 4);
+          const rowSize = Math.ceil(testimonials.length / 2);
+          const rowItems = testimonials.slice(rowIndex * rowSize, rowIndex * rowSize + rowSize);
           return (
             <div
               key={rowIndex}
