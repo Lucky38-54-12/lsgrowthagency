@@ -115,6 +115,51 @@ function ScrollRevealText({ text, style, className, as = "p", revealedColor = in
   );
 }
 
+/* ── ScrollFadeOverlay: fades out as the block scrolls up the viewport ──
+   Same scroll-gating trick as ScrollRevealText, writes opacity via ref (no re-render). */
+function ScrollFadeOverlay({ children, style, className }: { children?: React.ReactNode; style?: React.CSSProperties; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const start = vh * 0.9;
+      const end = vh * 0.35;
+      const p = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
+      el.style.opacity = String(1 - p);
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    let attached = false;
+    const gate = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !attached) {
+        attached = true;
+        update();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+      } else if (!entry.isIntersecting && attached) {
+        attached = false;
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+      }
+    }, { rootMargin: "35% 0px 35% 0px" });
+    gate.observe(el);
+    return () => {
+      gate.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+  return <div ref={ref} className={className} style={{ ...style, transition: "opacity 0.1s linear" }}>{children}</div>;
+}
+
 /* ── Connected tool logos (real brand marks) ── */
 function MetaLogo({ size = 88 }: { size?: number }) {
   return (
@@ -830,7 +875,7 @@ export default function Home() {
       </section>
 
       {/* ── BUILD STATEMENT ── */}
-      <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}`, minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "80px 40px" }}>
+      <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}`, minHeight: "48vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "56px 40px" }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const }}>
           <div style={{ position: "absolute", top: "-10%", left: "-6%", width: "42%", paddingBottom: "42%", borderRadius: "50%", background: "rgba(0,128,224,0.16)", filter: "blur(70px)" }} />
           <div style={{ position: "absolute", bottom: "-14%", right: "-8%", width: "46%", paddingBottom: "46%", borderRadius: "50%", background: "rgba(64,192,240,0.14)", filter: "blur(80px)" }} />
@@ -841,8 +886,14 @@ export default function Home() {
             as="h2"
             text="We build the system that turns ads into booked work."
             style={{ fontSize: "clamp(34px,6.5vw,72px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
-            revealedColor={accent}
+            revealedColor={accentLight}
           />
+          <ScrollFadeOverlay style={{ position: "absolute", inset: "-20% -10%", pointerEvents: "none" as const }}>
+            <div style={{ position: "absolute", top: "8%", left: "6%", width: "30%", paddingBottom: "20%", borderRadius: "50%", background: "rgba(255,255,255,0.85)", filter: "blur(28px)" }} />
+            <div style={{ position: "absolute", top: "38%", right: "4%", width: "34%", paddingBottom: "22%", borderRadius: "50%", background: "rgba(255,255,255,0.8)", filter: "blur(32px)" }} />
+            <div style={{ position: "absolute", bottom: "6%", left: "22%", width: "36%", paddingBottom: "20%", borderRadius: "50%", background: "rgba(255,255,255,0.75)", filter: "blur(30px)" }} />
+            <div style={{ position: "absolute", top: "0", left: "42%", width: "26%", paddingBottom: "18%", borderRadius: "50%", background: "rgba(255,255,255,0.7)", filter: "blur(26px)" }} />
+          </ScrollFadeOverlay>
         </div>
       </section>
 
