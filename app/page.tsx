@@ -1267,10 +1267,10 @@ export default function Home() {
           <div style={{ textAlign: "center" as const, marginBottom: "56px" }}>
             <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 600, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "16px" }}>· Why L&S Growth?</p>
             <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
-              Most agencies get you leads.<br />We get you booked jobs.
+              Most agencies get you leads.<br />We build the path to booked jobs.
             </h2>
             <p className="lp-rise d2" style={{ fontSize: "15px", color: muted, maxWidth: "500px", margin: "0 auto", lineHeight: 1.65 }}>
-              Ads without follow-up is half a system. A CRM without execution is just another tool.<br />We do the whole job.
+              Getting someone to enquire is only the beginning. The difference is what happens after they click, enquire and give you their details.
             </p>
           </div>
 
@@ -1282,12 +1282,12 @@ export default function Home() {
               <p style={{ fontSize: "10px", fontWeight: 700, color: dim, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "14px" }}>The Old Way</p>
               <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "28px", lineHeight: 1.15 }}>Ads Agency</h3>
               {[
-                "Runs your ads, nothing else",
-                "No follow-up system",
-                "Leads go cold in minutes",
-                "No CRM or pipeline",
-                "You do all the chasing",
-                "Blames you when leads don't convert",
+                "Runs your ads and sends you the leads",
+                "Leads sit waiting for a response",
+                "No one follows up when they don't reply",
+                "You end up doing all the chasing",
+                "They blame the lead quality when jobs don't close",
+                "You're left to figure out the rest",
               ].map(t => (
                 <div key={t} className="cmp-row" suppressHydrationWarning>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
@@ -1310,12 +1310,12 @@ export default function Home() {
                 <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", lineHeight: 1.15, margin: 0 }}>L&S Growth</h3>
               </div>
               {[
-                "Hyper-local Meta ads, built for you",
-                "60-second automated response",
-                "Multi-step SMS & email follow-up",
-                "Full CRM pipeline, managed",
-                "We chase leads, you book jobs",
-                "One system, one team, one outcome",
+                "We generate demand for your business",
+                "New leads are contacted quickly",
+                "Leads are filtered and qualified",
+                "Genuine opportunities are followed up",
+                "We help move the right leads toward appointments",
+                "Everything is built around generating booked work",
               ].map(t => (
                 <div key={t} className="cmp-row" suppressHydrationWarning>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
@@ -1330,14 +1330,14 @@ export default function Home() {
             {/* Right — The DIY Route */}
             <div className="lp-rise d2 cmp-card" style={{ background: "#f8fafc", border: `1px solid ${line}`, borderRadius: "16px", padding: "44px 32px" }}>
               <p style={{ fontSize: "10px", fontWeight: 700, color: dim, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "14px" }}>The DIY Route</p>
-              <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "28px", lineHeight: 1.15 }}>Doing It Yourself</h3>
+              <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "28px", lineHeight: 1.15 }}>Running It Yourself</h3>
               {[
-                "You build and run your own ads",
-                "You set up the automations",
-                "You manage the pipeline daily",
-                "Takes months to get right",
-                "Still leaking leads constantly",
-                "Not your job, and it shows",
+                "You launch the ads and wait for leads",
+                "Someone fills out a form and forgets they even did it",
+                "You call them hours later and they don't answer",
+                "Good leads go cold while you're out doing the job",
+                "You wonder why the ads aren't working",
+                "You end up saying, \"Facebook leads are shit.\"",
               ].map(t => (
                 <div key={t} className="cmp-row" suppressHydrationWarning>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
