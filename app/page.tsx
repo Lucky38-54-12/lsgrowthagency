@@ -840,7 +840,7 @@ export default function Home() {
               Most agencies get you leads.<br />We get you{" "}
               <span style={{ position: "relative", display: "inline-block" }}>
                 booked jobs
-                <svg viewBox="0 0 220 14" preserveAspectRatio="none" style={{ position: "absolute", left: 0, right: 0, bottom: "-6px", width: "100%", height: "12px" }}>
+                <svg viewBox="0 0 220 14" preserveAspectRatio="none" style={{ position: "absolute", left: 0, right: 0, bottom: "-0.14em", width: "100%", height: "0.22em" }}>
                   <path d="M2 9 C 60 2, 160 2, 218 9" stroke={accent} strokeWidth="5" fill="none" strokeLinecap="round" />
                 </svg>
               </span>.
