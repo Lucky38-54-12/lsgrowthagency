@@ -1439,11 +1439,12 @@ export default function Home() {
             -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
             mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
           }
-          .testi-track { display: flex; align-items: flex-start; width: max-content; gap: 20px; }
+          .testi-track { display: flex; align-items: stretch; width: max-content; gap: 20px; }
           .testi-track-1 { animation: testi-scroll-left 90s linear infinite; }
           .testi-track-2 { animation: testi-scroll-right 90s linear infinite; }
           .testi-mask:hover .testi-track { animation-play-state: paused; }
           .testi-card { width: 360px; flex-shrink: 0; }
+          .testi-quote { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
           @keyframes testi-scroll-left {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
@@ -1484,8 +1485,8 @@ export default function Home() {
                           </svg>
                         ))}
                       </div>
-                      <p style={{ fontSize: "13px", color: ink, lineHeight: 1.55, letterSpacing: "-0.005em", marginBottom: "12px" }}>{quote}</p>
-                      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                      <p className="testi-quote" style={{ fontSize: "13px", color: ink, lineHeight: 1.55, letterSpacing: "-0.005em", marginBottom: "12px" }}>{quote}</p>
+                      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "auto" }}>
                         <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, flexShrink: 0 }}>
                           {author.charAt(0)}
                         </div>
