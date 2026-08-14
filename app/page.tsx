@@ -855,7 +855,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHAT WE BUILD FOR YOU ── */}
+      {/* ── WHAT WE BUILD FOR YOU ── hidden for now ── */}
+      {false && (
       <section id="services" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
         <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
@@ -910,6 +911,77 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+      )}
+
+      {/* ── CLIENT STORY: AMAN ── */}
+      <section style={{ position: "relative", overflow: "hidden", background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+          <div className="m-client-story-grid" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "64px", alignItems: "start" }}>
+
+            <div>
+              <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
+                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
+                Client Story
+              </span>
+              <h2 className="lp-rise d1" style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "18px" }}>
+                Hear it <em style={{ fontStyle: "italic", fontWeight: 600, color: accent }}>straight</em> from a client
+              </h2>
+              <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
+                Aman's been with us for over a year, running lead gen across multiple of his businesses in Queenstown and Dunedin, including Fantastic Services and Jim's Cleaning.
+              </p>
+
+              <div className="lp-rise d3" style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                <div style={{ width: "44px", height: "44px", borderRadius: "50%", background: accent, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "17px", fontWeight: 700, flexShrink: 0 }}>A</div>
+                <div>
+                  <div style={{ fontSize: "15px", fontWeight: 700, color: ink }}>Aman</div>
+                  <div style={{ fontSize: "13px", color: muted }}>Fantastic Services &amp; Jim's Cleaning, Queenstown &amp; Dunedin</div>
+                </div>
+              </div>
+
+              <a
+                href="https://www.instagram.com/queenstown.cleaning/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lp-rise d4"
+                style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: ink, background: "#f8fafc", border: `1px solid ${line}`, borderRadius: "999px", padding: "8px 18px", textDecoration: "none", marginTop: "22px" }}
+              >
+                <InstagramIcon style={{ width: "14px", height: "14px" }} />
+                @queenstown.cleaning
+              </a>
+            </div>
+
+            <div
+              className="lp-rise d3"
+              style={{ position: "relative", maxWidth: "360px", width: "100%", margin: "0 auto", borderRadius: "20px", overflow: "hidden", boxShadow: "0 32px 80px rgba(10,15,26,0.18)", background: "#000" }}
+            >
+              <video
+                ref={amanVideoRef}
+                src="/testimonials/aman-case-study.mp4"
+                autoPlay
+                loop
+                muted={amanMuted}
+                playsInline
+                preload="metadata"
+                style={{ display: "block", width: "100%", height: "auto", aspectRatio: "9/16", objectFit: "cover" as const }}
+              />
+              <button
+                onClick={() => {
+                  const v = amanVideoRef.current;
+                  if (!v) return;
+                  const next = !amanMuted;
+                  v.muted = next;
+                  setAmanMuted(next);
+                }}
+                aria-label={amanMuted ? "Unmute video" : "Mute video"}
+                style={{ position: "absolute", bottom: "16px", right: "16px", width: "40px", height: "40px", borderRadius: "50%", background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", backdropFilter: "blur(4px)" }}
+              >
+                {amanMuted ? <VolumeX style={{ width: "18px", height: "18px", color: "#fff" }} /> : <Volume2 style={{ width: "18px", height: "18px", color: "#fff" }} />}
+              </button>
+            </div>
+
           </div>
         </div>
       </section>
@@ -1234,76 +1306,6 @@ export default function Home() {
             </a>
           </div>
 
-        </div>
-      </section>
-
-      {/* ── CLIENT STORY: AMAN ── */}
-      <section style={{ position: "relative", overflow: "hidden", background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div className="m-client-story-grid" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "64px", alignItems: "start" }}>
-
-            <div>
-              <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
-                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
-                Client Story
-              </span>
-              <h2 className="lp-rise d1" style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "18px" }}>
-                Hear it <em style={{ fontStyle: "italic", fontWeight: 600, color: accent }}>straight</em> from a client
-              </h2>
-              <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
-                Aman's been with us for over a year, running lead gen across multiple of his businesses in Queenstown and Dunedin, including Fantastic Services and Jim's Cleaning.
-              </p>
-
-              <div className="lp-rise d3" style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                <div style={{ width: "44px", height: "44px", borderRadius: "50%", background: accent, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "17px", fontWeight: 700, flexShrink: 0 }}>A</div>
-                <div>
-                  <div style={{ fontSize: "15px", fontWeight: 700, color: ink }}>Aman</div>
-                  <div style={{ fontSize: "13px", color: muted }}>Fantastic Services &amp; Jim's Cleaning, Queenstown &amp; Dunedin</div>
-                </div>
-              </div>
-
-              <a
-                href="https://www.instagram.com/queenstown.cleaning/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="lp-rise d4"
-                style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: ink, background: "#f8fafc", border: `1px solid ${line}`, borderRadius: "999px", padding: "8px 18px", textDecoration: "none", marginTop: "22px" }}
-              >
-                <InstagramIcon style={{ width: "14px", height: "14px" }} />
-                @queenstown.cleaning
-              </a>
-            </div>
-
-            <div
-              className="lp-rise d3"
-              style={{ position: "relative", maxWidth: "360px", width: "100%", margin: "0 auto", borderRadius: "20px", overflow: "hidden", boxShadow: "0 32px 80px rgba(10,15,26,0.18)", background: "#000" }}
-            >
-              <video
-                ref={amanVideoRef}
-                src="/testimonials/aman-case-study.mp4"
-                autoPlay
-                loop
-                muted={amanMuted}
-                playsInline
-                preload="metadata"
-                style={{ display: "block", width: "100%", height: "auto", aspectRatio: "9/16", objectFit: "cover" as const }}
-              />
-              <button
-                onClick={() => {
-                  const v = amanVideoRef.current;
-                  if (!v) return;
-                  const next = !amanMuted;
-                  v.muted = next;
-                  setAmanMuted(next);
-                }}
-                aria-label={amanMuted ? "Unmute video" : "Mute video"}
-                style={{ position: "absolute", bottom: "16px", right: "16px", width: "40px", height: "40px", borderRadius: "50%", background: "rgba(0,0,0,0.55)", border: "1px solid rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", backdropFilter: "blur(4px)" }}
-              >
-                {amanMuted ? <VolumeX style={{ width: "18px", height: "18px", color: "#fff" }} /> : <Volume2 style={{ width: "18px", height: "18px", color: "#fff" }} />}
-              </button>
-            </div>
-
-          </div>
         </div>
       </section>
 
