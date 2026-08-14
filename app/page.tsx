@@ -835,6 +835,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── BUILD STATEMENT ── */}
+      <section style={{ background: "transparent", padding: "90px 40px 70px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "880px", margin: "0 auto" }}>
+          <ScrollRevealText
+            text="We build the system that turns ads into booked work."
+            style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, lineHeight: 1.25, letterSpacing: "-0.02em", marginBottom: "22px" }}
+          />
+          <ScrollRevealText
+            text="From getting your business in front of the right people to following up and converting them, we manage the entire journey around one goal: getting more qualified customers through the door and more jobs on your calendar."
+            style={{ fontSize: "clamp(16px,2vw,20px)", fontWeight: 500, lineHeight: 1.65 }}
+          />
+        </div>
+      </section>
+
       {/* ── RESULTS ── */}
       <section style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "40px 40px 32px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
