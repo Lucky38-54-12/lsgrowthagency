@@ -341,23 +341,27 @@ const bentoCards = [
 const steps = [
   {
     num: "01",
-    title: "Generate Demand",
-    desc: "No more relying on referrals or slow weeks. You get a steady flow of people actively looking for your service.",
+    title: "Campaign Plan",
+    desc: "We map out your offer, ideal customer, budget and strategy before a dollar is spent. Everything starts with a clear plan to get your business in front of the right people.",
+    checklist: ["Offer + pricing confirmed", "Ideal customer defined", "Budget + targeting set"],
   },
   {
     num: "02",
-    title: "Instant Response",
-    desc: "Leads get contacted immediately. So you don't lose jobs to the guy who replies first.",
+    title: "Campaign Build",
+    desc: "We turn the strategy into a complete campaign. From the copy and creative to the targeting and campaign structure, everything is built around generating enquiries.",
+    checklist: ["Ad copy written", "Creative produced", "Campaign structure built"],
   },
   {
     num: "03",
-    title: "Automated Follow-Up",
-    desc: "Most jobs are lost after the first message. We keep following up so your leads don't go cold.",
+    title: "Approval",
+    desc: "You review everything before it goes live. We make any final changes and make sure you are happy with how your business is being represented.",
+    checklist: ["Creative reviewed", "Changes made if needed", "Final approval"],
   },
   {
     num: "04",
-    title: "Pipeline Management",
-    desc: "No more missed calls or forgotten enquiries. Every lead is tracked and handled properly.",
+    title: "Launch",
+    desc: "Your campaign goes live and your first enquiries start coming through. We monitor the numbers closely from day one so we can see what is working and what needs improving.",
+    checklist: ["Campaign launched", "Lead tracking switched on", "Performance monitored"],
   },
 ];
 
@@ -1047,7 +1051,7 @@ export default function Home() {
             </div>
 
             <div>
-              {steps.map(({ num, title, desc }, i) => (
+              {steps.map(({ num, title, desc, checklist }, i) => (
                 <Fragment key={num}>
                   <div
                     className="lp-rise how-step-card"
@@ -1067,14 +1071,22 @@ export default function Home() {
                     <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{num}</div>
                     <div>
                       <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: ink, letterSpacing: "-0.02em", marginBottom: "10px" }}>{title}</h3>
-                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7 }}>{desc}</p>
+                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7, marginBottom: "18px" }}>{desc}</p>
+                      <div style={{ display: "flex", flexDirection: "column" as const, gap: "8px" }}>
+                        {checklist.map(item => (
+                          <div key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "13px", fontWeight: 600, color: ink }}>
+                            <CheckCircle style={{ width: "15px", height: "15px", color: accent, flexShrink: 0 }} />
+                            {item}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   {i < steps.length - 1 && <div aria-hidden style={{ height: "40px" }} />}
                 </Fragment>
               ))}
 
-              {/* Get in Touch card */}
+              {/* Ready to Grow card */}
               <div aria-hidden style={{ height: "40px" }} />
               <a
                 href="/book"
@@ -1095,8 +1107,9 @@ export default function Home() {
               >
                 <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: "#fff", letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>5</div>
                 <div>
-                  <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px" }}>Get in Touch</h3>
-                  <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "18px" }}>Have a vision? Let's make a plan. Book a free 30-minute call and take the first step toward a full pipeline.</p>
+                  <h3 style={{ fontSize: "clamp(18px,2vw,24px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "10px" }}>Ready to Grow?</h3>
+                  <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "6px" }}>You know your business. We know how to put it in front of more of the right customers.</p>
+                  <p style={{ fontSize: "14px", color: "#fff", fontWeight: 600, lineHeight: 1.7, marginBottom: "18px" }}>Book a free 15 minute call and let's build your next source of work.</p>
                   <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 700, color: "#fff", background: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.3)", padding: "8px 18px" }}>
                     Book a Call <ArrowRight style={{ width: "12px", height: "12px" }} />
                   </span>
