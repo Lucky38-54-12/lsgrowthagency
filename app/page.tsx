@@ -54,46 +54,29 @@ const accentDark = "#006bbf";
 const accentLight = "#40c0f0";
 const dark  = "#0a0f1a";
 
-/* ── ScrollRevealText: words darken progressively as the block scrolls up the viewport ──
-   Mutates span colors directly via refs (no setState per scroll frame) so it stays smooth on mobile. */
+/* ── ScrollRevealText: words darken in a staggered wave once the block scrolls into view ──
+   Triggers once via IntersectionObserver (no per-scroll-frame work), so it stays smooth on mobile. */
 function ScrollRevealText({ text, style, className, as = "p", revealedColor = ink }: { text: string; style?: React.CSSProperties; className?: string; as?: "p" | "h2" | "h3"; revealedColor?: string }) {
   const words = text.split(" ");
   const containerRef = useRef<HTMLElement>(null);
-  const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [revealed, setRevealed] = useState(false);
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const start = vh * 0.85;
-      const end = vh * 0.35;
-      const p = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
-      const activeCount = Math.round(p * words.length);
-      wordRefs.current.forEach((span, i) => {
-        if (span) span.style.color = i < activeCount ? revealedColor : "#cbd0d6";
-      });
-    };
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [words.length, revealedColor]);
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setRevealed(true);
+        obs.disconnect();
+      }
+    }, { threshold: 0.3, rootMargin: "0px 0px -10% 0px" });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
   const Tag = as as React.ElementType;
   return (
     <Tag ref={containerRef} className={className} style={style}>
       {words.map((w, i) => (
-        <span key={i} ref={(el: HTMLSpanElement | null) => { wordRefs.current[i] = el; }} style={{ color: "#cbd0d6", transition: "color 0.3s ease" }}>
+        <span key={i} style={{ color: revealed ? revealedColor : "#cbd0d6", transition: `color 0.45s ease ${Math.min(i * 22, 480)}ms` }}>
           {w}{i < words.length - 1 ? " " : ""}
         </span>
       ))}
@@ -849,19 +832,17 @@ export default function Home() {
 
       {/* ── BUILD STATEMENT ── */}
       <section className="m-build-statement" style={{ background: "transparent", padding: "90px 40px 70px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ maxWidth: "760px" }}>
-            <ScrollRevealText
-              as="h2"
-              text="We build the system that turns ads into booked work."
-              style={{ fontSize: "clamp(24px,4vw,44px)", fontWeight: 800, lineHeight: 1.25, letterSpacing: "-0.02em", marginBottom: "18px" }}
-            />
-            <ScrollRevealText
-              text="From getting your business in front of the right people to following up and converting them, we manage the entire journey around one goal: getting more qualified customers through the door and more jobs on your calendar."
-              style={{ fontSize: "clamp(14px,2vw,20px)", fontWeight: 500, lineHeight: 1.65 }}
-              revealedColor={muted}
-            />
-          </div>
+        <div style={{ maxWidth: "760px" }}>
+          <ScrollRevealText
+            as="h2"
+            text="We build the system that turns ads into booked work."
+            style={{ fontSize: "clamp(24px,4vw,44px)", fontWeight: 800, lineHeight: 1.25, letterSpacing: "-0.02em", marginBottom: "18px" }}
+          />
+          <ScrollRevealText
+            text="From getting your business in front of the right people to following up and converting them, we manage the entire journey around one goal: getting more qualified customers through the door and more jobs on your calendar."
+            style={{ fontSize: "clamp(14px,2vw,20px)", fontWeight: 500, lineHeight: 1.65 }}
+            revealedColor={muted}
+          />
         </div>
       </section>
 
