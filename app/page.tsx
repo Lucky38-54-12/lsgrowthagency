@@ -1456,7 +1456,19 @@ export default function Home() {
             .testi-grid { grid-template-columns: repeat(2,1fr); }
           }
           @media (max-width: 640px) {
-            .testi-grid { grid-template-columns: 1fr; }
+            .testi-grid {
+              display: flex;
+              grid-template-columns: unset;
+              overflow-x: auto;
+              scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch;
+              gap: 14px;
+              margin: 0 -20px;
+              padding: 4px 20px 10px;
+              scrollbar-width: none;
+            }
+            .testi-grid::-webkit-scrollbar { display: none; }
+            .testi-grid > div { scroll-snap-align: center; flex: 0 0 82%; }
           }
         `}</style>
         <div style={{ position: "relative", maxWidth: "1240px", margin: "0 auto" }}>
