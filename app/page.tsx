@@ -598,9 +598,11 @@ export default function Home() {
           nav { padding: 0 16px !important; height: 60px !important; }
           .nav-logo { height: 34px !important; }
           .m-hero-content { padding: 100px 20px 40px !important; }
-          .m-hero-stats { grid-template-columns: 1fr !important; max-width: 100% !important; margin-top: 32px !important; padding-top: 24px !important; }
-          .m-hero-stats > div { border-left: none !important; padding: 16px 0 !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
-          .m-hero-stats > div:first-child { border-top: none !important; padding-top: 0 !important; }
+          .m-hero-stats { max-width: 100% !important; margin-top: 28px !important; padding-top: 18px !important; gap: 8px !important; }
+          .m-hero-stats > div { padding-left: 12px !important; padding-right: 0 !important; }
+          .m-hero-stats > div:first-child { padding-left: 0 !important; }
+          .m-hero-stat-num { font-size: 20px !important; }
+          .m-hero-stat-label { font-size: 11px !important; }
           .m-trusted-row > div { border-right: none !important; border-bottom: 1px solid ${line}; min-width: calc(50% - 0px) !important; }
           .m-trusted-row > div:last-child { border-bottom: none !important; }
           .m-hero-content h1 { font-size: 34px !important; }
@@ -765,8 +767,8 @@ export default function Home() {
               { to: 700, prefix: "", suffix: "+", format: false, label: "Admin hours removed" },
             ].map(({ to, prefix, suffix, format, label }, i) => (
               <div key={label} style={{ paddingLeft: i === 0 ? 0 : "32px", paddingRight: "24px", borderLeft: i === 0 ? "none" : "1px solid rgba(255,255,255,0.14)" }}>
-                <div style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "6px" }}><CountUp to={to} prefix={prefix} suffix={suffix} format={format} color="#7cd4ff" /></div>
-                <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.4 }}>{label}</div>
+                <div className="m-hero-stat-num" style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "6px" }}><CountUp to={to} prefix={prefix} suffix={suffix} format={format} color="#7cd4ff" /></div>
+                <div className="m-hero-stat-label" style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.35 }}>{label}</div>
               </div>
             ))}
           </div>
