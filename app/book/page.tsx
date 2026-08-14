@@ -92,7 +92,7 @@ export default function BookPage() {
 
       {/* Footer strip */}
       <div style={{ borderTop: `1px solid ${line}`, padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", flexWrap: "wrap", textAlign: "center" }}>
-        <p style={{ fontSize: "13px", color: muted, margin: 0 }}>© {new Date().getFullYear()} L&S Growth · NZ &amp; AU</p>
+        <p style={{ fontSize: "13px", color: muted, margin: 0 }}>© {new Date().getFullYear()} L&S Growth Agency · NZ &amp; AU</p>
         <a href="mailto:lsgrowthagency.co@gmail.com" style={{ fontSize: "13px", color: muted, textDecoration: "none" }}>lsgrowthagency.co@gmail.com</a>
       </div>
     </div>

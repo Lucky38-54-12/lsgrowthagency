@@ -7,8 +7,8 @@ const accent = "#0080e0";
 const F = "var(--font-inter), system-ui, sans-serif";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — L&S Growth",
-  description: "How L&S Growth collects, uses, and protects data for our clients and their leads.",
+  title: "Privacy Policy",
+  description: "How L&S Growth Agency collects, uses, and protects data for our clients and their leads.",
 };
 
 const LAST_UPDATED = "6 July 2026";

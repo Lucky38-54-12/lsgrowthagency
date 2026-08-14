@@ -7,8 +7,16 @@ const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["700",
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", weight: ["400", "500", "600"], style: ["normal", "italic"] });
 
 export const metadata: Metadata = {
-  title: "L&S Growth",
+  title: {
+    default: "L&S Growth Agency",
+    template: "%s — L&S Growth Agency",
+  },
   description: "Done-for-you lead generation and client acquisition system for local service businesses in NZ & AU.",
+  openGraph: {
+    siteName: "L&S Growth Agency",
+    title: "L&S Growth Agency",
+    description: "Done-for-you lead generation and client acquisition system for local service businesses in NZ & AU.",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

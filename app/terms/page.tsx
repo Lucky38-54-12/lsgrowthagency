@@ -7,8 +7,8 @@ const accent = "#0080e0";
 const F = "var(--font-inter), system-ui, sans-serif";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — L&S Growth",
-  description: "The terms that apply to businesses using L&S Growth's lead generation and AI qualification services.",
+  title: "Terms of Service",
+  description: "The terms that apply to businesses using L&S Growth Agency's lead generation and AI qualification services.",
 };
 
 const LAST_UPDATED = "9 August 2026";

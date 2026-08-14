@@ -7,8 +7,8 @@ const accent = "#0080e0";
 const F = "var(--font-inter), system-ui, sans-serif";
 
 export const metadata: Metadata = {
-  title: "Data Deletion — L&S Growth",
-  description: "How to request deletion of your data from L&S Growth.",
+  title: "Data Deletion",
+  description: "How to request deletion of your data from L&S Growth Agency.",
 };
 
 const LAST_UPDATED = "9 August 2026";

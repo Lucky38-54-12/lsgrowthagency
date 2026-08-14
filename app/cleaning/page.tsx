@@ -539,7 +539,7 @@ export default function CleaningPage() {
             </div>
           </div>
           <div className="m-footer-bottom" style={{ borderTop: `1px solid ${line}`, padding: "20px 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <p style={{ fontSize: "13px", color: dim }}>© {new Date().getFullYear()} L&S Growth. All rights reserved.</p>
+            <p style={{ fontSize: "13px", color: dim }}>© {new Date().getFullYear()} L&S Growth Agency. All rights reserved.</p>
             <p style={{ fontSize: "13px", color: dim }}>NZ &amp; AU Local Service Businesses</p>
           </div>
         </div>
