@@ -540,47 +540,116 @@ const faqs = [
   { q: "What makes L&S Growth different?", a: "We're not here to simply run ads and send you a report at the end of the month. We act as a growth partner, looking at the entire journey from getting the customer's attention to turning that enquiry into a real business opportunity." },
 ];
 
-/* ── Pipeline demo: dark traveling-card stepper, grounded in real HRC leads
-   (EV charger installs, Te Kauwhata + Hamilton) instead of an invented example ── */
-const PIPE_STEPS = ["Ad", "Form", "Qualified", "Call", "Confirmed", "Booked"];
+/* ── Pipeline demo: what each real step actually looks like, grounded in
+   real HRC leads (EV charger installs, Te Kauwhata + Hamilton) ── */
+const PIPE_STEPS = ["Ad", "Form", "Qualified", "Call", "Confirmed", "Booked", "All"];
+
+function PPCheckRow({ text }: { text: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: ink }}>
+      <svg viewBox="0 0 20 20" fill="none" style={{ width: 13, height: 13, flexShrink: 0 }}><circle cx="10" cy="10" r="9" stroke={accent} strokeWidth="1.5" /><path d="M6 10l2.5 2.5L14 7" stroke={accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      {text}
+    </div>
+  );
+}
 
 function PipelineCard({ step }: { step: number }) {
   if (step === 0) {
-    return <p style={{ fontSize: 13, color: dim, fontStyle: "italic" as const }}>Waiting for the next click…</p>;
-  }
-  return (
-    <div style={{ width: "100%", maxWidth: 280 }}>
-      <p style={{ fontSize: 14, fontWeight: 700, color: ink, marginBottom: 2 }}>EV charger install</p>
-      <p style={{ fontSize: 12.5, color: muted, marginBottom: step >= 2 ? 12 : 0 }}>{step >= 4 ? "Hamilton" : "Te Kauwhata"}</p>
-
-      {step === 2 && (
-        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          {["Property confirmed", "Moving in 13 Aug", "Quote by phone"].map((t) => (
-            <div key={t} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: ink }}>
-              <svg viewBox="0 0 20 20" fill="none" style={{ width: 13, height: 13, flexShrink: 0 }}><circle cx="10" cy="10" r="9" stroke={accent} strokeWidth="1.5" /><path d="M6 10l2.5 2.5L14 7" stroke={accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              {t}
-            </div>
-          ))}
+    return (
+      <div style={{ width: "100%", maxWidth: 300, background: "#fff", border: `1px solid ${line}`, borderRadius: 10, overflow: "hidden", boxShadow: "0 6px 16px rgba(10,15,26,0.06)" }}>
+        <div style={{ padding: "10px 12px", display: "flex", alignItems: "center", gap: 8, borderBottom: `1px solid ${line}` }}>
+          <div style={{ width: 22, height: 22, borderRadius: "50%", background: accent, flexShrink: 0 }} />
+          <div>
+            <p style={{ fontSize: 11.5, fontWeight: 700, color: ink }}>HRC</p>
+            <p style={{ fontSize: 9.5, color: dim }}>Sponsored</p>
+          </div>
         </div>
-      )}
+        <div style={{ height: 100, background: "linear-gradient(135deg, #0c3450 0%, #0080e0 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <p style={{ fontSize: 13, fontWeight: 800, color: "#fff", textAlign: "center" as const, maxWidth: 220, lineHeight: 1.3 }}>EV charger installs, booked fast</p>
+        </div>
+        <div style={{ padding: "10px 12px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <p style={{ fontSize: 11, color: muted }}>Free quote, no obligation</p>
+          <span style={{ fontSize: 10.5, fontWeight: 700, color: "#fff", background: ink, borderRadius: 6, padding: "5px 10px" }}>Learn More</span>
+        </div>
+      </div>
+    );
+  }
 
-      {step === 3 && (
+  if (step === 1) {
+    return (
+      <div style={{ width: "100%", maxWidth: 280, display: "flex", flexDirection: "column", gap: 8 }}>
+        {[["What are you after?", "EV charger install"], ["Location", "Te Kauwhata"], ["Timeframe", "Moving in 13th August"]].map(([l, v]) => (
+          <div key={l} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <span style={{ fontSize: 9.5, fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase" as const, color: dim }}>{l}</span>
+            <span style={{ fontSize: 12.5, color: ink, background: "#fff", border: `1px solid ${line}`, padding: "6px 10px", fontWeight: 500 }}>{v}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (step === 2) {
+    return (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", flexDirection: "column", gap: 8 }}>
+        <p style={{ fontSize: 11, fontWeight: 700, color: ink, marginBottom: 2 }}>EV charger install · Te Kauwhata</p>
+        <PPCheckRow text="Property confirmed" />
+        <PPCheckRow text="Moving in 13 Aug" />
+        <PPCheckRow text="Quote by phone" />
+      </div>
+    );
+  }
+
+  if (step === 3) {
+    return (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", flexDirection: "column", gap: 8, alignItems: "center", textAlign: "center" as const }}>
+        <div style={{ width: 38, height: 38, borderRadius: "50%", border: `2px solid ${accent}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16 }}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+        </div>
         <div style={{ display: "inline-flex", fontSize: 11, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, color: accentDark, background: "#eaf5ff", border: "1px solid #bfe2f9", borderRadius: 999, padding: "5px 12px" }}>
           Callback requested: in 5 min
         </div>
-      )}
+      </div>
+    );
+  }
 
-      {step === 4 && (
-        <div style={{ fontSize: 12.5, color: muted }}>
-          <b style={{ color: ink }}>Fri, 12:00pm</b> · quote confirmed
-        </div>
-      )}
+  if (step === 4) {
+    return (
+      <div style={{ width: "100%", maxWidth: 280, background: "#fff", border: `1px solid ${line}`, borderLeft: `3px solid ${accent}`, borderRadius: 6, padding: "10px 14px", display: "flex", flexDirection: "column", gap: 2 }}>
+        <span style={{ fontWeight: 700, fontSize: 13, color: ink }}>Fri · 12:00pm</span>
+        <span style={{ fontSize: 11.5, color: muted }}>EV Charger Quote · Hamilton</span>
+        <span style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: accent, marginTop: 3 }}>Confirmed both sides</span>
+      </div>
+    );
+  }
 
-      {step === 5 && (
-        <div style={{ display: "inline-flex", fontSize: 11, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, color: "#15803d", background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: 999, padding: "5px 12px" }}>
-          Booked
+  if (step === 5) {
+    return (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", flexDirection: "column", gap: 6, alignItems: "center", textAlign: "center" as const }}>
+        <div style={{ width: 38, height: 38, borderRadius: "50%", background: "#f0fdf4", border: "1px solid #bbf7d0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <svg viewBox="0 0 20 20" fill="none" style={{ width: 18, height: 18 }}><circle cx="10" cy="10" r="9" stroke="#15803d" strokeWidth="1.5" /><path d="M6 10l2.5 2.5L14 7" stroke="#15803d" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </div>
-      )}
+        <p style={{ fontSize: 13, fontWeight: 700, color: ink }}>EV charger install, booked</p>
+        <p style={{ fontSize: 11.5, color: muted }}>Hamilton · Fri, 12:00pm</p>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ width: "100%", maxWidth: 300, display: "flex", flexDirection: "column", gap: 10 }}>
+      {[
+        ["Ad", "EV charger installs, booked fast"],
+        ["Form", "EV charger install · Te Kauwhata"],
+        ["Qualified", "Property + timeline confirmed"],
+        ["Call", "Callback in 5 min"],
+        ["Confirmed", "Fri 12:00pm · Hamilton"],
+        ["Booked", "Job on the books"],
+      ].map(([label, val], i) => (
+        <div key={label} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ fontSize: 9, fontWeight: 700, color: "#fff", background: accent, borderRadius: "50%", width: 16, height: 16, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{i + 1}</span>
+          <span style={{ fontSize: 10.5, fontWeight: 700, color: dim, textTransform: "uppercase" as const, letterSpacing: "0.03em", width: 68, flexShrink: 0 }}>{label}</span>
+          <span style={{ fontSize: 12, color: ink }}>{val}</span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -620,7 +689,7 @@ function PipelineDemo({ step }: { step: number }) {
         @keyframes pipeCardIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         .pipe-card-in { animation: pipeCardIn 0.4s ease forwards; }
       `}</style>
-      <div key={step} className="pipe-card-in" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 140, marginTop: 20, background: "#f8fafc", border: `1px solid ${line}`, borderRadius: 10 }}>
+      <div key={step} className="pipe-card-in" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 140, marginTop: 20 }}>
         <PipelineCard step={step} />
       </div>
 
@@ -636,6 +705,7 @@ const PIPE_DETAIL = [
   { title: "Call booked", desc: "A callback time gets set on the spot, whatever actually works for them, not just business hours." },
   { title: "Confirmed", desc: "The quote lands on the calendar the moment both sides agree on a time. Nothing typed in by hand." },
   { title: "Booked work", desc: "A real job on the books, not just another lead sitting in an inbox." },
+  { title: "All together", desc: "The whole thing, start to finish. One ad, one enquiry, one booked job." },
 ];
 
 function PipelineIntegration() {
@@ -669,7 +739,7 @@ function PipelineIntegration() {
                       padding: "14px 0", font: "inherit",
                     }}
                   >
-                    <span style={{ fontSize: "16px", fontFamily: "ui-monospace,monospace", color: isActive ? accent : dim, transition: "color 0.4s", flexShrink: 0, minWidth: "28px" }}>
+                    <span style={{ fontSize: "16px", fontWeight: 700, color: isActive ? accent : dim, transition: "color 0.4s", flexShrink: 0, minWidth: "28px" }}>
                       0{i + 1}
                     </span>
                     <span>
