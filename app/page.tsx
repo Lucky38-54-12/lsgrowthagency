@@ -540,6 +540,180 @@ const faqs = [
   { q: "What makes L&S Growth different?", a: "We're not here to simply run ads and send you a report at the end of the month. We act as a growth partner, looking at the entire journey from getting the customer's attention to turning that enquiry into a real business opportunity." },
 ];
 
+/* ── Pipeline demo: dark traveling-card stepper, grounded in real HRC leads
+   (EV charger installs, Te Kauwhata + Hamilton) instead of an invented example ── */
+const PIPE_STEPS = ["Ad", "Form", "Qualified", "Call", "Confirmed", "Booked"];
+
+const PIPE_GHOSTS = [
+  { label: "Kitchen rewire", reason: "Outside service area", atStep: 2 },
+  { label: "Just checking prices", reason: "No timeline given", atStep: 5 },
+];
+
+function PipelineCard({ step }: { step: number }) {
+  if (step === 0) return null;
+  return (
+    <div style={{ background: "#0f1a2b", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, padding: "14px 16px", minWidth: 220, boxShadow: "0 20px 40px rgba(0,0,0,0.35)" }}>
+      <p style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 2 }}>EV charger install</p>
+      <p style={{ fontSize: 11.5, color: "rgba(255,255,255,0.5)", marginBottom: step >= 2 ? 10 : 0 }}>{step >= 4 ? "Hamilton" : "Te Kauwhata"}</p>
+
+      {step === 2 && (
+        <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+          {["Property confirmed", "Moving in 13 Aug", "Quote by phone"].map((t) => (
+            <div key={t} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, color: "rgba(255,255,255,0.75)" }}>
+              <svg viewBox="0 0 20 20" fill="none" style={{ width: 12, height: 12, flexShrink: 0 }}><circle cx="10" cy="10" r="9" stroke={accentLight} strokeWidth="1.5" /><path d="M6 10l2.5 2.5L14 7" stroke={accentLight} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              {t}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {step === 3 && (
+        <div style={{ display: "inline-flex", fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, color: accentLight, background: "rgba(64,192,240,0.12)", border: "1px solid rgba(64,192,240,0.3)", borderRadius: 999, padding: "4px 10px" }}>
+          Callback requested: in 5 min
+        </div>
+      )}
+
+      {step === 4 && (
+        <div style={{ fontSize: 11.5, color: "rgba(255,255,255,0.75)" }}>
+          <b style={{ color: "#fff" }}>Fri, 12:00pm</b> · quote confirmed
+        </div>
+      )}
+
+      {step === 5 && (
+        <div style={{ display: "inline-flex", fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, color: "#4ade80", background: "rgba(74,222,128,0.12)", border: "1px solid rgba(74,222,128,0.3)", borderRadius: 999, padding: "4px 10px" }}>
+          Booked
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PipelineDemo({ step }: { step: number }) {
+  const pct = (i: number) => (i / (PIPE_STEPS.length - 1)) * 100;
+
+  return (
+    <div style={{ position: "relative", width: "100%" }}>
+      <style suppressHydrationWarning>{`
+        @keyframes pipeGhostIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 0.55; transform: translateY(0); } }
+        .pipe-ghost { animation: pipeGhostIn 0.6s ease forwards; }
+      `}</style>
+
+      {/* stepper track */}
+      <div style={{ position: "relative", height: 1, background: "rgba(255,255,255,0.14)", margin: "0 4px" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, height: 1, background: accentLight, width: `${pct(step)}%`, transition: "width 0.6s ease" }} />
+        {PIPE_STEPS.map((_, i) => (
+          <div key={i} style={{
+            position: "absolute", top: "50%", left: `${pct(i)}%`, width: 8, height: 8, borderRadius: "50%",
+            transform: "translate(-50%,-50%)", transition: "background 0.4s ease, border-color 0.4s ease",
+            background: i <= step ? accentLight : "#0f1a2b",
+            border: `1.5px solid ${i <= step ? accentLight : "rgba(255,255,255,0.3)"}`,
+            boxShadow: i === step ? `0 0 0 5px rgba(64,192,240,0.18)` : "none",
+          }} />
+        ))}
+      </div>
+
+      {/* labels */}
+      <div style={{ position: "relative", marginTop: 10, height: 28 }}>
+        {PIPE_STEPS.map((label, i) => (
+          <span key={label} style={{
+            position: "absolute", left: `${pct(i)}%`, transform: i === 0 ? "translateX(0)" : i === PIPE_STEPS.length - 1 ? "translateX(-100%)" : "translateX(-50%)",
+            fontSize: 10, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, whiteSpace: "nowrap",
+            color: i === step ? "#fff" : "rgba(255,255,255,0.4)", transition: "color 0.4s ease",
+          }}>{label}</span>
+        ))}
+      </div>
+
+      {/* traveling card */}
+      <div style={{ position: "relative", height: 140, marginTop: 28 }}>
+        <div style={{ position: "absolute", left: `${pct(Math.max(step, 1))}%`, top: 0, transform: "translateX(-50%)", transition: "left 0.6s ease" }}>
+          <PipelineCard step={step} />
+        </div>
+
+        {PIPE_GHOSTS.map((g) => step >= g.atStep && (
+          <div key={g.label} className="pipe-ghost" style={{ position: "absolute", left: `${pct(1)}%`, top: 86, transform: "translateX(-50%)", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 8, padding: "8px 12px", minWidth: 170 }}>
+            <p style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.55)", textDecoration: "line-through" }}>{g.label}</p>
+            <p style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{g.reason}</p>
+          </div>
+        ))}
+      </div>
+
+      <p style={{ position: "absolute", bottom: -6, right: 0, fontSize: 11, color: "rgba(255,255,255,0.35)" }}>One real enquiry, shown start to finish</p>
+    </div>
+  );
+}
+
+const PIPE_DETAIL = [
+  { title: "Ad", desc: "Someone sees the ad and clicks through. That's the only thing they've done so far." },
+  { title: "Lead form", desc: "Enough questions upfront that tyre kickers drop off here, not on your calendar. This one's real: EV charger install, Te Kauwhata." },
+  { title: "AI qualifies", desc: "Property, timeline and quote preference get confirmed in seconds, before a human ever looks at it." },
+  { title: "Call booked", desc: "A callback time gets set on the spot, whatever actually works for them, not just business hours." },
+  { title: "Confirmed", desc: "The quote lands on the calendar the moment both sides agree on a time. Nothing typed in by hand." },
+  { title: "Booked work", desc: "A real job on the books, not just another lead sitting in an inbox." },
+];
+
+function PipelineIntegration() {
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setActive((a) => (a + 1) % PIPE_DETAIL.length), 2600);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <section style={{ background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+      <div style={{ maxWidth: "1360px", margin: "0 auto" }}>
+        <div className="m-connect-grid" style={{ display: "grid", gridTemplateColumns: "minmax(560px,1fr) 620px", gap: "56px", alignItems: "center" }}>
+          <div>
+            <div className="lp-rise" style={{ fontSize: "13px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>
+              How It Works
+            </div>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(26px,3vw,38px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "36px", maxWidth: "540px" }}>
+              We build the system that turns ads into booked work.
+            </h2>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: "6px" }}>
+              {PIPE_DETAIL.map((s, i) => {
+                const isActive = i === active;
+                return (
+                  <button
+                    key={s.title}
+                    onClick={() => setActive(i)}
+                    style={{
+                      display: "flex", alignItems: "baseline", gap: "20px",
+                      textAlign: "left" as const, background: "none", border: "none", cursor: "pointer",
+                      padding: "14px 0", font: "inherit",
+                    }}
+                  >
+                    <span style={{ fontSize: "16px", fontFamily: "ui-monospace,monospace", color: isActive ? accent : dim, transition: "color 0.4s", flexShrink: 0, minWidth: "28px" }}>
+                      0{i + 1}
+                    </span>
+                    <span>
+                      <span style={{ display: "block", fontSize: "clamp(24px,2.8vw,34px)", fontWeight: 800, letterSpacing: "-0.025em", color: isActive ? ink : dim, transition: "color 0.4s" }}>
+                        {s.title}
+                      </span>
+                      <span
+                        style={{
+                          display: "block", fontSize: "16px", color: muted, lineHeight: 1.65, maxWidth: "480px",
+                          marginTop: isActive ? "10px" : "0", maxHeight: isActive ? "140px" : "0", opacity: isActive ? 1 : 0,
+                          overflow: "hidden", transition: "all 0.4s ease",
+                        }}
+                      >
+                        {s.desc}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div style={{ width: "620px", background: "#0a0f1a", borderRadius: 16, padding: "40px 36px 56px", boxShadow: "0 30px 70px rgba(10,15,26,0.25)" }}>
+            <PipelineDemo step={active} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── Counter hook ── */
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -547,19 +721,8 @@ export default function Home() {
   const [formOpen, setFormOpen] = useState(false);
   const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
-  const [howHeight, setHowHeight] = useState(980);
   const [amanMuted, setAmanMuted] = useState(true);
   const amanVideoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    function onMessage(e: MessageEvent) {
-      if (e.data && e.data.type === "lsgrowth-demo-height" && typeof e.data.height === "number") {
-        setHowHeight(e.data.height);
-      }
-    }
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
-  }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -885,30 +1048,10 @@ export default function Home() {
           <div style={{ position: "relative", maxWidth: "980px", textAlign: "center" as const }}>
             <ScrollRevealText
               as="h2"
-              text="We build the system that turns ads into booked work."
+              text="From ad click to booked job, one system runs it all."
               style={{ fontSize: "clamp(34px,6.5vw,72px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
               revealedColor={accent}
             />
-
-            <div className="lp-rise d2" style={{ position: "relative", maxWidth: "440px", margin: "36px auto 0", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", boxShadow: "0 20px 50px rgba(10,15,26,0.10)", padding: "18px 20px", textAlign: "left" as const }}>
-              <p style={{ fontSize: "11px", fontWeight: 700, color: muted, textTransform: "uppercase" as const, letterSpacing: "0.08em", marginBottom: "12px" }}>
-                Real bookings, straight off a client&apos;s calendar
-              </p>
-              {[
-                { job: "EV charger install", place: "Te Kauwhata", date: "Aug 6" },
-                { job: "EV charger install", place: "Hamilton", date: "Aug 9" },
-                { job: "Heat transfer kit + bathroom wiring", place: "Nawton, Hamilton", date: "Jul 31" },
-              ].map((row, i, arr) => (
-                <div key={row.job + row.place} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", padding: "11px 0", borderBottom: i < arr.length - 1 ? `1px solid ${line}` : "none" }}>
-                  <div style={{ minWidth: 0 }}>
-                    <p style={{ fontSize: "14px", fontWeight: 700, color: ink, marginBottom: "2px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{row.job}</p>
-                    <p style={{ fontSize: "12.5px", color: muted }}>{row.place} · {row.date}</p>
-                  </div>
-                  <span style={{ flexShrink: 0, fontSize: "10.5px", fontWeight: 700, color: "#15803d", background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: "999px", padding: "4px 10px" }}>Booked</span>
-                </div>
-              ))}
-            </div>
-
             <ScrollFadeOverlay style={{ position: "absolute", inset: "-20% -10%", pointerEvents: "none" as const }}>
               <div style={{ position: "absolute", top: "8%", left: "6%", width: "30%", paddingBottom: "20%", borderRadius: "50%", background: "rgba(255,255,255,0.85)", filter: "blur(28px)" }} />
               <div style={{ position: "absolute", top: "38%", right: "4%", width: "34%", paddingBottom: "22%", borderRadius: "50%", background: "rgba(255,255,255,0.8)", filter: "blur(32px)" }} />
@@ -969,16 +1112,9 @@ export default function Home() {
           <img src="/results-mockup.png" alt="Dashboard showing leads, cost per lead, and ad spend results for Queenstown Cleaning, SSP Electrical, and Perl Electrical campaigns" className="lp-rise d3" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto" }} />
         </div>
 
-        {/* <iframe
-          src="/process-demo.html"
-          title="The L&#38;S Growth Pipeline, from form to quoted job"
-          loading="lazy"
-          scrolling="no"
-          className="lp-rise d3"
-          style={{ position: "relative", display: "block", width: "100%", height: `${howHeight}px`, border: "none", overflow: "hidden", marginTop: "40px" }}
-        /> */}
-
       </section>
+
+      <PipelineIntegration />
 
       {/* ── WHAT WE BUILD FOR YOU ── hidden for now ── */}
       {false && (
