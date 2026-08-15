@@ -544,23 +544,20 @@ const faqs = [
    (EV charger installs, Te Kauwhata + Hamilton) instead of an invented example ── */
 const PIPE_STEPS = ["Ad", "Form", "Qualified", "Call", "Confirmed", "Booked"];
 
-const PIPE_GHOSTS = [
-  { label: "Kitchen rewire", reason: "Outside service area", atStep: 2 },
-  { label: "Just checking prices", reason: "No timeline given", atStep: 5 },
-];
-
 function PipelineCard({ step }: { step: number }) {
-  if (step === 0) return null;
+  if (step === 0) {
+    return <p style={{ fontSize: 13, color: dim, fontStyle: "italic" as const }}>Waiting for the next click…</p>;
+  }
   return (
-    <div style={{ background: "#0f1a2b", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, padding: "14px 16px", minWidth: 220, boxShadow: "0 20px 40px rgba(0,0,0,0.35)" }}>
-      <p style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 2 }}>EV charger install</p>
-      <p style={{ fontSize: 11.5, color: "rgba(255,255,255,0.5)", marginBottom: step >= 2 ? 10 : 0 }}>{step >= 4 ? "Hamilton" : "Te Kauwhata"}</p>
+    <div style={{ width: "100%", maxWidth: 280 }}>
+      <p style={{ fontSize: 14, fontWeight: 700, color: ink, marginBottom: 2 }}>EV charger install</p>
+      <p style={{ fontSize: 12.5, color: muted, marginBottom: step >= 2 ? 12 : 0 }}>{step >= 4 ? "Hamilton" : "Te Kauwhata"}</p>
 
       {step === 2 && (
-        <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           {["Property confirmed", "Moving in 13 Aug", "Quote by phone"].map((t) => (
-            <div key={t} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, color: "rgba(255,255,255,0.75)" }}>
-              <svg viewBox="0 0 20 20" fill="none" style={{ width: 12, height: 12, flexShrink: 0 }}><circle cx="10" cy="10" r="9" stroke={accentLight} strokeWidth="1.5" /><path d="M6 10l2.5 2.5L14 7" stroke={accentLight} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <div key={t} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: ink }}>
+              <svg viewBox="0 0 20 20" fill="none" style={{ width: 13, height: 13, flexShrink: 0 }}><circle cx="10" cy="10" r="9" stroke={accent} strokeWidth="1.5" /><path d="M6 10l2.5 2.5L14 7" stroke={accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               {t}
             </div>
           ))}
@@ -568,19 +565,19 @@ function PipelineCard({ step }: { step: number }) {
       )}
 
       {step === 3 && (
-        <div style={{ display: "inline-flex", fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, color: accentLight, background: "rgba(64,192,240,0.12)", border: "1px solid rgba(64,192,240,0.3)", borderRadius: 999, padding: "4px 10px" }}>
+        <div style={{ display: "inline-flex", fontSize: 11, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, color: accentDark, background: "#eaf5ff", border: "1px solid #bfe2f9", borderRadius: 999, padding: "5px 12px" }}>
           Callback requested: in 5 min
         </div>
       )}
 
       {step === 4 && (
-        <div style={{ fontSize: 11.5, color: "rgba(255,255,255,0.75)" }}>
-          <b style={{ color: "#fff" }}>Fri, 12:00pm</b> · quote confirmed
+        <div style={{ fontSize: 12.5, color: muted }}>
+          <b style={{ color: ink }}>Fri, 12:00pm</b> · quote confirmed
         </div>
       )}
 
       {step === 5 && (
-        <div style={{ display: "inline-flex", fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, color: "#4ade80", background: "rgba(74,222,128,0.12)", border: "1px solid rgba(74,222,128,0.3)", borderRadius: 999, padding: "4px 10px" }}>
+        <div style={{ display: "inline-flex", fontSize: 11, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, color: "#15803d", background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: 999, padding: "5px 12px" }}>
           Booked
         </div>
       )}
@@ -593,21 +590,16 @@ function PipelineDemo({ step }: { step: number }) {
 
   return (
     <div style={{ position: "relative", width: "100%" }}>
-      <style suppressHydrationWarning>{`
-        @keyframes pipeGhostIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 0.55; transform: translateY(0); } }
-        .pipe-ghost { animation: pipeGhostIn 0.6s ease forwards; }
-      `}</style>
-
       {/* stepper track */}
-      <div style={{ position: "relative", height: 1, background: "rgba(255,255,255,0.14)", margin: "0 4px" }}>
-        <div style={{ position: "absolute", top: 0, left: 0, height: 1, background: accentLight, width: `${pct(step)}%`, transition: "width 0.6s ease" }} />
+      <div style={{ position: "relative", height: 1, background: line, margin: "0 4px" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, height: 1, background: accent, width: `${pct(step)}%`, transition: "width 0.6s ease" }} />
         {PIPE_STEPS.map((_, i) => (
           <div key={i} style={{
             position: "absolute", top: "50%", left: `${pct(i)}%`, width: 8, height: 8, borderRadius: "50%",
             transform: "translate(-50%,-50%)", transition: "background 0.4s ease, border-color 0.4s ease",
-            background: i <= step ? accentLight : "#0f1a2b",
-            border: `1.5px solid ${i <= step ? accentLight : "rgba(255,255,255,0.3)"}`,
-            boxShadow: i === step ? `0 0 0 5px rgba(64,192,240,0.18)` : "none",
+            background: i <= step ? accent : "#fff",
+            border: `1.5px solid ${i <= step ? accent : dim}`,
+            boxShadow: i === step ? `0 0 0 5px rgba(0,128,224,0.14)` : "none",
           }} />
         ))}
       </div>
@@ -618,26 +610,21 @@ function PipelineDemo({ step }: { step: number }) {
           <span key={label} style={{
             position: "absolute", left: `${pct(i)}%`, transform: i === 0 ? "translateX(0)" : i === PIPE_STEPS.length - 1 ? "translateX(-100%)" : "translateX(-50%)",
             fontSize: 10, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, whiteSpace: "nowrap",
-            color: i === step ? "#fff" : "rgba(255,255,255,0.4)", transition: "color 0.4s ease",
+            color: i === step ? ink : dim, transition: "color 0.4s ease",
           }}>{label}</span>
         ))}
       </div>
 
-      {/* traveling card */}
-      <div style={{ position: "relative", height: 140, marginTop: 28 }}>
-        <div style={{ position: "absolute", left: `${pct(Math.max(step, 1))}%`, top: 0, transform: "translateX(-50%)", transition: "left 0.6s ease" }}>
-          <PipelineCard step={step} />
-        </div>
-
-        {PIPE_GHOSTS.map((g) => step >= g.atStep && (
-          <div key={g.label} className="pipe-ghost" style={{ position: "absolute", left: `${pct(1)}%`, top: 86, transform: "translateX(-50%)", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 8, padding: "8px 12px", minWidth: 170 }}>
-            <p style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.55)", textDecoration: "line-through" }}>{g.label}</p>
-            <p style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{g.reason}</p>
-          </div>
-        ))}
+      {/* one card at a time */}
+      <style suppressHydrationWarning>{`
+        @keyframes pipeCardIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        .pipe-card-in { animation: pipeCardIn 0.4s ease forwards; }
+      `}</style>
+      <div key={step} className="pipe-card-in" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 140, marginTop: 20, background: "#f8fafc", border: `1px solid ${line}`, borderRadius: 10 }}>
+        <PipelineCard step={step} />
       </div>
 
-      <p style={{ position: "absolute", bottom: -6, right: 0, fontSize: 11, color: "rgba(255,255,255,0.35)" }}>One real enquiry, shown start to finish</p>
+      <p style={{ marginTop: 12, textAlign: "right" as const, fontSize: 11, color: dim }}>One real enquiry, shown start to finish</p>
     </div>
   );
 }
@@ -705,7 +692,7 @@ function PipelineIntegration() {
             </div>
           </div>
 
-          <div style={{ width: "620px", background: "#0a0f1a", borderRadius: 16, padding: "40px 36px 56px", boxShadow: "0 30px 70px rgba(10,15,26,0.25)" }}>
+          <div style={{ width: "620px", background: "#fff", border: `1px solid ${line}`, borderRadius: 16, padding: "40px 36px 32px", boxShadow: "0 30px 70px rgba(10,15,26,0.10)" }}>
             <PipelineDemo step={active} />
           </div>
         </div>
