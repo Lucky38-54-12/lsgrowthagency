@@ -542,8 +542,6 @@ const faqs = [
 
 /* ── Pipeline demo: what each real step actually looks like, grounded in
    real HRC leads (EV charger installs, Te Kauwhata + Hamilton) ── */
-const PIPE_STEPS = ["Ad", "Form", "Qualified", "Call", "Confirmed", "Booked", "All"];
-
 function PPCheckRow({ text }: { text: string }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: ink }}>
@@ -655,45 +653,15 @@ function PipelineCard({ step }: { step: number }) {
 }
 
 function PipelineDemo({ step }: { step: number }) {
-  const pct = (i: number) => (i / (PIPE_STEPS.length - 1)) * 100;
-
   return (
     <div style={{ position: "relative", width: "100%" }}>
-      {/* stepper track */}
-      <div style={{ position: "relative", height: 1, background: line, margin: "0 4px" }}>
-        <div style={{ position: "absolute", top: 0, left: 0, height: 1, background: accent, width: `${pct(step)}%`, transition: "width 0.6s ease" }} />
-        {PIPE_STEPS.map((_, i) => (
-          <div key={i} style={{
-            position: "absolute", top: "50%", left: `${pct(i)}%`, width: 8, height: 8, borderRadius: "50%",
-            transform: "translate(-50%,-50%)", transition: "background 0.4s ease, border-color 0.4s ease",
-            background: i <= step ? accent : "#fff",
-            border: `1.5px solid ${i <= step ? accent : dim}`,
-            boxShadow: i === step ? `0 0 0 5px rgba(0,128,224,0.14)` : "none",
-          }} />
-        ))}
-      </div>
-
-      {/* labels */}
-      <div style={{ position: "relative", marginTop: 10, height: 28 }}>
-        {PIPE_STEPS.map((label, i) => (
-          <span key={label} style={{
-            position: "absolute", left: `${pct(i)}%`, transform: i === 0 ? "translateX(0)" : i === PIPE_STEPS.length - 1 ? "translateX(-100%)" : "translateX(-50%)",
-            fontSize: 10, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" as const, whiteSpace: "nowrap",
-            color: i === step ? ink : dim, transition: "color 0.4s ease",
-          }}>{label}</span>
-        ))}
-      </div>
-
-      {/* one card at a time */}
       <style suppressHydrationWarning>{`
         @keyframes pipeCardIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         .pipe-card-in { animation: pipeCardIn 0.4s ease forwards; }
       `}</style>
-      <div key={step} className="pipe-card-in" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 140, marginTop: 20 }}>
+      <div key={step} className="pipe-card-in" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 220 }}>
         <PipelineCard step={step} />
       </div>
-
-      <p style={{ marginTop: 12, textAlign: "right" as const, fontSize: 11, color: dim }}>One real enquiry, shown start to finish</p>
     </div>
   );
 }
@@ -762,7 +730,7 @@ function PipelineIntegration() {
             </div>
           </div>
 
-          <div style={{ width: "620px", background: "#fff", border: `1px solid ${line}`, borderRadius: 16, padding: "40px 36px 32px", boxShadow: "0 30px 70px rgba(10,15,26,0.10)" }}>
+          <div style={{ width: "620px" }}>
             <PipelineDemo step={active} />
           </div>
         </div>
