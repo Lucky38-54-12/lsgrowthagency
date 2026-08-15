@@ -133,7 +133,7 @@ export default function CleaningPage() {
       {/* ── NAV (same as homepage) ── */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px", background: "rgba(255,255,255,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(10,15,26,0.08)", transform: "translateZ(0)" }}>
         <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="L&S Growth" style={{ height: "42px", width: "auto", objectFit: "contain" }} />
+          <img className="nav-logo" src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "30px", width: "auto", objectFit: "contain" }} />
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
           <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
@@ -530,7 +530,7 @@ export default function CleaningPage() {
       <footer style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "48px 40px 0" }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <div className="m-footer-grid" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: "32px", flexWrap: "wrap" as const, gap: "24px" }}>
-            <img src="/ls-growth-logo-new.png" alt="L&S Growth" style={{ height: "48px", width: "auto", objectFit: "contain" }} />
+            <img src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "34px", width: "auto", objectFit: "contain" }} />
             <div style={{ display: "flex", gap: "32px", flexWrap: "wrap" as const }}>
               <a href="/" className="footer-link" style={{ fontSize: "14px", color: muted }}>Home</a>
               <a href="/#services" className="footer-link" style={{ fontSize: "14px", color: muted }}>Services</a>

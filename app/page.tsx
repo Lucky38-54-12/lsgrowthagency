@@ -730,7 +730,7 @@ export default function Home() {
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "64px", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 32px", background: "rgba(255,255,255,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(10,15,26,0.08)", transform: "translateZ(0)" }}>
         {/* Logo — far left */}
         <a href="#" style={{ textDecoration: "none", display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img className="nav-logo" src="/ls-growth-logo-trimmed.png" alt="L&S Growth" style={{ height: "42px", width: "auto", objectFit: "contain" }} />
+          <img className="nav-logo" src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "30px", width: "auto", objectFit: "contain" }} />
         </a>
         {/* Right side — links, CTA, hamburger grouped together */}
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
@@ -939,10 +939,13 @@ export default function Home() {
       <section style={{ position: "relative", overflow: "hidden", background: "linear-gradient(180deg, #ffffff 0%, #eef5fb 55%, #ffffff 100%)", padding: "40px 40px 32px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, background: "radial-gradient(ellipse 50% 55% at 50% 35%, rgba(0,128,224,0.08) 0%, transparent 65%)" }} />
         <div style={{ position: "relative", maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
-          <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>A few results from previous campaigns</span>
-          <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "16px", maxWidth: "760px", marginLeft: "auto", marginRight: "auto" }}>
-            The goal isn't more leads. It's more booked work.
+          <span className="lp-rise" style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#fff", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>Results</span>
+          <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4.5vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "10px", maxWidth: "760px", marginLeft: "auto", marginRight: "auto" }}>
+            A few results from previous campaigns
           </h2>
+          <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7, marginBottom: "16px" }}>
+            The goal isn't more leads. It's more booked work.
+          </p>
           <img src="/results-mockup.png" alt="Dashboard showing leads, cost per lead, and ad spend results for Queenstown Cleaning, SSP Electrical, and Perl Electrical campaigns" className="lp-rise d3" style={{ width: "100%", maxWidth: "920px", height: "auto", display: "block", margin: "0 auto" }} />
         </div>
 
@@ -1570,7 +1573,7 @@ export default function Home() {
                 </h3>
                 <p style={{ fontSize: "16px", color: muted, marginBottom: "28px" }}>Done-for-you lead generation.</p>
               </div>
-              <img src="/ls-growth-logo-trimmed.png" alt="L&S Growth" style={{ height: "44px", width: "auto", objectFit: "contain", alignSelf: "flex-start" }} />
+              <img src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "32px", width: "auto", objectFit: "contain", alignSelf: "flex-start" }} />
             </div>
             <div>
               <p style={{ fontSize: "13px", fontWeight: 600, color: ink, marginBottom: "20px" }}>Navigation</p>
