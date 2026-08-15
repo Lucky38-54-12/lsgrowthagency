@@ -889,6 +889,26 @@ export default function Home() {
               style={{ fontSize: "clamp(34px,6.5vw,72px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
               revealedColor={accent}
             />
+
+            <div className="lp-rise d2" style={{ position: "relative", maxWidth: "440px", margin: "36px auto 0", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", boxShadow: "0 20px 50px rgba(10,15,26,0.10)", padding: "18px 20px", textAlign: "left" as const }}>
+              <p style={{ fontSize: "11px", fontWeight: 700, color: muted, textTransform: "uppercase" as const, letterSpacing: "0.08em", marginBottom: "12px" }}>
+                Real bookings, straight off a client&apos;s calendar
+              </p>
+              {[
+                { job: "EV charger install", place: "Te Kauwhata", date: "Aug 6" },
+                { job: "EV charger install", place: "Hamilton", date: "Aug 9" },
+                { job: "Heat transfer kit + bathroom wiring", place: "Nawton, Hamilton", date: "Jul 31" },
+              ].map((row, i, arr) => (
+                <div key={row.job + row.place} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", padding: "11px 0", borderBottom: i < arr.length - 1 ? `1px solid ${line}` : "none" }}>
+                  <div style={{ minWidth: 0 }}>
+                    <p style={{ fontSize: "14px", fontWeight: 700, color: ink, marginBottom: "2px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{row.job}</p>
+                    <p style={{ fontSize: "12.5px", color: muted }}>{row.place} · {row.date}</p>
+                  </div>
+                  <span style={{ flexShrink: 0, fontSize: "10.5px", fontWeight: 700, color: "#15803d", background: "#f0fdf4", border: "1px solid #bbf7d0", borderRadius: "999px", padding: "4px 10px" }}>Booked</span>
+                </div>
+              ))}
+            </div>
+
             <ScrollFadeOverlay style={{ position: "absolute", inset: "-20% -10%", pointerEvents: "none" as const }}>
               <div style={{ position: "absolute", top: "8%", left: "6%", width: "30%", paddingBottom: "20%", borderRadius: "50%", background: "rgba(255,255,255,0.85)", filter: "blur(28px)" }} />
               <div style={{ position: "absolute", top: "38%", right: "4%", width: "34%", paddingBottom: "22%", borderRadius: "50%", background: "rgba(255,255,255,0.8)", filter: "blur(32px)" }} />
