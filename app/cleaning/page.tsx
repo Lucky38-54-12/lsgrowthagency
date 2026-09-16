@@ -30,6 +30,7 @@ export default function CleaningPage() {
   const [formOpen, setFormOpen] = useState(false);
   const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
+  const [contactTab, setContactTab] = useState<"book"|"message">("book");
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,6 +44,15 @@ export default function CleaningPage() {
       setFormState(res.ok ? "done" : "error");
     } catch { setFormState("error"); }
   };
+
+  useEffect(() => {
+    if (!formOpen || contactTab !== "book") return;
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => { document.body.removeChild(script); };
+  }, [formOpen, contactTab]);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -194,16 +204,32 @@ export default function CleaningPage() {
       {formOpen && (
         <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
           <div onClick={() => setFormOpen(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.6)", backdropFilter: "blur(6px)" }} />
-          <div style={{ position: "relative", width: "100%", maxWidth: "460px", background: "#fff", borderRadius: "4px", boxShadow: "0 24px 80px rgba(0,0,0,0.25)", overflowY: "auto" as const, maxHeight: "92vh" }}>
+          <div style={{ position: "relative", width: "100%", maxWidth: contactTab === "book" ? "640px" : "460px", background: "#fff", borderRadius: "4px", boxShadow: "0 24px 80px rgba(0,0,0,0.25)", overflowY: "auto" as const, maxHeight: "92vh" }}>
             <div style={{ padding: "32px 32px 0" }}>
               <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "8px" }}>
-                <h2 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "0.04em", textTransform: "uppercase" as const, margin: 0 }}>Get in Touch</h2>
+                <h2 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "0.04em", textTransform: "uppercase" as const, margin: 0 }}>Let's Talk</h2>
                 <button onClick={() => setFormOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: muted, fontSize: "22px", lineHeight: 1, padding: "0 0 0 16px", flexShrink: 0 }}>×</button>
               </div>
-              <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 24px" }}>Fill in your details and we'll be in touch within 24 hours.</p>
+              <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 20px" }}>
+                {contactTab === "book" ? "Grab a free 15-minute slot straight off the calendar." : "Fill in your details and we'll be in touch within 24 hours."}
+              </p>
               <div style={{ width: "3px", height: "40px", background: accent, position: "absolute" as const, left: 0, top: "32px", borderRadius: "0 2px 2px 0" }} />
+              <div style={{ display: "flex", gap: "0", borderBottom: `1px solid ${line}`, marginBottom: "0" }}>
+                {[["book","Book a Time"],["message","Send a Message"]].map(([key, label]) => (
+                  <button key={key} onClick={() => setContactTab(key as "book"|"message")} style={{ flex: 1, padding: "12px 8px", background: "none", border: "none", borderBottom: contactTab === key ? `2px solid ${accent}` : "2px solid transparent", color: contactTab === key ? ink : muted, fontSize: "13px", fontWeight: 700, cursor: "pointer", fontFamily: F, letterSpacing: "0.04em" }}>{label}</button>
+                ))}
+              </div>
             </div>
-            <div style={{ padding: "0 32px 32px" }}>
+            {contactTab === "book" ? (
+              <div style={{ padding: "24px 24px 24px" }}>
+                <div
+                  className="calendly-inline-widget"
+                  data-url="https://calendly.com/lsgrowthagency-co/30min?hide_gdpr_banner=1&primary_color=0080e0"
+                  style={{ minWidth: "280px", width: "100%", height: "600px" }}
+                />
+              </div>
+            ) : (
+            <div style={{ padding: "24px 32px 32px" }}>
               {formState === "done" ? (
                 <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", gap: "16px", padding: "40px 0", textAlign: "center" as const }}>
                   <CheckCircle style={{ width: "48px", height: "48px", color: accent }} />
@@ -234,6 +260,7 @@ export default function CleaningPage() {
                 </form>
               )}
             </div>
+            )}
           </div>
         </div>
       )}
