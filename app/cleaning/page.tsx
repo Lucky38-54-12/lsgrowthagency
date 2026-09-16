@@ -27,6 +27,22 @@ const SOLUTIONS = [
 
 export default function CleaningPage() {
   const [navOpen, setNavOpen] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
+  const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
+  const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormState("sending");
+    try {
+      const res = await fetch("https://formspree.io/f/xgvkwqob", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(formData),
+      });
+      setFormState(res.ok ? "done" : "error");
+    } catch { setFormState("error"); }
+  };
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -142,9 +158,9 @@ export default function CleaningPage() {
             ))}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "10px 18px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
-              Talk To Us
-            </a>
+            <button onClick={() => setFormOpen(true)} className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "10px 18px", border: "none", cursor: "pointer", fontFamily: F, display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
+              Let's Talk
+            </button>
             <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "4px", width: "44px", height: "44px", background: accent, border: "none", borderRadius: "0", cursor: "pointer", padding: "11px", flexShrink: 0 }}>
               <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
               <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
@@ -167,7 +183,56 @@ export default function CleaningPage() {
               {[["Our Work","/#work"],["Services","/#services"],["How It Works","/#how"],["About","/#about"]].map(([l,h]) => (
                 <a key={h} href={h} onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f8fafc", border: `1px solid ${line}`, fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>{l}</a>
               ))}
-              <a href="/book" onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: accent, color: "#fff", fontSize: "14px", fontWeight: 700, textDecoration: "none", textAlign: "center" }}>Book a Call</a>
+              <a href="/book" onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f1f5f9", border: `1px solid ${line}`, color: ink, fontSize: "14px", fontWeight: 600, textDecoration: "none", textAlign: "center" as const, boxSizing: "border-box" as const }}>Book a Call</a>
+              <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: accent, color: "#fff", border: "none", fontSize: "14px", fontWeight: 700, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Let's Talk</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── CONTACT FORM MODAL ── */}
+      {formOpen && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+          <div onClick={() => setFormOpen(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.6)", backdropFilter: "blur(6px)" }} />
+          <div style={{ position: "relative", width: "100%", maxWidth: "460px", background: "#fff", borderRadius: "4px", boxShadow: "0 24px 80px rgba(0,0,0,0.25)", overflowY: "auto" as const, maxHeight: "92vh" }}>
+            <div style={{ padding: "32px 32px 0" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "8px" }}>
+                <h2 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "0.04em", textTransform: "uppercase" as const, margin: 0 }}>Get in Touch</h2>
+                <button onClick={() => setFormOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: muted, fontSize: "22px", lineHeight: 1, padding: "0 0 0 16px", flexShrink: 0 }}>×</button>
+              </div>
+              <p style={{ fontSize: "14px", color: muted, lineHeight: 1.6, margin: "0 0 24px" }}>Fill in your details and we'll be in touch within 24 hours.</p>
+              <div style={{ width: "3px", height: "40px", background: accent, position: "absolute" as const, left: 0, top: "32px", borderRadius: "0 2px 2px 0" }} />
+            </div>
+            <div style={{ padding: "0 32px 32px" }}>
+              {formState === "done" ? (
+                <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", gap: "16px", padding: "40px 0", textAlign: "center" as const }}>
+                  <CheckCircle style={{ width: "48px", height: "48px", color: accent }} />
+                  <h3 style={{ fontSize: "20px", fontWeight: 700, color: ink, margin: 0 }}>Message sent!</h3>
+                  <p style={{ fontSize: "14px", color: muted, margin: 0 }}>We'll be in touch within 24 hours.</p>
+                  <button onClick={() => { setFormOpen(false); setFormState("idle"); setFormData({ name: "", phone: "", business: "", message: "" }); }} style={{ fontSize: "13px", color: accent, background: "none", border: "none", cursor: "pointer", fontFamily: F, textDecoration: "underline" }}>Close</button>
+                </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column" as const, gap: "18px" }}>
+                  {[
+                    { label: "YOUR NAME", key: "name", type: "text", placeholder: "e.g. John Smith", required: true },
+                    { label: "PHONE NUMBER", key: "phone", type: "tel", placeholder: "e.g. 021 123 4567" },
+                    { label: "BUSINESS TYPE", key: "business", type: "text", placeholder: "e.g. Plumbing, Electrical, Landscaping" },
+                  ].map(({ label, key, type, placeholder, required }) => (
+                    <div key={key}>
+                      <label style={{ display: "block", fontSize: "11px", fontWeight: 700, color: ink, letterSpacing: "0.08em", marginBottom: "8px" }}>{label}</label>
+                      <input type={type} required={required} placeholder={placeholder} value={formData[key as keyof typeof formData]} onChange={e => setFormData(p => ({ ...p, [key]: e.target.value }))} style={{ width: "100%", padding: "12px 14px", border: `1px solid ${line}`, borderRadius: "4px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fff", boxSizing: "border-box" as const }} />
+                    </div>
+                  ))}
+                  <div>
+                    <label style={{ display: "block", fontSize: "11px", fontWeight: 700, color: ink, letterSpacing: "0.08em", marginBottom: "8px" }}>MESSAGE</label>
+                    <textarea rows={4} placeholder="Tell us about your business and what you're looking to achieve..." value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} style={{ width: "100%", padding: "12px 14px", border: `1px solid ${line}`, borderRadius: "4px", fontSize: "14px", fontFamily: F, color: ink, outline: "none", background: "#fff", resize: "none" as const, boxSizing: "border-box" as const }} />
+                  </div>
+                  {formState === "error" && <p style={{ fontSize: "13px", color: "#dc2626", margin: 0 }}>Something went wrong. Please try again.</p>}
+                  <button type="submit" disabled={formState === "sending"} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "16px", background: formState === "sending" ? "#94a3b8" : accent, color: "#fff", border: "none", borderRadius: "4px", fontSize: "14px", fontWeight: 700, fontFamily: F, cursor: formState === "sending" ? "not-allowed" : "pointer", letterSpacing: "0.04em" }}>
+                    {formState === "sending" ? "Sending..." : "Send message →"}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>

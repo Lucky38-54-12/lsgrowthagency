@@ -715,9 +715,9 @@ export default function Home() {
             ))}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <a href="/book" className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "10px 18px", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
-              Talk To Us
-            </a>
+            <button onClick={() => setFormOpen(true)} className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "10px 18px", border: "none", cursor: "pointer", fontFamily: F, display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
+              Let's Talk
+            </button>
             <button className="m-nav-hamburger" onClick={() => setNavOpen(true)} style={{ display: "none", flexDirection: "column", justifyContent: "center", gap: "4px", width: "44px", height: "44px", background: accent, border: "none", borderRadius: "0", cursor: "pointer", padding: "11px", flexShrink: 0 }}>
               <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
               <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
@@ -740,8 +740,8 @@ export default function Home() {
               {[["Our Work","#work"],["Services","#services"],["How It Works","#how"]].map(([l,h]) => (
                 <a key={h} href={h} onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f8fafc", border: `1px solid ${line}`, fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>{l}</a>
               ))}
-              <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: "#f1f5f9", border: `1px solid ${line}`, color: ink, fontSize: "14px", fontWeight: 600, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Send a Message</button>
-              <a href="/book" onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: accent, color: "#fff", fontSize: "14px", fontWeight: 700, textDecoration: "none", textAlign: "center" }}>Book a Call</a>
+              <a href="/book" onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f1f5f9", border: `1px solid ${line}`, color: ink, fontSize: "14px", fontWeight: 600, textDecoration: "none", textAlign: "center" as const, boxSizing: "border-box" as const }}>Book a Call</a>
+              <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: accent, color: "#fff", border: "none", fontSize: "14px", fontWeight: 700, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Let's Talk</button>
             </div>
           </div>
         </div>
