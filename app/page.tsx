@@ -582,8 +582,11 @@ function CaseStudyCarousel() {
 
   return (
     <section className="cs-section" style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "90px 40px 60px" }}>
-      <div aria-hidden className="cs-ready" style={{ position: "absolute", right: "-18px", top: "50%", transform: "translateY(-50%) rotate(90deg)", transformOrigin: "center", whiteSpace: "nowrap", fontSize: "clamp(40px,6vw,72px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
-        READY TO WIN?
+      <div aria-hidden className="cs-ready" style={{ position: "absolute", left: "-46px", top: "50%", transform: "translateY(-50%) rotate(90deg)", transformOrigin: "center", whiteSpace: "nowrap", fontSize: "clamp(40px,6vw,72px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
+        READY
+      </div>
+      <div aria-hidden className="cs-ready" style={{ position: "absolute", right: "-46px", top: "50%", transform: "translateY(-50%) rotate(90deg)", transformOrigin: "center", whiteSpace: "nowrap", fontSize: "clamp(40px,6vw,72px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
+        TO WIN
       </div>
       <div style={{ position: "relative", zIndex: 1, maxWidth: "1180px", margin: "0 auto" }}>
         <div className="cs-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "56px" }}>
