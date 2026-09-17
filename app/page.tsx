@@ -539,7 +539,7 @@ const caseStudyShowcase = [
   {
     company: "SSP Electrical",
     headline: "How We Helped SSP Electrical Book More Solar Jobs in Christchurch",
-    logo: "/logos/ssp-electrical.jpg",
+    logo: "/logos/ssp-electrical.png",
     photo: "/ssp-electrical-solar.png",
     quote: "We were looking to generate more solar jobs in Christchurch, and the campaign has delivered. We've been consistently booking solar opportunities over the last two months and the quality of the enquiries has been great. Working with the team has been easy, and they've done a great job.",
     quoteHighlight: null as string | null,
@@ -587,9 +587,9 @@ function CaseStudyCarousel() {
           <h2 key={`h-${index}`} className="cs-fade" style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.25, letterSpacing: "-0.01em", maxWidth: "680px" }}>
             {study.headline}
           </h2>
-          <div key={`l-${index}`} className="cs-fade" style={{ minWidth: "140px", height: "88px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+          <div key={`l-${index}`} className="cs-fade" style={{ minWidth: "160px", height: "120px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
             {study.logo ? (
-              <img src={study.logo} alt={study.company} style={{ maxHeight: "88px", maxWidth: "220px", objectFit: "contain" }} />
+              <img src={study.logo} alt={study.company} style={{ maxHeight: "120px", maxWidth: "280px", objectFit: "contain" }} />
             ) : (
               <div style={{ padding: "8px 16px", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.6)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.03em" }}>
                 {study.company.toUpperCase()}
