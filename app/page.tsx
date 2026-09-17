@@ -1614,13 +1614,16 @@ export default function Home() {
           {/* Top: logo + CTA heading */}
           <div className="m-footer-top" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "40px", flexWrap: "wrap" as const, marginBottom: "48px" }}>
             <img src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "34px", width: "auto", objectFit: "contain" }} />
-            <div style={{ textAlign: "right" as const }} className="m-footer-cta">
+            <div style={{ textAlign: "left" as const }} className="m-footer-cta">
               <h3 style={{ fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "8px" }}>
                 Ready to grow your business?
               </h3>
-              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.55)" }}>
+              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.55)", marginBottom: "20px" }}>
                 Book a free strategy call and let's turn enquiries into booked jobs.
               </p>
+              <button onClick={() => setFormOpen(true)} className="cs-btn" style={{ fontSize: "13px", fontWeight: 700, padding: "13px 24px", background: accent, color: "#fff", border: "none" }}>
+                Book a Strategy Call
+              </button>
             </div>
           </div>
 
