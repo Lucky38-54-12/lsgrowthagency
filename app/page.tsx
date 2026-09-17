@@ -533,8 +533,6 @@ const caseStudyShowcase = [
     quoteHighlight: null as string | null,
     author: "Kris",
     authorTitle: "Katies Elite Cleaning, Tauranga",
-    primaryCta: { label: "See how we did it", href: "#" },
-    secondaryCta: { label: "Client Case Studies", href: "#" },
   },
   {
     company: "SSP Electrical",
@@ -545,8 +543,6 @@ const caseStudyShowcase = [
     quoteHighlight: null as string | null,
     author: "Scott",
     authorTitle: "SSP Electrical, Christchurch",
-    primaryCta: { label: "See how we did it", href: "#" },
-    secondaryCta: { label: "Client Case Studies", href: "#" },
   },
   {
     company: "Build It All",
@@ -557,8 +553,6 @@ const caseStudyShowcase = [
     quoteHighlight: "$100,000+",
     author: "Ray Lister",
     authorTitle: "Build It All, Wellington",
-    primaryCta: { label: "See how we did it", href: "#" },
-    secondaryCta: { label: "Client Case Studies", href: "#" },
   },
 ];
 
@@ -575,7 +569,7 @@ function QuoteText({ quote, highlight }: { quote: string; highlight?: string | n
   );
 }
 
-function CaseStudyCarousel() {
+function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
   const [index, setIndex] = useState(0);
   const study = caseStudyShowcase[index];
   const go = (dir: number) => setIndex((i) => (i + dir + caseStudyShowcase.length) % caseStudyShowcase.length);
@@ -616,12 +610,9 @@ function CaseStudyCarousel() {
               {study.author} <span style={{ fontWeight: 400, color: "rgba(255,255,255,0.5)" }}>&nbsp;|&nbsp; {study.authorTitle}</span>
             </p>
             <div className="cs-buttons" style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-              <a href={study.primaryCta.href} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: accentLight, color: "#04202e" }}>
-                {study.primaryCta.label}
-              </a>
-              <a href={study.secondaryCta.href} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: "#fff", color: "#0a0a0a" }}>
-                {study.secondaryCta.label}
-              </a>
+              <button onClick={onCtaClick} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: accentLight, color: "#04202e", border: "none" }}>
+                Ready to get results like this?
+              </button>
             </div>
           </div>
           <div className="cs-photo" style={{ position: "relative", aspectRatio: "4/3", background: "#151515", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -667,8 +658,7 @@ function CaseStudyCarousel() {
           .cs-logo img { max-height: 56px !important; max-width: 150px !important; }
           .cs-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
           .cs-photo { order: -1; aspect-ratio: 4/3.2 !important; }
-          .cs-buttons { gap: 0 !important; }
-          .cs-buttons .cs-btn { flex: 1 1 50% !important; justify-content: center; padding: 16px 12px !important; text-align: center; }
+          .cs-buttons .cs-btn { flex: 1 1 100% !important; justify-content: center; text-align: center; }
         }
       `}</style>
     </section>
@@ -1075,7 +1065,7 @@ export default function Home() {
       </section>
 
       {/* ── CASE STUDIES ── */}
-      <CaseStudyCarousel />
+      <CaseStudyCarousel onCtaClick={() => setFormOpen(true)} />
 
       {/* ── BUILD STATEMENT + TRUSTED BY (shared cloudy background) ── */}
       <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}` }}>
@@ -1585,7 +1575,7 @@ export default function Home() {
           const pageItems = testimonials.slice(page * pageSize, page * pageSize + pageSize);
           return (
             <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
-              <div key={page} className="rev-grid lp-rise">
+              <div key={page} className="rev-grid">
                 {pageItems.map(({ quote, author, company, color }) => (
                   <div key={author} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "10px", padding: "28px 28px 24px", display: "flex", flexDirection: "column" as const }}>
                     <div style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
@@ -1604,10 +1594,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "32px" }}>
-                <div style={{ fontSize: "13px", color: muted, fontWeight: 500 }}>
-                  What clients are saying — L&amp;S Growth
-                </div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", marginTop: "32px" }}>
                 <div style={{ display: "flex", gap: "10px" }}>
                   <button onClick={() => setReviewPage(p => p - 1)} aria-label="Previous reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     ←
