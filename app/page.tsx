@@ -825,7 +825,6 @@ export default function Home() {
           .m-connect-scatter { width: 100% !important; height: 260px !important; margin-top: 8px !important; }
           .m-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
           .m-footer-top { flex-direction: column !important; }
-          .m-footer-cta { text-align: left !important; }
           .m-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
           .m-cta-stack { grid-template-columns: 1fr !important; gap: 24px !important; }
           section { padding-left: 20px !important; padding-right: 20px !important; }
@@ -1627,20 +1626,9 @@ export default function Home() {
       <footer style={{ background: "linear-gradient(160deg, #04111f 0%, #0c3450 100%)" }}>
         <div style={{ maxWidth: "1160px", margin: "0 auto", padding: "72px 40px 40px" }}>
 
-          {/* Top: logo + CTA heading */}
-          <div className="m-footer-top" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "40px", flexWrap: "wrap" as const, marginBottom: "48px" }}>
+          {/* Top: logo */}
+          <div className="m-footer-top" style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "40px", flexWrap: "wrap" as const, marginBottom: "48px" }}>
             <img src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "34px", width: "auto", objectFit: "contain" }} />
-            <div style={{ textAlign: "left" as const }} className="m-footer-cta">
-              <h3 style={{ fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "8px" }}>
-                Ready to grow your business?
-              </h3>
-              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.55)", marginBottom: "20px" }}>
-                Book a free strategy call and let's turn enquiries into booked jobs.
-              </p>
-              <button onClick={() => setFormOpen(true)} className="cs-btn" style={{ fontSize: "13px", fontWeight: 700, padding: "13px 24px", background: accent, color: "#fff", border: "none" }}>
-                Book a Strategy Call
-              </button>
-            </div>
           </div>
 
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }} />
