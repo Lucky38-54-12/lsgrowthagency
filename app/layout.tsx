@@ -22,6 +22,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable} ${fraunces.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://assets.calendly.com" />
+        <link rel="preconnect" href="https://calendly.com" />
+      </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );

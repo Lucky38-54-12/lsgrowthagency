@@ -553,11 +553,14 @@ export default function Home() {
 
   useEffect(() => {
     if (!formOpen || contactTab !== "book") return;
+    if (document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
+      (window as any).Calendly?.initInlineWidgets?.();
+      return;
+    }
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
-    return () => { document.body.removeChild(script); };
   }, [formOpen, contactTab]);
 
   useEffect(() => {
