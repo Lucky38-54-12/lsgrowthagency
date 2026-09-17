@@ -522,6 +522,143 @@ const caseStudies = [
   },
 ];
 
+/* ── Placeholder data — swap Katie's quote before shipping ── */
+const caseStudyShowcase = [
+  {
+    company: "Build It All",
+    headline: "How We Helped Build It All Bring In $100,000+ of Renovation Enquiries",
+    logo: "/logos/build-it-all.png",
+    photo: "/build-it-all-project.webp",
+    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
+    quoteHighlight: "$100,000+",
+    author: "Ray Lister",
+    authorTitle: "Build It All",
+    primaryCta: { label: "See how we did it", href: "#" },
+    secondaryCta: { label: "Client Case Studies", href: "#" },
+  },
+  {
+    company: "SSP Electrical",
+    headline: "How We Helped SSP Electrical Filter Out Low-Intent Leads",
+    logo: "/logos/ssp-electrical.jpg",
+    photo: "/ssp-electrical-solar.png",
+    quote: "They've been a huge help in getting us more clients this year. The campaigns they put together have had great success with the leads generated.",
+    quoteHighlight: null as string | null,
+    author: "Sam Nguyen",
+    authorTitle: "SSP Electrical",
+    primaryCta: { label: "See how we did it", href: "#" },
+    secondaryCta: { label: "Client Case Studies", href: "#" },
+  },
+  {
+    company: "Katies Elite Cleaning",
+    headline: "How We Helped Katies Elite Cleaning Build a Steady Flow of Local Jobs",
+    logo: "/logos/katies-elite-cleaning.png",
+    photo: "/katies-elite-cleaning-team.jpg",
+    quote: "PLACEHOLDER QUOTE — swap in Katie's actual testimonial here.",
+    quoteHighlight: null as string | null,
+    author: "Katie",
+    authorTitle: "Katies Elite Cleaning, Tauranga",
+    primaryCta: { label: "See how we did it", href: "#" },
+    secondaryCta: { label: "Client Case Studies", href: "#" },
+  },
+];
+
+function QuoteText({ quote, highlight }: { quote: string; highlight?: string | null }) {
+  if (!highlight) return <>{quote}</>;
+  const idx = quote.indexOf(highlight);
+  if (idx === -1) return <>{quote}</>;
+  return (
+    <>
+      {quote.slice(0, idx)}
+      <span style={{ color: accentLight, fontWeight: 800 }}>{highlight}</span>
+      {quote.slice(idx + highlight.length)}
+    </>
+  );
+}
+
+function CaseStudyCarousel() {
+  const [index, setIndex] = useState(0);
+  const study = caseStudyShowcase[index];
+  const go = (dir: number) => setIndex((i) => (i + dir + caseStudyShowcase.length) % caseStudyShowcase.length);
+
+  return (
+    <section style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "90px 40px 60px" }}>
+      <div style={{ position: "relative", maxWidth: "1180px", margin: "0 auto" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "56px" }}>
+          <h2 key={`h-${index}`} className="cs-fade" style={{ fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.25, letterSpacing: "-0.01em", maxWidth: "680px" }}>
+            {study.headline}
+          </h2>
+          <div key={`l-${index}`} className="cs-fade" style={{ minWidth: "110px", height: "56px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+            {study.logo ? (
+              <img src={study.logo} alt={study.company} style={{ maxHeight: "56px", maxWidth: "150px", objectFit: "contain" }} />
+            ) : (
+              <div style={{ padding: "8px 16px", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.6)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.03em" }}>
+                {study.company.toUpperCase()}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div key={`b-${index}`} className="cs-fade cs-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1fr", gap: "56px", alignItems: "center" }}>
+          <div>
+            <div style={{ position: "relative" }}>
+              <span aria-hidden style={{ position: "absolute", top: "-38px", left: "-8px", fontSize: "90px", fontWeight: 800, color: "rgba(255,255,255,0.08)", lineHeight: 1, fontFamily: "Georgia, serif", pointerEvents: "none" as const }}>&ldquo;</span>
+              <p style={{ position: "relative", fontSize: "19px", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, fontWeight: 500, marginBottom: "22px" }}>
+                <QuoteText quote={study.quote} highlight={study.quoteHighlight} />
+              </p>
+            </div>
+            <p style={{ fontSize: "15px", color: "#fff", fontWeight: 700, marginBottom: "26px" }}>
+              {study.author} <span style={{ fontWeight: 400, color: "rgba(255,255,255,0.5)" }}>&nbsp;|&nbsp; {study.authorTitle}</span>
+            </p>
+            <div style={{ display: "flex", gap: "0", flexWrap: "wrap" }}>
+              <a href={study.primaryCta.href} className="btn btn-nav" style={{ fontSize: "14px", padding: "16px 28px", borderRadius: "0" }}>
+                {study.primaryCta.label}
+              </a>
+              <a href={study.secondaryCta.href} className="btn btn-nav" style={{ fontSize: "14px", padding: "16px 28px", borderRadius: "0", filter: "brightness(0.82)" }}>
+                {study.secondaryCta.label}
+              </a>
+            </div>
+          </div>
+          <div style={{ position: "relative", aspectRatio: "4/3", background: "#151515", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {study.photo ? (
+              <img src={study.photo} alt={study.company} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            ) : (
+              <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)" }}>Photo — {study.company}</span>
+            )}
+          </div>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "40px" }}>
+          <div style={{ display: "flex", gap: "8px" }}>
+            {caseStudyShowcase.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                aria-label={`Show case study ${i + 1}`}
+                style={{ width: "8px", height: "8px", borderRadius: "50%", border: "none", cursor: "pointer", background: i === index ? "#fff" : "rgba(255,255,255,0.3)" }}
+              />
+            ))}
+          </div>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <button onClick={() => go(-1)} aria-label="Previous case study" style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.3)", background: "transparent", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              ←
+            </button>
+            <button onClick={() => go(1)} aria-label="Next case study" style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.3)", background: "transparent", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              →
+            </button>
+          </div>
+        </div>
+      </div>
+      <style suppressHydrationWarning>{`
+        .cs-fade { animation: cs-fade-in 0.4s ease; }
+        @keyframes cs-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 780px) {
+          .cs-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
 const faqs = [
   { q: "What types of businesses do you work with?", a: "We work with service and trade businesses across New Zealand. If your business relies on a steady flow of customers and booked work, we can build a growth strategy around it." },
   { q: "How quickly will I see results?", a: "Most clients start seeing enquiries within the first 2–3 weeks. From there, we use the data to improve what is working, cut what isn't, and build toward a consistent flow of opportunities." },
@@ -918,6 +1055,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── CASE STUDIES ── */}
+      <CaseStudyCarousel />
 
       {/* ── BUILD STATEMENT + TRUSTED BY (shared cloudy background) ── */}
       <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}` }}>
