@@ -691,6 +691,7 @@ export default function Home() {
   const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
   const [contactTab, setContactTab] = useState<"book"|"message">("book");
+  const [reviewPage, setReviewPage] = useState(0);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -1564,77 +1565,61 @@ export default function Home() {
 
       {/* ── TESTIMONIALS ── */}
       <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
         <style suppressHydrationWarning>{`
-          .testi-mask {
-            position: relative;
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-            mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-          }
-          .testi-track { display: flex; align-items: stretch; width: max-content; gap: 20px; }
-          .testi-track-1 { animation: testi-scroll-left 90s linear infinite; }
-          .testi-track-2 { animation: testi-scroll-right 90s linear infinite; }
-          .testi-mask:hover .testi-track { animation-play-state: paused; }
-          .testi-card { width: 360px; flex-shrink: 0; }
-          .testi-quote { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
-          @keyframes testi-scroll-left {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-          }
-          @keyframes testi-scroll-right {
-            from { transform: translateX(-50%); }
-            to { transform: translateX(0); }
-          }
-          @media (max-width: 640px) {
-            .testi-card { width: 280px; }
+          .rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+          .rev-quote { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+          @media (max-width: 720px) {
+            .rev-grid { grid-template-columns: 1fr; }
           }
         `}</style>
-        <div style={{ position: "relative", maxWidth: "1240px", margin: "0 auto 40px" }}>
-          <div style={{ textAlign: "center" as const, maxWidth: "640px", margin: "0 auto" }}>
-            <p className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Client Results</p>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "14px" }}>
-              Don't just take our word for it.
-            </h2>
-            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
-              Real businesses, real results. Here's what it's like working with us.
-            </p>
-          </div>
+        <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto 48px" }}>
+          <h2 className="lp-rise" style={{ fontSize: "clamp(30px,4.2vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+            What our partners say<br />about working with us
+          </h2>
         </div>
 
-        {[0, 1].map(rowIndex => {
-          const rowSize = Math.ceil(testimonials.length / 2);
-          const rowItems = testimonials.slice(rowIndex * rowSize, rowIndex * rowSize + rowSize);
+        {(() => {
+          const pageSize = 2;
+          const pageCount = Math.ceil(testimonials.length / pageSize);
+          const page = ((reviewPage % pageCount) + pageCount) % pageCount;
+          const pageItems = testimonials.slice(page * pageSize, page * pageSize + pageSize);
           return (
-            <div key={rowIndex} className="testi-mask lp-rise d2" style={{ marginBottom: rowIndex === 0 ? "16px" : 0 }}>
-              <div className={`testi-track testi-track-${rowIndex + 1}`}>
-                {[...Array(2)].flatMap((_, dup) =>
-                  rowItems.map(({ quote, author, company, color }) => (
-                    <div key={`${dup}-${author}`} className="testi-card" aria-hidden={dup === 1 || undefined} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "14px", padding: "20px 20px 16px", display: "flex", flexDirection: "column" as const }}>
-                      <div style={{ display: "flex", gap: "2px", marginBottom: "10px" }}>
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill={accent}>
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
-                          </svg>
-                        ))}
-                      </div>
-                      <p className="testi-quote" style={{ fontSize: "13px", color: ink, lineHeight: 1.55, letterSpacing: "-0.005em", marginBottom: "12px" }}>{quote}</p>
-                      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "auto" }}>
-                        <div style={{ width: "28px", height: "28px", borderRadius: "50%", background: color, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, flexShrink: 0 }}>
-                          {author.charAt(0)}
-                        </div>
-                        <div>
-                          <div style={{ fontSize: "12.5px", fontWeight: 700, color: ink, letterSpacing: "-0.01em" }}>{author}</div>
-                          <div style={{ fontSize: "11.5px", color: muted }}>{company}</div>
-                        </div>
-                      </div>
+            <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
+              <div key={page} className="rev-grid lp-rise">
+                {pageItems.map(({ quote, author, company, color }) => (
+                  <div key={author} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "10px", padding: "28px 28px 24px", display: "flex", flexDirection: "column" as const }}>
+                    <div style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={accent}>
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
                     </div>
-                  ))
-                )}
+                    <p className="rev-quote" style={{ fontSize: "15px", color: ink, lineHeight: 1.6, marginBottom: "18px" }}>{quote}</p>
+                    <div style={{ marginTop: "auto" }}>
+                      <div style={{ fontSize: "13.5px", fontWeight: 700, color: ink }}>{author}</div>
+                      <div style={{ fontSize: "12.5px", color: muted }}>{company}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "32px" }}>
+                <div style={{ fontSize: "13px", color: muted, fontWeight: 500 }}>
+                  What clients are saying — L&amp;S Growth
+                </div>
+                <div style={{ display: "flex", gap: "10px" }}>
+                  <button onClick={() => setReviewPage(p => p - 1)} aria-label="Previous reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    ←
+                  </button>
+                  <button onClick={() => setReviewPage(p => p + 1)} aria-label="Next reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    →
+                  </button>
+                </div>
               </div>
             </div>
           );
-        })}
+        })()}
       </section>
 
       {/* ── FAQ ── */}
@@ -1711,7 +1696,7 @@ export default function Home() {
         <div style={{ maxWidth: "1160px", margin: "0 auto", padding: "72px 40px 40px" }}>
 
           {/* Top: logo + CTA heading */}
-          <div className="m-footer-top" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "40px", flexWrap: "wrap" as const, marginBottom: "48px" }}>
+          <div className="m-footer-top" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "40px", flexWrap: "wrap" as const, marginBottom: "48px" }}>
             <img src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "34px", width: "auto", objectFit: "contain" }} />
             <div style={{ textAlign: "right" as const }} className="m-footer-cta">
               <h3 style={{ fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "8px" }}>
@@ -1750,26 +1735,24 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Bottom bar */}
-        <div style={{ background: "#fff" }}>
-          <div className="m-footer-bottom" style={{ maxWidth: "1160px", margin: "0 auto", padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: "12px" }}>
-            <p style={{ fontSize: "13px", color: muted, margin: 0 }}>© {new Date().getFullYear()} L&S Growth Agency. All rights reserved.</p>
+          {/* Bottom bar */}
+          <div className="m-footer-bottom" style={{ borderTop: "1px solid rgba(255,255,255,0.12)", padding: "24px 0 0", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: "12px" }}>
+            <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.45)", margin: 0 }}>© {new Date().getFullYear()} L&S Growth Agency. All rights reserved.</p>
             <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-              <a href="https://www.facebook.com/profile.php?id=61584135511815" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: ink, textDecoration: "none" }}>
+              <a href="https://www.facebook.com/profile.php?id=61584135511815" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>
                 <svg viewBox="0 0 24 24" fill="#1877F2" style={{ width: "16px", height: "16px" }}><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
                 Facebook
               </a>
-              <a href="https://www.linkedin.com/company/111303114/" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: ink, textDecoration: "none" }}>
+              <a href="https://www.linkedin.com/company/111303114/" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>
                 <svg viewBox="0 0 24 24" fill="#0A66C2" style={{ width: "16px", height: "16px" }}><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.558V9h3.556v11.452z" /></svg>
                 LinkedIn
               </a>
-              <a href="https://www.instagram.com/lsgrowthagency/" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: ink, textDecoration: "none" }}>
-                <svg viewBox="0 0 24 24" fill="none" stroke={ink} strokeWidth="2" style={{ width: "16px", height: "16px" }}>
+              <a href="https://www.instagram.com/lsgrowthagency/" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" strokeWidth="2" style={{ width: "16px", height: "16px" }}>
                   <rect x="2" y="2" width="20" height="20" rx="5" />
                   <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.7" fill={ink} stroke="none" />
+                  <circle cx="17.5" cy="6.5" r="0.7" fill="rgba(255,255,255,0.65)" stroke="none" />
                 </svg>
                 Instagram
               </a>
