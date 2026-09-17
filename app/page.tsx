@@ -1557,27 +1557,45 @@ export default function Home() {
       </section>
 
       {/* ── TRUSTED BY ── */}
-      <section style={{ background: "transparent", padding: "70px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
-          <h3 className="lp-rise" style={{ fontSize: "clamp(22px,2.6vw,30px)", fontWeight: 800, color: accent, letterSpacing: "-0.01em", marginBottom: "40px" }}>
+      <section style={{ background: "transparent", padding: "70px 0", borderTop: `1px solid ${line}` }}>
+        <style suppressHydrationWarning>{`
+          .trusted-mask {
+            position: relative;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+          }
+          .trusted-track { display: flex; align-items: center; width: max-content; gap: 56px; animation: trusted-slide 36s linear infinite; }
+          .trusted-mask:hover .trusted-track { animation-play-state: paused; }
+          @keyframes trusted-slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+        `}</style>
+        <div style={{ maxWidth: "1100px", margin: "0 auto 40px", textAlign: "center" as const, padding: "0 40px" }}>
+          <h3 className="lp-rise" style={{ fontSize: "clamp(22px,2.6vw,30px)", fontWeight: 800, color: accent, letterSpacing: "-0.01em" }}>
             Working with great businesses like yours
           </h3>
-          <div className="m-trusted-static lp-rise" style={{ display: "flex", flexWrap: "wrap" as const, alignItems: "center", justifyContent: "center", gap: "48px 56px" }}>
-            {[
-              { src: "/logos/logo-1.png", alt: "We Do Electrical" },
-              { src: "/logos/logo-2.png", alt: "Common Ground Electrical" },
-              { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD" },
-              { src: "/logos/logo-4.png", alt: "SSP Electrical" },
-              { src: "/logos/logo-5.png", alt: "CN-Electrical" },
-              { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
-              { src: "/logos/logo-7.png", alt: "Fantastic Services" },
-              { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services" },
-              { src: "/logos/logo-9.png", alt: "Jim's Cleaning" },
-            ].map(({ src, alt }) => (
-              <div key={src} style={{ height: "44px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <img src={src} alt={alt} style={{ height: "100%", width: "auto", maxWidth: "140px", objectFit: "contain", opacity: 0.6, filter: "grayscale(100%)", transition: "opacity 0.2s, filter 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "grayscale(0%)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.filter = "grayscale(100%)"; }} />
-              </div>
-            ))}
+        </div>
+        <div className="trusted-mask lp-rise">
+          <div className="trusted-track">
+            {[...Array(2)].flatMap((_, dup) =>
+              [
+                { src: "/logos/logo-1.png", alt: "We Do Electrical" },
+                { src: "/logos/logo-2.png", alt: "Common Ground Electrical" },
+                { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD" },
+                { src: "/logos/logo-4.png", alt: "SSP Electrical" },
+                { src: "/logos/logo-5.png", alt: "CN-Electrical" },
+                { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
+                { src: "/logos/logo-7.png", alt: "Fantastic Services" },
+                { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services" },
+                { src: "/logos/logo-9.png", alt: "Jim's Cleaning" },
+              ].map(({ src, alt }) => (
+                <div key={`${dup}-${src}`} aria-hidden={dup === 1 || undefined} style={{ height: "44px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <img src={src} alt={dup === 0 ? alt : ""} style={{ height: "100%", width: "auto", maxWidth: "140px", objectFit: "contain", opacity: 0.6, filter: "grayscale(100%)", transition: "opacity 0.2s, filter 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "grayscale(0%)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.filter = "grayscale(100%)"; }} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -1612,18 +1630,18 @@ export default function Home() {
       </section>
 
       {/* ── CTA ── */}
-      <section id="contact" style={{ position: "relative", overflow: "hidden", background: "linear-gradient(160deg, #04111f 0%, #0c3450 100%)", padding: "100px 40px" }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
+      <section id="contact" style={{ position: "relative", overflow: "hidden", background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
         <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
           <div className="m-cta-stack" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "48px", flexWrap: "wrap" as const }}>
             <div>
-              <h2 style={{ fontSize: "clamp(36px,5vw,72px)", fontWeight: 800, color: "#fff", lineHeight: 1.0, letterSpacing: "-0.03em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
-              <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
+              <h2 style={{ fontSize: "clamp(36px,5vw,72px)", fontWeight: 800, color: ink, lineHeight: 1.0, letterSpacing: "-0.03em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
+              <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
                 Book a free 30-minute call. We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
               </p>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: "10px" }}>
                 {["No lock-in contracts", "Full setup handled for you", "Results within the first two weeks"].map(item => (
-                  <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>
+                  <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: muted }}>
                     <CheckCircle style={{ width: "14px", height: "14px", color: accent, flexShrink: 0 }} />{item}
                   </li>
                 ))}
@@ -1633,10 +1651,10 @@ export default function Home() {
               <button onClick={() => setFormOpen(true)} className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "0", border: "none", cursor: "pointer", fontFamily: F, background: accent }}>
                 Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
               </button>
-              <button onClick={() => setFormOpen(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: "#fff", background: "transparent", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "0", padding: "14px 28px", cursor: "pointer", fontFamily: F }}>
+              <button onClick={() => setFormOpen(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: ink, background: "transparent", border: `1px solid ${line}`, borderRadius: "0", padding: "14px 28px", cursor: "pointer", fontFamily: F }}>
                 Send a Message
               </button>
-              <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "13px", color: "rgba(255,255,255,0.45)", textDecoration: "none" }}>
+              <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "13px", color: dim, textDecoration: "none" }}>
                 lsgrowthagency.co@gmail.com
               </a>
             </div>
