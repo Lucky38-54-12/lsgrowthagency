@@ -432,6 +432,30 @@ const steps = [
 
 const testimonials = [
   {
+    quote: "Lucky has been great to work with. He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results and would definitely recommend LS Growth.",
+    author: "Queenstown Cleaning",
+    company: "Cleaning Services, Queenstown",
+    color: "#2563eb",
+  },
+  {
+    quote: "Lucky has been awesome to work with. He took the time to understand the type of painting work we wanted more of and helped us get in front of the right people around Canterbury. More importantly, he actually helped us turn that into booked jobs, not just a bunch of enquiries. He was easy to deal with, kept things moving, and genuinely cared about getting results for our business. Highly recommend LS Growth if you're looking to grow your business.",
+    author: "Canterbury Coat",
+    company: "Painting, Canterbury",
+    color: "#c2410c",
+  },
+  {
+    quote: "LS Growth has helped us get a much steadier flow of residential cleaning work in Christchurch while also helping us break into the commercial cleaning market. Great communication, real results, and they genuinely care about growing your business. Highly recommend Lucky.",
+    author: "Spotless Cleaning Services",
+    company: "Cleaning Services, Christchurch",
+    color: "#0e7490",
+  },
+  {
+    quote: "They've been a huge help in getting us more clients this year. The campaigns they put together have had great success with the leads generated.",
+    author: "Scott",
+    company: "SSP Electrical",
+    color: "#0d9488",
+  },
+  {
     quote: "Great experience working with L&S Growth. Got over $80K in booked jobs in just a couple of months. Perfect for a trade business without a dedicated marketing team.",
     author: "Thomas Cooper",
     company: "Cooper Electrical",
@@ -472,30 +496,6 @@ const testimonials = [
     author: "Vienna Woods",
     company: "Woods Joinery",
     color: "#9333ea",
-  },
-  {
-    quote: "They've been a huge help in getting us more clients this year. The campaigns they put together have had great success with the leads generated.",
-    author: "Sam Nguyen",
-    company: "SSP Electrical",
-    color: "#0d9488",
-  },
-  {
-    quote: "Lucky has been great to work with. He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results and would definitely recommend LS Growth.",
-    author: "Queenstown Cleaning",
-    company: "Cleaning Services, Queenstown",
-    color: "#2563eb",
-  },
-  {
-    quote: "Lucky has been awesome to work with. He took the time to understand the type of painting work we wanted more of and helped us get in front of the right people around Canterbury. More importantly, he actually helped us turn that into booked jobs, not just a bunch of enquiries. He was easy to deal with, kept things moving, and genuinely cared about getting results for our business. Highly recommend LS Growth if you're looking to grow your business.",
-    author: "Canterbury Coat",
-    company: "Painting, Canterbury",
-    color: "#c2410c",
-  },
-  {
-    quote: "LS Growth has helped us get a much steadier flow of residential cleaning work in Christchurch while also helping us break into the commercial cleaning market. Great communication, real results, and they genuinely care about growing your business. Highly recommend Lucky.",
-    author: "Spotless Cleaning Services",
-    company: "Cleaning Services, Christchurch",
-    color: "#0e7490",
   },
 ];
 
@@ -576,10 +576,10 @@ function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
 
   return (
     <section className="cs-section" style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "90px 40px 60px" }}>
-      <div aria-hidden className="cs-ready" style={{ position: "absolute", left: "-60px", top: "0", transform: "rotate(90deg)", transformOrigin: "left top", whiteSpace: "nowrap", fontSize: "clamp(56px,9vw,120px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
+      <div aria-hidden className="cs-ready" style={{ position: "absolute", left: "-8px", top: "-14px", writingMode: "vertical-rl" as const, whiteSpace: "nowrap", fontSize: "clamp(56px,9vw,120px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
         READY
       </div>
-      <div aria-hidden className="cs-ready" style={{ position: "absolute", right: "-60px", bottom: "0", transform: "rotate(90deg)", transformOrigin: "right bottom", whiteSpace: "nowrap", fontSize: "clamp(56px,9vw,120px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
+      <div aria-hidden className="cs-ready" style={{ position: "absolute", right: "-8px", bottom: "-14px", writingMode: "vertical-rl" as const, whiteSpace: "nowrap", fontSize: "clamp(56px,9vw,120px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
         TO WIN?
       </div>
       <div style={{ position: "relative", zIndex: 1, maxWidth: "1180px", margin: "0 auto" }}>
