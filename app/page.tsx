@@ -413,7 +413,7 @@ const steps = [
   {
     num: "02",
     title: "Campaign Build",
-    desc: "We turn the strategy into a complete campaign. From the copy and creative to the targeting and campaign structure, everything is built around generating enquiries.",
+    desc: "We turn the strategy into a complete campaign. From the copy and creative to the targeting and campaign structure, everything is built around getting you more work.",
     checklist: ["Ad copy written", "Creative produced", "Campaign structure built"],
   },
   {
