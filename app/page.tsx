@@ -883,7 +883,6 @@ export default function Home() {
           loop
           playsInline
           preload="auto"
-          poster="/hero-bg.png"
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
         >
           <source src="/hero-bg.mp4" type="video/mp4" />
