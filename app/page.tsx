@@ -602,7 +602,7 @@ function CaseStudyCarousel() {
         </div>
 
         <div key={`b-${index}`} className="cs-fade cs-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1fr", gap: "56px", alignItems: "center" }}>
-          <div className="cs-content">
+          <div className="cs-content" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
             <div style={{ position: "relative" }}>
               <span aria-hidden style={{ position: "absolute", top: "-38px", left: "-8px", fontSize: "90px", fontWeight: 800, color: "rgba(255,255,255,0.08)", lineHeight: 1, fontFamily: "Georgia, serif", pointerEvents: "none" as const }}>&ldquo;</span>
               <p style={{ position: "relative", fontSize: "19px", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, fontWeight: 500, marginBottom: "22px" }}>
@@ -1039,10 +1039,13 @@ export default function Home() {
         </video>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "rgba(0,0,0,0.35)" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.6) 0%, transparent 100%)" }} />
-        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, padding: "150px 40px 110px", width: "100%", display: "flex", justifyContent: "center", textAlign: "center" as const }}>
-          <div style={{ maxWidth: "900px" }}>
-            <h1 className="hero-h1" style={{ fontSize: "clamp(40px, 5vw, 76px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: "22px" }}>
-              Most agencies get you leads. We get you{" "}
+        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, padding: "150px 40px 110px", width: "100%" }}>
+          <div style={{ maxWidth: "820px" }}>
+            <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
+              Your growth partner · NZ & AU
+            </p>
+            <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.8vw, 96px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "18px" }}>
+              Most agencies<br />get you leads.<br />We get you{" "}
               <span style={{ position: "relative", display: "inline-block" }}>
                 booked jobs
                 <svg viewBox="0 0 220 14" preserveAspectRatio="none" style={{ position: "absolute", left: 0, right: 0, bottom: "-0.14em", width: "100%", height: "0.22em" }}>
@@ -1050,13 +1053,13 @@ export default function Home() {
                 </svg>
               </span>.
             </h1>
-            <p className="hero-sub" style={{ fontSize: "17px", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, marginBottom: "32px", maxWidth: "600px", margin: "0 auto 32px" }}>
+            <p className="hero-sub" style={{ fontSize: "17px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "28px", maxWidth: "480px" }}>
               No tyre kickers, no time-wasters. Just qualified enquiries from people ready to book.
             </p>
-            <div className="hero-ctas" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
-              <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
+            <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
+              <button onClick={() => setFormOpen(true)} className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0", border: "none", cursor: "pointer", fontFamily: F }}>
                 Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
-              </a>
+              </button>
               <button onClick={() => setFormOpen(true)} className="btn btn-outline" style={{ fontSize: "14px", padding: "11px 18px", borderRadius: "0", cursor: "pointer", fontFamily: F }}>
                 Send a Message
               </button>
