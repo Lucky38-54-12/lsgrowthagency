@@ -455,48 +455,6 @@ const testimonials = [
     company: "SSP Electrical",
     color: "#0d9488",
   },
-  {
-    quote: "Great experience working with L&S Growth. Got over $80K in booked jobs in just a couple of months. Perfect for a trade business without a dedicated marketing team.",
-    author: "Thomas Cooper",
-    company: "Cooper Electrical",
-    color: "#0080e0",
-  },
-  {
-    quote: "We gave L&S Growth a shot with zero expectations. Within a month they'd achieved what other agencies couldn't do in almost a year. Highly recommend.",
-    author: "Luis Luigi",
-    company: "GoPro Plumbing",
-    color: "#16a34a",
-  },
-  {
-    quote: "An absolute powerhouse with the ad campaigns. Goes above and beyond for every client and the results speak for themselves.",
-    author: "Kale Black",
-    company: "Construction Team",
-    color: "#7c3aed",
-  },
-  {
-    quote: "L&S Growth has been really helpful for our business, sending us a steady stream of leads. We had a great campaign running for months. Really recommend them.",
-    author: "Julian Da Costa",
-    company: "Da Costa Builders",
-    color: "#ea580c",
-  },
-  {
-    quote: "Great guy, great service, great all-round brand.",
-    author: "Jay Shadlock",
-    company: "Shadlock Roofing",
-    color: "#0891b2",
-  },
-  {
-    quote: "The workload taken off us by them calling and qualifying the leads, then booking them straight in for quotes, has been amazing. We just don't have time to do it ourselves. Highly recommend.",
-    author: "Andrew Weasley",
-    company: "Weasley Landscaping",
-    color: "#be123c",
-  },
-  {
-    quote: "To be honest, we were a little sceptical they'd deliver what they said. But we tried them anyway, and they delivered more leads than what was promised. No hesitation recommending them.",
-    author: "Vienna Woods",
-    company: "Woods Joinery",
-    color: "#9333ea",
-  },
 ];
 
 const caseStudies = [
@@ -1630,35 +1588,17 @@ export default function Home() {
       </section>
 
       {/* ── CTA ── */}
-      <section id="contact" style={{ position: "relative", overflow: "hidden", background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
-        <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
-          <div className="m-cta-stack" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "48px", flexWrap: "wrap" as const }}>
-            <div>
-              <h2 style={{ fontSize: "clamp(36px,5vw,72px)", fontWeight: 800, color: ink, lineHeight: 1.0, letterSpacing: "-0.03em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
-              <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
-                Book a free 30-minute call. We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
-              </p>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: "10px" }}>
-                {["No lock-in contracts", "Full setup handled for you", "Results within the first two weeks"].map(item => (
-                  <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: muted }}>
-                    <CheckCircle style={{ width: "14px", height: "14px", color: accent, flexShrink: 0 }} />{item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px", minWidth: "260px" }}>
-              <button onClick={() => setFormOpen(true)} className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "0", border: "none", cursor: "pointer", fontFamily: F, background: accent }}>
-                Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
-              </button>
-              <button onClick={() => setFormOpen(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: ink, background: "transparent", border: `1px solid ${line}`, borderRadius: "0", padding: "14px 28px", cursor: "pointer", fontFamily: F }}>
-                Send a Message
-              </button>
-              <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "13px", color: dim, textDecoration: "none" }}>
-                lsgrowthagency.co@gmail.com
-              </a>
-            </div>
-          </div>
+      <section id="contact" style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "110px 40px" }}>
+        <div style={{ position: "relative", maxWidth: "900px", margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(34px,5.2vw,58px)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "22px" }}>
+            Success in digital marketing starts with the <span style={{ color: accentLight }}>right partner.</span>
+          </h2>
+          <p style={{ fontSize: "17px", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, marginBottom: "36px", maxWidth: "560px" }}>
+            Schedule a free strategy call and let's chat about how we can help your business grow.
+          </p>
+          <button onClick={() => setFormOpen(true)} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: accentLight, color: "#04202e", border: "none" }}>
+            Book a FREE strategy call
+          </button>
         </div>
       </section>
 
