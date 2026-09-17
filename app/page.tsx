@@ -582,14 +582,17 @@ function CaseStudyCarousel() {
 
   return (
     <section className="cs-section" style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "90px 40px 60px" }}>
-      <div style={{ position: "relative", maxWidth: "1180px", margin: "0 auto" }}>
+      <div aria-hidden className="cs-ready" style={{ position: "absolute", right: "-18px", top: "50%", transform: "translateY(-50%) rotate(90deg)", transformOrigin: "center", whiteSpace: "nowrap", fontSize: "clamp(40px,6vw,72px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
+        READY TO WIN?
+      </div>
+      <div style={{ position: "relative", zIndex: 1, maxWidth: "1180px", margin: "0 auto" }}>
         <div className="cs-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "56px" }}>
           <h2 key={`h-${index}`} className="cs-fade cs-headline" style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.25, letterSpacing: "-0.01em", maxWidth: "680px" }}>
             {study.headline}
           </h2>
-          <div key={`l-${index}`} className="cs-fade cs-logo" style={{ minWidth: "160px", height: "120px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+          <div key={`l-${index}`} className="cs-fade cs-logo" style={{ minWidth: "120px", height: "78px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
             {study.logo ? (
-              <img src={study.logo} alt={study.company} style={{ maxHeight: "120px", maxWidth: "280px", objectFit: "contain" }} />
+              <img src={study.logo} alt={study.company} style={{ maxHeight: "78px", maxWidth: "170px", objectFit: "contain" }} />
             ) : (
               <div style={{ padding: "8px 16px", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.6)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.03em" }}>
                 {study.company.toUpperCase()}
@@ -654,10 +657,11 @@ function CaseStudyCarousel() {
         .cs-fade { animation: cs-fade-in 0.4s ease; }
         @keyframes cs-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 780px) {
+          .cs-ready { display: none !important; }
           .cs-section { padding: 56px 20px 40px !important; }
           .cs-header { margin-bottom: 28px !important; }
-          .cs-logo { justify-content: flex-start !important; min-width: 0 !important; height: 64px !important; }
-          .cs-logo img { max-height: 64px !important; max-width: 180px !important; }
+          .cs-logo { justify-content: flex-start !important; min-width: 0 !important; height: 56px !important; }
+          .cs-logo img { max-height: 56px !important; max-width: 150px !important; }
           .cs-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
           .cs-photo { order: -1; aspect-ratio: 4/3.2 !important; }
           .cs-buttons { gap: 0 !important; }
