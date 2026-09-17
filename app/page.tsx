@@ -1612,36 +1612,33 @@ export default function Home() {
       </section>
 
       {/* ── CTA ── */}
-      <section id="contact" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
+      <section id="contact" style={{ position: "relative", overflow: "hidden", background: "linear-gradient(160deg, #04111f 0%, #0c3450 100%)", padding: "100px 40px" }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
         <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
-          <div className="lp-rise" style={{ border: `1px solid ${line}`, borderRadius: "16px", padding: "64px 48px", background: "#fff", position: "relative" as const, overflow: "hidden" }}>
-            <div className="m-cta-stack" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "48px", flexWrap: "wrap" as const }}>
-              <div>
-                <div style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Get Started</div>
-                <h2 style={{ fontSize: "clamp(36px,5vw,72px)", fontWeight: 800, color: ink, lineHeight: 1.0, letterSpacing: "-0.03em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
-                <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
-                  Book a free 30-minute call. We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
-                </p>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: "10px" }}>
-                  {["No lock-in contracts", "Full setup handled for you", "Results within the first two weeks"].map(item => (
-                    <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: muted }}>
-                      <CheckCircle style={{ width: "14px", height: "14px", color: accent, flexShrink: 0 }} />{item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px", minWidth: "260px" }}>
-                <a href="/book" className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "0" }}>
-                  Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
-                </a>
-                <button onClick={() => setFormOpen(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: ink, background: "transparent", border: `1px solid ${line}`, borderRadius: "0", padding: "14px 28px", cursor: "pointer", fontFamily: F }}>
-                  Send a Message
-                </button>
-                <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "13px", color: dim, textDecoration: "none" }}>
-                  lsgrowthagency.co@gmail.com
-                </a>
-              </div>
+          <div className="m-cta-stack" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "48px", flexWrap: "wrap" as const }}>
+            <div>
+              <h2 style={{ fontSize: "clamp(36px,5vw,72px)", fontWeight: 800, color: "#fff", lineHeight: 1.0, letterSpacing: "-0.03em", marginBottom: "16px" }}>Ready to fill<br />your pipeline?</h2>
+              <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: "440px", marginBottom: "32px" }}>
+                Book a free 30-minute call. We'll walk through your current lead flow and show you exactly where the gaps are. No obligation.
+              </p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column" as const, gap: "10px" }}>
+                {["No lock-in contracts", "Full setup handled for you", "Results within the first two weeks"].map(item => (
+                  <li key={item} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: "rgba(255,255,255,0.6)" }}>
+                    <CheckCircle style={{ width: "14px", height: "14px", color: accent, flexShrink: 0 }} />{item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px", minWidth: "260px" }}>
+              <button onClick={() => setFormOpen(true)} className="btn btn-dark" style={{ fontSize: "14px", padding: "16px 28px", justifyContent: "center", borderRadius: "0", border: "none", cursor: "pointer", fontFamily: F, background: accent }}>
+                Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
+              </button>
+              <button onClick={() => setFormOpen(true)} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "14px", fontWeight: 600, color: "#fff", background: "transparent", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "0", padding: "14px 28px", cursor: "pointer", fontFamily: F }}>
+                Send a Message
+              </button>
+              <a href="mailto:lsgrowthagency.co@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "13px", color: "rgba(255,255,255,0.45)", textDecoration: "none" }}>
+                lsgrowthagency.co@gmail.com
+              </a>
             </div>
           </div>
         </div>
