@@ -1523,7 +1523,7 @@ export default function Home() {
             -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
             mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
           }
-          .trusted-track { display: flex; align-items: center; width: max-content; gap: 56px; animation: trusted-slide 36s linear infinite; }
+          .trusted-track { display: flex; align-items: center; width: max-content; gap: 80px; animation: trusted-slide 36s linear infinite; }
           .trusted-mask:hover .trusted-track { animation-play-state: paused; }
           @keyframes trusted-slide {
             from { transform: translateX(0); }
@@ -1549,8 +1549,8 @@ export default function Home() {
                 { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services" },
                 { src: "/logos/logo-9.png", alt: "Jim's Cleaning" },
               ].map(({ src, alt }) => (
-                <div key={`${dup}-${src}`} aria-hidden={dup === 1 || undefined} style={{ height: "44px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <img src={src} alt={dup === 0 ? alt : ""} style={{ height: "100%", width: "auto", maxWidth: "140px", objectFit: "contain", opacity: 0.6, filter: "grayscale(100%)", transition: "opacity 0.2s, filter 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "grayscale(0%)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.filter = "grayscale(100%)"; }} />
+                <div key={`${dup}-${src}`} aria-hidden={dup === 1 || undefined} style={{ height: "64px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <img src={src} alt={dup === 0 ? alt : ""} style={{ height: "100%", width: "auto", maxWidth: "220px", objectFit: "contain", opacity: 0.6, filter: "grayscale(100%)", transition: "opacity 0.2s, filter 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "grayscale(0%)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.filter = "grayscale(100%)"; }} />
                 </div>
               ))
             )}
@@ -1588,17 +1588,21 @@ export default function Home() {
       </section>
 
       {/* ── CTA ── */}
-      <section id="contact" style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "110px 40px" }}>
-        <div style={{ position: "relative", maxWidth: "900px", margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(34px,5.2vw,58px)", fontWeight: 800, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "22px" }}>
-            Success in digital marketing starts with the <span style={{ color: accentLight }}>right partner.</span>
-          </h2>
-          <p style={{ fontSize: "17px", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, marginBottom: "36px", maxWidth: "560px" }}>
-            Schedule a free strategy call and let's chat about how we can help your business grow.
-          </p>
-          <button onClick={() => setFormOpen(true)} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: accentLight, color: "#04202e", border: "none" }}>
-            Book a FREE strategy call
-          </button>
+      <section id="contact" style={{ position: "relative", overflow: "hidden", background: "linear-gradient(160deg, #d6e8f5 0%, #eaf3fb 55%, #f6fafd 100%)", padding: "110px 40px" }}>
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.05) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 70% 80% at 20% 40%, #000 30%, transparent 90%)", maskImage: "radial-gradient(ellipse 70% 80% at 20% 40%, #000 30%, transparent 90%)" }} />
+        <div style={{ position: "absolute", top: "-10%", right: "-6%", width: "40%", paddingBottom: "40%", borderRadius: "50%", background: "rgba(0,128,224,0.14)", filter: "blur(70px)", pointerEvents: "none" as const }} />
+        <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
+          <div style={{ maxWidth: "700px" }}>
+            <h2 style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(34px,5.2vw,58px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "22px" }}>
+              Success in digital marketing starts with the <span style={{ color: accent }}>right partner.</span>
+            </h2>
+            <p style={{ fontSize: "17px", color: muted, lineHeight: 1.6, marginBottom: "36px", maxWidth: "560px" }}>
+              Schedule a free strategy call and let's chat about how we can help your business grow.
+            </p>
+            <button onClick={() => setFormOpen(true)} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: accent, color: "#fff", border: "none" }}>
+              Book a FREE strategy call
+            </button>
+          </div>
         </div>
       </section>
 
