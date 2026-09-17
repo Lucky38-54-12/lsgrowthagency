@@ -581,13 +581,13 @@ function CaseStudyCarousel() {
   const go = (dir: number) => setIndex((i) => (i + dir + caseStudyShowcase.length) % caseStudyShowcase.length);
 
   return (
-    <section style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "90px 40px 60px" }}>
+    <section className="cs-section" style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "90px 40px 60px" }}>
       <div style={{ position: "relative", maxWidth: "1180px", margin: "0 auto" }}>
-        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "56px" }}>
-          <h2 key={`h-${index}`} className="cs-fade" style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.25, letterSpacing: "-0.01em", maxWidth: "680px" }}>
+        <div className="cs-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "56px" }}>
+          <h2 key={`h-${index}`} className="cs-fade cs-headline" style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.25, letterSpacing: "-0.01em", maxWidth: "680px" }}>
             {study.headline}
           </h2>
-          <div key={`l-${index}`} className="cs-fade" style={{ minWidth: "160px", height: "120px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+          <div key={`l-${index}`} className="cs-fade cs-logo" style={{ minWidth: "160px", height: "120px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
             {study.logo ? (
               <img src={study.logo} alt={study.company} style={{ maxHeight: "120px", maxWidth: "280px", objectFit: "contain" }} />
             ) : (
@@ -599,7 +599,7 @@ function CaseStudyCarousel() {
         </div>
 
         <div key={`b-${index}`} className="cs-fade cs-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1fr", gap: "56px", alignItems: "center" }}>
-          <div>
+          <div className="cs-content">
             <div style={{ position: "relative" }}>
               <span aria-hidden style={{ position: "absolute", top: "-38px", left: "-8px", fontSize: "90px", fontWeight: 800, color: "rgba(255,255,255,0.08)", lineHeight: 1, fontFamily: "Georgia, serif", pointerEvents: "none" as const }}>&ldquo;</span>
               <p style={{ position: "relative", fontSize: "19px", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, fontWeight: 500, marginBottom: "22px" }}>
@@ -609,7 +609,7 @@ function CaseStudyCarousel() {
             <p style={{ fontSize: "15px", color: "#fff", fontWeight: 700, marginBottom: "26px" }}>
               {study.author} <span style={{ fontWeight: 400, color: "rgba(255,255,255,0.5)" }}>&nbsp;|&nbsp; {study.authorTitle}</span>
             </p>
-            <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
+            <div className="cs-buttons" style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
               <a href={study.primaryCta.href} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: accentLight, color: "#04202e" }}>
                 {study.primaryCta.label}
               </a>
@@ -618,7 +618,7 @@ function CaseStudyCarousel() {
               </a>
             </div>
           </div>
-          <div style={{ position: "relative", aspectRatio: "4/3", background: "#151515", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div className="cs-photo" style={{ position: "relative", aspectRatio: "4/3", background: "#151515", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             {study.photo ? (
               <img src={study.photo} alt={study.company} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             ) : (
@@ -654,7 +654,14 @@ function CaseStudyCarousel() {
         .cs-fade { animation: cs-fade-in 0.4s ease; }
         @keyframes cs-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 780px) {
-          .cs-grid { grid-template-columns: 1fr !important; }
+          .cs-section { padding: 56px 20px 40px !important; }
+          .cs-header { margin-bottom: 28px !important; }
+          .cs-logo { justify-content: flex-start !important; min-width: 0 !important; height: 64px !important; }
+          .cs-logo img { max-height: 64px !important; max-width: 180px !important; }
+          .cs-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+          .cs-photo { order: -1; aspect-ratio: 4/3.2 !important; }
+          .cs-buttons { gap: 0 !important; }
+          .cs-buttons .cs-btn { flex: 1 1 50% !important; justify-content: center; padding: 16px 12px !important; text-align: center; }
         }
       `}</style>
     </section>
@@ -1028,13 +1035,10 @@ export default function Home() {
         </video>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "rgba(0,0,0,0.35)" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.6) 0%, transparent 100%)" }} />
-        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, padding: "150px 40px 110px", width: "100%" }}>
-          <div style={{ maxWidth: "820px" }}>
-            <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
-              Your growth partner · NZ & AU
-            </p>
-            <h1 className="hero-h1" style={{ fontSize: "clamp(48px, 5.8vw, 96px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "18px" }}>
-              Most agencies<br />get you leads.<br />We get you{" "}
+        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, padding: "150px 40px 110px", width: "100%", display: "flex", justifyContent: "center", textAlign: "center" as const }}>
+          <div style={{ maxWidth: "900px" }}>
+            <h1 className="hero-h1" style={{ fontSize: "clamp(40px, 5vw, 76px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: "22px" }}>
+              Most agencies get you leads. We get you{" "}
               <span style={{ position: "relative", display: "inline-block" }}>
                 booked jobs
                 <svg viewBox="0 0 220 14" preserveAspectRatio="none" style={{ position: "absolute", left: 0, right: 0, bottom: "-0.14em", width: "100%", height: "0.22em" }}>
@@ -1042,10 +1046,10 @@ export default function Home() {
                 </svg>
               </span>.
             </h1>
-            <p className="hero-sub" style={{ fontSize: "17px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "28px", maxWidth: "480px" }}>
+            <p className="hero-sub" style={{ fontSize: "17px", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, marginBottom: "32px", maxWidth: "600px", margin: "0 auto 32px" }}>
               No tyre kickers, no time-wasters. Just qualified enquiries from people ready to book.
             </p>
-            <div className="hero-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
+            <div className="hero-ctas" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
               <a href="/book" className="btn btn-dark btn-hero" style={{ fontSize: "14px", padding: "12px 22px", borderRadius: "0" }}>
                 Book a Free Call <ArrowRight style={{ width: "14px", height: "14px" }} />
               </a>
