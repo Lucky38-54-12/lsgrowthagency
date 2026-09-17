@@ -451,7 +451,7 @@ const testimonials = [
   },
   {
     quote: "They've been a huge help in getting us more clients this year. The campaigns they put together have had great success with the leads generated.",
-    author: "Scott",
+    author: "Scott Paterson",
     company: "SSP Electrical",
     color: "#0d9488",
   },
@@ -541,7 +541,7 @@ const caseStudyShowcase = [
     photo: "/ssp-electrical-solar.png",
     quote: "We were looking to generate more solar jobs in Christchurch, and the campaign has delivered. We've been consistently booking solar opportunities over the last two months and the quality of the enquiries has been great. Working with the team has been easy, and they've done a great job.",
     quoteHighlight: null as string | null,
-    author: "Scott",
+    author: "Scott Paterson",
     authorTitle: "SSP Electrical, Christchurch",
   },
   {
