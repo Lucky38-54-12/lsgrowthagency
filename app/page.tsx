@@ -518,6 +518,16 @@ const caseStudyShowcase = [
     author: "Ray Lister",
     authorTitle: "Build It All, Wellington",
   },
+  {
+    company: "Perl Electrical",
+    headline: "How We Helped Perl Electrical Generate New Opportunities Across Christchurch",
+    logo: "/logos/perl-electrical.png",
+    photo: "/perl-electrical-team.jpg",
+    quote: "The team have been great to work with. They've helped us advertise a range of our services, from heat pumps and electrical gates to solar, and we've had some really good opportunities come through. They're easy to deal with, understand what we're trying to achieve, and we'd definitely recommend them.",
+    quoteHighlight: null as string | null,
+    author: "Todd Lamont",
+    authorTitle: "Perl Electrical, Christchurch",
+  },
 ];
 
 function QuoteText({ quote, highlight }: { quote: string; highlight?: string | null }) {
