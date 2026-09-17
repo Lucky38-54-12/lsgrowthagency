@@ -859,7 +859,8 @@ export default function Home() {
           .m-connect-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-connect-scatter { width: 100% !important; height: 260px !important; margin-top: 8px !important; }
           .m-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
-          .m-footer-brand { grid-column: 1/-1 !important; }
+          .m-footer-top { flex-direction: column !important; }
+          .m-footer-cta { text-align: left !important; }
           .m-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
           .m-cta-stack { grid-template-columns: 1fr !important; gap: 24px !important; }
           section { padding-left: 20px !important; padding-right: 20px !important; }
@@ -1706,36 +1707,73 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
 
-      <footer style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "60px 40px 0" }}>
-        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
-          <div className="m-footer-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gap: "48px", paddingBottom: "48px" }}>
-            <div className="lp-rise m-footer-brand" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <h3 style={{ fontSize: "22px", fontWeight: 800, color: ink, letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: "6px" }}>
-                  Built for NZ & AU<br />service businesses.
-                </h3>
-                <p style={{ fontSize: "16px", color: muted, marginBottom: "28px" }}>Done-for-you lead generation.</p>
-              </div>
-              <img src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "32px", width: "auto", objectFit: "contain", alignSelf: "flex-start" }} />
+      <footer style={{ background: "linear-gradient(160deg, #04111f 0%, #0c3450 100%)" }}>
+        <div style={{ maxWidth: "1160px", margin: "0 auto", padding: "72px 40px 40px" }}>
+
+          {/* Top: logo + CTA heading */}
+          <div className="m-footer-top" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "40px", flexWrap: "wrap" as const, marginBottom: "48px" }}>
+            <img src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "34px", width: "auto", objectFit: "contain" }} />
+            <div style={{ textAlign: "right" as const }} className="m-footer-cta">
+              <h3 style={{ fontSize: "clamp(24px,3vw,36px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: "8px" }}>
+                Ready to grow your business?
+              </h3>
+              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.55)" }}>
+                Book a free strategy call and let's turn enquiries into booked jobs.
+              </p>
             </div>
+          </div>
+
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }} />
+
+          {/* Columns */}
+          <div className="m-footer-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "32px", padding: "40px 0" }}>
             <div>
-              <p style={{ fontSize: "13px", fontWeight: 600, color: ink, marginBottom: "20px" }}>Navigation</p>
+              <p style={{ fontSize: "12px", fontWeight: 700, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "20px" }}>Navigation</p>
               {[["Home","#"],["Our Work","#work"],["Services","#services"],["How It Works","#how"]].map(([l,h]) => (
-                <a key={l} href={h} style={{ display: "block", fontSize: "14px", color: muted, textDecoration: "none", marginBottom: "12px", transition: "color 0.15s" }} onMouseEnter={e => (e.currentTarget.style.color = ink)} onMouseLeave={e => (e.currentTarget.style.color = muted)}>{l}</a>
+                <a key={l} href={h} style={{ display: "block", fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none", marginBottom: "12px", transition: "color 0.15s" }} onMouseEnter={e => (e.currentTarget.style.color = "#fff")} onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.65)")}>{l}</a>
               ))}
             </div>
             <div>
-              <p style={{ fontSize: "13px", fontWeight: 600, color: ink, marginBottom: "20px" }}>Contact</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                <a href="tel:02102820190" style={{ fontSize: "14px", color: muted, textDecoration: "none" }}>021 028 20190</a>
-                <a href="mailto:lsgrowthagency.co@gmail.com" style={{ fontSize: "14px", color: muted, textDecoration: "none" }}>lsgrowthagency.co@gmail.com</a>
-                <span style={{ fontSize: "14px", color: muted }}>New Zealand & Australia</span>
+              <p style={{ fontSize: "12px", fontWeight: 700, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "20px" }}>Contact</p>
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px" }}>
+                <a href="tel:02102820190" style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>021 028 20190</a>
+                <a href="mailto:lsgrowthagency.co@gmail.com" style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>lsgrowthagency.co@gmail.com</a>
+                <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)" }}>New Zealand & Australia</span>
+              </div>
+            </div>
+            <div>
+              <p style={{ fontSize: "12px", fontWeight: 700, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "20px" }}>Follow</p>
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px" }}>
+                <a href="https://www.facebook.com/profile.php?id=61584135511815" target="_blank" rel="noopener noreferrer" style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>Facebook</a>
+                <a href="https://www.linkedin.com/company/111303114/" target="_blank" rel="noopener noreferrer" style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>LinkedIn</a>
+                <a href="https://www.instagram.com/lsgrowthagency/" target="_blank" rel="noopener noreferrer" style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>Instagram</a>
               </div>
             </div>
           </div>
-          <div className="m-footer-bottom" style={{ borderTop: `1px solid ${line}`, padding: "20px 0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <p style={{ fontSize: "13px", color: dim }}>© {new Date().getFullYear()} L&S Growth Agency. All rights reserved.</p>
-            <p style={{ fontSize: "13px", color: dim }}>NZ & AU Local Service Businesses</p>
+        </div>
+
+        {/* Bottom bar */}
+        <div style={{ background: "#fff" }}>
+          <div className="m-footer-bottom" style={{ maxWidth: "1160px", margin: "0 auto", padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: "12px" }}>
+            <p style={{ fontSize: "13px", color: muted, margin: 0 }}>© {new Date().getFullYear()} L&S Growth Agency. All rights reserved.</p>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+              <a href="https://www.facebook.com/profile.php?id=61584135511815" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: ink, textDecoration: "none" }}>
+                <svg viewBox="0 0 24 24" fill="#1877F2" style={{ width: "16px", height: "16px" }}><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
+                Facebook
+              </a>
+              <a href="https://www.linkedin.com/company/111303114/" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: ink, textDecoration: "none" }}>
+                <svg viewBox="0 0 24 24" fill="#0A66C2" style={{ width: "16px", height: "16px" }}><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.558V9h3.556v11.452z" /></svg>
+                LinkedIn
+              </a>
+              <a href="https://www.instagram.com/lsgrowthagency/" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: 600, color: ink, textDecoration: "none" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke={ink} strokeWidth="2" style={{ width: "16px", height: "16px" }}>
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.7" fill={ink} stroke="none" />
+                </svg>
+                Instagram
+              </a>
+            </div>
           </div>
         </div>
       </footer>
