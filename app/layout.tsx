@@ -3,7 +3,7 @@ import { Inter, Sora, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["700", "800"] });
+const sora = Sora({ subsets: ["latin"], variable: "--font-sora", weight: ["400", "500", "700", "800"] });
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", weight: ["400", "500", "600"], style: ["normal", "italic"] });
 
 export const metadata: Metadata = {
