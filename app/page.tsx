@@ -888,7 +888,7 @@ export default function Home() {
         >
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
-        <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "linear-gradient(160deg, rgba(4,17,31,0.78) 0%, rgba(12,52,80,0.62) 42%, rgba(28,93,134,0.5) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "rgba(0,0,0,0.35)" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.6) 0%, transparent 100%)" }} />
         <div className="m-hero-content" style={{ position: "relative", zIndex: 1, padding: "150px 40px 110px", width: "100%" }}>
           <div style={{ maxWidth: "820px" }}>
