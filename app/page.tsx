@@ -1067,24 +1067,8 @@ export default function Home() {
       {/* ── CASE STUDIES ── */}
       <CaseStudyCarousel onCtaClick={() => setFormOpen(true)} />
 
-      {/* ── BUILD STATEMENT + TRUSTED BY (shared cloudy background) ── */}
+      {/* ── BUILD STATEMENT ── */}
       <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}` }}>
-        <style suppressHydrationWarning>{`
-          .m-trusted-track { animation: trusted-marquee 32s linear infinite; }
-          .m-trusted-item { padding: 0 40px; }
-          .m-trusted-track img { height: 40px; width: auto; opacity: 0.85; filter: grayscale(100%); flex-shrink: 0; }
-          .m-trusted-track img.m-trusted-big { height: 56px; }
-          .m-trusted-mask:hover .m-trusted-track { animation-play-state: paused; }
-          @keyframes trusted-marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-          }
-          @media (max-width: 640px) {
-            .m-trusted-item { padding: 0 22px; }
-            .m-trusted-track img { height: 26px; }
-            .m-trusted-track img.m-trusted-big { height: 36px; }
-          }
-        `}</style>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const }}>
           <div style={{ position: "absolute", top: "-10%", left: "-6%", width: "42%", paddingBottom: "42%", borderRadius: "50%", background: "rgba(0,128,224,0.16)", filter: "blur(70px)" }} />
           <div style={{ position: "absolute", bottom: "-14%", right: "-8%", width: "46%", paddingBottom: "46%", borderRadius: "50%", background: "rgba(64,192,240,0.14)", filter: "blur(80px)" }} />
@@ -1279,42 +1263,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TRUSTED BY ── */}
-      <section style={{ position: "relative", borderTop: `1px solid #cbd5e1`, borderBottom: "1px solid #cbd5e1", padding: "30px 0" }}>
-        <p style={{ textAlign: "center" as const, fontSize: "13px", fontWeight: 500, color: muted, letterSpacing: "0.02em", marginBottom: "24px" }}>
-          Trusted by trade businesses across NZ &amp; AU
-        </p>
-        <div
-          className="m-trusted-mask"
-          style={{
-            position: "relative",
-            width: "100%",
-            overflow: "hidden",
-            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
-            maskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
-          }}
-        >
-          <div className="m-trusted-track" style={{ display: "flex", alignItems: "stretch", width: "max-content" }}>
-            {[...Array(2)].flatMap((_, dup) =>
-              [
-                { src: "/logos/logo-1.png", alt: "We Do Electrical", w: 331, h: 122 },
-                { src: "/logos/logo-2.png", alt: "Common Ground Electrical", w: 142, h: 173 },
-                { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD", w: 341, h: 129 },
-                { src: "/logos/logo-4.png", alt: "SSP Electrical", w: 261, h: 71 },
-                { src: "/logos/logo-5.png", alt: "CN-Electrical", w: 362, h: 86 },
-                { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South", w: 346, h: 136 },
-                { src: "/logos/logo-7.png", alt: "Fantastic Services", w: 352, h: 136 },
-                { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services", w: 200, h: 200, big: true },
-                { src: "/logos/logo-9.png", alt: "Jim's Cleaning", w: 200, h: 200, big: true },
-              ].map(({ src, alt, w, h, big }) => (
-                <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                  <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} width={w} height={h} className={big ? "m-trusted-big" : undefined} />
-                </div>
-              ))
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* ── CALENDAR PROMISE ── hidden for now ── */}
       {false && (
@@ -1607,6 +1555,32 @@ export default function Home() {
             </div>
           );
         })()}
+      </section>
+
+      {/* ── TRUSTED BY ── */}
+      <section style={{ background: "transparent", padding: "70px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" as const }}>
+          <h3 className="lp-rise" style={{ fontSize: "clamp(22px,2.6vw,30px)", fontWeight: 800, color: accent, letterSpacing: "-0.01em", marginBottom: "40px" }}>
+            Working with great businesses like yours
+          </h3>
+          <div className="m-trusted-static lp-rise" style={{ display: "flex", flexWrap: "wrap" as const, alignItems: "center", justifyContent: "center", gap: "48px 56px" }}>
+            {[
+              { src: "/logos/logo-1.png", alt: "We Do Electrical" },
+              { src: "/logos/logo-2.png", alt: "Common Ground Electrical" },
+              { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD" },
+              { src: "/logos/logo-4.png", alt: "SSP Electrical" },
+              { src: "/logos/logo-5.png", alt: "CN-Electrical" },
+              { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
+              { src: "/logos/logo-7.png", alt: "Fantastic Services" },
+              { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services" },
+              { src: "/logos/logo-9.png", alt: "Jim's Cleaning" },
+            ].map(({ src, alt }) => (
+              <div key={src} style={{ height: "44px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img src={src} alt={alt} style={{ height: "100%", width: "auto", maxWidth: "140px", objectFit: "contain", opacity: 0.6, filter: "grayscale(100%)", transition: "opacity 0.2s, filter 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "grayscale(0%)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.filter = "grayscale(100%)"; }} />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── FAQ ── */}
