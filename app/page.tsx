@@ -522,7 +522,7 @@ const caseStudies = [
   },
 ];
 
-/* ── Placeholder data — swap Katie's quote before shipping ── */
+/* ── Case study data ── */
 const caseStudyShowcase = [
   {
     company: "Build It All",
@@ -532,30 +532,30 @@ const caseStudyShowcase = [
     quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
     quoteHighlight: "$100,000+",
     author: "Ray Lister",
-    authorTitle: "Build It All",
+    authorTitle: "Build It All, Wellington",
     primaryCta: { label: "See how we did it", href: "#" },
     secondaryCta: { label: "Client Case Studies", href: "#" },
   },
   {
     company: "SSP Electrical",
-    headline: "How We Helped SSP Electrical Filter Out Low-Intent Leads",
+    headline: "How We Helped SSP Electrical Book More Solar Jobs in Christchurch",
     logo: "/logos/ssp-electrical.jpg",
     photo: "/ssp-electrical-solar.png",
-    quote: "They've been a huge help in getting us more clients this year. The campaigns they put together have had great success with the leads generated.",
+    quote: "We were looking to generate more solar jobs in Christchurch, and the campaign has delivered. We've been consistently booking solar opportunities over the last two months and the quality of the enquiries has been great. Working with the team has been easy, and they've done a great job.",
     quoteHighlight: null as string | null,
-    author: "Sam Nguyen",
-    authorTitle: "SSP Electrical",
+    author: "Scott",
+    authorTitle: "SSP Electrical, Christchurch",
     primaryCta: { label: "See how we did it", href: "#" },
     secondaryCta: { label: "Client Case Studies", href: "#" },
   },
   {
     company: "Katies Elite Cleaning",
-    headline: "How We Helped Katies Elite Cleaning Build a Steady Flow of Local Jobs",
+    headline: "How We Helped Katies Elite Cleaning Book Higher-End Jobs",
     logo: "/logos/katies-elite-cleaning.png",
     photo: "/katies-elite-cleaning-team.jpg",
-    quote: "PLACEHOLDER QUOTE — swap in Katie's actual testimonial here.",
+    quote: "We used to rely on randomly boosted posts without much of a strategy behind them. Working with the team has completely changed that. We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries. The business is doing really well, and working with them has been great.",
     quoteHighlight: null as string | null,
-    author: "Katie",
+    author: "Kris",
     authorTitle: "Katies Elite Cleaning, Tauranga",
     primaryCta: { label: "See how we did it", href: "#" },
     secondaryCta: { label: "Client Case Studies", href: "#" },
@@ -584,12 +584,12 @@ function CaseStudyCarousel() {
     <section style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "90px 40px 60px" }}>
       <div style={{ position: "relative", maxWidth: "1180px", margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "56px" }}>
-          <h2 key={`h-${index}`} className="cs-fade" style={{ fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.25, letterSpacing: "-0.01em", maxWidth: "680px" }}>
+          <h2 key={`h-${index}`} className="cs-fade" style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.25, letterSpacing: "-0.01em", maxWidth: "680px" }}>
             {study.headline}
           </h2>
-          <div key={`l-${index}`} className="cs-fade" style={{ minWidth: "110px", height: "56px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+          <div key={`l-${index}`} className="cs-fade" style={{ minWidth: "140px", height: "88px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
             {study.logo ? (
-              <img src={study.logo} alt={study.company} style={{ maxHeight: "56px", maxWidth: "150px", objectFit: "contain" }} />
+              <img src={study.logo} alt={study.company} style={{ maxHeight: "88px", maxWidth: "220px", objectFit: "contain" }} />
             ) : (
               <div style={{ padding: "8px 16px", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.6)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.03em" }}>
                 {study.company.toUpperCase()}
@@ -609,11 +609,11 @@ function CaseStudyCarousel() {
             <p style={{ fontSize: "15px", color: "#fff", fontWeight: 700, marginBottom: "26px" }}>
               {study.author} <span style={{ fontWeight: 400, color: "rgba(255,255,255,0.5)" }}>&nbsp;|&nbsp; {study.authorTitle}</span>
             </p>
-            <div style={{ display: "flex", gap: "0", flexWrap: "wrap" }}>
-              <a href={study.primaryCta.href} className="btn btn-nav" style={{ fontSize: "14px", padding: "16px 28px", borderRadius: "0" }}>
+            <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
+              <a href={study.primaryCta.href} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: accentLight, color: "#04202e" }}>
                 {study.primaryCta.label}
               </a>
-              <a href={study.secondaryCta.href} className="btn btn-nav" style={{ fontSize: "14px", padding: "16px 28px", borderRadius: "0", filter: "brightness(0.82)" }}>
+              <a href={study.secondaryCta.href} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: "#fff", color: "#0a0a0a" }}>
                 {study.secondaryCta.label}
               </a>
             </div>
@@ -649,6 +649,8 @@ function CaseStudyCarousel() {
         </div>
       </div>
       <style suppressHydrationWarning>{`
+        .cs-btn { display: inline-flex; align-items: center; font-family: ${F}; text-decoration: none; cursor: pointer; transition: transform 0.16s ease, box-shadow 0.22s ease; }
+        .cs-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.35); }
         .cs-fade { animation: cs-fade-in 0.4s ease; }
         @keyframes cs-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 780px) {
