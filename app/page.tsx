@@ -455,6 +455,12 @@ const testimonials = [
     company: "SSP Electrical",
     color: "#0d9488",
   },
+  {
+    quote: "We've really enjoyed working with the team. They helped us promote everything from heat pumps and electrical gates through to solar, and made it easy to get our services in front of the right customers. They understand the trade industry and have been great to work with. We'd definitely recommend them.",
+    author: "Todd Lamont",
+    company: "Perl Electrical, Christchurch",
+    color: "#b91c1c",
+  },
 ];
 
 const caseStudies = [
