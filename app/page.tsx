@@ -509,16 +509,6 @@ const caseStudyShowcase = [
     authorTitle: "SSP Electrical, Christchurch",
   },
   {
-    company: "Build It All",
-    headline: "How Build It All Booked $100,000+ in Renovation Work in Just One Month",
-    logo: "/logos/build-it-all.png",
-    photo: "/build-it-all-project.webp",
-    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
-    quoteHighlight: "$100,000+",
-    author: "Ray Lister",
-    authorTitle: "Build It All, Wellington",
-  },
-  {
     company: "Perl Electrical",
     headline: "How We Helped Perl Electrical Generate New Opportunities Across Christchurch",
     logo: "/logos/perl-electrical.png",
@@ -527,6 +517,16 @@ const caseStudyShowcase = [
     quoteHighlight: null as string | null,
     author: "Todd Lamont",
     authorTitle: "Perl Electrical, Christchurch",
+  },
+  {
+    company: "Build It All",
+    headline: "How Build It All Booked $100,000+ in Renovation Work in Just One Month",
+    logo: "/logos/build-it-all.png",
+    photo: "/build-it-all-project.webp",
+    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
+    quoteHighlight: "$100,000+",
+    author: "Ray Lister",
+    authorTitle: "Build It All, Wellington",
   },
 ];
 
