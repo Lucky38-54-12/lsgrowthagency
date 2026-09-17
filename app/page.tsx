@@ -876,9 +876,20 @@ export default function Home() {
       )}
 
       {/* ── HERO ── */}
-      <section className="m-hero-section" style={{ position: "relative", overflow: "hidden", minHeight: "680px", display: "flex", alignItems: "center", background: "linear-gradient(160deg, #04111f 0%, #0c3450 42%, #1c5d86 100%)" }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)", backgroundSize: "72px 72px" }} />
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.55) 0%, transparent 100%)" }} />
+      <section className="m-hero-section" style={{ position: "relative", overflow: "hidden", minHeight: "680px", display: "flex", alignItems: "center", background: "#04111f" }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/hero-bg.png"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "linear-gradient(160deg, rgba(4,17,31,0.78) 0%, rgba(12,52,80,0.62) 42%, rgba(28,93,134,0.5) 100%)" }} />
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.6) 0%, transparent 100%)" }} />
         <div className="m-hero-content" style={{ position: "relative", zIndex: 1, padding: "150px 40px 110px", width: "100%" }}>
           <div style={{ maxWidth: "820px" }}>
             <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
