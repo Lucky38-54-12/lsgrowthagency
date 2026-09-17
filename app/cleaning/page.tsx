@@ -27,6 +27,7 @@ const SOLUTIONS = [
 
 export default function CleaningPage() {
   const [navOpen, setNavOpen] = useState(false);
+  const [contactPanelOpen, setContactPanelOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
   const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
@@ -171,6 +172,13 @@ export default function CleaningPage() {
             ))}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            <button onClick={() => setContactPanelOpen(true)} aria-label="Contact details" style={{ width: "38px", height: "38px", borderRadius: "50%", background: "linear-gradient(135deg, #0080e0, #40c0f0)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, padding: 0 }}>
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: "3px", width: "16px" }}>
+                <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
+                <span style={{ display: "block", width: "100%", height: "2px", background: "#fff", borderRadius: "2px" }} />
+                <span style={{ display: "block", width: "70%", height: "2px", background: "#fff", borderRadius: "2px" }} />
+              </div>
+            </button>
             <button onClick={() => setFormOpen(true)} className="nav-cta" style={{ fontSize: "13px", fontWeight: 700, color: "#fff", background: accent, borderRadius: "0", padding: "10px 18px", border: "none", cursor: "pointer", fontFamily: F, display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" as const }}>
               Let's Talk
             </button>
@@ -198,6 +206,45 @@ export default function CleaningPage() {
               ))}
               <a href="/book" onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f1f5f9", border: `1px solid ${line}`, color: ink, fontSize: "14px", fontWeight: 600, textDecoration: "none", textAlign: "center" as const, boxSizing: "border-box" as const }}>Book a Call</a>
               <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: accent, color: "#fff", border: "none", fontSize: "14px", fontWeight: 700, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Let's Talk</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── LEFT CONTACT DETAILS PANEL ── */}
+      {contactPanelOpen && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 250 }}>
+          <div onClick={() => setContactPanelOpen(false)} style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.5)", backdropFilter: "blur(4px)" }} />
+          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: "min(360px, 88vw)", background: "#fff", display: "flex", flexDirection: "column" as const, boxShadow: "8px 0 32px rgba(0,0,0,0.12)", padding: "32px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "48px" }}>
+              <button onClick={() => setContactPanelOpen(false)} aria-label="Close" style={{ background: "none", border: "none", cursor: "pointer", color: ink, fontSize: "26px", lineHeight: 1, padding: "4px" }}>×</button>
+              <img src="/ls-growth-logo-wordmark.png" alt="L&S Growth" style={{ height: "26px", width: "auto", objectFit: "contain" }} />
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: "28px", flex: 1 }}>
+              {[
+                { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61584135511815", color: "#1877F2", icon: <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /> },
+                { label: "LinkedIn", href: "https://www.linkedin.com/company/111303114/", color: "#0A66C2", icon: <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.558V9h3.556v11.452z" /> },
+                { label: "Instagram", href: "https://www.instagram.com/lsgrowthagency/", color: ink, icon: null },
+              ].map(({ label, href, color, icon }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "14px", textDecoration: "none", color: ink, fontSize: "19px", fontWeight: 700 }}>
+                  {label === "Instagram" ? (
+                    <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" style={{ width: "26px", height: "26px", flexShrink: 0 }}>
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <circle cx="12" cy="12" r="4" />
+                      <circle cx="17.5" cy="6.5" r="0.7" fill={color} stroke="none" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" fill={color} style={{ width: "26px", height: "26px", flexShrink: 0 }}>{icon}</svg>
+                  )}
+                  {label}
+                </a>
+              ))}
+            </div>
+
+            <div style={{ borderTop: `1px solid ${line}`, paddingTop: "24px", display: "flex", flexDirection: "column" as const, gap: "6px" }}>
+              <a href="tel:02102820190" style={{ fontSize: "17px", fontWeight: 700, color: ink, textDecoration: "none" }}>021 028 20190</a>
+              <a href="mailto:lsgrowthagency.co@gmail.com" style={{ fontSize: "14px", color: muted, textDecoration: "none" }}>lsgrowthagency.co@gmail.com</a>
             </div>
           </div>
         </div>
