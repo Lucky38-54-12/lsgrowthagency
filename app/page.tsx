@@ -1441,7 +1441,8 @@ export default function Home() {
       {/* ── CONNECTIONS ── hidden for now ── */}
       {false && <ConnectionsAnimated />}
 
-      {/* ── COMPARISON ── */}
+      {/* ── COMPARISON ── hidden for now ── */}
+      {false && (
       <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const, backgroundImage: "linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px)", backgroundSize: "72px 72px", WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 100%)" }} />
         <style suppressHydrationWarning>{`
@@ -1555,6 +1556,7 @@ export default function Home() {
 
         </div>
       </section>
+      )}
 
       {/* ── TESTIMONIALS ── */}
       <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
