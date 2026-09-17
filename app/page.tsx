@@ -590,9 +590,9 @@ function CaseStudyCarousel() {
           <h2 key={`h-${index}`} className="cs-fade cs-headline" style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.25, letterSpacing: "-0.01em", maxWidth: "680px" }}>
             {study.headline}
           </h2>
-          <div key={`l-${index}`} className="cs-fade cs-logo" style={{ minWidth: "120px", height: "78px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+          <div key={`l-${index}`} className="cs-fade cs-logo" style={{ minWidth: "200px", height: "160px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
             {study.logo ? (
-              <img src={study.logo} alt={study.company} style={{ maxHeight: "78px", maxWidth: "170px", objectFit: "contain" }} />
+              <img src={study.logo} alt={study.company} style={{ maxHeight: "160px", maxWidth: "360px", objectFit: "contain" }} />
             ) : (
               <div style={{ padding: "8px 16px", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.6)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.03em" }}>
                 {study.company.toUpperCase()}
@@ -1110,41 +1110,6 @@ export default function Home() {
           </div>
         </div>
 
-        <div style={{ position: "relative", borderTop: "1px solid #cbd5e1", borderBottom: "1px solid #cbd5e1", padding: "30px 0" }}>
-          <p style={{ textAlign: "center" as const, fontSize: "13px", fontWeight: 500, color: muted, letterSpacing: "0.02em", marginBottom: "24px" }}>
-            Trusted by trade businesses across NZ &amp; AU
-          </p>
-          <div
-            className="m-trusted-mask"
-            style={{
-              position: "relative",
-              width: "100%",
-              overflow: "hidden",
-              WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
-              maskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
-            }}
-          >
-            <div className="m-trusted-track" style={{ display: "flex", alignItems: "stretch", width: "max-content" }}>
-              {[...Array(2)].flatMap((_, dup) =>
-                [
-                  { src: "/logos/logo-1.png", alt: "We Do Electrical", w: 331, h: 122 },
-                  { src: "/logos/logo-2.png", alt: "Common Ground Electrical", w: 142, h: 173 },
-                  { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD", w: 341, h: 129 },
-                  { src: "/logos/logo-4.png", alt: "SSP Electrical", w: 261, h: 71 },
-                  { src: "/logos/logo-5.png", alt: "CN-Electrical", w: 362, h: 86 },
-                  { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South", w: 346, h: 136 },
-                  { src: "/logos/logo-7.png", alt: "Fantastic Services", w: 352, h: 136 },
-                  { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services", w: 200, h: 200, big: true },
-                  { src: "/logos/logo-9.png", alt: "Jim's Cleaning", w: 200, h: 200, big: true },
-                ].map(({ src, alt, w, h, big }) => (
-                  <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                    <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} width={w} height={h} className={big ? "m-trusted-big" : undefined} />
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ── RESULTS ── */}
@@ -1312,6 +1277,43 @@ export default function Home() {
               </a>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ── TRUSTED BY ── */}
+      <section style={{ position: "relative", borderTop: `1px solid #cbd5e1`, borderBottom: "1px solid #cbd5e1", padding: "30px 0" }}>
+        <p style={{ textAlign: "center" as const, fontSize: "13px", fontWeight: 500, color: muted, letterSpacing: "0.02em", marginBottom: "24px" }}>
+          Trusted by trade businesses across NZ &amp; AU
+        </p>
+        <div
+          className="m-trusted-mask"
+          style={{
+            position: "relative",
+            width: "100%",
+            overflow: "hidden",
+            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
+            maskImage: "linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%)",
+          }}
+        >
+          <div className="m-trusted-track" style={{ display: "flex", alignItems: "stretch", width: "max-content" }}>
+            {[...Array(2)].flatMap((_, dup) =>
+              [
+                { src: "/logos/logo-1.png", alt: "We Do Electrical", w: 331, h: 122 },
+                { src: "/logos/logo-2.png", alt: "Common Ground Electrical", w: 142, h: 173 },
+                { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD", w: 341, h: 129 },
+                { src: "/logos/logo-4.png", alt: "SSP Electrical", w: 261, h: 71 },
+                { src: "/logos/logo-5.png", alt: "CN-Electrical", w: 362, h: 86 },
+                { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South", w: 346, h: 136 },
+                { src: "/logos/logo-7.png", alt: "Fantastic Services", w: 352, h: 136 },
+                { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services", w: 200, h: 200, big: true },
+                { src: "/logos/logo-9.png", alt: "Jim's Cleaning", w: 200, h: 200, big: true },
+              ].map(({ src, alt, w, h, big }) => (
+                <div key={`${dup}-${src}`} className="m-trusted-item" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+                  <img src={src} alt={dup === 0 ? alt : ""} aria-hidden={dup === 1 || undefined} width={w} height={h} className={big ? "m-trusted-big" : undefined} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>
