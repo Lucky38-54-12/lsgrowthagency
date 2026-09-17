@@ -1604,7 +1604,7 @@ export default function Home() {
       <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", top: "10%", right: "8%", width: "320px", height: "320px", borderRadius: "50%", background: "radial-gradient(circle, rgba(0,128,224,0.14) 0%, transparent 70%)", filter: "blur(20px)", pointerEvents: "none" as const }} />
         <div className="m-faq-grid" style={{ position: "relative", maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: "80px", alignItems: "start" }}>
-          <div className="m-faq-sticky lp-rise" style={{ position: "sticky", top: "80px" }}>
+          <div className="m-faq-sticky lp-rise">
             <p style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 700, color: accent, letterSpacing: "0.04em", marginBottom: "20px" }}>
               <span style={{ width: "3px", height: "16px", background: accent, display: "inline-block" }} />
               FAQ
