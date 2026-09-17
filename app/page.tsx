@@ -582,11 +582,11 @@ function CaseStudyCarousel() {
 
   return (
     <section className="cs-section" style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "90px 40px 60px" }}>
-      <div aria-hidden className="cs-ready" style={{ position: "absolute", left: "-46px", top: "50%", transform: "translateY(-50%) rotate(90deg)", transformOrigin: "center", whiteSpace: "nowrap", fontSize: "clamp(40px,6vw,72px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
+      <div aria-hidden className="cs-ready" style={{ position: "absolute", left: "-60px", top: "0", transform: "rotate(90deg)", transformOrigin: "left top", whiteSpace: "nowrap", fontSize: "clamp(56px,9vw,120px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
         READY
       </div>
-      <div aria-hidden className="cs-ready" style={{ position: "absolute", right: "-46px", top: "50%", transform: "translateY(-50%) rotate(90deg)", transformOrigin: "center", whiteSpace: "nowrap", fontSize: "clamp(40px,6vw,72px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
-        TO WIN
+      <div aria-hidden className="cs-ready" style={{ position: "absolute", right: "-60px", bottom: "0", transform: "rotate(90deg)", transformOrigin: "right bottom", whiteSpace: "nowrap", fontSize: "clamp(56px,9vw,120px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
+        TO WIN?
       </div>
       <div style={{ position: "relative", zIndex: 1, maxWidth: "1180px", margin: "0 auto" }}>
         <div className="cs-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "56px" }}>
@@ -1623,31 +1623,28 @@ export default function Home() {
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ background: "transparent", padding: "80px 40px", borderTop: `1px solid ${line}` }}>
-        <div className="m-faq-grid" style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: "80px", alignItems: "start" }}>
+      <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "absolute", top: "10%", right: "8%", width: "320px", height: "320px", borderRadius: "50%", background: "radial-gradient(circle, rgba(0,128,224,0.14) 0%, transparent 70%)", filter: "blur(20px)", pointerEvents: "none" as const }} />
+        <div className="m-faq-grid" style={{ position: "relative", maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: "80px", alignItems: "start" }}>
           <div className="m-faq-sticky lp-rise" style={{ position: "sticky", top: "80px" }}>
-            <span style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "16px" }}>FAQs</span>
-            <h2 style={{ fontSize: "clamp(28px,3.5vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.02em", marginBottom: "14px" }}>
-              We've Got the Answers You're Looking For
-            </h2>
-            <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7, marginBottom: "28px" }}>
-              Get answers to common questions about our services.
+            <p style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 700, color: accent, letterSpacing: "0.04em", marginBottom: "20px" }}>
+              <span style={{ width: "3px", height: "16px", background: accent, display: "inline-block" }} />
+              FAQ
             </p>
-            <a href="/book" className="btn btn-dark" style={{ fontSize: "13px", padding: "10px 18px" }}>
-              Contact Us <ArrowRight style={{ width: "12px", height: "12px" }} />
-            </a>
+            <h2 style={{ fontSize: "clamp(30px,3.8vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+              Got Questions? We've Got Answers!
+            </h2>
           </div>
           <div>
             {faqs.map(({ q, a }, i) => (
               <div key={i} className="lp-rise" style={{ borderBottom: `1px solid ${line}` }}>
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{ width: "100%", display: "flex", alignItems: "center", gap: "16px", padding: "20px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left", fontFamily: F }}>
-                  <span style={{ fontSize: "12px", fontWeight: 700, color: dim, minWidth: "22px" }}>{String(i+1).padStart(2,"0")}</span>
-                  <span style={{ flex: 1, fontSize: "15px", fontWeight: 500, color: ink, lineHeight: 1.4 }}>{q}</span>
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{ width: "100%", display: "flex", alignItems: "center", gap: "16px", padding: "24px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left", fontFamily: F }}>
+                  <span style={{ flex: 1, fontSize: "18px", fontWeight: 600, color: ink, lineHeight: 1.4 }}>{q}</span>
                   <div style={{ flexShrink: 0, width: "26px", height: "26px", border: `1px solid ${openFaq===i ? accent : line}`, display: "flex", alignItems: "center", justifyContent: "center", background: openFaq===i ? accent : "transparent", transition: "all 0.15s" }}>
                     {openFaq===i ? <Minus style={{ width: "11px", height: "11px", color: "#fff" }} /> : <Plus style={{ width: "11px", height: "11px", color: muted }} />}
                   </div>
                 </button>
-                {openFaq===i && <div style={{ paddingLeft: "38px", paddingBottom: "18px", fontSize: "14px", color: muted, lineHeight: 1.8 }}>{a}</div>}
+                {openFaq===i && <div style={{ paddingBottom: "22px", fontSize: "14px", color: muted, lineHeight: 1.8 }}>{a}</div>}
               </div>
             ))}
           </div>
