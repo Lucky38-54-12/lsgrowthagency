@@ -1051,7 +1051,7 @@ export default function Home() {
           <div style={{ position: "relative", maxWidth: "980px", textAlign: "center" as const }}>
             <ScrollRevealText
               as="h2"
-              text="You're here because the leads aren't turning into booked jobs."
+              text="You're here because you want booked jobs, not leads that go nowhere."
               style={{ fontSize: "clamp(34px,6.5vw,72px)", fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.02em" }}
               revealedColor={accent}
             />
