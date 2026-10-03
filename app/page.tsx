@@ -1308,11 +1308,22 @@ export default function Home() {
                 alignItems: "center",
               }}
             >
-              <div className="m-service-visual lp-rise d1" style={{ order: i % 2 === 0 ? 1 : 2, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div
+                className="m-service-visual lp-rise d1"
+                style={{
+                  order: i % 2 === 0 ? 1 : 2,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "40px",
+                  borderRadius: "20px",
+                  background: `linear-gradient(135deg, ${accentLight} 0%, ${accent} 55%, ${accentDark} 100%)`,
+                }}
+              >
                 <img
                   src={visual}
                   alt={tag}
-                  style={{ width: "100%", maxWidth: "440px", height: "auto", objectFit: "contain", filter: `drop-shadow(0 24px 56px ${accentColor}22)` }}
+                  style={{ width: "100%", maxWidth: "400px", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 44px rgba(0,30,60,0.3))" }}
                 />
               </div>
 
