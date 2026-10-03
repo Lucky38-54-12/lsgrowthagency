@@ -1318,9 +1318,14 @@ export default function Home() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  padding: "40px",
+                  aspectRatio: "1 / 1",
+                  width: "100%",
+                  maxWidth: "400px",
+                  padding: "28px",
                   borderRadius: "20px",
-                  background: `linear-gradient(135deg, ${accentLight} 0%, ${accent} 55%, ${accentDark} 100%)`,
+                  border: `2px solid ${accentColor}`,
+                  background: "transparent",
+                  overflow: "hidden",
                 }}
               >
                 <img
@@ -1328,12 +1333,10 @@ export default function Home() {
                   alt={tag}
                   style={{
                     width: "100%",
-                    maxWidth: "400px",
-                    height: "auto",
-                    objectFit: "contain",
+                    height: "100%",
+                    objectFit: tag === "Website Builds" ? "cover" : "contain",
                     borderRadius: tag === "Website Builds" ? "10px" : 0,
-                    border: tag === "Website Builds" ? "1px solid rgba(255,255,255,0.4)" : "none",
-                    filter: "drop-shadow(0 20px 44px rgba(0,30,60,0.3))",
+                    filter: tag === "Website Builds" ? "none" : "drop-shadow(0 20px 44px rgba(0,30,60,0.2))",
                   }}
                 />
               </div>
