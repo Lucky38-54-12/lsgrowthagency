@@ -1284,15 +1284,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SERVICES ── each row is its own section, scroll-reveal animated, no pinning ── */}
-      <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}` }}>
+      {/* ── SERVICES ── cards fold/stack over each other on scroll, same technique as the Process section, but contained (not full-viewport) ── */}
+      <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px", overflow: "clip" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {serviceSlides.map(({ num, tag, headlineStart, headlineHighlight, accentColor, visual, stat, quote, quoteHighlight, author, authorTitle, cta }, i) => (
           <div
             key={num}
-            className="m-service-row"
+            className="m-service-row lp-rise"
             style={{
-              borderBottom: i < serviceSlides.length - 1 ? `1px solid ${line}` : "none",
-              padding: "90px 40px",
+              position: "sticky" as const,
+              top: `${90 + i * 26}px`,
+              zIndex: i + 1,
+              marginBottom: i < serviceSlides.length - 1 ? "40px" : 0,
+              background: "#fff",
+              border: `1px solid ${line}`,
+              boxShadow: "0 24px 64px rgba(10,15,26,0.14)",
+              padding: "56px",
             }}
           >
             <div
@@ -1300,10 +1307,8 @@ export default function Home() {
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
-                gap: "64px",
+                gap: "56px",
                 alignItems: "center",
-                maxWidth: "1280px",
-                margin: "0 auto",
               }}
             >
               <div className="m-service-visual lp-rise d1" style={{ order: i % 2 === 0 ? 1 : 2, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -1345,6 +1350,7 @@ export default function Home() {
             </div>
           </div>
         ))}
+        </div>
       </section>
 
       {/* ── CALENDAR PROMISE ── hidden for now ── */}
