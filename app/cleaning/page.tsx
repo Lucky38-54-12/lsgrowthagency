@@ -761,7 +761,7 @@ export default function CleaningPage() {
         </video>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "rgba(0,0,0,0.4)" }} />
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "120px", pointerEvents: "none" as const, background: "linear-gradient(180deg, rgba(4,17,31,0.6) 0%, transparent 100%)" }} />
-        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "150px 40px 90px", width: "100%" }}>
+        <div className="m-hero-content" style={{ position: "relative", zIndex: 1, padding: "150px 40px 90px", width: "100%" }}>
           <div style={{ maxWidth: "700px" }}>
             <p className="hero-badge" style={{ fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.6)", marginBottom: "24px", letterSpacing: "0.01em" }}>
               For Cleaning Businesses · NZ &amp; AU
