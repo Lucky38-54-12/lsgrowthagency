@@ -607,7 +607,7 @@ export default function CleaningPage() {
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
           <div className="m-nav-links" style={{ display: "flex", alignItems: "center", gap: "28px" }}>
-            {[["Our Work","#work"],["Services","#services"],["How It Works","#how"]].map(([l,h]) => (
+            {[["Our Work","#work"],["How It Works","#how"]].map(([l,h]) => (
               <a key={h} href={h} className="nav-link" style={{ fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", whiteSpace: "nowrap" as const }}>{l}</a>
             ))}
           </div>
@@ -641,7 +641,7 @@ export default function CleaningPage() {
               <button onClick={() => setNavOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: muted, fontSize: "22px", lineHeight: 1, padding: "4px" }}>×</button>
             </div>
             <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>
-              {[["Our Work","#work"],["Services","#services"],["How It Works","#how"]].map(([l,h]) => (
+              {[["Our Work","#work"],["How It Works","#how"]].map(([l,h]) => (
                 <a key={h} href={h} onClick={() => setNavOpen(false)} style={{ display: "block", width: "100%", padding: "13px", background: "#f8fafc", border: `1px solid ${line}`, fontSize: "14px", fontWeight: 500, color: ink, textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>{l}</a>
               ))}
               <button onClick={() => { setNavOpen(false); setFormOpen(true); }} style={{ display: "block", width: "100%", padding: "13px", background: accent, color: "#fff", border: "none", fontSize: "14px", fontWeight: 700, cursor: "pointer", fontFamily: F, textAlign: "center" as const, boxSizing: "border-box" as const }}>Let's Talk</button>
@@ -1027,7 +1027,8 @@ export default function CleaningPage() {
         </div>
       </section>
 
-      {/* ── SERVICES ── */}
+      {/* ── SERVICES ── hidden for now ── */}
+      {false && (
       <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px", overflow: "clip" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <div style={{ textAlign: "center" as const, maxWidth: "720px", margin: "0 auto 56px" }}>
@@ -1089,6 +1090,7 @@ export default function CleaningPage() {
         ))}
         </div>
       </section>
+      )}
 
       {/* ── COMPARISON ── */}
       <section style={{ background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
@@ -1325,7 +1327,7 @@ export default function CleaningPage() {
           <div className="m-footer-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "32px", padding: "40px 0" }}>
             <div>
               <p style={{ fontSize: "12px", fontWeight: 700, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "20px" }}>Navigation</p>
-              {[["Home","/"],["Our Work","#work"],["Services","#services"],["How It Works","#how"],["Book a Call","/book"]].map(([l,h]) => (
+              {[["Home","/"],["Our Work","#work"],["How It Works","#how"],["Book a Call","/book"]].map(([l,h]) => (
                 <a key={l} href={h} className="footer-link" style={{ display: "block", fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none", marginBottom: "12px" }}>{l}</a>
               ))}
             </div>
