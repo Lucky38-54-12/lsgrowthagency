@@ -886,7 +886,8 @@ export default function Home() {
           .m-build-grid { grid-template-columns: 1fr !important; }
           .m-how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-service-row { padding: 56px 20px !important; }
-          .m-service-statrow { grid-template-columns: 1fr !important; }
+          .m-service-quotes { flex-direction: column !important; }
+          .m-service-quotes > div { max-width: 100% !important; margin-left: 0 !important; text-align: left !important; }
           .m-service-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-service-row .m-service-visual, .m-service-row .m-service-copy { order: unset !important; }
           .m-how-sticky { position: static !important; top: auto !important; }
@@ -1380,39 +1381,29 @@ export default function Home() {
                   {headlineStart}<em style={{ fontStyle: "italic", fontWeight: 700, color: accentColor }}>{headlineHighlight}</em>
                 </h2>
 
-                <div
-                  className="lp-rise d2 m-service-statrow"
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: stat ? "auto 1fr" : "1fr",
-                    gap: "20px",
-                    alignItems: "start",
-                    marginBottom: "14px",
-                    maxWidth: "440px",
-                  }}
-                >
-                  {stat && (
-                    <div style={{ paddingTop: "4px" }}>
-                      <div style={{ fontSize: "clamp(30px,3.6vw,44px)", fontWeight: 900, color: accentColor, letterSpacing: "-0.03em", lineHeight: 1, whiteSpace: "nowrap" as const }}><CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} format color={accentColor} /></div>
-                      <div style={{ fontSize: "12px", color: muted, marginTop: "6px", maxWidth: "140px", lineHeight: 1.4 }}>{stat.label}</div>
-                    </div>
-                  )}
+                {stat && (
+                  <div className="lp-rise d2" style={{ marginBottom: "14px" }}>
+                    <div style={{ fontSize: "clamp(30px,3.6vw,44px)", fontWeight: 900, color: accentColor, letterSpacing: "-0.03em", lineHeight: 1 }}><CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} format color={accentColor} /></div>
+                    <div style={{ fontSize: "12px", color: muted, marginTop: "6px", maxWidth: "320px", lineHeight: 1.4 }}>{stat.label}</div>
+                  </div>
+                )}
 
-                  <div style={{ background: "#f8fafc", border: `1px solid ${line}`, padding: "18px 20px" }}>
+                <div className="lp-rise d3 m-service-quotes" style={{ display: "flex", justifyContent: "space-between", gap: "28px", flexWrap: "wrap" as const, marginBottom: "28px" }}>
+                  <div style={{ maxWidth: "230px" }}>
                     <div style={{ color: dim, fontSize: "11px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
                     <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
                       "<QuoteText quote={quotes[0].quote} highlight={quotes[0].quoteHighlight} />"
                     </p>
                     <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{quotes[0].author} — {quotes[0].authorTitle}</p>
                   </div>
-                </div>
 
-                <div className="lp-rise d3 m-service-quote2" style={{ background: "#f8fafc", border: `1px solid ${line}`, padding: "16px 20px", marginLeft: stat ? "0" : "0", maxWidth: "340px", marginBottom: "28px" }}>
-                  <div style={{ color: dim, fontSize: "11px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
-                  <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
-                    "<QuoteText quote={quotes[1].quote} highlight={quotes[1].quoteHighlight} />"
-                  </p>
-                  <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{quotes[1].author} — {quotes[1].authorTitle}</p>
+                  <div style={{ maxWidth: "230px", marginLeft: "auto", textAlign: "right" as const }}>
+                    <div style={{ color: dim, fontSize: "11px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
+                    <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
+                      "<QuoteText quote={quotes[1].quote} highlight={quotes[1].quoteHighlight} />"
+                    </p>
+                    <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{quotes[1].author} — {quotes[1].authorTitle}</p>
+                  </div>
                 </div>
 
                 <a href="#how" className="lp-rise d4 btn" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "13px", fontWeight: 700, color: accentColor, background: "transparent", border: `1px solid ${accentColor}`, padding: "12px 22px" }}>
