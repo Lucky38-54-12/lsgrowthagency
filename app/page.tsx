@@ -552,7 +552,7 @@ const serviceSlides = [
     headlineStart: "We build websites that ",
     headlineHighlight: "turn visitors into booked jobs",
     accentColor: accentDark,
-    visual: "/img-website.avif",
+    visual: "/jv-roofing-website.png",
     stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
     quote: null as string | null,
     quoteHighlight: null as string | null,
@@ -1326,7 +1326,15 @@ export default function Home() {
                 <img
                   src={visual}
                   alt={tag}
-                  style={{ width: "100%", maxWidth: "400px", height: "auto", objectFit: "contain", filter: "drop-shadow(0 20px 44px rgba(0,30,60,0.3))" }}
+                  style={{
+                    width: "100%",
+                    maxWidth: "400px",
+                    height: "auto",
+                    objectFit: "contain",
+                    borderRadius: tag === "Website Builds" ? "10px" : 0,
+                    border: tag === "Website Builds" ? "1px solid rgba(255,255,255,0.4)" : "none",
+                    filter: "drop-shadow(0 20px 44px rgba(0,30,60,0.3))",
+                  }}
                 />
               </div>
 
