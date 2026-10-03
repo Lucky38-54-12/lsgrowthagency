@@ -539,7 +539,7 @@ const serviceSlides = [
     headlineHighlight: "keep your calendar full",
     accentColor: accent,
     visual: "/results-mockup.png",
-    stat: { big: "$100,000+", label: "In renovation enquiries booked for one client in their first month" },
+    stat: { value: 100000, prefix: "$", suffix: "+", label: "In renovation enquiries booked for one client in their first month" },
     quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
     quoteHighlight: "$100,000+",
     author: "Ray Lister",
@@ -553,7 +553,7 @@ const serviceSlides = [
     headlineHighlight: "turn visitors into booked jobs",
     accentColor: accentDark,
     visual: "/img-website.avif",
-    stat: null as { big: string; label: string } | null,
+    stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
     quote: null as string | null,
     quoteHighlight: null as string | null,
     author: null as string | null,
@@ -567,7 +567,7 @@ const serviceSlides = [
     headlineHighlight: "builds trust before they even call",
     accentColor: accentLight,
     visual: "/mockup-phone.avif",
-    stat: null as { big: string; label: string } | null,
+    stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
     quote: "We've really enjoyed working with the team. They helped us promote everything from heat pumps and electrical gates through to solar, and made it easy to get our services in front of the right customers. They understand the trade industry and have been great to work with. We'd definitely recommend them.",
     quoteHighlight: null as string | null,
     author: "Todd Lamont",
@@ -855,7 +855,7 @@ export default function Home() {
           .m-calendar-stats > div:last-child { border-bottom: none !important; }
           .m-build-grid { grid-template-columns: 1fr !important; }
           .m-how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .m-service-row { padding: 56px 20px !important; min-height: auto !important; }
+          .m-service-row { padding: 56px 20px !important; }
           .m-service-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-service-row .m-service-visual, .m-service-row .m-service-copy { order: unset !important; }
           .m-how-sticky { position: static !important; top: auto !important; }
@@ -1284,21 +1284,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SERVICES ── each panel pins at the top and the next one scrolls up to cover it ── */}
-      <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}`, position: "relative" }}>
+      {/* ── SERVICES ── each row is its own section, scroll-reveal animated, no pinning ── */}
+      <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}` }}>
         {serviceSlides.map(({ num, tag, headlineStart, headlineHighlight, accentColor, visual, stat, quote, quoteHighlight, author, authorTitle, cta }, i) => (
           <div
             key={num}
             className="m-service-row"
             style={{
-              position: "sticky" as const,
-              top: 0,
-              zIndex: i + 1,
-              minHeight: "100vh",
-              background: "#fff",
-              boxShadow: i > 0 ? "0 -40px 90px rgba(10,15,26,0.16)" : "none",
-              display: "flex",
-              alignItems: "center",
+              borderBottom: i < serviceSlides.length - 1 ? `1px solid ${line}` : "none",
               padding: "90px 40px",
             }}
           >
@@ -1311,10 +1304,9 @@ export default function Home() {
                 alignItems: "center",
                 maxWidth: "1280px",
                 margin: "0 auto",
-                width: "100%",
               }}
             >
-              <div className="m-service-visual" style={{ order: i % 2 === 0 ? 1 : 2, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div className="m-service-visual lp-rise d1" style={{ order: i % 2 === 0 ? 1 : 2, display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <img
                   src={visual}
                   alt={tag}
@@ -1323,22 +1315,22 @@ export default function Home() {
               </div>
 
               <div className="m-service-copy" style={{ order: i % 2 === 0 ? 2 : 1 }}>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 700, color: accentColor, letterSpacing: "0.04em", marginBottom: "20px" }}>
-                  {num} <span style={{ width: "24px", height: "1px", background: accentColor, display: "inline-block" }} /> {tag.toUpperCase()}
+                <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 700, color: accentColor, letterSpacing: "0.04em", marginBottom: "20px" }}>
+                  <span style={{ width: "24px", height: "1px", background: accentColor, display: "inline-block" }} /> {tag.toUpperCase()}
                 </span>
-                <h2 style={{ fontSize: "clamp(28px,3.6vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "20px" }}>
+                <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,3.6vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "20px" }}>
                   {headlineStart}<em style={{ fontStyle: "italic", fontWeight: 700, color: accentColor }}>{headlineHighlight}</em>
                 </h2>
 
                 {stat && (
-                  <div style={{ marginBottom: "24px" }}>
-                    <div style={{ fontSize: "clamp(34px,4.2vw,52px)", fontWeight: 900, color: accentColor, letterSpacing: "-0.03em", lineHeight: 1 }}>{stat.big}</div>
+                  <div className="lp-rise d2" style={{ marginBottom: "24px" }}>
+                    <div style={{ fontSize: "clamp(34px,4.2vw,52px)", fontWeight: 900, color: accentColor, letterSpacing: "-0.03em", lineHeight: 1 }}><CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} format color={accentColor} /></div>
                     <div style={{ fontSize: "13px", color: muted, marginTop: "6px", maxWidth: "320px" }}>{stat.label}</div>
                   </div>
                 )}
 
                 {quote && (
-                  <div style={{ background: "#f8fafc", border: `1px solid ${line}`, padding: "20px 22px", marginBottom: "28px", maxWidth: "420px" }}>
+                  <div className="lp-rise d3" style={{ background: "#f8fafc", border: `1px solid ${line}`, padding: "20px 22px", marginBottom: "28px", maxWidth: "420px" }}>
                     <p style={{ fontSize: "14px", color: ink, lineHeight: 1.6, marginBottom: "12px" }}>
                       "<QuoteText quote={quote} highlight={quoteHighlight} />"
                     </p>
@@ -1346,7 +1338,7 @@ export default function Home() {
                   </div>
                 )}
 
-                <a href="#how" className="btn" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "13px", fontWeight: 700, color: accentColor, background: "transparent", border: `1px solid ${accentColor}`, padding: "12px 22px" }}>
+                <a href="#how" className="lp-rise d4 btn" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "13px", fontWeight: 700, color: accentColor, background: "transparent", border: `1px solid ${accentColor}`, padding: "12px 22px" }}>
                   {cta} <ArrowRight style={{ width: "13px", height: "13px" }} />
                 </a>
               </div>
