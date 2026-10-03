@@ -540,10 +540,20 @@ const serviceSlides = [
     accentColor: accent,
     visual: "/results-mockup.png",
     stat: { value: 100000, prefix: "$", suffix: "+", label: "In renovation enquiries booked for one client in their first month" },
-    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
-    quoteHighlight: "$100,000+",
-    author: "Ray Lister",
-    authorTitle: "Build It All, Wellington",
+    quotes: [
+      {
+        quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
+        quoteHighlight: "$100,000+",
+        author: "Ray Lister",
+        authorTitle: "Build It All, Wellington",
+      },
+      {
+        quote: "We were looking to generate more solar jobs in Christchurch, and the campaign has delivered. We've been consistently booking solar opportunities over the last two months and the quality of the enquiries has been great.",
+        quoteHighlight: null as string | null,
+        author: "Scott Paterson",
+        authorTitle: "SSP Electrical, Christchurch",
+      },
+    ],
     cta: "See Our Ads Process",
   },
   {
@@ -554,10 +564,20 @@ const serviceSlides = [
     accentColor: accentDark,
     visual: "/jv-roofing-website.png",
     stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
-    quote: null as string | null,
-    quoteHighlight: null as string | null,
-    author: null as string | null,
-    authorTitle: null as string | null,
+    quotes: [
+      {
+        quote: "We used to rely on randomly boosted posts without much of a strategy behind them. Working with the team has completely changed that. We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries.",
+        quoteHighlight: null as string | null,
+        author: "Kris",
+        authorTitle: "Katies Elite Cleaning, Tauranga",
+      },
+      {
+        quote: "He took the time to understand the type of work we wanted more of and helped us get in front of the right people. He actually helped us turn that into booked jobs, not just a bunch of enquiries.",
+        quoteHighlight: null as string | null,
+        author: "Canterbury Coat",
+        authorTitle: "Painting, Canterbury",
+      },
+    ],
     cta: "See Our Web Process",
   },
   {
@@ -568,10 +588,20 @@ const serviceSlides = [
     accentColor: accentLight,
     visual: "/mockup-phone.avif",
     stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
-    quote: "We've really enjoyed working with the team. They helped us promote everything from heat pumps and electrical gates through to solar, and made it easy to get our services in front of the right customers. They understand the trade industry and have been great to work with. We'd definitely recommend them.",
-    quoteHighlight: null as string | null,
-    author: "Todd Lamont",
-    authorTitle: "Perl Electrical, Christchurch",
+    quotes: [
+      {
+        quote: "We've really enjoyed working with the team. They helped us promote everything from heat pumps and electrical gates through to solar, and made it easy to get our services in front of the right customers.",
+        quoteHighlight: null as string | null,
+        author: "Todd Lamont",
+        authorTitle: "Perl Electrical, Christchurch",
+      },
+      {
+        quote: "LS Growth has helped us get a much steadier flow of residential cleaning work in Christchurch while also helping us break into the commercial cleaning market. Great communication, real results.",
+        quoteHighlight: null as string | null,
+        author: "Spotless Cleaning Services",
+        authorTitle: "Cleaning Services, Christchurch",
+      },
+    ],
     cta: "See Our Content Process",
   },
 ];
@@ -1287,7 +1317,7 @@ export default function Home() {
       {/* ── SERVICES ── cards fold/stack over each other on scroll, same technique as the Process section, but contained (not full-viewport) ── */}
       <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px", overflow: "clip" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-        {serviceSlides.map(({ num, tag, headlineStart, headlineHighlight, accentColor, visual, stat, quote, quoteHighlight, author, authorTitle, cta }, i) => (
+        {serviceSlides.map(({ num, tag, headlineStart, headlineHighlight, accentColor, visual, stat, quotes, cta }, i) => (
           <div
             key={num}
             className="m-service-row lp-rise"
@@ -1356,14 +1386,25 @@ export default function Home() {
                   </div>
                 )}
 
-                {quote && (
-                  <div className="lp-rise d3" style={{ background: "#f8fafc", border: `1px solid ${line}`, padding: "20px 22px", marginBottom: "28px", maxWidth: "420px" }}>
-                    <p style={{ fontSize: "14px", color: ink, lineHeight: 1.6, marginBottom: "12px" }}>
-                      "<QuoteText quote={quote} highlight={quoteHighlight} />"
-                    </p>
-                    <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{author} — {authorTitle}</p>
-                  </div>
-                )}
+                <div className="lp-rise d3" style={{ display: "flex", flexDirection: "column" as const, gap: "12px", marginBottom: "28px", maxWidth: "420px" }}>
+                  {quotes.map(({ quote, quoteHighlight, author, authorTitle }, qi) => (
+                    <div
+                      key={author}
+                      style={{
+                        background: "#f8fafc",
+                        border: `1px solid ${line}`,
+                        padding: qi === 0 ? "20px 22px" : "16px 20px",
+                        opacity: qi === 0 ? 1 : 0.8,
+                      }}
+                    >
+                      <div style={{ color: "#f5a623", fontSize: "12px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
+                      <p style={{ fontSize: qi === 0 ? "14px" : "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
+                        "<QuoteText quote={quote} highlight={quoteHighlight} />"
+                      </p>
+                      <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{author} — {authorTitle}</p>
+                    </div>
+                  ))}
+                </div>
 
                 <a href="#how" className="lp-rise d4 btn" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "13px", fontWeight: 700, color: accentColor, background: "transparent", border: `1px solid ${accentColor}`, padding: "12px 22px" }}>
                   {cta} <ArrowRight style={{ width: "13px", height: "13px" }} />
