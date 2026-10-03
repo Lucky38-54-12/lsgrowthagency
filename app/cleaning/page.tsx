@@ -223,7 +223,7 @@ const caseStudyShowcase = [
     company: "Queenstown Cleaning",
     headline: "How We Helped Queenstown Cleaning Turn 57 Leads Into 30 Booked Jobs",
     logo: "/logos/queenstown-cleaning.png",
-    photo: "/queenstown-ads.png",
+    photo: "/queenstown-cleaning-team.jpg",
     quote: "Lucky has been great to work with. He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results and would definitely recommend LS Growth.",
     quoteHighlight: "30 booked jobs",
     author: "Queenstown Cleaning",
