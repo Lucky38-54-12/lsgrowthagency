@@ -205,6 +205,12 @@ const testimonials = [
     company: "Katies Elite Cleaning, Tauranga",
     color: "#b45309",
   },
+  {
+    quote: "Before working with Lucky, almost all of our work came from word of mouth. Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
+    author: "Linda",
+    company: "Shines Clean",
+    color: "#15803d",
+  },
 ];
 
 /* ── Case study carousel data (cleaning businesses only) ── */
@@ -238,6 +244,16 @@ const caseStudyShowcase = [
     quoteHighlight: null as string | null,
     author: "Spotless Cleaning Services",
     authorTitle: "Cleaning Services, Christchurch",
+  },
+  {
+    company: "Shines Clean",
+    headline: "How We Helped Shines Clean Start Generating Leads Online",
+    logo: null as string | null,
+    photo: "/shines-clean-linda.jpg",
+    quote: "Before working with Lucky, almost all of our work came from word of mouth. Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
+    quoteHighlight: null as string | null,
+    author: "Linda",
+    authorTitle: "Shines Clean",
   },
 ];
 
