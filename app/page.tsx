@@ -1350,14 +1350,8 @@ export default function Home() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  aspectRatio: "1 / 1",
                   width: "100%",
                   maxWidth: "400px",
-                  padding: "28px",
-                  borderRadius: "20px",
-                  border: `2px solid ${accentColor}`,
-                  background: "transparent",
-                  overflow: "hidden",
                 }}
               >
                 <img
@@ -1365,8 +1359,8 @@ export default function Home() {
                   alt={tag}
                   style={{
                     width: "100%",
-                    height: "100%",
-                    objectFit: tag === "Website Builds" ? "cover" : "contain",
+                    height: "auto",
+                    objectFit: "contain",
                     borderRadius: tag === "Website Builds" ? "10px" : 0,
                     filter: tag === "Website Builds" ? "none" : "drop-shadow(0 20px 44px rgba(0,30,60,0.2))",
                   }}
