@@ -1296,10 +1296,7 @@ export default function Home() {
               top: `${90 + i * 26}px`,
               zIndex: i + 1,
               marginBottom: i < serviceSlides.length - 1 ? "40px" : 0,
-              background: "#fff",
-              border: `1px solid ${line}`,
-              boxShadow: "0 24px 64px rgba(10,15,26,0.14)",
-              padding: "56px",
+              padding: "56px 0",
             }}
           >
             <div
