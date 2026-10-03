@@ -530,6 +530,52 @@ const caseStudyShowcase = [
   },
 ];
 
+/* ── Service breakdown data (used by the "Services" section) ── */
+const serviceSlides = [
+  {
+    num: "01",
+    tag: "Meta Ads",
+    headlineStart: "We run ads that ",
+    headlineHighlight: "keep your calendar full",
+    accentColor: accent,
+    visual: "/results-mockup.png",
+    stat: { big: "$100,000+", label: "In renovation enquiries booked for one client in their first month" },
+    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
+    quoteHighlight: "$100,000+",
+    author: "Ray Lister",
+    authorTitle: "Build It All, Wellington",
+    cta: "See Our Ads Process",
+  },
+  {
+    num: "02",
+    tag: "Website Builds",
+    headlineStart: "We build websites that ",
+    headlineHighlight: "turn visitors into booked jobs",
+    accentColor: accentDark,
+    visual: "/img-website.avif",
+    stat: null as { big: string; label: string } | null,
+    quote: null as string | null,
+    quoteHighlight: null as string | null,
+    author: null as string | null,
+    authorTitle: null as string | null,
+    cta: "See Our Web Process",
+  },
+  {
+    num: "03",
+    tag: "Organic Content",
+    headlineStart: "We create content that ",
+    headlineHighlight: "builds trust before they even call",
+    accentColor: accentLight,
+    visual: "/mockup-phone.avif",
+    stat: null as { big: string; label: string } | null,
+    quote: "We've really enjoyed working with the team. They helped us promote everything from heat pumps and electrical gates through to solar, and made it easy to get our services in front of the right customers. They understand the trade industry and have been great to work with. We'd definitely recommend them.",
+    quoteHighlight: null as string | null,
+    author: "Todd Lamont",
+    authorTitle: "Perl Electrical, Christchurch",
+    cta: "See Our Content Process",
+  },
+];
+
 function QuoteText({ quote, highlight }: { quote: string; highlight?: string | null }) {
   if (!highlight) return <>{quote}</>;
   const idx = quote.indexOf(highlight);
@@ -809,6 +855,8 @@ export default function Home() {
           .m-calendar-stats > div:last-child { border-bottom: none !important; }
           .m-build-grid { grid-template-columns: 1fr !important; }
           .m-how-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .m-service-row { grid-template-columns: 1fr !important; gap: 32px !important; padding: 56px 20px !important; }
+          .m-service-row .m-service-visual, .m-service-row .m-service-copy { order: unset !important; }
           .m-how-sticky { position: static !important; top: auto !important; }
           .how-step-card { padding: 24px 20px !important; box-shadow: 0 12px 32px rgba(10,15,26,0.14) !important; }
           .m-build-inner { min-height: 44vh !important; padding: 64px 20px !important; }
@@ -1235,6 +1283,62 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SERVICES ── */}
+      <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}` }}>
+        {serviceSlides.map(({ num, tag, headlineStart, headlineHighlight, accentColor, visual, stat, quote, quoteHighlight, author, authorTitle, cta }, i) => (
+          <div
+            key={num}
+            className="m-service-row"
+            style={{
+              borderBottom: i < serviceSlides.length - 1 ? `1px solid ${line}` : "none",
+              padding: "90px 40px",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "64px",
+              alignItems: "center",
+              maxWidth: "1280px",
+              margin: "0 auto",
+            }}
+          >
+            <div className="m-service-visual" style={{ order: i % 2 === 0 ? 1 : 2, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <img
+                src={visual}
+                alt={tag}
+                style={{ width: "100%", maxWidth: "440px", height: "auto", objectFit: "contain", filter: `drop-shadow(0 24px 56px ${accentColor}22)` }}
+              />
+            </div>
+
+            <div className="m-service-copy" style={{ order: i % 2 === 0 ? 2 : 1 }}>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 700, color: accentColor, letterSpacing: "0.04em", marginBottom: "20px" }}>
+                {num} <span style={{ width: "24px", height: "1px", background: accentColor, display: "inline-block" }} /> {tag.toUpperCase()}
+              </span>
+              <h2 style={{ fontSize: "clamp(28px,3.6vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "20px" }}>
+                {headlineStart}<em style={{ fontStyle: "italic", fontWeight: 700, color: accentColor }}>{headlineHighlight}</em>
+              </h2>
+
+              {stat && (
+                <div style={{ marginBottom: "24px" }}>
+                  <div style={{ fontSize: "clamp(34px,4.2vw,52px)", fontWeight: 900, color: accentColor, letterSpacing: "-0.03em", lineHeight: 1 }}>{stat.big}</div>
+                  <div style={{ fontSize: "13px", color: muted, marginTop: "6px", maxWidth: "320px" }}>{stat.label}</div>
+                </div>
+              )}
+
+              {quote && (
+                <div style={{ background: "#f8fafc", border: `1px solid ${line}`, padding: "20px 22px", marginBottom: "28px", maxWidth: "420px" }}>
+                  <p style={{ fontSize: "14px", color: ink, lineHeight: 1.6, marginBottom: "12px" }}>
+                    "<QuoteText quote={quote} highlight={quoteHighlight} />"
+                  </p>
+                  <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{author} — {authorTitle}</p>
+                </div>
+              )}
+
+              <a href="#how" className="btn" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "13px", fontWeight: 700, color: accentColor, background: "transparent", border: `1px solid ${accentColor}`, padding: "12px 22px" }}>
+                {cta} <ArrowRight style={{ width: "13px", height: "13px" }} />
+              </a>
+            </div>
+          </div>
+        ))}
+      </section>
 
       {/* ── CALENDAR PROMISE ── hidden for now ── */}
       {false && (
