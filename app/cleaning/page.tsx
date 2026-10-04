@@ -915,7 +915,7 @@ export default function CleaningPage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr", justifyItems: "start", textAlign: "left" as const }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr" }}>
             <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Straight From The Source</div>
             <h3 className="lp-rise d1" style={{ fontSize: "clamp(22px,3vw,32px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "28px", maxWidth: "520px" }}>
               Hear it from our client yourself.
@@ -926,7 +926,7 @@ export default function CleaningPage() {
               playsInline
               preload="metadata"
               poster="/testimonials/aman-case-study-poster.jpg"
-              style={{ width: "100%", maxWidth: "340px", aspectRatio: "9/16", borderRadius: "16px", background: "#000", boxShadow: "0 24px 64px rgba(10,15,26,0.18)" }}
+              style={{ width: "100%", maxWidth: "340px", aspectRatio: "9/16", borderRadius: "16px", background: "#000", boxShadow: "0 24px 64px rgba(10,15,26,0.18)", margin: "0 auto", display: "block" }}
             >
               <source src="/testimonials/aman-case-study.mp4" type="video/mp4" />
             </video>
