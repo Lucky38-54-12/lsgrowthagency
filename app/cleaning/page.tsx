@@ -188,18 +188,6 @@ const steps = [
 /* ── Testimonials (cleaning businesses only) ── */
 const testimonials = [
   {
-    quote: "Lucky has been great to work with. He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results and would definitely recommend LS Growth.",
-    author: "Queenstown Cleaning",
-    company: "Cleaning Services, Queenstown",
-    color: "#2563eb",
-  },
-  {
-    quote: "LS Growth has helped us get a much steadier flow of residential cleaning work in Christchurch while also helping us break into the commercial cleaning market. Great communication, real results, and they genuinely care about growing your business. Highly recommend Lucky.",
-    author: "Spotless Cleaning Services",
-    company: "Cleaning Services, Christchurch",
-    color: "#0e7490",
-  },
-  {
     quote: "We used to rely on randomly boosted posts without much of a strategy behind them. Working with the team has completely changed that. We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries. The business is doing really well, and working with them has been great.",
     author: "Kris",
     company: "Katies Elite Cleaning, Tauranga",
@@ -208,8 +196,14 @@ const testimonials = [
   {
     quote: "Before working with Lucky, almost all of our work came from word of mouth. Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
     author: "Linda",
-    company: "Shines Clean",
+    company: "Shines Clean, Hamilton",
     color: "#15803d",
+  },
+  {
+    quote: "Lucky has been great to work with. He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results and would definitely recommend LS Growth.",
+    author: "Queenstown Cleaning",
+    company: "Cleaning Services, Queenstown",
+    color: "#2563eb",
   },
 ];
 
@@ -226,6 +220,16 @@ const caseStudyShowcase = [
     authorTitle: "Katies Elite Cleaning, Tauranga",
   },
   {
+    company: "Shines Clean",
+    headline: "How We Helped Shines Clean Start Generating Leads Online",
+    logo: "/logos/shines-clean.png",
+    photo: "/shines-clean-linda.jpg",
+    quote: "Before working with Lucky, almost all of our work came from word of mouth. Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
+    quoteHighlight: null as string | null,
+    author: "Linda",
+    authorTitle: "Shines Clean, Hamilton",
+  },
+  {
     company: "Queenstown Cleaning",
     headline: "How We Helped Queenstown Cleaning Turn 57 Leads Into 30 Booked Jobs",
     logo: "/logos/queenstown-cleaning.png",
@@ -234,26 +238,6 @@ const caseStudyShowcase = [
     quoteHighlight: "30 booked jobs",
     author: "Queenstown Cleaning",
     authorTitle: "Cleaning Services, Queenstown",
-  },
-  {
-    company: "Spotless Cleaning Services",
-    headline: "How We Helped Spotless Cleaning Services Break Into Commercial Cleaning",
-    logo: null as string | null,
-    photo: null as string | null,
-    quote: "LS Growth has helped us get a much steadier flow of residential cleaning work in Christchurch while also helping us break into the commercial cleaning market. Great communication, real results, and they genuinely care about growing your business. Highly recommend Lucky.",
-    quoteHighlight: null as string | null,
-    author: "Spotless Cleaning Services",
-    authorTitle: "Cleaning Services, Christchurch",
-  },
-  {
-    company: "Shines Clean",
-    headline: "How We Helped Shines Clean Start Generating Leads Online",
-    logo: null as string | null,
-    photo: "/shines-clean-linda.jpg",
-    quote: "Before working with Lucky, almost all of our work came from word of mouth. Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
-    quoteHighlight: null as string | null,
-    author: "Linda",
-    authorTitle: "Shines Clean",
   },
 ];
 
@@ -293,10 +277,10 @@ const serviceSlides = [
     stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
     quotes: [
       {
-        quote: "LS Growth has helped us get a much steadier flow of residential cleaning work in Christchurch while also helping us break into the commercial cleaning market. Great communication, real results.",
+        quote: "Before working with Lucky, almost all of our work came from word of mouth. Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
         quoteHighlight: null as string | null,
-        author: "Spotless Cleaning Services",
-        authorTitle: "Cleaning Services, Christchurch",
+        author: "Linda",
+        authorTitle: "Shines Clean, Hamilton",
       },
       {
         quote: "We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries. The business is doing really well.",
@@ -323,10 +307,10 @@ const serviceSlides = [
         authorTitle: "Cleaning Services, Queenstown",
       },
       {
-        quote: "Great communication, real results, and they genuinely care about growing your business. Highly recommend Lucky.",
+        quote: "Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
         quoteHighlight: null as string | null,
-        author: "Spotless Cleaning Services",
-        authorTitle: "Cleaning Services, Christchurch",
+        author: "Linda",
+        authorTitle: "Shines Clean, Hamilton",
       },
     ],
     cta: "See Our Content Process",
@@ -896,7 +880,7 @@ export default function CleaningPage() {
                   Here's what changes
                 </h2>
                 <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
-                  The exact system we run for Queenstown Cleaning, Katies Elite Cleaning and Spotless Cleaning Services.
+                  The exact system we run for Queenstown Cleaning, Katies Elite Cleaning and Shines Clean.
                 </p>
               </div>
             </div>
