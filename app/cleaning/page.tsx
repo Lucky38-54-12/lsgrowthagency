@@ -531,14 +531,10 @@ export default function CleaningPage() {
         .cmp-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 13px; line-height: 1.45; }
         .cmp-card { border-radius: 16px; transition: transform 0.2s ease; }
 
-        .trusted-mask {
-          position: relative; overflow: hidden;
-          -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-          mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+        @media (max-width: 640px) {
+          .trusted-row { justify-content: center !important; gap: 36px !important; }
+          .trusted-row > div { flex: 0 0 auto !important; width: 42% !important; height: 56px !important; }
         }
-        .trusted-track { display: flex; align-items: center; width: max-content; gap: 80px; animation: trusted-slide 30s linear infinite; }
-        .trusted-mask:hover .trusted-track { animation-play-state: paused; }
-        @keyframes trusted-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         .rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .rev-quote { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
@@ -1204,26 +1200,24 @@ export default function CleaningPage() {
       </section>
 
       {/* ── TRUSTED BY (cleaning logos only) ── */}
-      <section style={{ background: "transparent", padding: "70px 0", borderTop: `1px solid ${line}` }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto 40px", textAlign: "center" as const, padding: "0 40px" }}>
-          <h3 className="lp-rise" style={{ fontSize: "clamp(22px,2.6vw,30px)", fontWeight: 800, color: accent, letterSpacing: "-0.01em" }}>
-            Working with great cleaning businesses like yours
-          </h3>
-        </div>
-        <div className="trusted-mask lp-rise">
-          <div className="trusted-track">
-            {[...Array(2)].flatMap((_, dup) =>
-              [
-                { src: "/logos/queenstown-cleaning.png", alt: "Queenstown Cleaning" },
-                { src: "/logos/jims-cleaning.png", alt: "Jim's Cleaning" },
-                { src: "/logos/fantastic-services.png", alt: "Fantastic Services" },
-                { src: "/logos/katies-elite-cleaning.png", alt: "Katies Elite Cleaning" },
-              ].map(({ src, alt }) => (
-                <div key={`${dup}-${src}`} aria-hidden={dup === 1 || undefined} style={{ height: "64px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <img src={src} alt={dup === 0 ? alt : ""} style={{ height: "100%", width: "auto", maxWidth: "220px", objectFit: "contain", opacity: 0.6, filter: "grayscale(100%)", transition: "opacity 0.2s, filter 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "grayscale(0%)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.filter = "grayscale(100%)"; }} />
-                </div>
-              ))
-            )}
+      <section style={{ background: "transparent", padding: "70px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ maxWidth: "1300px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center" as const, marginBottom: "40px" }}>
+            <h3 className="lp-rise" style={{ fontSize: "clamp(22px,2.6vw,30px)", fontWeight: 800, color: accent, letterSpacing: "-0.01em" }}>
+              Working with great cleaning businesses like yours
+            </h3>
+          </div>
+          <div className="trusted-row lp-rise" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: "32px" }}>
+            {[
+              { src: "/logos/queenstown-cleaning.png", alt: "Queenstown Cleaning" },
+              { src: "/logos/jims-cleaning.png", alt: "Jim's Cleaning" },
+              { src: "/logos/fantastic-services.png", alt: "Fantastic Services" },
+              { src: "/logos/katies-elite-cleaning.png", alt: "Katies Elite Cleaning" },
+            ].map(({ src, alt }) => (
+              <div key={src} style={{ flex: "1 1 0", height: "80px", display: "flex", alignItems: "center", justifyContent: "center", minWidth: "140px" }}>
+                <img src={src} alt={alt} style={{ height: "100%", width: "auto", maxWidth: "100%", objectFit: "contain", opacity: 0.7, filter: "grayscale(100%)", transition: "opacity 0.2s, filter 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "grayscale(0%)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "0.7"; e.currentTarget.style.filter = "grayscale(100%)"; }} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
