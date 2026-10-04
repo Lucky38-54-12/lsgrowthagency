@@ -919,51 +919,7 @@ export default function CleaningPage() {
             </p>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column" as const, gap: "16px" }}>
-            <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr", gap: "16px" }}>
-              {[
-                { value: "52%", scheme: "dark", text: "Of the 57 leads generated last month turned into real, booked cleaning jobs.", label: "Lead To Job Conversion" },
-                { value: "$7–$11", scheme: "light", text: "What it costs to generate a single qualified cleaning lead through targeted ads.", label: "Cost Per Lead" },
-              ].map(({ value, scheme, text, label }) => {
-                const dark2 = scheme === "dark";
-                return (
-                  <div key={value} style={{ background: dark2 ? dark : "#f8fafc", border: dark2 ? "none" : `1px solid ${line}`, borderRadius: "0", padding: "40px 36px", minHeight: "220px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
-                    <div style={{ fontSize: "clamp(48px,6vw,80px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1, color: dark2 ? "#fff" : ink }}>{value}</div>
-                    <div>
-                      <p style={{ fontSize: "14px", fontWeight: 500, color: dark2 ? "rgba(255,255,255,0.7)" : muted, lineHeight: 1.6, marginBottom: "16px", maxWidth: "360px" }}>{text}</p>
-                      <div style={{ fontSize: "11px", fontWeight: 600, color: dark2 ? "rgba(255,255,255,0.4)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{label}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="m-bento-row" style={{ display: "grid", gridTemplateColumns: "0.85fr 1.3fr 0.85fr", gap: "16px" }}>
-              {[
-                { value: "30", scheme: "accent", text: "Booked, paying jobs from last month's campaign alone.", label: "Booked Jobs Last Month", hide: true },
-                { value: "57", scheme: "light", text: "New leads generated in 30 days, each one tracked from click to job.", label: "New Leads In 30 Days", hide: false },
-                { value: "3", scheme: "dark", text: "Cleaning businesses currently running this exact system with us.", label: "Businesses On This System", hide: true },
-              ].map(({ value, scheme, text, label, hide }) => {
-                const dark2 = scheme === "dark";
-                const acc = scheme === "accent";
-                const bg = acc ? accent : dark2 ? dark : "#f8fafc";
-                const fg = acc || dark2 ? "#fff" : ink;
-                const sub = acc ? "rgba(255,255,255,0.82)" : dark2 ? "rgba(255,255,255,0.7)" : muted;
-                const lbl = acc ? "rgba(255,255,255,0.6)" : dark2 ? "rgba(255,255,255,0.4)" : dim;
-                return (
-                  <div key={value} className={hide ? "m-bento-hide" : ""} style={{ background: bg, border: !acc && !dark2 ? `1px solid ${line}` : "none", borderRadius: "0", padding: "36px 32px", minHeight: "240px", display: "flex", flexDirection: "column" as const, justifyContent: "space-between" as const }}>
-                    <div style={{ fontSize: "clamp(40px,5vw,64px)", fontWeight: 900, letterSpacing: "-0.04em", lineHeight: 1, color: fg }}>{value}</div>
-                    <div>
-                      <p style={{ fontSize: "13px", fontWeight: 500, color: sub, lineHeight: 1.6, marginBottom: "14px" }}>{text}</p>
-                      <div style={{ fontSize: "11px", fontWeight: 600, color: lbl, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{label}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div style={{ marginTop: "64px", display: "grid", gridTemplateColumns: "1fr", justifyItems: "center", textAlign: "center" as const }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", justifyItems: "center", textAlign: "center" as const }}>
             <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Straight From The Source</div>
             <h3 className="lp-rise d1" style={{ fontSize: "clamp(22px,3vw,32px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "28px", maxWidth: "520px" }}>
               Hear it from our client yourself.
