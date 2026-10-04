@@ -919,7 +919,7 @@ export default function CleaningPage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr", justifyItems: "center", textAlign: "center" as const }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", justifyItems: "start", textAlign: "left" as const }}>
             <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Straight From The Source</div>
             <h3 className="lp-rise d1" style={{ fontSize: "clamp(22px,3vw,32px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "28px", maxWidth: "520px" }}>
               Hear it from our client yourself.
