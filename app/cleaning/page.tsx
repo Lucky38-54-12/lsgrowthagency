@@ -934,6 +934,55 @@ export default function CleaningPage() {
         </div>
       </section>
 
+      {/* ── TESTIMONIALS (cleaning businesses only) ── */}
+      <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto 48px" }}>
+          <h2 className="lp-rise" style={{ fontSize: "clamp(30px,4.2vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+            What cleaning businesses say<br />about working with us
+          </h2>
+        </div>
+
+        {(() => {
+          const pageSize = 2;
+          const pageCount = Math.ceil(testimonials.length / pageSize);
+          const page = ((reviewPage % pageCount) + pageCount) % pageCount;
+          const pageItems = testimonials.slice(page * pageSize, page * pageSize + pageSize);
+          return (
+            <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
+              <div key={page} className="rev-grid">
+                {pageItems.map(({ quote, author, company, color }) => (
+                  <div key={author} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "10px", padding: "28px 28px 24px", display: "flex", flexDirection: "column" as const }}>
+                    <div style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={accent}>
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="rev-quote" style={{ fontSize: "15px", color: ink, lineHeight: 1.6, marginBottom: "18px" }}>{quote}</p>
+                    <div style={{ marginTop: "auto" }}>
+                      <div style={{ fontSize: "13.5px", fontWeight: 700, color: ink }}>{author}</div>
+                      <div style={{ fontSize: "12.5px", color: muted }}>{company}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", marginTop: "32px" }}>
+                <div style={{ display: "flex", gap: "10px" }}>
+                  <button onClick={() => setReviewPage(p => p - 1)} aria-label="Previous reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    ←
+                  </button>
+                  <button onClick={() => setReviewPage(p => p + 1)} aria-label="Next reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    →
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+      </section>
+
       {/* ── HOW WE WORK (PROCESS) ── */}
       <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
@@ -1148,55 +1197,6 @@ export default function CleaningPage() {
             </a>
           </div>
         </div>
-      </section>
-
-      {/* ── TESTIMONIALS (cleaning businesses only) ── */}
-      <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto 48px" }}>
-          <h2 className="lp-rise" style={{ fontSize: "clamp(30px,4.2vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            What cleaning businesses say<br />about working with us
-          </h2>
-        </div>
-
-        {(() => {
-          const pageSize = 2;
-          const pageCount = Math.ceil(testimonials.length / pageSize);
-          const page = ((reviewPage % pageCount) + pageCount) % pageCount;
-          const pageItems = testimonials.slice(page * pageSize, page * pageSize + pageSize);
-          return (
-            <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
-              <div key={page} className="rev-grid">
-                {pageItems.map(({ quote, author, company, color }) => (
-                  <div key={author} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "10px", padding: "28px 28px 24px", display: "flex", flexDirection: "column" as const }}>
-                    <div style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={accent}>
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <p className="rev-quote" style={{ fontSize: "15px", color: ink, lineHeight: 1.6, marginBottom: "18px" }}>{quote}</p>
-                    <div style={{ marginTop: "auto" }}>
-                      <div style={{ fontSize: "13.5px", fontWeight: 700, color: ink }}>{author}</div>
-                      <div style={{ fontSize: "12.5px", color: muted }}>{company}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", marginTop: "32px" }}>
-                <div style={{ display: "flex", gap: "10px" }}>
-                  <button onClick={() => setReviewPage(p => p - 1)} aria-label="Previous reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    ←
-                  </button>
-                  <button onClick={() => setReviewPage(p => p + 1)} aria-label="Next reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    →
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })()}
       </section>
 
       {/* ── TRUSTED BY (cleaning logos only) ── */}
