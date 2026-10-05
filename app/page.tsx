@@ -737,7 +737,7 @@ export default function Home() {
     e.preventDefault();
     setFormState("sending");
     try {
-      const res = await fetch("https://formspree.io/f/xgvkwqob", {
+      const res = await fetch("https://formspree.io/f/mjygbnpw", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(formData),
