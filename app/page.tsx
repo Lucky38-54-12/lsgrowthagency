@@ -742,6 +742,9 @@ export default function Home() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(formData),
       });
+      if (res.ok) {
+        (window as any).fbq?.("track", "Lead");
+      }
       setFormState(res.ok ? "done" : "error");
     } catch { setFormState("error"); }
   };
@@ -757,6 +760,16 @@ export default function Home() {
     script.async = true;
     document.body.appendChild(script);
   }, [formOpen, contactTab]);
+
+  useEffect(() => {
+    const onMessage = (e: MessageEvent) => {
+      if (e.data?.event === "calendly.event_scheduled") {
+        (window as any).fbq?.("track", "Schedule");
+      }
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
