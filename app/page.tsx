@@ -489,6 +489,16 @@ const caseStudies = [
 /* ── Case study data ── */
 const caseStudyShowcase = [
   {
+    company: "Build It All",
+    headline: "How Build It All Booked $100,000+ in Renovation Work in Just One Month",
+    logo: "/logos/build-it-all.png",
+    photo: "/ray-build-it-all.png",
+    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
+    quoteHighlight: "$100,000+",
+    author: "Ray Lister",
+    authorTitle: "Build It All, Wellington",
+  },
+  {
     company: "Katies Elite Cleaning",
     headline: "How We Helped Katies Elite Cleaning Book Higher-End Jobs",
     logo: "/logos/katies-elite-cleaning.png",
@@ -517,16 +527,6 @@ const caseStudyShowcase = [
     quoteHighlight: null as string | null,
     author: "Todd Lamont",
     authorTitle: "Perl Electrical, Christchurch",
-  },
-  {
-    company: "Build It All",
-    headline: "How Build It All Booked $100,000+ in Renovation Work in Just One Month",
-    logo: "/logos/build-it-all.png",
-    photo: "/build-it-all-project.webp",
-    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
-    quoteHighlight: "$100,000+",
-    author: "Ray Lister",
-    authorTitle: "Build It All, Wellington",
   },
 ];
 
