@@ -492,7 +492,7 @@ const caseStudyShowcase = [
     company: "Build It All",
     headline: "How Build It All Booked $100,000+ in Renovation Work in Just One Month",
     logo: "/logos/build-it-all.png",
-    photo: "/ray-build-it-all.png",
+    photo: "/ray-build-it-all.jpg",
     quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
     quoteHighlight: "$100,000+",
     author: "Ray Lister",
