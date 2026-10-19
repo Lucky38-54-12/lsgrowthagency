@@ -1012,7 +1012,7 @@ export default function Home() {
 
             <div style={{ borderTop: `1px solid ${line}`, paddingTop: "24px", display: "flex", flexDirection: "column" as const, gap: "6px" }}>
               <a href="tel:02102820190" style={{ fontSize: "17px", fontWeight: 700, color: ink, textDecoration: "none" }}>021 028 20190</a>
-              <a href="mailto:lsgrowthagency.co@gmail.com" style={{ fontSize: "14px", color: muted, textDecoration: "none" }}>lsgrowthagency.co@gmail.com</a>
+              <a href="mailto:lucky@lsgrowth.agency" style={{ fontSize: "14px", color: muted, textDecoration: "none" }}>lucky@lsgrowth.agency</a>
             </div>
           </div>
         </div>
@@ -1834,7 +1834,7 @@ export default function Home() {
               <p style={{ fontSize: "12px", fontWeight: 700, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: "20px" }}>Contact</p>
               <div style={{ display: "flex", flexDirection: "column" as const, gap: "12px" }}>
                 <a href="tel:02102820190" style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>021 028 20190</a>
-                <a href="mailto:lsgrowthagency.co@gmail.com" style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>lsgrowthagency.co@gmail.com</a>
+                <a href="mailto:lucky@lsgrowth.agency" style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>lucky@lsgrowth.agency</a>
                 <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)" }}>New Zealand & Australia</span>
               </div>
             </div>
