@@ -47,14 +47,16 @@ export default function BuildingProofVideo() {
           </p>
         </div>
 
-        <div style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 32px rgba(0,0,0,0.06)" }}>
-          <video
-            controls
-            poster="/videos/build-it-all-proof-thumb.jpg"
-            style={{ width: "100%", display: "block" }}
-          >
-            <source src="/videos/build-it-all-proof.mp4" type="video/mp4" />
-          </video>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ width: "100%", maxWidth: "340px", background: "#fff", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", boxShadow: "0 4px 32px rgba(0,0,0,0.06)" }}>
+            <video
+              controls
+              poster="/videos/build-it-all-proof-thumb.jpg"
+              style={{ width: "100%", display: "block" }}
+            >
+              <source src="/videos/build-it-all-proof.mp4" type="video/mp4" />
+            </video>
+          </div>
         </div>
 
         <div style={{ textAlign: "center", marginTop: "40px" }}>
