@@ -239,6 +239,16 @@ const caseStudyShowcase = [
     author: "Queenstown Cleaning",
     authorTitle: "Cleaning Services, Queenstown",
   },
+  {
+    company: "iDo Cleaning",
+    headline: "How We Helped iDo Cleaning Close 20+ Jobs In Their First Month",
+    logo: "/logos/ido-cleaning.png",
+    photo: "/ido-cleaning-job.jpg",
+    quote: "iDo Cleaning came to us looking for more consistent work. In the first month running campaigns together, that turned into over 20 booked cleaning jobs.",
+    quoteHighlight: "over 20 booked cleaning jobs",
+    author: "iDo Cleaning",
+    authorTitle: "Cleaning Services, Christchurch",
+  },
 ];
 
 /* ── Services section data (cleaning businesses only) ── */
@@ -911,38 +921,6 @@ export default function CleaningPage() {
                 );
               })}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── CLIENT TRANSFORMATION: QUEENSTOWN CLEANING ── */}
-      <section style={{ padding: "0 40px 80px", borderTop: `1px solid ${line}`, paddingTop: "80px" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ marginBottom: "32px", maxWidth: "680px" }}>
-            <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Client Transformation</div>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "14px" }}>
-              How we helped transform Queenstown Cleaning from zero to 30 booked jobs.
-            </h2>
-            <p className="lp-rise d2" style={{ fontSize: "16px", color: muted, lineHeight: 1.7 }}>
-              Queenstown Cleaning had no online presence and relied on word of mouth. In one month, we built them a website, got targeted ads live, and turned that into 57 tracked leads and 30 real, booked jobs.
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "1fr" }}>
-            <div className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "14px" }}>Straight From The Source</div>
-            <h3 className="lp-rise d1" style={{ fontSize: "clamp(22px,3vw,32px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "28px", maxWidth: "520px" }}>
-              Hear it from our client yourself.
-            </h3>
-            <video
-              className="lp-rise d2"
-              controls
-              playsInline
-              preload="metadata"
-              poster="/testimonials/aman-case-study-poster.jpg"
-              style={{ width: "100%", maxWidth: "340px", aspectRatio: "9/16", borderRadius: "16px", background: "#000", boxShadow: "0 24px 64px rgba(10,15,26,0.18)", margin: "0 auto", display: "block" }}
-            >
-              <source src="/testimonials/aman-case-study.mp4" type="video/mp4" />
-            </video>
           </div>
         </div>
       </section>
