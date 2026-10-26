@@ -1020,8 +1020,7 @@ export default function CleaningPage() {
         </div>
       </section>
 
-      {/* ── SERVICES ── hidden for now ── */}
-      {false && (
+      {/* ── SERVICES ── */}
       <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px", overflow: "clip" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <div style={{ textAlign: "center" as const, maxWidth: "720px", margin: "0 auto 56px" }}>
@@ -1083,7 +1082,6 @@ export default function CleaningPage() {
         ))}
         </div>
       </section>
-      )}
 
       {/* ── COMPARISON ── */}
       <section style={{ background: "transparent", padding: "96px 40px", borderTop: `1px solid ${line}` }}>
