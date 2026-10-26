@@ -585,9 +585,6 @@ export default function CleaningPage() {
           .m-hero-content { padding: 110px 20px 50px !important; }
           .m-hero-content h1 { font-size: clamp(28px, 7.5vw, 38px) !important; }
           .hero-sub { font-size: 15px !important; }
-          .m-hero-stats { grid-template-columns: 1fr !important; max-width: 100% !important; margin-top: 28px !important; padding-top: 24px !important; }
-          .m-hero-stats > div { border-left: none !important; padding: 16px 0 !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
-          .m-hero-stats > div:first-child { border-top: none !important; padding-top: 0 !important; }
           .m-pain-split { grid-template-columns: 1fr !important; gap: 32px !important; }
           .m-split-sticky { position: static !important; }
           .how-step-card { position: sticky !important; box-shadow: 0 12px 32px rgba(10,15,26,0.18) !important; padding: 24px 20px !important; }
@@ -806,19 +803,6 @@ export default function CleaningPage() {
               </a>
             </div>
             <p className="hero-note" style={{ fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>Free 30-min strategy call · No obligation</p>
-          </div>
-
-          <div className="m-hero-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", borderTop: "1px solid rgba(255,255,255,0.14)", marginTop: "44px", paddingTop: "28px", maxWidth: "780px" }}>
-            {[
-              { big: "57", small: "New leads, last 30 days" },
-              { big: "30", small: "Turned into booked jobs" },
-              { big: "$7–$11", small: "Cost per lead" },
-            ].map(({ big, small }, i) => (
-              <div key={big} style={{ paddingLeft: i === 0 ? 0 : "32px", paddingRight: "24px", borderLeft: i === 0 ? "none" : "1px solid rgba(255,255,255,0.14)" }}>
-                <div style={{ fontSize: "32px", fontWeight: 800, color: "#7cd4ff", letterSpacing: "-0.02em", marginBottom: "6px", whiteSpace: "nowrap" as const }}>{big}</div>
-                <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.4 }}>{small}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
