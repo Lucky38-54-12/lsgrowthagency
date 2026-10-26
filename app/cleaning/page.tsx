@@ -259,7 +259,7 @@ const serviceSlides = [
     headlineStart: "We run ads that ",
     headlineHighlight: "keep your cleaning calendar full",
     accentColor: accent,
-    visual: "/queenstown-ads.png",
+    visual: "/campaign-metrics-laptop-mockup.png",
     stat: { value: 30, prefix: "", suffix: " jobs", label: "Booked cleaning jobs from 57 leads in one month for Queenstown Cleaning" },
     quotes: [
       {
