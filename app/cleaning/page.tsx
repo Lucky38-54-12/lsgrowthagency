@@ -251,82 +251,6 @@ const caseStudyShowcase = [
   },
 ];
 
-/* ── Services section data (cleaning businesses only) ── */
-const serviceSlides = [
-  {
-    num: "01",
-    tag: "Meta Ads",
-    headlineStart: "We run ads that ",
-    headlineHighlight: "keep your cleaning calendar full",
-    accentColor: accent,
-    visual: "/campaign-metrics-laptop-mockup.png",
-    stat: { value: 30, prefix: "", suffix: " jobs", label: "Booked cleaning jobs from 57 leads in one month for Queenstown Cleaning" },
-    quotes: [
-      {
-        quote: "Lucky has been great to work with. He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results and would definitely recommend LS Growth.",
-        quoteHighlight: null as string | null,
-        author: "Queenstown Cleaning",
-        authorTitle: "Cleaning Services, Queenstown",
-      },
-      {
-        quote: "We used to rely on randomly boosted posts without much of a strategy behind them. Working with the team has completely changed that. We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries.",
-        quoteHighlight: null as string | null,
-        author: "Kris",
-        authorTitle: "Katies Elite Cleaning, Tauranga",
-      },
-    ],
-    cta: "See Our Ads Process",
-  },
-  {
-    num: "02",
-    tag: "Website Builds",
-    headlineStart: "We build websites that ",
-    headlineHighlight: "turn visitors into booked cleans",
-    accentColor: accentDark,
-    visual: "/img-website.avif",
-    stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
-    quotes: [
-      {
-        quote: "Before working with Lucky, almost all of our work came from word of mouth. Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
-        quoteHighlight: null as string | null,
-        author: "Linda",
-        authorTitle: "Shines Clean, Hamilton",
-      },
-      {
-        quote: "We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries. The business is doing really well.",
-        quoteHighlight: null as string | null,
-        author: "Kris",
-        authorTitle: "Katies Elite Cleaning, Tauranga",
-      },
-    ],
-    cta: "See Our Web Process",
-  },
-  {
-    num: "03",
-    tag: "Organic Content",
-    headlineStart: "We create content that ",
-    headlineHighlight: "builds trust before they even call",
-    accentColor: accentLight,
-    visual: "/mockup-phone.avif",
-    stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
-    quotes: [
-      {
-        quote: "He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results.",
-        quoteHighlight: null as string | null,
-        author: "Queenstown Cleaning",
-        authorTitle: "Cleaning Services, Queenstown",
-      },
-      {
-        quote: "Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
-        quoteHighlight: null as string | null,
-        author: "Linda",
-        authorTitle: "Shines Clean, Hamilton",
-      },
-    ],
-    cta: "See Our Content Process",
-  },
-];
-
 const faqs = [
   { q: "What types of cleaning businesses do you work with?", a: "Residential, commercial, and everything in between, across New Zealand and Australia. If your business relies on a steady flow of booked cleans, we can build a growth strategy around it." },
   { q: "How quickly will I see results?", a: "Most clients start seeing enquiries within the first 2–3 weeks. From there, we use the data to improve what is working, cut what isn't, and build toward a consistent flow of booked cleans." },
@@ -833,66 +757,10 @@ export default function CleaningPage() {
         </div>
       </section>
 
-      {/* ── SERVICES ── */}
-      <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px", overflow: "clip" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center" as const, maxWidth: "720px", margin: "0 auto 56px" }}>
-            <p className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Our Services</p>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
-              Everything your cleaning business needs to turn enquiries into booked jobs.
-            </h2>
-          </div>
-        {serviceSlides.map(({ num, tag, headlineStart, headlineHighlight, accentColor, visual, stat, quotes, cta }, i) => (
-          <div
-            key={num}
-            className="m-service-row lp-rise"
-            style={{ position: "sticky" as const, top: `${90 + i * 26}px`, zIndex: i + 1, marginBottom: i < serviceSlides.length - 1 ? "40px" : 0, background: "#fff", border: `1px solid ${line}`, boxShadow: "0 24px 64px rgba(10,15,26,0.14)", padding: "56px" }}
-          >
-            <div className="m-service-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px", alignItems: "center" }}>
-              <div className="m-service-visual lp-rise d1" style={{ order: i % 2 === 0 ? 1 : 2, display: "flex", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "400px" }}>
-                <img src={visual} alt={tag} style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "10px", filter: tag === "Meta Ads" ? "drop-shadow(0 20px 44px rgba(0,30,60,0.2))" : "none", border: tag === "Meta Ads" ? `1px solid ${line}` : "none" }} />
-              </div>
-
-              <div className="m-service-copy" style={{ order: i % 2 === 0 ? 2 : 1 }}>
-                <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 700, color: accentColor, letterSpacing: "0.04em", marginBottom: "20px" }}>
-                  <span style={{ width: "24px", height: "1px", background: accentColor, display: "inline-block" }} /> {tag.toUpperCase()}
-                </span>
-                <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,3.6vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "20px" }}>
-                  {headlineStart}<em style={{ fontStyle: "italic", fontWeight: 700, color: accentColor }}>{headlineHighlight}</em>
-                </h2>
-
-                {stat && (
-                  <div className="lp-rise d2" style={{ marginBottom: "14px" }}>
-                    <div style={{ fontSize: "clamp(30px,3.6vw,44px)", fontWeight: 900, color: accentColor, letterSpacing: "-0.03em", lineHeight: 1 }}><CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} format color={accentColor} /></div>
-                    <div style={{ fontSize: "12px", color: muted, marginTop: "6px", maxWidth: "320px", lineHeight: 1.4 }}>{stat.label}</div>
-                  </div>
-                )}
-
-                <div className="lp-rise d3 m-service-quotes" style={{ display: "flex", justifyContent: "space-between", gap: "28px", flexWrap: "wrap" as const, marginBottom: "28px" }}>
-                  <div style={{ maxWidth: "230px" }}>
-                    <div style={{ color: dim, fontSize: "11px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
-                    <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
-                      "<QuoteText quote={quotes[0].quote} highlight={quotes[0].quoteHighlight} />"
-                    </p>
-                    <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{quotes[0].author} — {quotes[0].authorTitle}</p>
-                  </div>
-
-                  <div style={{ maxWidth: "230px", marginLeft: "auto", textAlign: "right" as const }}>
-                    <div style={{ color: dim, fontSize: "11px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
-                    <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
-                      "<QuoteText quote={quotes[1].quote} highlight={quotes[1].quoteHighlight} />"
-                    </p>
-                    <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{quotes[1].author} — {quotes[1].authorTitle}</p>
-                  </div>
-                </div>
-
-                <a href="#how" className="lp-rise d4 btn" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "13px", fontWeight: 700, color: accentColor, background: "transparent", border: `1px solid ${accentColor}`, padding: "12px 22px" }}>
-                  {cta} <ArrowRight style={{ width: "13px", height: "13px" }} />
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
+      {/* ── CAMPAIGN METRICS ── */}
+      <section style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "80px 40px" }}>
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }} className="lp-rise">
+          <img src="/campaign-metrics-laptop-mockup.png" alt="Campaign metrics across our cleaning clients" style={{ width: "100%", height: "auto", display: "block" }} />
         </div>
       </section>
 
