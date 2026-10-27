@@ -489,6 +489,17 @@ const caseStudies = [
 /* ── Case study data ── */
 const caseStudyShowcase = [
   {
+    company: "Coast Build",
+    headline: "How We Helped Coast Build Generate New-Build Leads in Their First Month",
+    logo: "/logos/coast-build.png",
+    photo: "/coast-build-tim-scrimshaw.avif",
+    photoPosition: "center 15%",
+    quote: "In our very first month working with the team, we've already had a strong flow of leads coming through for new builds. Early days, but the results speak for themselves.",
+    quoteHighlight: null as string | null,
+    author: "Tim Scrimshaw",
+    authorTitle: "Coast Build",
+  },
+  {
     company: "Katies Elite Cleaning",
     headline: "How We Helped Katies Elite Cleaning Book Higher-End Jobs",
     logo: "/logos/katies-elite-cleaning.png",
@@ -527,16 +538,6 @@ const caseStudyShowcase = [
     quoteHighlight: "$100,000+",
     author: "Ray Lister",
     authorTitle: "Build It All, Wellington",
-  },
-  {
-    company: "Coast Build",
-    headline: "How We Helped Coast Build Generate New-Build Leads in Their First Month",
-    logo: "/logos/coast-build.png",
-    photo: "/coast-build-tim-scrimshaw.avif",
-    quote: "In our very first month working with the team, we've already had a strong flow of leads coming through for new builds. Early days, but the results speak for themselves.",
-    quoteHighlight: null as string | null,
-    author: "Tim Scrimshaw",
-    authorTitle: "Coast Build",
   },
 ];
 
@@ -677,7 +678,7 @@ function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
           </div>
           <div className="cs-photo" style={{ position: "relative", aspectRatio: "4/3", background: "#151515", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             {study.photo ? (
-              <img src={study.photo} alt={study.company} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src={study.photo} alt={study.company} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: (study as { photoPosition?: string }).photoPosition ?? "center" }} />
             ) : (
               <span style={{ fontSize: "13px", color: "rgba(255,255,255,0.35)" }}>Photo — {study.company}</span>
             )}
