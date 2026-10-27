@@ -528,6 +528,16 @@ const caseStudyShowcase = [
     author: "Ray Lister",
     authorTitle: "Build It All, Wellington",
   },
+  {
+    company: "Coast Build",
+    headline: "How We Helped Coast Build Generate New-Build Leads in Their First Month",
+    logo: "/logos/coast-build.png",
+    photo: "/coast-build-tim-scrimshaw.avif",
+    quote: "In our very first month working with the team, we've already had a strong flow of leads coming through for new builds. Early days, but the results speak for themselves.",
+    quoteHighlight: null as string | null,
+    author: "Tim Scrimshaw",
+    authorTitle: "Coast Build",
+  },
 ];
 
 /* ── Service breakdown data (used by the "Services" section) ── */
