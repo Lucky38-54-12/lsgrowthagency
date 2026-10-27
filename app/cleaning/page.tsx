@@ -759,7 +759,7 @@ export default function CleaningPage() {
 
       {/* ── CAMPAIGN METRICS ── */}
       <section style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "80px 40px" }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }} className="lp-rise">
+        <div style={{ maxWidth: "560px", margin: "0 auto" }} className="lp-rise">
           <img src="/campaign-metrics-laptop-mockup.png" alt="Campaign metrics across our cleaning clients" style={{ width: "100%", height: "auto", display: "block" }} />
         </div>
       </section>
