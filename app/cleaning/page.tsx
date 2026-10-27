@@ -220,6 +220,16 @@ const caseStudyShowcase = [
     authorTitle: "Katies Elite Cleaning, Tauranga",
   },
   {
+    company: "iDo Cleaning",
+    headline: "How We Helped iDo Cleaning Close 20+ Jobs In Their First Month",
+    logo: "/logos/ido-cleaning.png",
+    photo: "/ido-cleaning-job.jpg",
+    quote: "iDo Cleaning came to us looking for more consistent work. In the first month running campaigns together, that turned into over 20 booked cleaning jobs.",
+    quoteHighlight: "over 20 booked cleaning jobs",
+    author: "iDo Cleaning",
+    authorTitle: "Cleaning Services, Christchurch",
+  },
+  {
     company: "Shines Clean",
     headline: "How We Helped Shines Clean Start Generating Leads Online",
     logo: "/logos/shines-clean.png",
@@ -238,16 +248,6 @@ const caseStudyShowcase = [
     quoteHighlight: "30 booked jobs",
     author: "Queenstown Cleaning",
     authorTitle: "Cleaning Services, Queenstown",
-  },
-  {
-    company: "iDo Cleaning",
-    headline: "How We Helped iDo Cleaning Close 20+ Jobs In Their First Month",
-    logo: "/logos/ido-cleaning.png",
-    photo: "/ido-cleaning-job.jpg",
-    quote: "iDo Cleaning came to us looking for more consistent work. In the first month running campaigns together, that turned into over 20 booked cleaning jobs.",
-    quoteHighlight: "over 20 booked cleaning jobs",
-    author: "iDo Cleaning",
-    authorTitle: "Cleaning Services, Christchurch",
   },
 ];
 
@@ -833,6 +833,69 @@ export default function CleaningPage() {
         </div>
       </section>
 
+      {/* ── SERVICES ── */}
+      <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px", overflow: "clip" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center" as const, maxWidth: "720px", margin: "0 auto 56px" }}>
+            <p className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Our Services</p>
+            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
+              Everything your cleaning business needs to turn enquiries into booked jobs.
+            </h2>
+          </div>
+        {serviceSlides.map(({ num, tag, headlineStart, headlineHighlight, accentColor, visual, stat, quotes, cta }, i) => (
+          <div
+            key={num}
+            className="m-service-row lp-rise"
+            style={{ position: "sticky" as const, top: `${90 + i * 26}px`, zIndex: i + 1, marginBottom: i < serviceSlides.length - 1 ? "40px" : 0, background: "#fff", border: `1px solid ${line}`, boxShadow: "0 24px 64px rgba(10,15,26,0.14)", padding: "56px" }}
+          >
+            <div className="m-service-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px", alignItems: "center" }}>
+              <div className="m-service-visual lp-rise d1" style={{ order: i % 2 === 0 ? 1 : 2, display: "flex", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "400px" }}>
+                <img src={visual} alt={tag} style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "10px", filter: tag === "Meta Ads" ? "drop-shadow(0 20px 44px rgba(0,30,60,0.2))" : "none", border: tag === "Meta Ads" ? `1px solid ${line}` : "none" }} />
+              </div>
+
+              <div className="m-service-copy" style={{ order: i % 2 === 0 ? 2 : 1 }}>
+                <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 700, color: accentColor, letterSpacing: "0.04em", marginBottom: "20px" }}>
+                  <span style={{ width: "24px", height: "1px", background: accentColor, display: "inline-block" }} /> {tag.toUpperCase()}
+                </span>
+                <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,3.6vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "20px" }}>
+                  {headlineStart}<em style={{ fontStyle: "italic", fontWeight: 700, color: accentColor }}>{headlineHighlight}</em>
+                </h2>
+
+                {stat && (
+                  <div className="lp-rise d2" style={{ marginBottom: "14px" }}>
+                    <div style={{ fontSize: "clamp(30px,3.6vw,44px)", fontWeight: 900, color: accentColor, letterSpacing: "-0.03em", lineHeight: 1 }}><CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} format color={accentColor} /></div>
+                    <div style={{ fontSize: "12px", color: muted, marginTop: "6px", maxWidth: "320px", lineHeight: 1.4 }}>{stat.label}</div>
+                  </div>
+                )}
+
+                <div className="lp-rise d3 m-service-quotes" style={{ display: "flex", justifyContent: "space-between", gap: "28px", flexWrap: "wrap" as const, marginBottom: "28px" }}>
+                  <div style={{ maxWidth: "230px" }}>
+                    <div style={{ color: dim, fontSize: "11px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
+                    <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
+                      "<QuoteText quote={quotes[0].quote} highlight={quotes[0].quoteHighlight} />"
+                    </p>
+                    <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{quotes[0].author} — {quotes[0].authorTitle}</p>
+                  </div>
+
+                  <div style={{ maxWidth: "230px", marginLeft: "auto", textAlign: "right" as const }}>
+                    <div style={{ color: dim, fontSize: "11px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
+                    <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
+                      "<QuoteText quote={quotes[1].quote} highlight={quotes[1].quoteHighlight} />"
+                    </p>
+                    <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{quotes[1].author} — {quotes[1].authorTitle}</p>
+                  </div>
+                </div>
+
+                <a href="#how" className="lp-rise d4 btn" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "13px", fontWeight: 700, color: accentColor, background: "transparent", border: `1px solid ${accentColor}`, padding: "12px 22px" }}>
+                  {cta} <ArrowRight style={{ width: "13px", height: "13px" }} />
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+        </div>
+      </section>
+
       {/* ── PROBLEM ── */}
       <section style={{ padding: "0 40px 80px", borderTop: `1px solid ${line}`, paddingTop: "80px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
@@ -1017,69 +1080,6 @@ export default function CleaningPage() {
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── SERVICES ── */}
-      <section id="services" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px", overflow: "clip" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center" as const, maxWidth: "720px", margin: "0 auto 56px" }}>
-            <p className="lp-rise" style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "16px" }}>Our Services</p>
-            <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em" }}>
-              Everything your cleaning business needs to turn enquiries into booked jobs.
-            </h2>
-          </div>
-        {serviceSlides.map(({ num, tag, headlineStart, headlineHighlight, accentColor, visual, stat, quotes, cta }, i) => (
-          <div
-            key={num}
-            className="m-service-row lp-rise"
-            style={{ position: "sticky" as const, top: `${90 + i * 26}px`, zIndex: i + 1, marginBottom: i < serviceSlides.length - 1 ? "40px" : 0, background: "#fff", border: `1px solid ${line}`, boxShadow: "0 24px 64px rgba(10,15,26,0.14)", padding: "56px" }}
-          >
-            <div className="m-service-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px", alignItems: "center" }}>
-              <div className="m-service-visual lp-rise d1" style={{ order: i % 2 === 0 ? 1 : 2, display: "flex", alignItems: "center", justifyContent: "center", width: "100%", maxWidth: "400px" }}>
-                <img src={visual} alt={tag} style={{ width: "100%", height: "auto", objectFit: "contain", borderRadius: "10px", filter: tag === "Meta Ads" ? "drop-shadow(0 20px 44px rgba(0,30,60,0.2))" : "none", border: tag === "Meta Ads" ? `1px solid ${line}` : "none" }} />
-              </div>
-
-              <div className="m-service-copy" style={{ order: i % 2 === 0 ? 2 : 1 }}>
-                <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 700, color: accentColor, letterSpacing: "0.04em", marginBottom: "20px" }}>
-                  <span style={{ width: "24px", height: "1px", background: accentColor, display: "inline-block" }} /> {tag.toUpperCase()}
-                </span>
-                <h2 className="lp-rise d1" style={{ fontSize: "clamp(28px,3.6vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "20px" }}>
-                  {headlineStart}<em style={{ fontStyle: "italic", fontWeight: 700, color: accentColor }}>{headlineHighlight}</em>
-                </h2>
-
-                {stat && (
-                  <div className="lp-rise d2" style={{ marginBottom: "14px" }}>
-                    <div style={{ fontSize: "clamp(30px,3.6vw,44px)", fontWeight: 900, color: accentColor, letterSpacing: "-0.03em", lineHeight: 1 }}><CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} format color={accentColor} /></div>
-                    <div style={{ fontSize: "12px", color: muted, marginTop: "6px", maxWidth: "320px", lineHeight: 1.4 }}>{stat.label}</div>
-                  </div>
-                )}
-
-                <div className="lp-rise d3 m-service-quotes" style={{ display: "flex", justifyContent: "space-between", gap: "28px", flexWrap: "wrap" as const, marginBottom: "28px" }}>
-                  <div style={{ maxWidth: "230px" }}>
-                    <div style={{ color: dim, fontSize: "11px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
-                    <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
-                      "<QuoteText quote={quotes[0].quote} highlight={quotes[0].quoteHighlight} />"
-                    </p>
-                    <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{quotes[0].author} — {quotes[0].authorTitle}</p>
-                  </div>
-
-                  <div style={{ maxWidth: "230px", marginLeft: "auto", textAlign: "right" as const }}>
-                    <div style={{ color: dim, fontSize: "11px", letterSpacing: "2px", marginBottom: "8px" }}>★★★★★</div>
-                    <p style={{ fontSize: "13px", color: ink, lineHeight: 1.6, marginBottom: "10px" }}>
-                      "<QuoteText quote={quotes[1].quote} highlight={quotes[1].quoteHighlight} />"
-                    </p>
-                    <p style={{ fontSize: "12px", fontWeight: 600, color: muted }}>{quotes[1].author} — {quotes[1].authorTitle}</p>
-                  </div>
-                </div>
-
-                <a href="#how" className="lp-rise d4 btn" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "13px", fontWeight: 700, color: accentColor, background: "transparent", border: `1px solid ${accentColor}`, padding: "12px 22px" }}>
-                  {cta} <ArrowRight style={{ width: "13px", height: "13px" }} />
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
         </div>
       </section>
 
