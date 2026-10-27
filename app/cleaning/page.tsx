@@ -145,19 +145,6 @@ function ScrollFadeOverlay({ children, style, className }: { children?: React.Re
   return <div ref={ref} className={className} style={{ ...style, transition: "opacity 0.1s linear" }}>{children}</div>;
 }
 
-/* ── Pains / solutions (cleaning-specific) ── */
-const PAINS = [
-  { title: "Leads that go nowhere", desc: "Tyre-kickers, wrong suburb, wrong job size. A lot of leads from generic marketing were never going to book in the first place." },
-  { title: "Feast or famine weeks", desc: "Work comes from referrals and word of mouth, so the calendar swings between fully booked and dead quiet." },
-  { title: "No idea what's working", desc: "Money goes into ads or directories every month with no clear picture of which leads actually became paying jobs." },
-];
-
-const SOLUTIONS = [
-  { tag: "Step 4", title: "Ads built around lead quality", desc: "Campaigns targeted at people who actually need a clean booked, not broad reach for the sake of more enquiries." },
-  { tag: "Step 5", title: "Every lead tracked through to a job", desc: "We don't just count enquiries. Each lead is followed through the pipeline so you know exactly which ones turned into real work." },
-  { tag: "Step 6", title: "Real jobs, not vanity numbers", desc: "Queenstown Cleaning's 57 leads became 30 booked jobs last month. That's the number that matters, not clicks or impressions." },
-];
-
 const steps = [
   {
     num: "01",
@@ -764,131 +751,6 @@ export default function CleaningPage() {
         </div>
       </section>
 
-      {/* ── PROBLEM ── */}
-      <section style={{ padding: "0 40px 80px", borderTop: `1px solid ${line}`, paddingTop: "80px" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div className="m-pain-split" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
-            <div className="m-split-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
-              <div>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
-                  The Problem
-                </span>
-                <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
-                  Sound familiar?
-                </h2>
-                <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
-                  These are the three things quietly costing cleaning businesses jobs every single week.
-                </p>
-              </div>
-            </div>
-            <div>
-              {PAINS.map(({ title, desc }, i) => (
-                <Fragment key={title}>
-                  <div className={`lp-rise how-step-card how-step-card-${i}`} style={{ position: "sticky" as const, top: `${110 + i * 28}px`, zIndex: i + 1, display: "flex", gap: "28px", alignItems: "flex-start", background: "#fff", border: `1px solid ${line}`, boxShadow: "0 24px 64px rgba(10,15,26,0.14)", padding: "36px 40px" }}>
-                    <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: "#dc2626", letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{String(i + 1).padStart(2, "0")}</div>
-                    <div>
-                      <h3 style={{ fontSize: "clamp(18px,2vw,22px)", fontWeight: 800, color: ink, letterSpacing: "-0.01em", marginBottom: "10px" }}>{title}</h3>
-                      <p style={{ fontSize: "14px", color: muted, lineHeight: 1.7 }}>{desc}</p>
-                    </div>
-                  </div>
-                  {i < PAINS.length - 1 && <div aria-hidden className="how-step-gap" style={{ height: "40px" }} />}
-                </Fragment>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SOLUTION ── */}
-      <section style={{ padding: "0 40px 80px", borderTop: `1px solid ${line}`, paddingTop: "80px" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div className="m-pain-split" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: "64px", alignItems: "start" }}>
-            <div className="m-split-sticky lp-rise" style={{ position: "sticky", top: "100px", display: "flex", flexDirection: "column" as const, gap: "24px" }}>
-              <div>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: accent, display: "inline-block" }} />
-                  The Solution
-                </span>
-                <h2 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 800, color: ink, lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: "16px" }}>
-                  Here's what changes
-                </h2>
-                <p style={{ fontSize: "16px", color: muted, lineHeight: 1.7, maxWidth: "380px" }}>
-                  The exact system we run for Queenstown Cleaning, Katies Elite Cleaning and Shines Clean.
-                </p>
-              </div>
-            </div>
-            <div>
-              {SOLUTIONS.map(({ tag, title, desc }, i) => {
-                const dark2 = i === 1;
-                return (
-                  <Fragment key={title}>
-                    <div className={`lp-rise how-step-card how-step-card-${i}`} style={{ position: "sticky" as const, top: `${110 + i * 28}px`, zIndex: i + 1, display: "flex", gap: "28px", alignItems: "flex-start", background: dark2 ? dark : "#fff", border: dark2 ? "none" : `1px solid ${line}`, boxShadow: dark2 ? "0 24px 64px rgba(10,15,26,0.24)" : "0 24px 64px rgba(10,15,26,0.14)", padding: "36px 40px" }}>
-                      <div style={{ fontSize: "clamp(32px,3.5vw,44px)", fontWeight: 900, color: dark2 ? "#7cd4ff" : accent, letterSpacing: "-0.04em", lineHeight: 1, flexShrink: 0 }}>{String(i + 4).padStart(2, "0")}</div>
-                      <div>
-                        <span style={{ display: "block", fontSize: "11px", fontWeight: 700, color: dark2 ? "rgba(255,255,255,0.45)" : dim, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: "8px" }}>{tag}</span>
-                        <h3 style={{ fontSize: "clamp(18px,2vw,22px)", fontWeight: 800, color: dark2 ? "#fff" : ink, letterSpacing: "-0.01em", marginBottom: "10px" }}>{title}</h3>
-                        <p style={{ fontSize: "14px", color: dark2 ? "rgba(255,255,255,0.65)" : muted, lineHeight: 1.7 }}>{desc}</p>
-                      </div>
-                    </div>
-                    {i < SOLUTIONS.length - 1 && <div aria-hidden className="how-step-gap" style={{ height: "40px" }} />}
-                  </Fragment>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── TESTIMONIALS (cleaning businesses only) ── */}
-      <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto 48px" }}>
-          <h2 className="lp-rise" style={{ fontSize: "clamp(30px,4.2vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            What cleaning businesses say<br />about working with us
-          </h2>
-        </div>
-
-        {(() => {
-          const pageSize = 2;
-          const pageCount = Math.ceil(testimonials.length / pageSize);
-          const page = ((reviewPage % pageCount) + pageCount) % pageCount;
-          const pageItems = testimonials.slice(page * pageSize, page * pageSize + pageSize);
-          return (
-            <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
-              <div key={page} className="rev-grid">
-                {pageItems.map(({ quote, author, company, color }) => (
-                  <div key={author} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "10px", padding: "28px 28px 24px", display: "flex", flexDirection: "column" as const }}>
-                    <div style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={accent}>
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <p className="rev-quote" style={{ fontSize: "15px", color: ink, lineHeight: 1.6, marginBottom: "18px" }}>{quote}</p>
-                    <div style={{ marginTop: "auto" }}>
-                      <div style={{ fontSize: "13.5px", fontWeight: 700, color: ink }}>{author}</div>
-                      <div style={{ fontSize: "12.5px", color: muted }}>{company}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", marginTop: "32px" }}>
-                <div style={{ display: "flex", gap: "10px" }}>
-                  <button onClick={() => setReviewPage(p => p - 1)} aria-label="Previous reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    ←
-                  </button>
-                  <button onClick={() => setReviewPage(p => p + 1)} aria-label="Next reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    →
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })()}
-      </section>
-
       {/* ── HOW WE WORK (PROCESS) ── */}
       <section id="how" style={{ background: "transparent", borderTop: `1px solid ${line}`, padding: "100px 40px" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
@@ -949,6 +811,55 @@ export default function CleaningPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* ── TESTIMONIALS (cleaning businesses only) ── */}
+      <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+        <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto 48px" }}>
+          <h2 className="lp-rise" style={{ fontSize: "clamp(30px,4.2vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+            What cleaning businesses say<br />about working with us
+          </h2>
+        </div>
+
+        {(() => {
+          const pageSize = 2;
+          const pageCount = Math.ceil(testimonials.length / pageSize);
+          const page = ((reviewPage % pageCount) + pageCount) % pageCount;
+          const pageItems = testimonials.slice(page * pageSize, page * pageSize + pageSize);
+          return (
+            <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
+              <div key={page} className="rev-grid">
+                {pageItems.map(({ quote, author, company, color }) => (
+                  <div key={author} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "10px", padding: "28px 28px 24px", display: "flex", flexDirection: "column" as const }}>
+                    <div style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={accent}>
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="rev-quote" style={{ fontSize: "15px", color: ink, lineHeight: 1.6, marginBottom: "18px" }}>{quote}</p>
+                    <div style={{ marginTop: "auto" }}>
+                      <div style={{ fontSize: "13.5px", fontWeight: 700, color: ink }}>{author}</div>
+                      <div style={{ fontSize: "12.5px", color: muted }}>{company}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", marginTop: "32px" }}>
+                <div style={{ display: "flex", gap: "10px" }}>
+                  <button onClick={() => setReviewPage(p => p - 1)} aria-label="Previous reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    ←
+                  </button>
+                  <button onClick={() => setReviewPage(p => p + 1)} aria-label="Next reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    →
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
       </section>
 
       {/* ── COMPARISON ── */}
