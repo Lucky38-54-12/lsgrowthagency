@@ -493,7 +493,7 @@ const caseStudyShowcase = [
     headline: "How We Helped Coast Build Generate New-Build Leads in Their First Month",
     logo: "/logos/coast-build.png",
     photo: "/coast-build-tim-scrimshaw.jpg",
-    photoPosition: "center 15%",
+    photoPosition: "center 85%",
     quote: "In our very first month working with the team, we've already had a strong flow of leads coming through for new builds. Early days, but the results speak for themselves.",
     quoteHighlight: "a strong flow of leads coming through for new builds" as string | null,
     author: "Tim Scrimshaw",
