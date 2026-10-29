@@ -504,16 +504,6 @@ const caseStudyShowcase = [
     authorTitle: "Katies Elite Cleaning, Tauranga",
   },
   {
-    company: "SSP Electrical",
-    headline: "How We Helped SSP Electrical Close Over $120,000 in Solar Jobs in Christchurch",
-    logo: "/logos/ssp-electrical.png",
-    photo: "/ssp-electrical-solar.png",
-    quote: "We helped SSP Electrical close over $120,000 in solar jobs in Christchurch in just two months of running campaigns together.",
-    quoteHighlight: "$120,000 in solar jobs",
-    author: "Scott Paterson",
-    authorTitle: "SSP Electrical, Christchurch",
-  },
-  {
     company: "Build It All",
     headline: "How Build It All Booked $100,000+ in Renovation Work in Just One Month",
     logo: "/logos/build-it-all.png",
