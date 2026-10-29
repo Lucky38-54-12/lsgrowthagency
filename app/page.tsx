@@ -1074,6 +1074,7 @@ export default function Home() {
       {/* ── HERO ── */}
       <section className="m-hero-section" style={{ position: "relative", overflow: "hidden", minHeight: "680px", display: "flex", alignItems: "center", background: "#04111f" }}>
         <video
+          autoPlay
           muted
           loop
           playsInline

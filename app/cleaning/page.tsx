@@ -683,7 +683,7 @@ export default function CleaningPage() {
 
       {/* ── HERO ── */}
       <section className="m-hero-section" style={{ position: "relative", overflow: "hidden", minHeight: "620px", display: "flex", alignItems: "center", background: "#04111f" }}>
-        <video muted loop playsInline preload="auto" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
+        <video autoPlay muted loop playsInline preload="auto" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "rgba(0,0,0,0.4)" }} />
