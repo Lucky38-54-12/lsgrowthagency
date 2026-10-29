@@ -717,6 +717,18 @@ export default function Home() {
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
   const [contactTab, setContactTab] = useState<"book"|"message">("book");
   const [reviewPage, setReviewPage] = useState(0);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  // React's `muted` JSX attribute doesn't reliably set the DOM property
+  // before the browser evaluates its autoplay policy, so autoplay can
+  // silently fail and leave the video paused on its first frame. Forcing
+  // .muted + .play() explicitly here is the reliable fix.
+  useEffect(() => {
+    const v = heroVideoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.play().catch(() => {});
+  }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -1074,6 +1086,7 @@ export default function Home() {
       {/* ── HERO ── */}
       <section className="m-hero-section" style={{ position: "relative", overflow: "hidden", minHeight: "680px", display: "flex", alignItems: "center", background: "#04111f" }}>
         <video
+          ref={heroVideoRef}
           autoPlay
           muted
           loop

@@ -363,6 +363,18 @@ export default function CleaningPage() {
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
   const [contactTab, setContactTab] = useState<"book"|"message">("book");
   const [reviewPage, setReviewPage] = useState(0);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  // React's `muted` JSX attribute doesn't reliably set the DOM property
+  // before the browser evaluates its autoplay policy, so autoplay can
+  // silently fail and leave the video paused on its first frame. Forcing
+  // .muted + .play() explicitly here is the reliable fix.
+  useEffect(() => {
+    const v = heroVideoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.play().catch(() => {});
+  }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -683,7 +695,7 @@ export default function CleaningPage() {
 
       {/* ── HERO ── */}
       <section className="m-hero-section" style={{ position: "relative", overflow: "hidden", minHeight: "620px", display: "flex", alignItems: "center", background: "#04111f" }}>
-        <video autoPlay muted loop playsInline preload="auto" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
+        <video ref={heroVideoRef} autoPlay muted loop playsInline preload="auto" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "rgba(0,0,0,0.4)" }} />
