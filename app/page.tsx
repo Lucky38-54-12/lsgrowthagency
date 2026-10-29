@@ -450,7 +450,7 @@ const testimonials = [
     color: "#0e7490",
   },
   {
-    quote: "They've been a huge help in getting us more clients this year. The campaigns they put together have had great success with the leads generated.",
+    quote: "We've helped Scott close over $120,000 in electrical and solar jobs this year.",
     author: "Scott Paterson",
     company: "SSP Electrical",
     color: "#0d9488",
