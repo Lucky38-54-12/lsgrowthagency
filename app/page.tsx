@@ -722,12 +722,34 @@ export default function Home() {
   // React's `muted` JSX attribute doesn't reliably set the DOM property
   // before the browser evaluates its autoplay policy, so autoplay can
   // silently fail and leave the video paused on its first frame. Forcing
-  // .muted + .play() explicitly here is the reliable fix.
+  // .muted + .play() explicitly here is the reliable fix for that case.
+  //
+  // Separately, iOS can also block autoplay at the OS level (Low Power
+  // Mode, or Settings > Safari > Auto-Play Video Previews set to Off) --
+  // no amount of JS can override that policy. The fallback below starts
+  // the video on the very first tap/scroll anywhere on the page instead,
+  // so it still feels instant rather than needing the user to find and
+  // press a play button on the video itself.
   useEffect(() => {
     const v = heroVideoRef.current;
     if (!v) return;
     v.muted = true;
     v.play().catch(() => {});
+
+    const tryPlayOnFirstInteraction = () => {
+      v.play().catch(() => {});
+      window.removeEventListener("touchstart", tryPlayOnFirstInteraction);
+      window.removeEventListener("scroll", tryPlayOnFirstInteraction);
+      window.removeEventListener("click", tryPlayOnFirstInteraction);
+    };
+    window.addEventListener("touchstart", tryPlayOnFirstInteraction, { passive: true, once: true });
+    window.addEventListener("scroll", tryPlayOnFirstInteraction, { passive: true, once: true });
+    window.addEventListener("click", tryPlayOnFirstInteraction, { once: true });
+    return () => {
+      window.removeEventListener("touchstart", tryPlayOnFirstInteraction);
+      window.removeEventListener("scroll", tryPlayOnFirstInteraction);
+      window.removeEventListener("click", tryPlayOnFirstInteraction);
+    };
   }, []);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
