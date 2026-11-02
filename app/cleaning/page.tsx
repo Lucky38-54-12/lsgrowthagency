@@ -181,12 +181,6 @@ const testimonials = [
     color: "#b45309",
   },
   {
-    quote: "Before working with Lucky, almost all of our work came from word of mouth. Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
-    author: "Linda",
-    company: "Shines Clean, Hamilton",
-    color: "#15803d",
-  },
-  {
     quote: "Lucky has been great to work with. He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results and would definitely recommend LS Growth.",
     author: "Queenstown Cleaning",
     company: "Cleaning Services, Queenstown",
@@ -215,16 +209,6 @@ const caseStudyShowcase = [
     quoteHighlight: "over 20 booked cleaning jobs",
     author: "iDo Cleaning",
     authorTitle: "Cleaning Services, Christchurch",
-  },
-  {
-    company: "Shines Clean",
-    headline: "How We Helped Shines Clean Start Generating Leads Online",
-    logo: "/logos/shines-clean.png",
-    photo: "/shines-clean-linda.jpg",
-    quote: "Before working with Lucky, almost all of our work came from word of mouth. Now we've got a proper website and ads bringing in enquiries as well, and it's made a real difference to how steady the work is.",
-    quoteHighlight: null as string | null,
-    author: "Linda",
-    authorTitle: "Shines Clean, Hamilton",
   },
   {
     company: "Queenstown Cleaning",
