@@ -1150,8 +1150,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CASE STUDIES ── */}
-      <CaseStudyCarousel onCtaClick={() => setFormOpen(true)} />
+      {/* ── CASE STUDIES (temporarily removed) ── */}
 
       {/* ── BUILD STATEMENT ── */}
       <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}` }}>
