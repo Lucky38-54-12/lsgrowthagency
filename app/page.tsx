@@ -484,7 +484,8 @@ const caseStudies = [
 const caseStudyShowcase = [
   {
     company: "Coast Build",
-    headline: "How We Helped Coast Build Generate New-Build Leads in Their First Month",
+    headline: "New-Build Leads, From Month One",
+    result: "A consistent flow of new-build enquiries starting in their very first month running with us.",
     logo: "/logos/coast-build.png",
     photo: "/coast-build-tim-scrimshaw.jpg",
     photoPosition: "center 85%",
@@ -495,20 +496,22 @@ const caseStudyShowcase = [
   },
   {
     company: "Katies Elite Cleaning",
-    headline: "How We Helped Katies Elite Cleaning Book Higher-End Jobs",
+    headline: "Higher-End Jobs, Replacing Random Boosted Posts",
+    result: "Moved off ad-hoc boosted posts onto a structured campaign, and now consistently books higher-end cleaning jobs with better-quality enquiries.",
     logo: "/logos/katies-elite-cleaning.png",
     photo: "/katies-elite-cleaning-team.jpg",
-    quote: "We used to rely on randomly boosted posts without much of a strategy behind them. Working with the team has completely changed that. We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries. The business is doing really well, and working with them has been great.",
+    quote: "We used to rely on randomly boosted posts without much of a strategy behind them. Working with the team has completely changed that. We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries.",
     quoteHighlight: "consistently booking higher-end cleaning jobs" as string | null,
     author: "Kris",
     authorTitle: "Katies Elite Cleaning, Tauranga",
   },
   {
     company: "Build It All",
-    headline: "How Build It All Booked $100,000+ in Renovation Work in Just One Month",
+    headline: "$100,000+ Booked in One Month",
+    result: "Over $100,000 in bathroom and kitchen renovation enquiries booked in the first month of working together.",
     logo: "/logos/build-it-all.png",
     photo: "/build-it-all-project.webp",
-    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal. Professional, easy to work with, and they actually deliver results.",
+    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal.",
     quoteHighlight: "$100,000+",
     author: "Ray Lister",
     authorTitle: "Build It All, Wellington",
@@ -635,15 +638,20 @@ function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
 
         <div key={`b-${index}`} className="cs-fade cs-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1fr", gap: "56px", alignItems: "center" }}>
           <div className="cs-content" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-            <div style={{ position: "relative" }}>
-              <span aria-hidden style={{ position: "absolute", top: "-38px", left: "-8px", fontSize: "90px", fontWeight: 800, color: "rgba(255,255,255,0.08)", lineHeight: 1, fontFamily: "Georgia, serif", pointerEvents: "none" as const }}>&ldquo;</span>
-              <p style={{ position: "relative", fontSize: "19px", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, fontWeight: 500, marginBottom: "22px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: accentLight, marginBottom: "10px" }}>
+              The Result
+            </p>
+            <p style={{ fontSize: "19px", color: "rgba(255,255,255,0.92)", lineHeight: 1.5, fontWeight: 600, marginBottom: "20px" }}>
+              {study.result}
+            </p>
+            <div style={{ position: "relative", borderLeft: "2px solid rgba(255,255,255,0.15)", paddingLeft: "14px", marginBottom: "26px" }}>
+              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.5, fontStyle: "italic" }}>
                 <QuoteText quote={study.quote} highlight={study.quoteHighlight} />
               </p>
+              <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.75)", fontWeight: 700, marginTop: "10px" }}>
+                {study.author} <span style={{ fontWeight: 400, color: "rgba(255,255,255,0.45)" }}>&nbsp;|&nbsp; {study.authorTitle}</span>
+              </p>
             </div>
-            <p style={{ fontSize: "15px", color: "#fff", fontWeight: 700, marginBottom: "26px" }}>
-              {study.author} <span style={{ fontWeight: 400, color: "rgba(255,255,255,0.5)" }}>&nbsp;|&nbsp; {study.authorTitle}</span>
-            </p>
             <div className="cs-buttons" style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
               <button onClick={onCtaClick} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: accentLight, color: "#04202e", border: "none" }}>
                 Let's Talk
@@ -1150,7 +1158,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CASE STUDIES (temporarily removed) ── */}
+      {/* ── CASE STUDIES ── */}
+      <CaseStudyCarousel onCtaClick={() => setFormOpen(true)} />
 
       {/* ── BUILD STATEMENT ── */}
       <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}` }}>
