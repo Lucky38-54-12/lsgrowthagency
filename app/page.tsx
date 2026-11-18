@@ -485,7 +485,9 @@ const caseStudyShowcase = [
   {
     company: "Coast Build",
     headline: "New-Build Leads, From Month One",
-    result: "A consistent flow of new-build enquiries starting in their very first month running with us.",
+    stat: { value: 15, prefix: "", suffix: "+", label: "new-build leads in the first 3 weeks of working together" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
+    result: null as string | null,
+    resultHighlight: null as string | null,
     logo: "/logos/coast-build.png",
     photo: "/coast-build-tim-scrimshaw.jpg",
     photoPosition: "center 85%",
@@ -494,7 +496,9 @@ const caseStudyShowcase = [
   {
     company: "Katies Elite Cleaning",
     headline: "Higher-End Jobs, Replacing Random Boosted Posts",
+    stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
     result: "Moved off ad-hoc boosted posts onto a structured campaign, and now consistently books higher-end cleaning jobs with better-quality enquiries.",
+    resultHighlight: "consistently books higher-end cleaning jobs" as string | null,
     logo: "/logos/katies-elite-cleaning.png",
     photo: "/katies-elite-cleaning-team.jpg",
     authorTitle: "Katies Elite Cleaning, Tauranga",
@@ -502,7 +506,9 @@ const caseStudyShowcase = [
   {
     company: "Build It All",
     headline: "$100,000+ Booked in One Month",
-    result: "Over $100,000 in bathroom and kitchen renovation enquiries booked in the first month of working together.",
+    stat: { value: 100000, prefix: "$", suffix: "+", label: "renovation enquiries booked in the first month" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
+    result: null as string | null,
+    resultHighlight: null as string | null,
     logo: "/logos/build-it-all.png",
     photo: "/build-it-all-project.webp",
     authorTitle: "Build It All, Wellington",
@@ -604,7 +610,7 @@ function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
   const go = (dir: number) => setIndex((i) => (i + dir + caseStudyShowcase.length) % caseStudyShowcase.length);
 
   return (
-    <section className="cs-section" style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "90px 40px 60px" }}>
+    <section className="cs-section" style={{ position: "relative", overflow: "hidden", background: "#0a0a0a", padding: "64px 40px 48px" }}>
       <div aria-hidden className="cs-ready" style={{ position: "absolute", left: "-8px", top: "-14px", writingMode: "vertical-rl" as const, whiteSpace: "nowrap", fontSize: "clamp(56px,9vw,120px)", fontWeight: 800, letterSpacing: "0.04em", color: "transparent", WebkitTextStroke: "1px rgba(255,255,255,0.14)", fontFamily: "var(--font-sora), sans-serif", pointerEvents: "none" as const, zIndex: 0 }}>
         READY
       </div>
@@ -612,13 +618,13 @@ function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
         TO WIN?
       </div>
       <div style={{ position: "relative", zIndex: 1, maxWidth: "1180px", margin: "0 auto" }}>
-        <div className="cs-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "56px" }}>
-          <h2 key={`h-${index}`} className="cs-fade cs-headline" style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: "#fff", lineHeight: 1.25, letterSpacing: "-0.01em", maxWidth: "680px" }}>
+        <div className="cs-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "32px" }}>
+          <h2 key={`h-${index}`} className="cs-fade cs-headline" style={{ fontFamily: "var(--font-sora), sans-serif", fontSize: "clamp(22px,2.8vw,32px)", fontWeight: 800, color: "#fff", lineHeight: 1.2, letterSpacing: "-0.01em", maxWidth: "680px" }}>
             {study.headline}
           </h2>
-          <div key={`l-${index}`} className="cs-fade cs-logo" style={{ minWidth: "200px", height: "160px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+          <div key={`l-${index}`} className="cs-fade cs-logo" style={{ minWidth: "160px", height: "110px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
             {study.logo ? (
-              <img src={study.logo} alt={study.company} style={{ maxHeight: "160px", maxWidth: "360px", objectFit: "contain" }} />
+              <img src={study.logo} alt={study.company} style={{ maxHeight: "110px", maxWidth: "300px", objectFit: "contain" }} />
             ) : (
               <div style={{ padding: "8px 16px", border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.6)", fontSize: "12px", fontWeight: 600, letterSpacing: "0.03em" }}>
                 {study.company.toUpperCase()}
@@ -627,15 +633,26 @@ function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
           </div>
         </div>
 
-        <div key={`b-${index}`} className="cs-fade cs-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1fr", gap: "56px", alignItems: "center" }}>
+        <div key={`b-${index}`} className="cs-fade cs-grid" style={{ display: "grid", gridTemplateColumns: "0.95fr 1fr", gap: "48px", alignItems: "center" }}>
           <div className="cs-content" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
-            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: accentLight, marginBottom: "10px" }}>
+            <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "12px" }}>
               The Result
             </p>
-            <p style={{ fontSize: "19px", color: "rgba(255,255,255,0.92)", lineHeight: 1.5, fontWeight: 600, marginBottom: "16px" }}>
-              {study.result}
-            </p>
-            <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", fontWeight: 600, marginBottom: "26px" }}>
+            {study.stat ? (
+              <div style={{ marginBottom: "18px" }}>
+                <div style={{ fontSize: "clamp(56px,7.5vw,92px)", fontWeight: 900, color: accentLight, letterSpacing: "-0.03em", lineHeight: 1 }}>
+                  <CountUp to={study.stat.value} prefix={study.stat.prefix} suffix={study.stat.suffix} format color={accentLight} />
+                </div>
+                <p style={{ fontSize: "20px", color: "rgba(255,255,255,0.88)", lineHeight: 1.4, fontWeight: 600, marginTop: "14px", maxWidth: "440px" }}>
+                  {study.stat.label}
+                </p>
+              </div>
+            ) : (
+              <p style={{ fontSize: "clamp(24px,3vw,32px)", color: "rgba(255,255,255,0.92)", lineHeight: 1.4, fontWeight: 700, marginBottom: "18px", maxWidth: "460px" }}>
+                <QuoteText quote={study.result ?? ""} highlight={study.resultHighlight} />
+              </p>
+            )}
+            <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.5)", fontWeight: 600, marginBottom: "24px" }}>
               {study.authorTitle}
             </p>
             <div className="cs-buttons" style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
@@ -653,7 +670,7 @@ function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
           </div>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "40px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "28px" }}>
           <div style={{ display: "flex", gap: "8px" }}>
             {caseStudyShowcase.map((_, i) => (
               <button
