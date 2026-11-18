@@ -489,9 +489,6 @@ const caseStudyShowcase = [
     logo: "/logos/coast-build.png",
     photo: "/coast-build-tim-scrimshaw.jpg",
     photoPosition: "center 85%",
-    quote: "In our very first month working with the team, we've already had a strong flow of leads coming through for new builds. Early days, but the results speak for themselves.",
-    quoteHighlight: "a strong flow of leads coming through for new builds" as string | null,
-    author: "Tim Scrimshaw",
     authorTitle: "Coast Build",
   },
   {
@@ -500,9 +497,6 @@ const caseStudyShowcase = [
     result: "Moved off ad-hoc boosted posts onto a structured campaign, and now consistently books higher-end cleaning jobs with better-quality enquiries.",
     logo: "/logos/katies-elite-cleaning.png",
     photo: "/katies-elite-cleaning-team.jpg",
-    quote: "We used to rely on randomly boosted posts without much of a strategy behind them. Working with the team has completely changed that. We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries.",
-    quoteHighlight: "consistently booking higher-end cleaning jobs" as string | null,
-    author: "Kris",
     authorTitle: "Katies Elite Cleaning, Tauranga",
   },
   {
@@ -511,9 +505,6 @@ const caseStudyShowcase = [
     result: "Over $100,000 in bathroom and kitchen renovation enquiries booked in the first month of working together.",
     logo: "/logos/build-it-all.png",
     photo: "/build-it-all-project.webp",
-    quote: "Lucky and the team helped us bring over $100,000+ in bathroom and kitchen renovation enquiries in the first month of working together. These guys are the real deal.",
-    quoteHighlight: "$100,000+",
-    author: "Ray Lister",
     authorTitle: "Build It All, Wellington",
   },
 ];
@@ -641,17 +632,12 @@ function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
             <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: accentLight, marginBottom: "10px" }}>
               The Result
             </p>
-            <p style={{ fontSize: "19px", color: "rgba(255,255,255,0.92)", lineHeight: 1.5, fontWeight: 600, marginBottom: "20px" }}>
+            <p style={{ fontSize: "19px", color: "rgba(255,255,255,0.92)", lineHeight: 1.5, fontWeight: 600, marginBottom: "16px" }}>
               {study.result}
             </p>
-            <div style={{ position: "relative", borderLeft: "2px solid rgba(255,255,255,0.15)", paddingLeft: "14px", marginBottom: "26px" }}>
-              <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.5, fontStyle: "italic" }}>
-                <QuoteText quote={study.quote} highlight={study.quoteHighlight} />
-              </p>
-              <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.75)", fontWeight: 700, marginTop: "10px" }}>
-                {study.author} <span style={{ fontWeight: 400, color: "rgba(255,255,255,0.45)" }}>&nbsp;|&nbsp; {study.authorTitle}</span>
-              </p>
-            </div>
+            <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)", fontWeight: 600, marginBottom: "26px" }}>
+              {study.authorTitle}
+            </p>
             <div className="cs-buttons" style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
               <button onClick={onCtaClick} className="cs-btn" style={{ fontSize: "14px", fontWeight: 700, padding: "16px 28px", background: accentLight, color: "#04202e", border: "none" }}>
                 Let's Talk
