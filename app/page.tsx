@@ -500,7 +500,7 @@ const caseStudyShowcase = [
     result: null as string | null,
     resultHighlight: null as string | null,
     logo: "/logos/build-it-all.png",
-    photo: "/build-it-all-project.webp",
+    photo: "/ray-build-it-all.jpg",
     authorTitle: "Build It All, Wellington",
   },
   {
