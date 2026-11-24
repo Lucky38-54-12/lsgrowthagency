@@ -494,16 +494,6 @@ const caseStudyShowcase = [
     authorTitle: "Coast Build",
   },
   {
-    company: "Katies Elite Cleaning",
-    headline: "Higher-End Jobs, Replacing Random Boosted Posts",
-    stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
-    result: "Moved off ad-hoc boosted posts onto a structured campaign, and now consistently books higher-end cleaning jobs with better-quality enquiries.",
-    resultHighlight: "consistently books higher-end cleaning jobs" as string | null,
-    logo: "/logos/katies-elite-cleaning.png",
-    photo: "/katies-elite-cleaning-team.jpg",
-    authorTitle: "Katies Elite Cleaning, Tauranga",
-  },
-  {
     company: "Build It All",
     headline: "$100,000+ Booked in One Month",
     stat: { value: 100000, prefix: "$", suffix: "+", label: "renovation enquiries booked in the first month" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
@@ -512,6 +502,16 @@ const caseStudyShowcase = [
     logo: "/logos/build-it-all.png",
     photo: "/build-it-all-project.webp",
     authorTitle: "Build It All, Wellington",
+  },
+  {
+    company: "Katies Elite Cleaning",
+    headline: "Higher-End Jobs, Replacing Random Boosted Posts",
+    stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
+    result: "Moved off ad-hoc boosted posts onto a structured campaign, and now consistently books higher-end cleaning jobs with better-quality enquiries.",
+    resultHighlight: "consistently books higher-end cleaning jobs" as string | null,
+    logo: "/logos/katies-elite-cleaning.png",
+    photo: "/katies-elite-cleaning-team.jpg",
+    authorTitle: "Katies Elite Cleaning, Tauranga",
   },
   {
     company: "iDo Cleaning",
