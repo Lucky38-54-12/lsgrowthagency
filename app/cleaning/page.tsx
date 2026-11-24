@@ -193,6 +193,7 @@ const caseStudyShowcase = [
   {
     company: "Katies Elite Cleaning",
     headline: "How We Helped Katies Elite Cleaning Book Higher-End Jobs",
+    stat: null as { value: number; prefix?: string; suffix?: string; label: string } | null,
     logo: "/logos/katies-elite-cleaning.png",
     photo: "/katies-elite-cleaning-team.jpg",
     quote: "We used to rely on randomly boosted posts without much of a strategy behind them. Working with the team has completely changed that. We're now consistently booking higher-end cleaning jobs and getting much better-quality enquiries. The business is doing really well, and working with them has been great.",
@@ -202,7 +203,8 @@ const caseStudyShowcase = [
   },
   {
     company: "iDo Cleaning",
-    headline: "How We Helped iDo Cleaning Close 20+ Jobs In Their First Month",
+    headline: "How We Helped iDo Cleaning Close 20+ Jobs In Their First 2 Months",
+    stat: { value: 20, prefix: "", suffix: "+", label: "cleaning jobs closed in the first 2 months of working together" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
     logo: "/logos/ido-cleaning.png",
     photo: "/ido-cleaning-job.jpg",
     quote: "iDo Cleaning came to us looking for more consistent work. In the first month running campaigns together, that turned into over 20 booked cleaning jobs.",
@@ -213,6 +215,7 @@ const caseStudyShowcase = [
   {
     company: "Queenstown Cleaning",
     headline: "How We Helped Queenstown Cleaning Turn 57 Leads Into 30 Booked Jobs",
+    stat: { value: 30, prefix: "", suffix: "", label: "booked jobs from 57 leads in a month" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
     logo: "/logos/queenstown-cleaning.png",
     photo: "/queenstown-cleaning-team.jpg",
     quote: "Lucky has been great to work with. He helped us bring in more cleaning jobs around Queenstown and made the whole process really easy. We've seen some great results and would definitely recommend LS Growth.",
@@ -273,6 +276,21 @@ function CaseStudyCarousel({ onCtaClick }: { onCtaClick: () => void }) {
 
         <div key={`b-${index}`} className="cs-fade cs-grid" style={{ display: "grid", gridTemplateColumns: "0.85fr 1fr", gap: "56px", alignItems: "center" }}>
           <div className="cs-content" style={{ fontFamily: "var(--font-sora), sans-serif" }}>
+            {study.stat && (
+              <>
+                <p style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "12px" }}>
+                  The Result
+                </p>
+                <div style={{ marginBottom: "22px" }}>
+                  <div style={{ fontSize: "clamp(56px,7.5vw,92px)", fontWeight: 900, color: accentLight, letterSpacing: "-0.03em", lineHeight: 1 }}>
+                    <CountUp to={study.stat.value} prefix={study.stat.prefix} suffix={study.stat.suffix} format color={accentLight} />
+                  </div>
+                  <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.4, fontWeight: 600, marginTop: "10px", maxWidth: "440px" }}>
+                    {study.stat.label}
+                  </p>
+                </div>
+              </>
+            )}
             <div style={{ position: "relative" }}>
               <span aria-hidden style={{ position: "absolute", top: "-38px", left: "-8px", fontSize: "90px", fontWeight: 800, color: "rgba(255,255,255,0.08)", lineHeight: 1, fontFamily: "Georgia, serif", pointerEvents: "none" as const }}>&ldquo;</span>
               <p style={{ position: "relative", fontSize: "19px", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, fontWeight: 500, marginBottom: "22px" }}>

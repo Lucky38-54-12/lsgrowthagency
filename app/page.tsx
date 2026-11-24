@@ -513,6 +513,16 @@ const caseStudyShowcase = [
     photo: "/build-it-all-project.webp",
     authorTitle: "Build It All, Wellington",
   },
+  {
+    company: "iDo Cleaning",
+    headline: "20+ Jobs Closed in the First 2 Months",
+    stat: { value: 20, prefix: "", suffix: "+", label: "cleaning jobs closed in the first 2 months of working together" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
+    result: null as string | null,
+    resultHighlight: null as string | null,
+    logo: "/logos/ido-cleaning.png",
+    photo: "/ido-cleaning-job.jpg",
+    authorTitle: "iDo Cleaning",
+  },
 ];
 
 /* ── Service breakdown data (used by the "Services" section) ── */
