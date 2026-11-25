@@ -1809,12 +1809,13 @@ export default function Home() {
                 { src: "/logos/logo-1.png", alt: "We Do Electrical" },
                 { src: "/logos/logo-2.png", alt: "Common Ground Electrical" },
                 { src: "/logos/logo-3.png", alt: "PERL Electrical Christchurch East & CBD" },
-                { src: "/logos/logo-4.png", alt: "SSP Electrical" },
+                { src: "/logos/ssp-electrical-color.jpg", alt: "SSP Electrical" },
                 { src: "/logos/logo-5.png", alt: "CN-Electrical" },
-                { src: "/logos/logo-6.png", alt: "PERL Electrical Christchurch South" },
-                { src: "/logos/logo-7.png", alt: "Fantastic Services" },
+                { src: "/logos/perl-electrical-south.png", alt: "PERL Electrical Christchurch South" },
+                { src: "/logos/fantastic-services-color.jpg", alt: "Fantastic Services" },
                 { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services" },
                 { src: "/logos/logo-9.png", alt: "Jim's Cleaning" },
+                { src: "/logos/coast-build-wordmark.jpg", alt: "Coast Build" },
               ].map(({ src, alt }) => (
                 <div key={`${dup}-${src}`} aria-hidden={dup === 1 || undefined} style={{ width: "180px", height: "104px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: "#fff", border: `1px solid ${line}`, padding: "16px", boxSizing: "border-box" as const }}>
                   <img src={src} alt={dup === 0 ? alt : ""} style={{ maxWidth: "100%", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain" }} />
