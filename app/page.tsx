@@ -1193,8 +1193,8 @@ export default function Home() {
             </p>
           </div>
           <div className="lp-rise d1" style={{ display: "flex", justifyContent: "center" }}>
-            <div style={{ width: "100%", maxWidth: "360px", background: "#0a0a0a", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", boxShadow: "0 12px 48px rgba(0,0,0,0.12)" }}>
-              <video controls style={{ width: "100%", display: "block" }}>
+            <div style={{ width: "100%", maxWidth: "420px", aspectRatio: "1/1", background: "#0a0a0a", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", boxShadow: "0 12px 48px rgba(0,0,0,0.12)" }}>
+              <video controls poster="/videos/ray-build-it-all-poster.jpg" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }}>
                 <source src="/videos/ray-build-it-all-case-study.mp4" type="video/mp4" />
               </video>
             </div>
@@ -1203,7 +1203,6 @@ export default function Home() {
         <style suppressHydrationWarning>{`
           @media (max-width: 860px) {
             .ray-split { grid-template-columns: 1fr !important; gap: 36px !important; }
-            .ray-split > div:last-child { order: -1; }
           }
         `}</style>
       </section>
