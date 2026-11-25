@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, Fragment } from "react";
-import { ArrowRight, CheckCircle, Plus, Minus } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 /* ── CountUp component ── */
 function CountUp({ to, suffix = "", prefix = "", duration = 1800, color, format }: { to: number; suffix?: string; prefix?: string; duration?: number; color: string; format?: boolean }) {
@@ -1828,26 +1828,27 @@ export default function Home() {
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-        <div style={{ position: "absolute", top: "10%", right: "8%", width: "320px", height: "320px", borderRadius: "50%", background: "radial-gradient(circle, rgba(0,128,224,0.14) 0%, transparent 70%)", filter: "blur(20px)", pointerEvents: "none" as const }} />
-        <div className="m-faq-grid" style={{ position: "relative", maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: "80px", alignItems: "start" }}>
-          <div className="m-faq-sticky lp-rise">
-            <p style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "13px", fontWeight: 700, color: accent, letterSpacing: "0.04em", marginBottom: "20px" }}>
-              <span style={{ width: "3px", height: "16px", background: accent, display: "inline-block" }} />
-              FAQ
-            </p>
-            <h2 style={{ fontSize: "clamp(30px,3.8vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-              Got Questions? We've Got Answers!
-            </h2>
-          </div>
-          <div>
+      <section style={{ position: "relative", background: "#f7f5f0", padding: "100px 40px" }}>
+        <div style={{ position: "relative", maxWidth: "720px", margin: "0 auto" }}>
+          <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 700, color: muted, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "18px" }}>
+            Questions
+          </p>
+          <h2 className="lp-rise" style={{ fontFamily: "var(--font-fraunces), serif", fontSize: "clamp(36px,5vw,54px)", fontWeight: 500, color: ink, lineHeight: 1.1, letterSpacing: "-0.01em", marginBottom: "20px" }}>
+            Common questions.
+          </h2>
+          <p className="lp-rise" style={{ fontSize: "16px", color: muted, lineHeight: 1.6, marginBottom: "48px" }}>
+            Still wondering about something? Ask us on a free strategy call.
+          </p>
+
+          <p className="lp-rise" style={{ fontSize: "11px", fontWeight: 700, color: accent, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: "8px" }}>
+            About Us
+          </p>
+          <div style={{ borderTop: `1px solid ${line}` }}>
             {faqs.map(({ q, a }, i) => (
               <div key={i} className="lp-rise" style={{ borderBottom: `1px solid ${line}` }}>
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{ width: "100%", display: "flex", alignItems: "center", gap: "16px", padding: "24px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left", fontFamily: F }}>
-                  <span style={{ flex: 1, fontSize: "18px", fontWeight: 600, color: ink, lineHeight: 1.4 }}>{q}</span>
-                  <div style={{ flexShrink: 0, width: "26px", height: "26px", border: `1px solid ${openFaq===i ? accent : line}`, display: "flex", alignItems: "center", justifyContent: "center", background: openFaq===i ? accent : "transparent", transition: "all 0.15s" }}>
-                    {openFaq===i ? <Minus style={{ width: "11px", height: "11px", color: "#fff" }} /> : <Plus style={{ width: "11px", height: "11px", color: muted }} />}
-                  </div>
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{ width: "100%", display: "flex", alignItems: "center", gap: "16px", padding: "22px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left", fontFamily: F }}>
+                  <span style={{ flex: 1, fontSize: "17px", fontWeight: 600, color: ink, lineHeight: 1.4 }}>{q}</span>
+                  <span style={{ flexShrink: 0, fontSize: "20px", fontWeight: 400, color: muted, lineHeight: 1 }}>{openFaq === i ? "−" : "+"}</span>
                 </button>
                 {openFaq===i && <div style={{ paddingBottom: "22px", fontSize: "14px", color: muted, lineHeight: 1.8 }}>{a}</div>}
               </div>
