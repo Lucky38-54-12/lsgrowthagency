@@ -501,7 +501,7 @@ const caseStudyShowcase = [
     resultHighlight: null as string | null,
     logo: "/logos/build-it-all.png",
     photo: "/ray-build-it-all.jpg",
-    authorTitle: "Build It All, Wellington",
+    authorTitle: "Ray from Build It All, Wellington",
   },
   {
     company: "Katies Elite Cleaning",
@@ -1176,19 +1176,19 @@ export default function Home() {
 
       {/* ── RAY BREAKDOWN ── */}
       <section style={{ background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
-        <div className="ray-split" style={{ maxWidth: "1180px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 0.85fr", gap: "64px", alignItems: "center" }}>
-          <div className="lp-rise" style={{ fontFamily: F }}>
-            <span style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
-              The Studio · NZ + AU
+        <div className="ray-split" style={{ maxWidth: "1180px", margin: "0 auto", display: "grid", gridTemplateColumns: "0.8fr 1fr", gap: "56px", alignItems: "center" }}>
+          <div className="lp-rise" style={{ fontFamily: F, maxWidth: "400px" }}>
+            <span style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "4px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
+              Ray from Build It All
             </span>
-            <h2 style={{ fontSize: "clamp(30px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "20px" }}>
+            <h2 style={{ fontSize: "clamp(26px,3.4vw,40px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "20px" }}>
               Ray's lead generation.<br />
               <span style={{ background: "#ffe600", padding: "0 6px" }}>Done for him.</span>
             </h2>
-            <p style={{ fontSize: "16px", color: muted, lineHeight: 1.75, marginBottom: "18px", maxWidth: "480px" }}>
-              We built Ray's website, ran his ad campaigns, and set up automations so every new enquiry got called back within minutes — not left sitting in an inbox overnight.
+            <p style={{ fontSize: "15px", color: muted, lineHeight: 1.75, marginBottom: "18px" }}>
+              Ray from Build It All came to us needing more booked jobs. We built his website, ran his ad campaigns, and set up automations so every new enquiry got called back within minutes, not left sitting in an inbox overnight.
             </p>
-            <p style={{ fontSize: "16px", color: muted, lineHeight: 1.75, maxWidth: "480px" }}>
+            <p style={{ fontSize: "15px", color: muted, lineHeight: 1.75 }}>
               We also started showcasing his work across his own social channels, so by the time he picked up the phone, the enquiry was already sold on the quality. In his first month working together, that turned into $100k+ of renovation work booked.
             </p>
           </div>
