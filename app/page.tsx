@@ -1803,6 +1803,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── FOUNDER ── */}
+      <section style={{ background: "transparent", padding: "0 40px 100px", borderTop: `1px solid ${line}` }}>
+        <div className="founder-grid lp-rise" style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "200px 1fr", gap: "40px", alignItems: "center" }}>
+          <img src="/team-lucky.jpg" alt="Lucky, founder of L&S Growth" style={{ width: "200px", height: "200px", borderRadius: "16px", objectFit: "cover", border: `1px solid ${line}` }} />
+          <div>
+            <p style={{ fontSize: "11px", fontWeight: 600, color: accent, textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: "12px" }}>
+              Who's Behind L&S Growth
+            </p>
+            <h2 style={{ fontSize: "clamp(22px,2.6vw,30px)", fontWeight: 800, color: ink, lineHeight: 1.2, letterSpacing: "-0.02em", marginBottom: "14px" }}>
+              Hi, I'm Lucky — I started L&S Growth to get trades and service businesses more than just leads.
+            </h2>
+            <p style={{ fontSize: "15px", color: muted, lineHeight: 1.7, maxWidth: "640px" }}>
+              I've seen too many good businesses get burned by agencies that disappear after the campaign launches. I run every account personally, from the ad spend down to the follow-up, so the work actually turns into booked jobs.
+            </p>
+          </div>
+        </div>
+        <style suppressHydrationWarning>{`
+          @media (max-width: 640px) {
+            .founder-grid { grid-template-columns: 1fr !important; text-align: center; justify-items: center; }
+          }
+        `}</style>
+      </section>
+
       {/* ── FAQ ── */}
       <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", top: "10%", right: "8%", width: "320px", height: "320px", borderRadius: "50%", background: "radial-gradient(circle, rgba(0,128,224,0.14) 0%, transparent 70%)", filter: "blur(20px)", pointerEvents: "none" as const }} />
