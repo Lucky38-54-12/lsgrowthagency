@@ -530,7 +530,7 @@ const caseStudyShowcase = [
     result: null as string | null,
     resultHighlight: null as string | null,
     logo: "/logos/ssp-electrical-color.jpg",
-    photo: null as string | null,
+    photo: "/ssp-electrical-solar.png",
     authorTitle: "SSP Electrical, Christchurch",
   },
 ];
