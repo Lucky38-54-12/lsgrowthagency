@@ -1829,7 +1829,8 @@ export default function Home() {
 
       {/* ── FAQ ── */}
       <section style={{ position: "relative", background: "#f7f5f0", padding: "100px 40px" }}>
-        <div style={{ position: "relative", maxWidth: "720px", margin: "0 auto" }}>
+        <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
+        <div style={{ position: "relative", maxWidth: "720px", margin: "0" }}>
           <p className="lp-rise" style={{ fontSize: "12px", fontWeight: 700, color: muted, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: "18px" }}>
             Questions
           </p>
@@ -1854,6 +1855,7 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
         </div>
       </section>
 
