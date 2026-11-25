@@ -525,8 +525,8 @@ const caseStudyShowcase = [
   },
   {
     company: "SSP Electrical",
-    headline: "60+ Leads, Booked Out on Solar Installs",
-    stat: { value: 60, prefix: "", suffix: "+", label: "leads in the first 2 months — booked out on solar installs" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
+    headline: "100+ Leads, Booked Out on Solar Installs",
+    stat: { value: 100, prefix: "", suffix: "+", label: "leads in the first 2 months — booked out on solar installs" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
     result: null as string | null,
     resultHighlight: null as string | null,
     logo: "/logos/ssp-electrical.png",
