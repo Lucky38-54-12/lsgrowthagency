@@ -1190,8 +1190,8 @@ export default function Home() {
             </p>
           </div>
           <div className="lp-rise d1" style={{ display: "flex", justifyContent: "center" }}>
-            <div style={{ width: "100%", maxWidth: "420px", aspectRatio: "1/1", background: "#0a0a0a", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", boxShadow: "0 12px 48px rgba(0,0,0,0.12)" }}>
-              <video controls poster="/videos/ray-build-it-all-poster.jpg" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }}>
+            <div style={{ width: "100%", maxWidth: "360px", background: "#0a0a0a", border: `1px solid ${line}`, borderRadius: "0", overflow: "hidden", boxShadow: "0 12px 48px rgba(0,0,0,0.12)" }}>
+              <video controls poster="/videos/ray-build-it-all-poster.jpg" style={{ width: "100%", display: "block" }}>
                 <source src="/videos/ray-build-it-all-case-study.mp4" type="video/mp4" />
               </video>
             </div>
