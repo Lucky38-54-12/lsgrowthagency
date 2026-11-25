@@ -523,6 +523,16 @@ const caseStudyShowcase = [
     photo: "/ido-cleaning-job.jpg",
     authorTitle: "iDo Cleaning",
   },
+  {
+    company: "SSP Electrical",
+    headline: "60+ Leads in the First 2 Months",
+    stat: { value: 60, prefix: "", suffix: "+", label: "leads in the first 2 months, keeping him booked solid" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
+    result: null as string | null,
+    resultHighlight: null as string | null,
+    logo: "/logos/ssp-electrical-color.jpg",
+    photo: null as string | null,
+    authorTitle: "SSP Electrical, Christchurch",
+  },
 ];
 
 /* ── Service breakdown data (used by the "Services" section) ── */
