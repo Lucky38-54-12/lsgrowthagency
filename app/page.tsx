@@ -1174,6 +1174,40 @@ export default function Home() {
       {/* ── CASE STUDIES ── */}
       <CaseStudyCarousel onCtaClick={() => setFormOpen(true)} />
 
+      {/* ── RAY BREAKDOWN ── */}
+      <section style={{ background: "#fff", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+        <div className="ray-split" style={{ maxWidth: "1180px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 0.85fr", gap: "64px", alignItems: "center" }}>
+          <div className="lp-rise" style={{ fontFamily: F }}>
+            <span style={{ display: "inline-block", fontSize: "11px", fontWeight: 600, color: ink, background: "#f1f5f9", border: `1px solid ${line}`, borderRadius: "999px", padding: "6px 16px", letterSpacing: "0.04em", marginBottom: "20px" }}>
+              The Studio · NZ + AU
+            </span>
+            <h2 style={{ fontSize: "clamp(30px,4vw,48px)", fontWeight: 800, color: ink, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "20px" }}>
+              Ray's lead generation.<br />
+              <span style={{ background: "#ffe600", padding: "0 6px" }}>Done for him.</span>
+            </h2>
+            <p style={{ fontSize: "16px", color: muted, lineHeight: 1.75, marginBottom: "18px", maxWidth: "480px" }}>
+              We built Ray's website, ran his ad campaigns, and set up automations so every new enquiry got called back within minutes — not left sitting in an inbox overnight.
+            </p>
+            <p style={{ fontSize: "16px", color: muted, lineHeight: 1.75, maxWidth: "480px" }}>
+              We also started showcasing his work across his own social channels, so by the time he picked up the phone, the enquiry was already sold on the quality. In his first month working together, that turned into $100k+ of renovation work booked.
+            </p>
+          </div>
+          <div className="lp-rise d1" style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ width: "100%", maxWidth: "360px", background: "#0a0a0a", border: `1px solid ${line}`, borderRadius: "16px", overflow: "hidden", boxShadow: "0 12px 48px rgba(0,0,0,0.12)" }}>
+              <video controls style={{ width: "100%", display: "block" }}>
+                <source src="/videos/ray-build-it-all-case-study.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+        <style suppressHydrationWarning>{`
+          @media (max-width: 860px) {
+            .ray-split { grid-template-columns: 1fr !important; gap: 36px !important; }
+            .ray-split > div:last-child { order: -1; }
+          }
+        `}</style>
+      </section>
+
       {/* ── BUILD STATEMENT ── */}
       <section className="m-build-statement" style={{ position: "relative", overflow: "hidden", background: "transparent", borderTop: `1px solid ${line}` }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none" as const }}>
