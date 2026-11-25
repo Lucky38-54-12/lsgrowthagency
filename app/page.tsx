@@ -494,6 +494,16 @@ const caseStudyShowcase = [
     authorTitle: "Coast Build",
   },
   {
+    company: "SSP Electrical",
+    headline: "100+ Leads, Booked Out on Solar Installs",
+    stat: { value: 100, prefix: "", suffix: "+", label: "leads in the first 2 months — booked out on solar installs" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
+    result: null as string | null,
+    resultHighlight: null as string | null,
+    logo: "/logos/ssp-electrical.png",
+    photo: "/ssp-electrical-solar.png",
+    authorTitle: "SSP Electrical, Christchurch",
+  },
+  {
     company: "Build It All",
     headline: "$100,000+ Booked in One Month",
     stat: { value: 100000, prefix: "$", suffix: "+", label: "renovation enquiries booked in the first month" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
@@ -522,16 +532,6 @@ const caseStudyShowcase = [
     logo: "/logos/ido-cleaning.png",
     photo: "/ido-cleaning-job.jpg",
     authorTitle: "iDo Cleaning",
-  },
-  {
-    company: "SSP Electrical",
-    headline: "100+ Leads, Booked Out on Solar Installs",
-    stat: { value: 100, prefix: "", suffix: "+", label: "leads in the first 2 months — booked out on solar installs" } as { value: number; prefix?: string; suffix?: string; label: string } | null,
-    result: null as string | null,
-    resultHighlight: null as string | null,
-    logo: "/logos/ssp-electrical.png",
-    photo: "/ssp-electrical-solar.png",
-    authorTitle: "SSP Electrical, Christchurch",
   },
 ];
 
