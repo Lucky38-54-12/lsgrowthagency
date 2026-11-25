@@ -1794,8 +1794,8 @@ export default function Home() {
           }
         `}</style>
         <div style={{ maxWidth: "1100px", margin: "0 auto 36px", textAlign: "center" as const, padding: "0 40px" }}>
-          <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 700, color: "#fff", background: ink, padding: "6px 14px", letterSpacing: "0.08em", marginBottom: "18px" }}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill={accent}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" /></svg>
+          <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 700, color: "#fff", background: accent, padding: "6px 14px", letterSpacing: "0.08em", marginBottom: "18px" }}>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="#fff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" /></svg>
             TRUSTED BY
           </span>
           <h3 className="lp-rise" style={{ fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: ink, letterSpacing: "-0.01em", textTransform: "uppercase" as const }}>
@@ -1813,7 +1813,7 @@ export default function Home() {
                 { src: "/logos/cn-electrical-color.png", alt: "CN-Electrical" },
                 { src: "/logos/perl-electrical-south.png", alt: "PERL Electrical Christchurch South" },
                 { src: "/logos/fantastic-services-color.jpg", alt: "Fantastic Services" },
-                { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services" },
+                { src: "/logos/queenstown-cleaning-color.jpg", alt: "Queenstown Cleaning Services" },
                 { src: "/logos/jims-cleaning-color.jpg", alt: "Jim's Cleaning" },
                 { src: "/logos/coast-build-wordmark.jpg", alt: "Coast Build" },
                 { src: "/logos/build-it-all.png", alt: "Build It All" },
