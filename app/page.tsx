@@ -737,7 +737,6 @@ export default function Home() {
   const [formState, setFormState] = useState<"idle"|"sending"|"done"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", phone: "", business: "", message: "" });
   const [contactTab, setContactTab] = useState<"book"|"message">("book");
-  const [reviewPage, setReviewPage] = useState(0);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
 
   // React's `muted` JSX attribute doesn't reliably set the DOM property
@@ -1734,59 +1733,47 @@ export default function Home() {
       )}
 
       {/* ── TESTIMONIALS ── */}
-      <section id="work" style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "100px 40px", borderTop: `1px solid ${line}` }}>
+      <section id="work" style={{ position: "relative", overflow: "hidden", background: dark, padding: "100px 40px" }}>
         <style suppressHydrationWarning>{`
-          .rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-          .rev-quote { display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+          .rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
           @media (max-width: 720px) {
             .rev-grid { grid-template-columns: 1fr; }
           }
         `}</style>
-        <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto 48px" }}>
-          <h2 className="lp-rise" style={{ fontSize: "clamp(30px,4.2vw,46px)", fontWeight: 800, color: ink, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-            What our partners say<br />about working with us
+        <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto 40px" }}>
+          <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", fontWeight: 700, color: ink, background: "#fff", padding: "7px 16px", letterSpacing: "0.08em", marginBottom: "24px" }}>
+            <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+            GOOGLE REVIEWS &nbsp;·&nbsp; ★★★★★
+          </span>
+          <h2 className="lp-rise" style={{ fontSize: "clamp(34px,4.8vw,54px)", fontWeight: 800, color: "#fff", lineHeight: 1.05, letterSpacing: "-0.02em", textTransform: "uppercase" as const }}>
+            5-Star Reviews,<br />
+            <span style={{ background: accent, color: "#fff", padding: "2px 10px", boxDecorationBreak: "clone" as const, WebkitBoxDecorationBreak: "clone" as const }}>Not Curated</span> By Us.
           </h2>
         </div>
 
-        {(() => {
-          const pageSize = 2;
-          const pageCount = Math.ceil(testimonials.length / pageSize);
-          const page = ((reviewPage % pageCount) + pageCount) % pageCount;
-          const pageItems = testimonials.slice(page * pageSize, page * pageSize + pageSize);
-          return (
-            <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
-              <div key={page} className="rev-grid">
-                {pageItems.map(({ quote, author, company, color }) => (
-                  <div key={author} style={{ background: "#fff", border: `1px solid ${line}`, borderRadius: "10px", padding: "28px 28px 24px", display: "flex", flexDirection: "column" as const }}>
-                    <div style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={accent}>
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <p className="rev-quote" style={{ fontSize: "15px", color: ink, lineHeight: 1.6, marginBottom: "18px" }}>{quote}</p>
-                    <div style={{ marginTop: "auto" }}>
-                      <div style={{ fontSize: "13.5px", fontWeight: 700, color: ink }}>{author}</div>
-                      <div style={{ fontSize: "12.5px", color: muted }}>{company}</div>
-                    </div>
+        <div style={{ position: "relative", maxWidth: "1000px", margin: "0 auto" }}>
+          <div className="rev-grid">
+            {testimonials.map(({ quote, author, company }) => (
+              <div key={author} style={{ background: "#f3f1ea", padding: "28px 28px 24px", display: "flex", flexDirection: "column" as const }}>
+                <div style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={accent}>
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <p style={{ fontSize: "15px", color: ink, lineHeight: 1.6, marginBottom: "20px" }}>&ldquo;{quote}&rdquo;</p>
+                <div style={{ marginTop: "auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", borderTop: `1px solid ${line}`, paddingTop: "16px" }}>
+                  <div style={{ fontSize: "12.5px", fontWeight: 700, color: ink, letterSpacing: "0.03em", textTransform: "uppercase" as const }}>— {author}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 700, color: muted, letterSpacing: "0.04em" }}>
+                    <svg width="14" height="14" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+                    GOOGLE
                   </div>
-                ))}
-              </div>
-
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", marginTop: "32px" }}>
-                <div style={{ display: "flex", gap: "10px" }}>
-                  <button onClick={() => setReviewPage(p => p - 1)} aria-label="Previous reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    ←
-                  </button>
-                  <button onClick={() => setReviewPage(p => p + 1)} aria-label="Next reviews" style={{ width: "36px", height: "36px", borderRadius: "50%", border: `1px solid ${line}`, background: "#fff", color: ink, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    →
-                  </button>
                 </div>
               </div>
-            </div>
-          );
-        })()}
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── TRUSTED BY ── */}
@@ -1798,16 +1785,21 @@ export default function Home() {
             -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
             mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
           }
-          .trusted-track { display: flex; align-items: center; width: max-content; gap: 80px; animation: trusted-slide 36s linear infinite; }
+          .trusted-track { display: flex; align-items: center; width: max-content; gap: 0; animation: trusted-slide 36s linear infinite; }
+          .trusted-track > div + div { margin-left: -1px; }
           .trusted-mask:hover .trusted-track { animation-play-state: paused; }
           @keyframes trusted-slide {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
           }
         `}</style>
-        <div style={{ maxWidth: "1100px", margin: "0 auto 40px", textAlign: "center" as const, padding: "0 40px" }}>
-          <h3 className="lp-rise" style={{ fontSize: "clamp(22px,2.6vw,30px)", fontWeight: 800, color: accent, letterSpacing: "-0.01em" }}>
-            Working with great businesses like yours
+        <div style={{ maxWidth: "1100px", margin: "0 auto 36px", textAlign: "center" as const, padding: "0 40px" }}>
+          <span className="lp-rise" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "11px", fontWeight: 700, color: "#fff", background: ink, padding: "6px 14px", letterSpacing: "0.08em", marginBottom: "18px" }}>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill={accent}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" /></svg>
+            TRUSTED BY
+          </span>
+          <h3 className="lp-rise" style={{ fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 800, color: ink, letterSpacing: "-0.01em", textTransform: "uppercase" as const }}>
+            Brands That <span style={{ background: accent, color: "#fff", padding: "1px 8px" }}>Scale</span> With Us.
           </h3>
         </div>
         <div className="trusted-mask lp-rise">
@@ -1824,8 +1816,8 @@ export default function Home() {
                 { src: "/logos/logo-8.png", alt: "Queenstown Cleaning Services" },
                 { src: "/logos/logo-9.png", alt: "Jim's Cleaning" },
               ].map(({ src, alt }) => (
-                <div key={`${dup}-${src}`} aria-hidden={dup === 1 || undefined} style={{ height: "64px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <img src={src} alt={dup === 0 ? alt : ""} style={{ height: "100%", width: "auto", maxWidth: "220px", objectFit: "contain", opacity: 0.6, filter: "grayscale(100%)", transition: "opacity 0.2s, filter 0.2s" }} onMouseEnter={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.filter = "grayscale(0%)"; }} onMouseLeave={e => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.filter = "grayscale(100%)"; }} />
+                <div key={`${dup}-${src}`} aria-hidden={dup === 1 || undefined} style={{ width: "180px", height: "104px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: "#fff", border: `1px solid ${line}`, padding: "16px", boxSizing: "border-box" as const }}>
+                  <img src={src} alt={dup === 0 ? alt : ""} style={{ maxWidth: "100%", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain" }} />
                 </div>
               ))
             )}
